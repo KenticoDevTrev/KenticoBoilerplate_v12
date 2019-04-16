@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grid>
+  <actions >
+    <action name="custom_move" externalsourcename="custom_move" caption="$General.DragMove$" fonticonclass="icon-dots-vertical" />
+    <action name="custom_moveup" externalsourcename="custom_moveup" caption="$general.up$" fonticonclass="icon-chevron-up" />
+    <action name="custom_movedown" externalsourcename="custom_movedown" caption="$general.down$" fonticonclass="icon-chevron-down"/>
+    
+  </actions>
+  <columns>
+    <column source="##ALL##" externalsourcename="Select" wrap="false" text-align="center" >
+    </column>
+    <column source="##ALL##" externalsourcename="ItemName" cssclass="main-column-100" wrap="false" localize="true">
+    </column>
+  </columns>
+  <options>
+    <key name="DisplayFilter" value="false" />
+  </options>
+</grid>

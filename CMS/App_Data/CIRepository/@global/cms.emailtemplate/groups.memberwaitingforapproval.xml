@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.emailtemplate>
+  <EmailTemplateBcc />
+  <EmailTemplateCc />
+  <EmailTemplateDisplayName>Groups - Member waiting for approval</EmailTemplateDisplayName>
+  <EmailTemplateFrom />
+  <EmailTemplateGUID>719d4419-0b2d-49db-ba8b-a5e29648d98c</EmailTemplateGUID>
+  <EmailTemplateName>Groups.MemberWaitingForApproval</EmailTemplateName>
+  <EmailTemplatePlainText>
+<![CDATA[
+User {%MemberUser.FullName|(identity)GlobalAdministrator|(hash)16c4934fbdfb5d825256f6ef59f8ac044f72255038f5a7497a45bd24ac811b9a%}({%TrimSitePrefix(MemberUser.UserName)|(identity)GlobalAdministrator|(hash)76b711828f70febce19dbf0af2bbca0961a0add420e416dec1b210299489938a%}) is waiting for approval into group '{%Group.GroupDisplayName|(identity)GlobalAdministrator|(hash)469693ddc998e860cdfe6b87cb0ab2fc1b784a4a0ab532590e29192c863d699b%}'.
+
+
+Best Regards,
+
+The Community Team
+]]>
+  </EmailTemplatePlainText>
+  <EmailTemplateSubject />
+  <EmailTemplateText>
+<![CDATA[
+<html>
+	<head>
+	</head>
+	<body>
+		<p>User {%MemberUser.FullName|(identity)GlobalAdministrator|(hash)16c4934fbdfb5d825256f6ef59f8ac044f72255038f5a7497a45bd24ac811b9a%}({%TrimSitePrefix(MemberUser.UserName)|(identity)GlobalAdministrator|(hash)76b711828f70febce19dbf0af2bbca0961a0add420e416dec1b210299489938a%}) is waiting for approval into group '{%Group.GroupDisplayName|(identity)GlobalAdministrator|(hash)469693ddc998e860cdfe6b87cb0ab2fc1b784a4a0ab532590e29192c863d699b%}'.</p>
+		<br />
+		<br />
+		Best Regards,<br />
+		<br />
+		The Community Team
+	</body>
+</html>
+]]>
+  </EmailTemplateText>
+  <EmailTemplateType>groupmember</EmailTemplateType>
+</cms.emailtemplate>

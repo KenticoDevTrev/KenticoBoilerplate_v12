@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.alternativeform>
+  <FormClassID>
+    <CodeName>ecommerce.optioncategory</CodeName>
+    <GUID>dda1df37-bc59-4541-a568-c69aec9d93fc</GUID>
+    <ObjectType>cms.systemtable</ObjectType>
+  </FormClassID>
+  <FormCustomizedColumns />
+  <FormDefinition>
+    <form version="2">
+      <field column="CategoryDisplayName" order="2" />
+      <field column="CategoryLiveSiteDisplayName" order="3" />
+      <field column="CategoryName" order="4" />
+      <field column="CategoryDescription" order="5" />
+      <field column="CategorySiteID" order="6">
+        <settings>
+          <RepeatDirection />
+          <controlname>dropdownlistcontrol</controlname>
+          <RepeatLayout />
+          <Options ismacro="">
+<![CDATA[
+{%SiteContext.CurrentSiteID |(identity)GlobalAdministrator|(hash)a54577e5042884c3bd4a16f8b2e2e5f1fd4c4474d13c3ce0ec6879a55e616338%};{$com.onthissiteonly$}
+;{$com.globally$}
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+          <EditText>False</EditText>
+        </settings>
+        <properties>
+          <visiblemacro ismacro="">
+            <![CDATA[{%!IsProductGlobal(EditedObject, QueryString["productid"]) && Settings.CMSStoreAllowGlobalProductOptions && CurrentUser.IsAuthorizedPerResource("CMS.Ecommerce","EcommerceGlobalModify") && (CurrentUser.IsAuthorizedPerResource("CMS.Ecommerce","ModifyProducts") || CurrentUser.IsAuthorizedPerResource("CMS.Ecommerce","EcommerceModify"))|(identity)GlobalAdministrator|(hash)23dbf413ae60ebf9cd8844cef31097852fedf562e7e00a44bf765fe329260944%}]]>
+          </visiblemacro>
+          <fieldcaption>{$com.available$}</fieldcaption>
+          <defaultvalue ismacro="true">
+<![CDATA[
+{% if ((!Settings.CMSStoreAllowGlobalProductOptions
+        || !CurrentUser.IsAuthorizedPerResource("CMS.Ecommerce","EcommerceGlobalModify")
+        || CurrentUser.IsAuthorizedPerResource("CMS.Ecommerce","ModifyProducts")
+        || CurrentUser.IsAuthorizedPerResource("CMS.Ecommerce","EcommerceModify")
+        ) && !IsProductGlobal(EditedObject, QueryString["productid"])) { SiteContext.CurrentSiteID } |(identity)GlobalAdministrator|(hash)21b73ae41062be9f5d4ea2ffd9b15ea1d524336aa30eb2a85da75bc67286b5d8%}
+]]>
+          </defaultvalue>
+        </properties>
+      </field>
+      <field column="CategoryDefaultRecord" visible="" />
+      <field column="CategoryDefaultOptions" visible="" />
+      <field column="CategoryDisplayPrice" visible="" />
+      <field column="CategoryTextMinLength" visible="" />
+      <field column="CategoryTextMaxLength" visible="" />
+    </form>
+  </FormDefinition>
+  <FormDisplayName>Insert</FormDisplayName>
+  <FormGUID>eff4c93b-3be9-40d7-bbd3-5589d25584a1</FormGUID>
+  <FormHideNewParentFields>False</FormHideNewParentFields>
+  <FormIsCustom>False</FormIsCustom>
+  <FormName>insert</FormName>
+</cms.alternativeform>

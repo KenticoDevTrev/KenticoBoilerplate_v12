@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This is a CI serialization file for /Site-Objects/Banners -->
+<cms.node>
+  <NodeACLID>
+    <GUID>0072d163-58b7-495f-bbcd-1f15eaadf7e3</GUID>
+    <ObjectType>cms.acl</ObjectType>
+    <Site>
+      <CodeName>KenticoBoilerplate</CodeName>
+      <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+      <ObjectType>cms.site</ObjectType>
+    </Site>
+  </NodeACLID>
+  <NodeAlias>Banners</NodeAlias>
+  <NodeClassID>
+    <CodeName>CMS.Folder</CodeName>
+    <GUID>9e0f541b-843c-42ce-850f-e44fb3f89b94</GUID>
+    <ObjectType>cms.documenttype</ObjectType>
+  </NodeClassID>
+  <NodeGUID>16b8fa13-535d-4920-a40f-1ea099998c4b</NodeGUID>
+  <NodeInheritPageLevels />
+  <NodeIsACLOwner>False</NodeIsACLOwner>
+  <NodeIsContentOnly>False</NodeIsContentOnly>
+  <NodeName>Banners</NodeName>
+  <NodeOrder>1</NodeOrder>
+  <NodeOwner>
+    <CodeName>administrator</CodeName>
+    <GUID>6415b8ce-8072-4bcd-8e48-9d7178b826b7</GUID>
+    <ObjectType>cms.user</ObjectType>
+  </NodeOwner>
+  <NodeParentID>
+    <CodeName>/Site-Objects</CodeName>
+    <GUID>676b9bc9-0d58-4dfa-9433-e31b2ab006fd</GUID>
+    <ObjectType>cms.node</ObjectType>
+    <Site>
+      <CodeName>KenticoBoilerplate</CodeName>
+      <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+      <ObjectType>cms.site</ObjectType>
+    </Site>
+  </NodeParentID>
+  <NodeSiteID>
+    <CodeName>KenticoBoilerplate</CodeName>
+    <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+    <ObjectType>cms.site</ObjectType>
+  </NodeSiteID>
+  <NodeTemplateForAllCultures>True</NodeTemplateForAllCultures>
+</cms.node>

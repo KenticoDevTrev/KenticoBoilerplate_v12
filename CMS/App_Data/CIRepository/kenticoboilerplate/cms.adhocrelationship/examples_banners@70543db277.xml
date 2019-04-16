@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.adhocrelationship>
+  <Parent>
+    <CodeName>/Examples/Banners</CodeName>
+    <GUID>e8911153-a41d-4cd2-9572-28e764cf0ad0</GUID>
+    <ObjectType>cms.node</ObjectType>
+    <Site>
+      <CodeName>KenticoBoilerplate</CodeName>
+      <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+      <ObjectType>cms.site</ObjectType>
+    </Site>
+  </Parent>
+  <Bindings>
+    <Binding id="cms.node_/Site-Objects/Banners/Banner-1_cms.site_KenticoBoilerplate-cms.relationshipname_Banners">
+      <RelationshipIsAdHoc>True</RelationshipIsAdHoc>
+      <RelationshipNameID>
+        <CodeName>Banners</CodeName>
+        <GUID>3c7d0f10-f9ee-47c9-91d7-87725eeb6197</GUID>
+        <ObjectType>cms.relationshipname</ObjectType>
+      </RelationshipNameID>
+      <RelationshipOrder>1</RelationshipOrder>
+      <RightNodeID>
+        <CodeName>/Site-Objects/Banners/Banner-1</CodeName>
+        <GUID>528f2a2b-a9d8-4d5e-92de-715f228a05f1</GUID>
+        <ObjectType>cms.node</ObjectType>
+        <Site>
+          <CodeName>KenticoBoilerplate</CodeName>
+          <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+          <ObjectType>cms.site</ObjectType>
+        </Site>
+      </RightNodeID>
+    </Binding>
+    <Binding id="cms.node_/Site-Objects/Banners/Banner-2_cms.site_KenticoBoilerplate-cms.relationshipname_Banners">
+      <RelationshipIsAdHoc>True</RelationshipIsAdHoc>
+      <RelationshipNameID>
+        <CodeName>Banners</CodeName>
+        <GUID>3c7d0f10-f9ee-47c9-91d7-87725eeb6197</GUID>
+        <ObjectType>cms.relationshipname</ObjectType>
+      </RelationshipNameID>
+      <RelationshipOrder>2</RelationshipOrder>
+      <RightNodeID>
+        <CodeName>/Site-Objects/Banners/Banner-2</CodeName>
+        <GUID>e37f9159-4135-4aea-ae65-08b5283ece10</GUID>
+        <ObjectType>cms.node</ObjectType>
+        <Site>
+          <CodeName>KenticoBoilerplate</CodeName>
+          <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+          <ObjectType>cms.site</ObjectType>
+        </Site>
+      </RightNodeID>
+    </Binding>
+    <Binding id="cms.node_/Site-Objects/Banners/Banner-3_cms.site_KenticoBoilerplate-cms.relationshipname_Banners">
+      <RelationshipIsAdHoc>True</RelationshipIsAdHoc>
+      <RelationshipNameID>
+        <CodeName>Banners</CodeName>
+        <GUID>3c7d0f10-f9ee-47c9-91d7-87725eeb6197</GUID>
+        <ObjectType>cms.relationshipname</ObjectType>
+      </RelationshipNameID>
+      <RelationshipOrder>3</RelationshipOrder>
+      <RightNodeID>
+        <CodeName>/Site-Objects/Banners/Banner-3</CodeName>
+        <GUID>fd416f3c-1625-4f2e-b088-3287e03f08fc</GUID>
+        <ObjectType>cms.node</ObjectType>
+        <Site>
+          <CodeName>KenticoBoilerplate</CodeName>
+          <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+          <ObjectType>cms.site</ObjectType>
+        </Site>
+      </RightNodeID>
+    </Binding>
+  </Bindings>
+</cms.adhocrelationship>

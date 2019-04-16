@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<media.file>
+  <FileCreatedByUserID>
+    <CodeName>administrator</CodeName>
+    <GUID>6415b8ce-8072-4bcd-8e48-9d7178b826b7</GUID>
+    <ObjectType>cms.user</ObjectType>
+  </FileCreatedByUserID>
+  <FileCreatedWhen>2019-04-07 04:54:37Z</FileCreatedWhen>
+  <FileDescription />
+  <FileExtension>.png</FileExtension>
+  <FileGUID>853b0e72-90a6-4465-8589-dd5b48057552</FileGUID>
+  <FileImageHeight>177</FileImageHeight>
+  <FileImageWidth>830</FileImageWidth>
+  <FileLibraryID>
+    <CodeName>Images</CodeName>
+    <GUID>53afa7bc-a426-4d5d-a112-e29e7dcb92bc</GUID>
+    <ObjectType>media.library</ObjectType>
+    <Site>
+      <CodeName>KenticoBoilerplate</CodeName>
+      <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+      <ObjectType>cms.site</ObjectType>
+    </Site>
+  </FileLibraryID>
+  <FileMimeType>image/png</FileMimeType>
+  <FileModifiedByUserID>
+    <CodeName>administrator</CodeName>
+    <GUID>6415b8ce-8072-4bcd-8e48-9d7178b826b7</GUID>
+    <ObjectType>cms.user</ObjectType>
+  </FileModifiedByUserID>
+  <FileName>Banner-3</FileName>
+  <FilePath>Banners/Banner-3.png</FilePath>
+  <FileSiteID>
+    <CodeName>KenticoBoilerplate</CodeName>
+    <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+    <ObjectType>cms.site</ObjectType>
+  </FileSiteID>
+  <FileSize>1580</FileSize>
+  <FileTitle />
+</media.file>

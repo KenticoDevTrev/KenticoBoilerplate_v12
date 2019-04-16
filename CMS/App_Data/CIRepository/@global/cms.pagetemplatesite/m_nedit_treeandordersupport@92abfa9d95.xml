@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.pagetemplatesite>
+  <Parent>
+    <CodeName>M_NEdit_TreeAndOrderSupport</CodeName>
+    <GUID>c6eac741-5324-42ec-9a43-90cbed4e70bd</GUID>
+    <ObjectType>cms.pagetemplate</ObjectType>
+  </Parent>
+  <Bindings>
+    <Binding id="KenticoBoilerplate">
+      <SiteID>
+        <CodeName>KenticoBoilerplate</CodeName>
+        <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+        <ObjectType>cms.site</ObjectType>
+      </SiteID>
+    </Binding>
+  </Bindings>
+</cms.pagetemplatesite>

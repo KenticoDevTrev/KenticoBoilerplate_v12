@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.resource>
+  <ResourceAuthor>Trevor Fayas (www.devtrev.com)</ResourceAuthor>
+  <ResourceDescription>
+<![CDATA[
+For Kentico CMS
+Extends the Relationships to allow usage of Ad-hoc relationships (which allow order by) within the Relationship UI, add Node Categories, UI templates and tools to manage Many-To-Many relationships between Nodes and Objects and Objects to Objects, with Ordering support, and Macros and methods to leverage these features.
+]]>
+  </ResourceDescription>
+  <ResourceDisplayName>Relationships Extended</ResourceDisplayName>
+  <ResourceGUID>097a3e7c-b947-4528-90fa-ea41d66a03f9</ResourceGUID>
+  <ResourceHasFiles>False</ResourceHasFiles>
+  <ResourceInstallationState>installed</ResourceInstallationState>
+  <ResourceInstalledVersion>12.0.14</ResourceInstalledVersion>
+  <ResourceIsInDevelopment>False</ResourceIsInDevelopment>
+  <ResourceName>RelationshipsExtended</ResourceName>
+  <ResourceVersion>12.0.14</ResourceVersion>
+  <ShowInDevelopment>False</ShowInDevelopment>
+</cms.resource>

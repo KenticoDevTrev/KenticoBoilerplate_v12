@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.allowedchildclass>
+  <Parent>
+    <CodeName>Demo.Banner</CodeName>
+    <GUID>e421d5d7-ff30-422a-a395-63f23c283902</GUID>
+    <ObjectType>cms.documenttype</ObjectType>
+  </Parent>
+  <Bindings>
+    <Binding id="cms.documenttype_CMS.Folder">
+      <ParentClassID>
+        <CodeName>CMS.Folder</CodeName>
+        <GUID>9e0f541b-843c-42ce-850f-e44fb3f89b94</GUID>
+        <ObjectType>cms.documenttype</ObjectType>
+      </ParentClassID>
+    </Binding>
+    <Binding id="cms.documenttype_CMS.Root">
+      <ParentClassID>
+        <CodeName>CMS.Root</CodeName>
+        <GUID>a585aea3-10b5-4b74-9aad-747fcce72493</GUID>
+        <ObjectType>cms.documenttype</ObjectType>
+      </ParentClassID>
+    </Binding>
+    <Binding id="cms.documenttype_KMVCHelper.GenericWidgetPage">
+      <ParentClassID>
+        <CodeName>KMVCHelper.GenericWidgetPage</CodeName>
+        <GUID>5f041f1a-857d-4b14-8863-44760b3c738e</GUID>
+        <ObjectType>cms.documenttype</ObjectType>
+      </ParentClassID>
+    </Binding>
+    <Binding id="cms.documenttype_MVC.Home">
+      <ParentClassID>
+        <CodeName>MVC.Home</CodeName>
+        <GUID>91d398be-2129-4bfd-9d13-1c0c7308175d</GUID>
+        <ObjectType>cms.documenttype</ObjectType>
+      </ParentClassID>
+    </Binding>
+  </Bindings>
+</cms.allowedchildclass>

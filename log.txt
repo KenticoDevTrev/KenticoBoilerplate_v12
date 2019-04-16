@@ -1,0 +1,588 @@
+[2019-04-06 21:28:09] Initializing hotfix...
+[2019-04-06 21:28:15] Testing DB connection.
+[2019-04-06 21:28:15] Copying files...
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Install
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Install\SQL.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates\BlankSite
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Templates\BlankSite\Template.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates\BlankSiteASPX
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Templates\BlankSiteASPX\Template.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates\BlankSiteMvc
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Templates\BlankSiteMvc\Template.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates\CorporateSite
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Templates\CorporateSite\Template.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates\DancingGoat
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Templates\DancingGoat\Template.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates\DancingGoatMvc
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Templates\DancingGoatMvc\Template.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates\ECommerceSite
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Templates\ECommerceSite\Template.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates\IntranetPortal
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Data\Templates\IntranetPortal\Template.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Data\Templates
+[2019-04-06 21:28:15] CMS\CMS\App_Data
+[2019-04-06 21:28:15] CMS\CMS\App_Themes\Default\Images
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\App_Themes\Default\Images\Images.zip
+[2019-04-06 21:28:15] CMS\CMS\App_Themes\Default
+[2019-04-06 21:28:15] CMS\CMS\App_Themes
+[2019-04-06 21:28:15] CMS\CMS\CMSAdminControls\UI\UniSelector
+[2019-04-06 21:28:15] C:\Web\Kentico Boilerplate\CMS\CMSAdminControls\UI\UniSelector\DialogItemList.xml
+[2019-04-06 21:28:15] CMS\CMS\CMSAdminControls\UI
+[2019-04-06 21:28:15] CMS\CMS\CMSAdminControls
+[2019-04-06 21:28:15] CMS\CMS\CMSFormControls\Macros
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSFormControls\Macros\MacroEditor.ascx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSFormControls
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\AdminControls\Controls\Class\FormBuilder\FormBuilder.js
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\AdminControls\Controls\Class
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\AdminControls\Controls\UIControls
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\AdminControls\Controls\UIControls\GeneralSelector.ascx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\AdminControls\Controls
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\AdminControls
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\BizForms\FormControls
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\BizForms\FormControls\FormFieldSelector.ascx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\BizForms
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\ContactManagement\Controls\UI\Account\Edit.ascx
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\ContactManagement\Controls\UI
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\ContactManagement\Controls
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\ContactManagement
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Content\CMSDesk
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Content\CMSDesk\Delete.aspx.cs
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Content\Controls\Dialogs\Properties\URLProperties.ascx
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Content\Controls\Dialogs\Properties\URLProperties.ascx.cs
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Content\Controls\Dialogs\Properties\URLProperties.ascx.designer.cs
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Content\Controls\Dialogs\Selectors\FileSystemSelector\FileSystemSelector.ascx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Content\Controls\Dialogs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Content\Controls
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Content\Controls\MasterPage.ascx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Content
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\DataProtection\Pages
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\DataProtection\Pages\PersonalDataManagement.aspx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\DataProtection
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Ecommerce\FormControls
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Ecommerce\FormControls\SelectProductImage.ascx.cs
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Ecommerce\FormControls\SKUSelector.ascx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Ecommerce
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\PortalEngine\UI\PageLayouts
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\PortalEngine\UI\PageLayouts\PageLayout_Templates.aspx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\PortalEngine\UI
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\PortalEngine
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Reporting\Controls
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Reporting\Controls\DisplayReport.ascx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Reporting
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Staging\Tools\AllTasks
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Staging\Tools\AllTasks\Tasks.aspx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Staging\Tools\Data
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Staging\Tools\Data\Tasks.aspx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Staging\Tools\Objects
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Staging\Tools\Objects\Tasks.aspx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Staging\Tools\TaskGroup
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Staging\Tools\TaskGroup\TaskGroup.aspx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Staging\Tools\Tasks
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSModules\Staging\Tools\Tasks\Tasks.aspx.cs
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Staging\Tools
+[2019-04-06 21:28:18] CMS\CMS\CMSModules\Staging
+[2019-04-06 21:28:18] CMS\CMS\CMSModules
+[2019-04-06 21:28:18] CMS\CMS\CMSResources
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSResources\Hotfix.resx
+[2019-04-06 21:28:18] CMS\CMS\CMSScripts\CMSModules\CMS
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSScripts\CMSModules\CMS\AdvancedPopupHandler.js
+[2019-04-06 21:28:18] CMS\CMS\CMSScripts\CMSModules
+[2019-04-06 21:28:18] CMS\CMS\CMSScripts\Controls
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSScripts\Controls\uniselector.js
+[2019-04-06 21:28:18] CMS\CMS\CMSScripts\Dialogs
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\CMSScripts\Dialogs\modaldialog.js
+[2019-04-06 21:28:18] CMS\CMS\CMSScripts
+[2019-04-06 21:28:18] CMS\CMS\Old_App_Code\CMSModules\EmailTemplates
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\Old_App_Code\CMSModules\EmailTemplates\EmailTemplateEditExtender.cs
+[2019-04-06 21:28:18] CMS\CMS\Old_App_Code\CMSModules
+[2019-04-06 21:28:18] CMS\CMS\Old_App_Code
+[2019-04-06 21:28:18] CMS\CMS
+[2019-04-06 21:28:18] CMS
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\GlobalAssemblyInfo.cs
+[2019-04-06 21:28:18] DLLs\Net461
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Activities.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Activities.Loggers.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Activities.Loggers.xml
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Activities.Web.UI.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Activities.Web.UI.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Activities.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.AmazonStorage.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.AmazonStorage.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ApplicationDashboard.Web.UI.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ApplicationDashboard.Web.UI.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.AspNet.Platform.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.AspNet.Platform.xml
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Automation.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Automation.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.AzureStorage.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.AzureStorage.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.BannerManagement.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.BannerManagement.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Base.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Base.Web.UI.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Base.Web.UI.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Base.xml
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Blogs.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Blogs.Web.UI.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Blogs.Web.UI.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Blogs.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Chat.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Chat.Web.UI.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Chat.Web.UI.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Chat.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Community.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Community.Web.UI.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Community.Web.UI.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Community.XML
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ContactManagement.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ContactManagement.Web.UI.dll
+[2019-04-06 21:28:18] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ContactManagement.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ContactManagement.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ContinuousIntegration.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ContinuousIntegration.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Core.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Core.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.CustomTables.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.CustomTables.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DancingGoat.Samples.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DancingGoat.Samples.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DataEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DataEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DataProtection.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DataProtection.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DeviceProfiles.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DeviceProfiles.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DocumentEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DocumentEngine.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DocumentEngine.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DocumentEngine.Web.UI.XmlSerializers.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DocumentEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DocumentWebServices.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.DocumentWebServices.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Ecommerce.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Ecommerce.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Ecommerce.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Ecommerce.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.EmailEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.EmailEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.EventLog.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.EventLog.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.EventManager.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.EventManager.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ExternalAuthentication.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ExternalAuthentication.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ExternalAuthentication.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ExternalAuthentication.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.FormEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.FormEngine.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.FormEngine.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.FormEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Forums.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Forums.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Forums.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Forums.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Globalization.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Globalization.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Globalization.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Globalization.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.HealthMonitoring.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.HealthMonitoring.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Helpers.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Helpers.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ImportExport.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ImportExport.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.IO.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.IO.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.LicenseProvider.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.LicenseProvider.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.LicenseProvider.XmlSerializers.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MacroEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MacroEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MediaLibrary.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MediaLibrary.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MediaLibrary.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MediaLibrary.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Membership.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Membership.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Membership.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Membership.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MembershipProvider.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MembershipProvider.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MessageBoards.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MessageBoards.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MessageBoards.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.MessageBoards.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Modules.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Modules.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Modules.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Modules.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ModuleUsageTracking.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ModuleUsageTracking.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Newsletters.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Newsletters.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Newsletters.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Newsletters.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Notifications.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Notifications.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OnlineForms.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OnlineForms.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OnlineForms.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OnlineForms.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OnlineMarketing.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OnlineMarketing.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OnlineMarketing.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OnlineMarketing.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OutputFilter.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.OutputFilter.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Personas.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Personas.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Personas.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Personas.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Polls.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Polls.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.PortalEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.PortalEngine.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.PortalEngine.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.PortalEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Protection.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Protection.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Protection.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Protection.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Relationships.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Relationships.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Reporting.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Reporting.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Reporting.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Reporting.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ResponsiveImages.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.ResponsiveImages.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Routing.Web.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Routing.Web.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SalesForce.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SalesForce.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Scheduler.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Scheduler.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.Azure.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.Azure.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.Lucene3.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.Lucene3.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.TextExtractors.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.TextExtractors.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Search.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SharePoint.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SharePoint.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SharePoint.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SharePoint.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SiteProvider.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SiteProvider.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SocialMarketing.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SocialMarketing.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SocialMarketing.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SocialMarketing.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.StrandsRecommender.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.StrandsRecommender.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.StrandsRecommender.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.StrandsRecommender.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Synchronization.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Synchronization.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Synchronization.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Synchronization.WSE3.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Synchronization.WSE3.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Synchronization.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SynchronizationEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.SynchronizationEngine.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Taxonomy.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.Taxonomy.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.TranslationServices.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.TranslationServices.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.TranslationServices.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.TranslationServices.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.UIControls.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.UIControls.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.URLRewritingEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.URLRewritingEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.VirtualPathProvider.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.VirtualPathProvider.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebAnalytics.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebAnalytics.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebAnalytics.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebAnalytics.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebApi.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebApi.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebDAV.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebDAV.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebDAV.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebDAV.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebFarmSync.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebFarmSync.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebServices.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WebServices.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WIFIntegration.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WIFIntegration.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WinServiceEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WinServiceEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WorkflowEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WorkflowEngine.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WorkflowEngine.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\CMS.WorkflowEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\ContinuousIntegration.exe
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\HealthMonitoringService.exe
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\CMS\bin\SchedulerService.exe
+[2019-04-06 21:28:19] DLLs\Net461
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Activities.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Activities.Loggers.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Activities.Loggers.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Activities.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Activities.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Activities.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.AmazonStorage.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.AmazonStorage.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ApplicationDashboard.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ApplicationDashboard.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.AspNet.Platform.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.AspNet.Platform.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Automation.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Automation.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.AzureStorage.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.AzureStorage.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.BannerManagement.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.BannerManagement.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Base.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Base.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Base.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Base.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Blogs.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Blogs.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Blogs.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Blogs.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Chat.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Chat.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Chat.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Chat.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Community.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Community.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Community.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Community.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ContactManagement.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ContactManagement.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ContactManagement.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ContactManagement.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ContinuousIntegration.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ContinuousIntegration.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Core.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Core.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.CustomTables.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.CustomTables.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DancingGoat.Samples.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DancingGoat.Samples.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DataEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DataEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DataProtection.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DataProtection.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DeviceProfiles.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DeviceProfiles.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DocumentEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DocumentEngine.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DocumentEngine.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DocumentEngine.Web.UI.XmlSerializers.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DocumentEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DocumentWebServices.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.DocumentWebServices.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Ecommerce.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Ecommerce.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Ecommerce.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Ecommerce.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.EmailEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.EmailEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.EventLog.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.EventLog.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.EventManager.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.EventManager.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ExternalAuthentication.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ExternalAuthentication.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ExternalAuthentication.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ExternalAuthentication.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.FormEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.FormEngine.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.FormEngine.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.FormEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Forums.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Forums.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Forums.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Forums.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Globalization.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Globalization.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Globalization.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Globalization.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.HealthMonitoring.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.HealthMonitoring.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Helpers.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Helpers.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ImportExport.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ImportExport.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.IO.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.IO.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.LicenseProvider.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.LicenseProvider.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.LicenseProvider.XmlSerializers.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MacroEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MacroEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MediaLibrary.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MediaLibrary.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MediaLibrary.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MediaLibrary.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Membership.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Membership.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Membership.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Membership.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MembershipProvider.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MembershipProvider.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MessageBoards.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MessageBoards.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MessageBoards.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.MessageBoards.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Modules.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Modules.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Modules.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Modules.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ModuleUsageTracking.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ModuleUsageTracking.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Newsletters.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Newsletters.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Newsletters.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Newsletters.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Notifications.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Notifications.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OnlineForms.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OnlineForms.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OnlineForms.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OnlineForms.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OnlineMarketing.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OnlineMarketing.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OnlineMarketing.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OnlineMarketing.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OutputFilter.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.OutputFilter.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Personas.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Personas.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Personas.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Personas.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Polls.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Polls.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.PortalEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.PortalEngine.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.PortalEngine.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.PortalEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Protection.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Protection.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Protection.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Protection.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Relationships.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Relationships.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Reporting.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Reporting.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Reporting.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Reporting.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ResponsiveImages.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.ResponsiveImages.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Routing.Web.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Routing.Web.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SalesForce.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SalesForce.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Scheduler.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Scheduler.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.Azure.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.Azure.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.Lucene3.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.Lucene3.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.TextExtractors.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.TextExtractors.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Search.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SharePoint.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SharePoint.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SharePoint.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SharePoint.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SiteProvider.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SiteProvider.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SocialMarketing.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SocialMarketing.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SocialMarketing.Web.UI.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SocialMarketing.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.StrandsRecommender.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.StrandsRecommender.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.StrandsRecommender.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.StrandsRecommender.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Synchronization.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Synchronization.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Synchronization.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Synchronization.WSE3.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Synchronization.WSE3.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Synchronization.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SynchronizationEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.SynchronizationEngine.xml
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Taxonomy.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.Taxonomy.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.TranslationServices.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.TranslationServices.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.TranslationServices.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.TranslationServices.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.UIControls.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.UIControls.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.URLRewritingEngine.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.URLRewritingEngine.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.VirtualPathProvider.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.VirtualPathProvider.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebAnalytics.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebAnalytics.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebAnalytics.Web.UI.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebAnalytics.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebApi.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebApi.XML
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebDAV.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebDAV.Web.UI.dll
+[2019-04-06 21:28:19] C:\Web\Kentico Boilerplate\Lib\CMS.WebDAV.Web.UI.XML
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WebDAV.XML
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WebFarmSync.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WebFarmSync.XML
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WebServices.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WebServices.xml
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WIFIntegration.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WIFIntegration.XML
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WinServiceEngine.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WinServiceEngine.XML
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WorkflowEngine.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WorkflowEngine.Web.UI.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WorkflowEngine.Web.UI.XML
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\CMS.WorkflowEngine.XML
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\ContinuousIntegration.exe
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\HealthMonitoringService.exe
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\SchedulerService.exe
+[2019-04-06 21:28:20] DLLs\Net461\Lib
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\CMS\bin\ITHit.WebDAV.Server.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\CMS\bin\ITHit.WebDAV.Server.xml
+[2019-04-06 21:28:20] DLLs\Net461\Lib
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\ITHit.WebDAV.Server.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\ITHit.WebDAV.Server.xml
+[2019-04-06 21:28:20] DLLs\Net461\ThirdParty
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\CMS\bin\Lucene.Net.v3.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\CMS\bin\Lucene.Net.WordNet.SynExpand.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\CMS\bin\PDFClown.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\CMS\bin\ThoughtWorks.QRCode.dll
+[2019-04-06 21:28:20] DLLs\Net461\ThirdParty
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\Lucene.Net.v3.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\Lucene.Net.WordNet.SynExpand.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\PDFClown.dll
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\Lib\ThoughtWorks.QRCode.dll
+[2019-04-06 21:28:20] DLLs\Net461\App
+[2019-04-06 21:28:20] C:\Web\Kentico Boilerplate\CMS\bin\CMSApp.dll
+[2019-04-06 21:28:20] Running SQL script (Hotfix_separated.sql)
+[2019-04-06 21:28:20] SQL script applied.
+[2019-04-06 21:28:20] Running SQL script (Hotfix_default.sql)
+[2019-04-06 21:28:20] SQL script applied.
+[2019-04-06 21:28:20] All operations have been successfully finished.

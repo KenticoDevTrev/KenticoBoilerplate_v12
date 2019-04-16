@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.sitedomainalias>
+  <SiteDomainAliasName>dev.kenticoboilerplate.hbs.net</SiteDomainAliasName>
+  <SiteDomainGUID>633b9d68-2123-4fd7-9efb-4c85f5224ec1</SiteDomainGUID>
+  <SiteID>
+    <CodeName>KenticoBoilerplate</CodeName>
+    <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+    <ObjectType>cms.site</ObjectType>
+  </SiteID>
+</cms.sitedomainalias>

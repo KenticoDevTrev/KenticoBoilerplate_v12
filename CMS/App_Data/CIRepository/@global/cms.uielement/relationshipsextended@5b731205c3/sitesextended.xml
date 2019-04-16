@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.uielement>
+  <ElementCaption>Sites</ElementCaption>
+  <ElementCheckModuleReadPermission>False</ElementCheckModuleReadPermission>
+  <ElementDisplayName>Sites</ElementDisplayName>
+  <ElementGUID>ad7dadbd-11b1-414b-97ca-80545478eb81</ElementGUID>
+  <ElementIconClass />
+  <ElementIsCustom>False</ElementIsCustom>
+  <ElementIsGlobalApplication>False</ElementIsGlobalApplication>
+  <ElementIsMenu>False</ElementIsMenu>
+  <ElementName>SitesExtended</ElementName>
+  <ElementOrder>2</ElementOrder>
+  <ElementPageTemplateID>
+    <CodeName>M_NEdit</CodeName>
+    <GUID>0cee6b71-596b-49c7-bd30-54175f6d7bdb</GUID>
+    <ObjectType>cms.pagetemplate</ObjectType>
+  </ElementPageTemplateID>
+  <ElementParentID>
+    <CodeName>EditRelationshipNameExtended</CodeName>
+    <GUID>4ee6e28b-165d-4221-92a8-ab956828e741</GUID>
+    <ObjectType>cms.uielement</ObjectType>
+    <Parent>
+      <CodeName>RelationshipsExtended</CodeName>
+      <GUID>097a3e7c-b947-4528-90fa-ea41d66a03f9</GUID>
+      <ObjectType>cms.resource</ObjectType>
+    </Parent>
+  </ElementParentID>
+  <ElementProperties>
+    <Data>
+      <bindingobjectprovidertype>CMS.RelationshipNameSite</bindingobjectprovidertype>
+      <BindingObjectType>cms.relationshipnamesite</BindingObjectType>
+      <checkmodifypermission>True</checkmodifypermission>
+      <DisplayBreadcrumbs>False</DisplayBreadcrumbs>
+      <includejquery>False</includejquery>
+      <ListPrefaceText>
+        <![CDATA[The relationship name is available for the following websites:]]>
+      </ListPrefaceText>
+      <ResourcePrefix>siteselector</ResourcePrefix>
+      <WhereCondition>
+        <![CDATA[RelationshipNameID = {% ToInt(UIContext.ObjectID) |(identity)GlobalAdministrator|(hash)8cf11fce11730ed2e17a03ccb7d52121063d219ca8b3d261f3e6395f4e21730b%}]]>
+      </WhereCondition>
+    </Data>
+  </ElementProperties>
+  <ElementRequiresGlobalAdminPriviligeLevel>False</ElementRequiresGlobalAdminPriviligeLevel>
+  <ElementResourceID>
+    <CodeName>RelationshipsExtended</CodeName>
+    <GUID>097a3e7c-b947-4528-90fa-ea41d66a03f9</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </ElementResourceID>
+  <ElementSize>0</ElementSize>
+  <ElementType>PageTemplate</ElementType>
+</cms.uielement>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.pagetemplatesite>
+  <Parent>
+    <CodeName>EditCategories</CodeName>
+    <GUID>27350115-184a-495f-9735-9567e693e6f0</GUID>
+    <ObjectType>cms.pagetemplate</ObjectType>
+  </Parent>
+  <Bindings>
+    <Binding id="KenticoBoilerplate">
+      <SiteID>
+        <CodeName>KenticoBoilerplate</CodeName>
+        <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+        <ObjectType>cms.site</ObjectType>
+      </SiteID>
+    </Binding>
+  </Bindings>
+</cms.pagetemplatesite>

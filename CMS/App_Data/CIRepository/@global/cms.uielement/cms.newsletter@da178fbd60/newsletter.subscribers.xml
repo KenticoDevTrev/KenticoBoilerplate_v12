@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.uielement>
+  <ElementCaption>{$newsletter_header.subscribers$}</ElementCaption>
+  <ElementCheckModuleReadPermission>False</ElementCheckModuleReadPermission>
+  <ElementDisplayName>{$newsletter_header.subscribers$}</ElementDisplayName>
+  <ElementFromVersion>8.0</ElementFromVersion>
+  <ElementGUID>a73b8c4d-c62f-4b58-b60d-3c7a6e249442</ElementGUID>
+  <ElementIconClass />
+  <ElementIsCustom>False</ElementIsCustom>
+  <ElementIsGlobalApplication>False</ElementIsGlobalApplication>
+  <ElementIsMenu>False</ElementIsMenu>
+  <ElementName>Newsletter.Subscribers</ElementName>
+  <ElementOrder>3</ElementOrder>
+  <ElementParentID>
+    <CodeName>EditNewsletterProperties</CodeName>
+    <GUID>854db200-0882-408c-b731-d23d8d737f24</GUID>
+    <ObjectType>cms.uielement</ObjectType>
+    <Parent>
+      <CodeName>CMS.Newsletter</CodeName>
+      <GUID>82445572-642a-4f53-a411-063e5f4b63c0</GUID>
+      <ObjectType>cms.resource</ObjectType>
+    </Parent>
+  </ElementParentID>
+  <ElementProperties>
+    <Data>
+      <breadcrumbsSuffix>
+        <![CDATA[{% EditedObject.GetNiceName() |(identity)GlobalAdministrator|(hash)0c9b4c20a659a7bd14a187df78896deb1a11f265f566d773910b538d6fbab3ea%}]]>
+      </breadcrumbsSuffix>
+      <DisplayBreadcrumbs>False</DisplayBreadcrumbs>
+      <ObjectType>newsletter.newsletter</ObjectType>
+    </Data>
+  </ElementProperties>
+  <ElementRequiresGlobalAdminPriviligeLevel>False</ElementRequiresGlobalAdminPriviligeLevel>
+  <ElementResourceID>
+    <CodeName>CMS.Newsletter</CodeName>
+    <GUID>82445572-642a-4f53-a411-063e5f4b63c0</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </ElementResourceID>
+  <ElementSize>0</ElementSize>
+  <ElementTargetURL>
+    <![CDATA[~/CMSModules/Newsletters/Tools/Newsletters/Newsletter_Subscribers.aspx]]>
+  </ElementTargetURL>
+  <ElementType>Url</ElementType>
+  <ElementVisibilityCondition>
+    <![CDATA[{%EditedObject.NewsletterType != "1"|(identity)GlobalAdministrator|(hash)ebb98875dce9101071a204f86489000f3f7c154144bbd04f75146cde6ee76a4f%}]]>
+  </ElementVisibilityCondition>
+</cms.uielement>

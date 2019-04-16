@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<media.library>
+  <LibraryAccess>0</LibraryAccess>
+  <LibraryDescription>Images</LibraryDescription>
+  <LibraryDisplayName>Images</LibraryDisplayName>
+  <LibraryFolder>Images</LibraryFolder>
+  <LibraryGUID>53afa7bc-a426-4d5d-a112-e29e7dcb92bc</LibraryGUID>
+  <LibraryName>Images</LibraryName>
+  <LibrarySiteID>
+    <CodeName>KenticoBoilerplate</CodeName>
+    <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+    <ObjectType>cms.site</ObjectType>
+  </LibrarySiteID>
+</media.library>

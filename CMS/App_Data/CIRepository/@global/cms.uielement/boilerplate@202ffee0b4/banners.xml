@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.uielement>
+  <ElementCheckModuleReadPermission>True</ElementCheckModuleReadPermission>
+  <ElementDisplayName>Banners</ElementDisplayName>
+  <ElementGUID>1106fcd1-c350-430e-ae58-e0ddc7f859d0</ElementGUID>
+  <ElementIconClass />
+  <ElementIsCustom>True</ElementIsCustom>
+  <ElementIsGlobalApplication>False</ElementIsGlobalApplication>
+  <ElementIsMenu>False</ElementIsMenu>
+  <ElementName>Banners</ElementName>
+  <ElementOrder>1</ElementOrder>
+  <ElementPageTemplateID>
+    <CodeName>EditRelationship</CodeName>
+    <GUID>ab013e32-fd92-4d17-930f-db53ff95a6f6</GUID>
+    <ObjectType>cms.pagetemplate</ObjectType>
+  </ElementPageTemplateID>
+  <ElementParentID>
+    <CodeName>Demo</CodeName>
+    <GUID>7a279a2d-7087-4f52-b75d-ba32fafbfa54</GUID>
+    <ObjectType>cms.uielement</ObjectType>
+    <Parent>
+      <CodeName>Boilerplate</CodeName>
+      <GUID>dcaf253c-196b-4595-a458-3edc1b5f0705</GUID>
+      <ObjectType>cms.resource</ObjectType>
+    </Parent>
+  </ElementParentID>
+  <ElementProperties>
+    <Data>
+      <AllowedPageTypes>Demo.Banner</AllowedPageTypes>
+      <AllowSwitchSides>False</AllowSwitchSides>
+      <AutoHide>True</AutoHide>
+      <BindOnPrimaryNodeOnly>True</BindOnPrimaryNodeOnly>
+      <DisplayBreadcrumbs>False</DisplayBreadcrumbs>
+      <DisplayNameFormat>{% BannerName %}</DisplayNameFormat>
+      <IsLeftSideMacro>
+        <![CDATA[{% CurrentDocument.ClassName != "Demo.Banner" @%}]]>
+      </IsLeftSideMacro>
+      <IsRightSideMacro>
+        <![CDATA[{% CurrentDocument.ClassName == "Demo.Banner" @%}]]>
+      </IsRightSideMacro>
+      <ItemsPerPage>25</ItemsPerPage>
+      <MaxDisplayedItems>25</MaxDisplayedItems>
+      <MaxDisplayedTotalItems>50</MaxDisplayedTotalItems>
+      <NewPageType>Demo.Banner</NewPageType>
+      <ObjectSiteName>#current</ObjectSiteName>
+      <ParentNodeAliasPath>/Site-Objects/Banners</ParentNodeAliasPath>
+      <RelationshipName>Banners</RelationshipName>
+      <SelectionMode>5</SelectionMode>
+      <SelectorType>TreeSelector</SelectorType>
+      <ShowNewPageButton>True</ShowNewPageButton>
+      <StartingPaths>/Site-Objects/Banners</StartingPaths>
+      <TreeSelectionMode>Individual</TreeSelectionMode>
+      <UseDefaultNameFilter>True</UseDefaultNameFilter>
+    </Data>
+  </ElementProperties>
+  <ElementRequiresGlobalAdminPriviligeLevel>False</ElementRequiresGlobalAdminPriviligeLevel>
+  <ElementResourceID>
+    <CodeName>Boilerplate</CodeName>
+    <GUID>dcaf253c-196b-4595-a458-3edc1b5f0705</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </ElementResourceID>
+  <ElementSize>0</ElementSize>
+  <ElementType>PageTemplate</ElementType>
+</cms.uielement>

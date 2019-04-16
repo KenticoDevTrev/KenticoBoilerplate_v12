@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.deviceprofile>
+  <ProfileDisplayName>Tablet (1024 x 768)</ProfileDisplayName>
+  <ProfileEnabled>True</ProfileEnabled>
+  <ProfileGUID>544837d0-5c27-4f5d-a19e-91894b6b1f17</ProfileGUID>
+  <ProfileMacro>
+<![CDATA[
+{%maxSideSize = 1024;
+
+width = CurrentDevice.Data["ScreenPixelsWidth"];
+height = CurrentDevice.Data["SreenPixelsHeight"];
+
+if (!CurrentDevice.Data["IsMobile"] 
+    || ((width > maxSideSize)||(height > maxSideSize))){
+    return false;
+}
+
+return true;|(identity)GlobalAdministrator|(hash)567385973810501c17e229bef56373fb0eb164af86ec73e9cfce7740c9228ee4%}
+]]>
+  </ProfileMacro>
+  <ProfileName>MediumDevice</ProfileName>
+  <ProfileOrder>2</ProfileOrder>
+  <ProfilePreviewHeight>768</ProfilePreviewHeight>
+  <ProfilePreviewWidth>1024</ProfilePreviewWidth>
+  <ProfileUserAgents>
+<![CDATA[
+ipad
+playbook
+]]>
+  </ProfileUserAgents>
+</cms.deviceprofile>

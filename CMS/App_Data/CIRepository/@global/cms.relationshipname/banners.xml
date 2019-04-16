@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.relationshipname>
+  <RelationshipAllowedObjects>;##DOCUMENTS##;</RelationshipAllowedObjects>
+  <RelationshipDisplayName>Banners</RelationshipDisplayName>
+  <RelationshipGUID>3c7d0f10-f9ee-47c9-91d7-87725eeb6197</RelationshipGUID>
+  <RelationshipName>Banners</RelationshipName>
+  <RelationshipNameIsAdHoc>True</RelationshipNameIsAdHoc>
+</cms.relationshipname>

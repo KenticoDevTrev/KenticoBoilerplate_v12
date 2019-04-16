@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.webpart>
+  <WebPartCategoryID>
+    <CodeName>Edit</CodeName>
+    <GUID>9d66986a-c04d-463a-ba7d-21afa013f7bf</GUID>
+    <ObjectType>cms.webpartcategory</ObjectType>
+  </WebPartCategoryID>
+  <WebPartDefaultConfiguration>
+    <page />
+  </WebPartDefaultConfiguration>
+  <WebPartDefaultValues>
+    <form />
+  </WebPartDefaultValues>
+  <WebPartDisplayName>Related Page Selector</WebPartDisplayName>
+  <WebPartFileName>
+    <![CDATA[~/CMSModules/RelationshipsExtended/Controls/RelatedPage_UniSelector.ascx]]>
+  </WebPartFileName>
+  <WebPartGUID>dce2cc09-e2fd-4e58-bc8f-bd66f988bed1</WebPartGUID>
+  <WebPartIconClass>icon-w-webpart-default</WebPartIconClass>
+  <WebPartName>RelationshipExtended_RelatedPageSelector</WebPartName>
+  <WebPartProperties>
+    <form version="2">
+      <field column="RelationshipName" columnsize="200" columntype="text" guid="74034cbd-0a54-40c5-9c42-b98293cbbf6d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Relationship Name</fieldcaption>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="DirectionMode" columnsize="50" columntype="text" guid="d3463fa8-47e3-4e93-a2e9-4d9e22101f09" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>LeftNode</defaultvalue>
+          <fieldcaption>Current Node Direction</fieldcaption>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+LeftNode;Left Side
+RightNode;Right Side
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field column="AllowSwitchSides" columntype="boolean" guid="ca522a3e-15b3-497a-9c48-81a74db195fc" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>False</defaultvalue>
+          <fieldcaption>Allow Switch Sides</fieldcaption>
+          <fielddescription>
+            <![CDATA[Check if you wish to allow an assignment of documents that is flipped from the normal Direction.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="AllowedPageTypes" columntype="longtext" guid="cda35b98-132f-45eb-8868-90cdac87e6bf" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Allowed Page Types</fieldcaption>
+          <fielddescription>
+            <![CDATA[Page types that you can assign to this relationship.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AddGlobalObjectNamePrefix>False</AddGlobalObjectNamePrefix>
+          <AddGlobalObjectSuffix>False</AddGlobalObjectSuffix>
+          <AllowAll>False</AllowAll>
+          <AllowDefault>False</AllowDefault>
+          <AllowEditTextBox>False</AllowEditTextBox>
+          <AllowEmpty>False</AllowEmpty>
+          <controlname>Uni_selector</controlname>
+          <DialogWindowName>SelectionDialog</DialogWindowName>
+          <DisplayNameFormat>{% ClassDisplayName %}</DisplayNameFormat>
+          <EditDialogWindowHeight>700</EditDialogWindowHeight>
+          <EditDialogWindowWidth>1000</EditDialogWindowWidth>
+          <EditWindowName>EditWindow</EditWindowName>
+          <EncodeOutput>True</EncodeOutput>
+          <GlobalObjectSuffix ismacro="true">{$general.global$}</GlobalObjectSuffix>
+          <ItemsPerPage>25</ItemsPerPage>
+          <LocalizeItems>True</LocalizeItems>
+          <MaxDisplayedItems>25</MaxDisplayedItems>
+          <MaxDisplayedTotalItems>50</MaxDisplayedTotalItems>
+          <ObjectSiteName>#currentsite</ObjectSiteName>
+          <ObjectType>CMS.Class</ObjectType>
+          <OrderBy>ClassDisplayName</OrderBy>
+          <RemoveMultipleCommas>False</RemoveMultipleCommas>
+          <ReturnColumnName>ClassName</ReturnColumnName>
+          <ReturnColumnType>id</ReturnColumnType>
+          <SelectionMode>2</SelectionMode>
+          <UseDefaultNameFilter>True</UseDefaultNameFilter>
+          <ValuesSeparator>;</ValuesSeparator>
+          <WhereCondition>ClassIsDocumentType = 1</WhereCondition>
+        </settings>
+      </field>
+      <field allowempty="true" column="WhereCondition" columntype="longtext" guid="b233d28f-7814-4889-9cde-17272534864b" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Where Condition</fieldcaption>
+          <fielddescription>
+            <![CDATA[Additional Where Condition on which pages should be displayed.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>WhereCondition</controlname>
+        </settings>
+      </field>
+      <field column="CurrentNodeID" columntype="integer" guid="d2fb525c-02d5-42d7-bfa9-a63b682a2bd3" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Current NodeID</fieldcaption>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="BindOnPrimaryNodeOnly" columntype="boolean" guid="3dc78461-0edf-4a9f-ab79-8d429344f5f3" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>True</defaultvalue>
+          <fieldcaption>Bind On Primary Node Only</fieldcaption>
+          <fielddescription>
+            <![CDATA[If the current Node is a Linked Document, this will edit bindings on the primary node instead of the linked node.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field column="MaxRelationships" columntype="integer" guid="f176f64f-7a62-483d-8cfd-b62813fae536" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>-1</defaultvalue>
+          <fieldcaption>Max Relationships</fieldcaption>
+          <fielddescription>Any number below 1 means unlimited</fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <category name="UniSelectorSettings">
+        <properties>
+          <caption>Uni Selector Settings</caption>
+          <collapsedbydefault>True</collapsedbydefault>
+          <collapsible>True</collapsible>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field allowempty="true" column="ObjectSiteName" columnsize="200" columntype="text" guid="04049b7e-0244-4fdf-9662-d9e8e4ceda49" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Object site name</fieldcaption>
+          <fielddescription>
+            <![CDATA[If set, only objects which belong to specified site are retrieved (if the object has SiteID column). If null or empty, all objects are retrieved. Use #currentsite for CurrentSite and #global for global objects.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="DisplayNameFormat" columnsize="1000" columntype="text" guid="546202bd-6240-4154-9b23-c77f4e13aea2" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Display name format</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Can add a custom Display Name Format for the page elements.  The Macro can use any field found in the CMS_Node, CMS_Document, and the Page Type Specific fields. 
+
+ex: {% NodeName %} - {% MyField %}
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="ToolTipFormat" columntype="longtext" guid="76393618-f0f1-4e43-93e6-cdfcbb650e7d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>ToolTip Format</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Can add a hover to the selectable page elements.  The Macro can use any field found in the CMS_Node, CMS_Document, and the Page Type Specific fields.
+
+ex: {% MyField %}
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoSize>False</AutoSize>
+          <controlname>MacroEditor</controlname>
+          <EnablePositionMember>False</EnablePositionMember>
+          <EnableSections>False</EnableSections>
+          <EnableViewState>False</EnableViewState>
+          <Height>100</Height>
+          <Language>0</Language>
+          <ShowBookmarks>False</ShowBookmarks>
+          <ShowLineNumbers>False</ShowLineNumbers>
+          <SingleLineMode>False</SingleLineMode>
+          <SingleMacroMode>False</SingleMacroMode>
+          <SupportPasteImages>False</SupportPasteImages>
+          <Width>100%</Width>
+        </settings>
+      </field>
+      <field allowempty="true" column="SelectionMode" columntype="integer" guid="491b4922-c5ba-494a-8d15-f16666a3915e" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Selection mode</fieldcaption>
+          <fielddescription>
+            <![CDATA[Determines the design and behavior of the selection dialog.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+0;Single text box
+1;Single drop down list
+2;Multiple
+3;Multiple text box
+4;Single button
+5;Multiple button
+6;Single transformation
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field allowempty="true" column="AdditionalColumns" columnsize="500" columntype="text" guid="5f23f000-6257-4432-a567-37e2fabb66c9" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Additional columns</fieldcaption>
+          <fielddescription>
+            <![CDATA[Specifies the names of columns that should be loaded with the objects of the specified data class (in addition to the columns required by default).]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="AdditionalSearchColumns" columntype="longtext" guid="716c1055-db9b-4974-86a3-6d619dece9b3" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Additional Search Columns</fieldcaption>
+          <fielddescription>Additional Search Columns, comma seperated</fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="OrderBy" columnsize="500" columntype="text" guid="aa8b7f52-5c7b-4e03-b866-5ebdcc13d4e0" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Order by</fieldcaption>
+          <fielddescription>
+            <![CDATA[Sets the order of the items offered for selection via a standard ORDER BY clause. Applies to the multiple selection grid, dropdownlist, single and multiple selection dialogs.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="EnabledColumnName" columnsize="500" columntype="text" guid="cc1c41e8-4b32-4627-b9e1-9eebc7b8d415" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Enabled column name</fieldcaption>
+          <fielddescription>
+            <![CDATA[Can be used to specify the name of the column that determines if the selected object is enabled.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaxDisplayedTotalItems" columntype="integer" guid="c4baf034-8e12-469a-a5bf-180228981028" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>50</defaultvalue>
+          <fieldcaption>Max displayed total items</fieldcaption>
+          <fielddescription>
+            <![CDATA[The number of maximum displayed total items in the dropdownlist selection (excluding the special and generic items). The default value is 50. If exceeded, only the number of items set by the MaxDisplayedItems parameter will be displayed.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaxDisplayedItems" columntype="integer" guid="7b8b274c-9900-44ca-aa03-adfc84fa76b7" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>25</defaultvalue>
+          <fieldcaption>Max displayed items</fieldcaption>
+          <fielddescription>
+            <![CDATA[Sets the maximum number of displayed items in drop-down list mode (excluding the special and generic items). The default value is 25. If the number is exceeded, the remaining items can be selected through the (more..) option.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="ItemsPerPage" columntype="integer" guid="658e5bce-44bc-42ce-a3d1-bb0404a97ef0" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>25</defaultvalue>
+          <fieldcaption>Items per page</fieldcaption>
+          <fielddescription>
+            <![CDATA[Default number of items displayed per page. Applies to the multiple selection grid, drop-down list, single and multiple selection dialogs. The default value is 25.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="FilterControl" columnsize="250" columntype="text" guid="450d75dd-a3e3-49af-80e3-2d4dd0b727b4" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Filter control</fieldcaption>
+          <fielddescription>Sets the path to custom filter control.</fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="UseDefaultNameFilter" columntype="boolean" guid="8d75d512-52b2-4221-8d18-3f0025a0375f" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Default name filter usage</fieldcaption>
+          <fielddescription>If true, name filter is shown in dialog</fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+    </form>
+  </WebPartProperties>
+  <WebPartSkipInsertProperties>False</WebPartSkipInsertProperties>
+  <WebPartType>9</WebPartType>
+</cms.webpart>

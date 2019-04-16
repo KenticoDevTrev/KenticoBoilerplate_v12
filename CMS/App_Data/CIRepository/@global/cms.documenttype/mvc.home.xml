@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.documenttype>
+  <ClassCodeGenerationSettings>
+    <Data>
+      <NameSpace>MVC</NameSpace>
+    </Data>
+  </ClassCodeGenerationSettings>
+  <ClassDisplayName>Home</ClassDisplayName>
+  <ClassFormDefinition>
+    <form version="2">
+      <field column="HomeID" columntype="integer" guid="3cde17f6-2628-47bd-8b1e-74db976c032f" isPK="true" publicfield="false">
+        <properties>
+          <fieldcaption>HomeID</fieldcaption>
+        </properties>
+        <settings>
+          <controlname>labelcontrol</controlname>
+        </settings>
+      </field>
+      <field column="Title" columnsize="200" columntype="text" guid="024041b1-191c-4146-88cb-ff6b6fab6446" publicfield="false" visible="true">
+        <properties>
+          <fieldcaption>Title</fieldcaption>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+    </form>
+  </ClassFormDefinition>
+  <ClassGUID>91d398be-2129-4bfd-9d13-1c0c7308175d</ClassGUID>
+  <ClassIconClass>icon-home</ClassIconClass>
+  <ClassInheritsFromClassID>0</ClassInheritsFromClassID>
+  <ClassIsContentOnly>True</ClassIsContentOnly>
+  <ClassIsCoupledClass>True</ClassIsCoupledClass>
+  <ClassIsCustomTable>False</ClassIsCustomTable>
+  <ClassIsDocumentType>True</ClassIsDocumentType>
+  <ClassIsForm>False</ClassIsForm>
+  <ClassIsMenuItemType>True</ClassIsMenuItemType>
+  <ClassName>MVC.Home</ClassName>
+  <ClassNodeNameSource>Title</ClassNodeNameSource>
+  <ClassSearchContentColumn>DocumentContent</ClassSearchContentColumn>
+  <ClassSearchCreationDateColumn>DocumentCreatedWhen</ClassSearchCreationDateColumn>
+  <ClassSearchEnabled>True</ClassSearchEnabled>
+  <ClassSearchSettings>
+    <search>
+      <item azurecontent="True" azureretrievable="False" azuresearchable="True" content="True" id="03224453-3988-4b36-abed-07eb0d620baa" name="Title" searchable="False" tokenized="True" />
+      <item azurecontent="False" azureretrievable="True" azuresearchable="False" content="False" id="3702d438-8445-44b3-ad3d-66c7b75244b7" name="HomeID" searchable="True" tokenized="False" />
+    </search>
+  </ClassSearchSettings>
+  <ClassSearchTitleColumn>DocumentName</ClassSearchTitleColumn>
+  <ClassShowAsSystemTable>False</ClassShowAsSystemTable>
+  <ClassTableName>MVC_Home</ClassTableName>
+  <ClassURLPattern>/Home</ClassURLPattern>
+  <ClassUsePublishFromTo>True</ClassUsePublishFromTo>
+  <ClassUsesVersioning>False</ClassUsesVersioning>
+</cms.documenttype>

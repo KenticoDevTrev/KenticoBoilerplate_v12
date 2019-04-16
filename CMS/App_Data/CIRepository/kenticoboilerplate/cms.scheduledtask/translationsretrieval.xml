@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.scheduledtask>
+  <TaskAllowExternalService>True</TaskAllowExternalService>
+  <TaskAssemblyName>CMS.TranslationServices</TaskAssemblyName>
+  <TaskClass>CMS.TranslationServices.TranslationsScheduledTask</TaskClass>
+  <TaskCondition />
+  <TaskData />
+  <TaskDeleteAfterLastRun>False</TaskDeleteAfterLastRun>
+  <TaskDisplayName>Translation retrieval</TaskDisplayName>
+  <TaskEnabled>False</TaskEnabled>
+  <TaskGUID>344297c8-d4f4-4e1f-81f1-01d35c41b8dc</TaskGUID>
+  <TaskInterval>
+    <![CDATA[day;1/5/2012 2:03:51 PM;1;Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday]]>
+  </TaskInterval>
+  <TaskName>TranslationsRetrieval</TaskName>
+  <TaskRunIndividually>False</TaskRunIndividually>
+  <TaskRunInSeparateThread>True</TaskRunInSeparateThread>
+  <TaskServerName />
+  <TaskSiteID>
+    <CodeName>KenticoBoilerplate</CodeName>
+    <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+    <ObjectType>cms.site</ObjectType>
+  </TaskSiteID>
+  <TaskUseExternalService>False</TaskUseExternalService>
+</cms.scheduledtask>

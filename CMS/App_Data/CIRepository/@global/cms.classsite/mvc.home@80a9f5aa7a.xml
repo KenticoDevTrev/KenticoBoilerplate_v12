@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.classsite>
+  <Parent>
+    <CodeName>MVC.Home</CodeName>
+    <GUID>91d398be-2129-4bfd-9d13-1c0c7308175d</GUID>
+    <ObjectType>cms.documenttype</ObjectType>
+  </Parent>
+  <Bindings>
+    <Binding id="KenticoBoilerplate">
+      <SiteID>
+        <CodeName>KenticoBoilerplate</CodeName>
+        <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+        <ObjectType>cms.site</ObjectType>
+      </SiteID>
+    </Binding>
+  </Bindings>
+</cms.classsite>

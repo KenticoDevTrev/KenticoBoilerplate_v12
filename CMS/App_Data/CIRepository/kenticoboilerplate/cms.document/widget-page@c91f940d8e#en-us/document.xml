@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This is a CI serialization file for /Widget-Page -->
+<cms.documentlocalization>
+  <DocumentContent />
+  <DocumentCreatedByUserID>
+    <CodeName>administrator</CodeName>
+    <GUID>6415b8ce-8072-4bcd-8e48-9d7178b826b7</GUID>
+    <ObjectType>cms.user</ObjectType>
+  </DocumentCreatedByUserID>
+  <DocumentCreatedWhen>2019-04-07 04:23:36Z</DocumentCreatedWhen>
+  <DocumentCulture>en-US</DocumentCulture>
+  <DocumentGUID>110088dd-9f07-4f91-8a67-8dcf625ff2d2</DocumentGUID>
+  <DocumentInheritsStylesheet>True</DocumentInheritsStylesheet>
+  <DocumentMenuItemHideInNavigation>False</DocumentMenuItemHideInNavigation>
+  <DocumentModifiedByUserID>
+    <CodeName>administrator</CodeName>
+    <GUID>6415b8ce-8072-4bcd-8e48-9d7178b826b7</GUID>
+    <ObjectType>cms.user</ObjectType>
+  </DocumentModifiedByUserID>
+  <DocumentModifiedWhen>2019-04-15 01:15:46Z</DocumentModifiedWhen>
+  <DocumentName>Widget-Page</DocumentName>
+  <DocumentNodeID>
+    <CodeName>/Widget-Page</CodeName>
+    <GUID>35e76bc5-18b0-4a76-bb3a-0c6aea968a14</GUID>
+    <ObjectType>cms.node</ObjectType>
+    <Site>
+      <CodeName>KenticoBoilerplate</CodeName>
+      <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+      <ObjectType>cms.site</ObjectType>
+    </Site>
+  </DocumentNodeID>
+  <DocumentPageBuilderWidgets>
+    <![CDATA[{"editableAreas":[{"identifier":"main","sections":[{"identifier":"900433e3-59a1-4069-b61e-d78a31d1efab","type":"Sections.DefaultSection","zones":[{"identifier":"ed87d6d6-dab9-4812-83ec-1d2906efc76a","widgets":[{"identifier":"6cf4fffc-eaa8-4f4f-bcc9-d16f59559776","type":"Widgets.SimpleWidget","variants":[{"identifier":"377f8d10-3722-410b-a11c-63ca77713c59","properties":{"text":"<p>Hello World!</p>"}}]},{"identifier":"ea4480f4-d933-461a-a835-56d3de5c9dbd","type":"Widgets.SimplePropertyDialogWidget","variants":[{"identifier":"ac88919c-cde1-47c6-ba5c-7a0bd24ddbf1","properties":{"number":43}}]}]}]}]}]}]]>
+  </DocumentPageBuilderWidgets>
+  <DocumentPriority>0</DocumentPriority>
+  <DocumentShowInSiteMap>True</DocumentShowInSiteMap>
+  <DocumentUrlPath />
+  <DocumentUseNamePathForUrlPath>False</DocumentUseNamePathForUrlPath>
+  <DocumentWildcardRule />
+</cms.documentlocalization>

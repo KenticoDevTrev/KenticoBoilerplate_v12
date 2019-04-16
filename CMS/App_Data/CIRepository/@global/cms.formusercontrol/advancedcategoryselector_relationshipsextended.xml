@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.formusercontrol>
+  <UserControlCodeName>AdvancedCategorySelector_RelationshipsExtended</UserControlCodeName>
+  <UserControlDefaultDataType>longtext</UserControlDefaultDataType>
+  <UserControlDefaultDataTypeSize>500</UserControlDefaultDataTypeSize>
+  <UserControlDescription>Advanced List or Tree Category Selector.</UserControlDescription>
+  <UserControlDisplayName>Advanced Category Selector (RE)</UserControlDisplayName>
+  <UserControlFileName>
+    <![CDATA[~/CMSModules/RelationshipsExtended/FormControls/AdvancedCategorySelector/AdvancedCategorySelector.ascx]]>
+  </UserControlFileName>
+  <UserControlForBinary>False</UserControlForBinary>
+  <UserControlForBoolean>False</UserControlForBoolean>
+  <UserControlForDateTime>False</UserControlForDateTime>
+  <UserControlForDecimal>False</UserControlForDecimal>
+  <UserControlForDocAttachments>False</UserControlForDocAttachments>
+  <UserControlForDocRelationships>False</UserControlForDocRelationships>
+  <UserControlForFile>False</UserControlForFile>
+  <UserControlForGuid>False</UserControlForGuid>
+  <UserControlForInteger>False</UserControlForInteger>
+  <UserControlForLongText>True</UserControlForLongText>
+  <UserControlForText>True</UserControlForText>
+  <UserControlForVisibility>False</UserControlForVisibility>
+  <UserControlGUID>d820317a-2154-4ba6-a4f2-7b19d65c68b8</UserControlGUID>
+  <UserControlIsSystem>False</UserControlIsSystem>
+  <UserControlParameters>
+    <form version="2">
+      <field allowempty="true" column="RootCategory" columnsize="50" columntype="text" guid="97661d2a-b869-4047-92b5-08778e8450ba" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Root Category</fieldcaption>
+          <fielddescription>
+            <![CDATA[Root Category, for Trees types the Tree structure will start from this node.  For list it will display only categories under this node.  If left blank it will take the Category Root as it's starting.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CategorySelector</controlname>
+          <DisplayGeneralCategories>True</DisplayGeneralCategories>
+          <DisplayPersonalCategories>True</DisplayPersonalCategories>
+        </settings>
+      </field>
+      <field column="CategoryDisplayMode" columnsize="50" columntype="text" guid="af1bb39c-cfcf-472d-bf92-f5d41db48b35" hasdependingfields="true" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>List</defaultvalue>
+          <fieldcaption>Display Mode</fieldcaption>
+          <fielddescription>
+            <![CDATA[How you want the categories presented.  In a Tree structure, or a searchable list.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+List;Searchable List
+Tree;Structured Tree
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field allowempty="true" column="ExpandToLevel" columntype="integer" dependsonanotherfield="true" guid="b2a22c4a-b47d-47ca-8a19-067e40e7bac1" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>1</defaultvalue>
+          <fieldcaption>Expand to Nth Level</fieldcaption>
+          <fielddescription>
+            <![CDATA[From the root category, how many levels down should be expanded out by default.  ]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%CategoryDisplayMode.Value=="Tree"|(identity)GlobalAdministrator|(hash)9b9f2970021b9fb1cf31454a96dcedc799fa29d48507d779aff64adbd3389aa3%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="OnlyLeafSelectable" columntype="boolean" dependsonanotherfield="true" guid="333d2a7f-a3e9-4ff2-9142-a0da95d0fce3" hasdependingfields="true" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Only Leafs Selectable</fieldcaption>
+          <fielddescription>
+            <![CDATA[If Selected, only the bottom most tree node (leaf) can be selected.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%CategoryDisplayMode.Value=="Tree"|(identity)GlobalAdministrator|(hash)9b9f2970021b9fb1cf31454a96dcedc799fa29d48507d779aff64adbd3389aa3%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="ParentSelectsChildren" columntype="boolean" dependsonanotherfield="true" guid="b98d27ff-c1d3-448b-ae7d-6e7e25e1fde9" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Parent Selects Children</fieldcaption>
+          <fielddescription>
+            <![CDATA[If Selected, parent nodes will act as a Toggle for the Leaf nodes underneath them.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%CategoryDisplayMode.Value=="Tree" && OnlyLeafSelectable.Value==true|(identity)GlobalAdministrator|(hash)c67b98f374363b273bf7365f43e2ddb962ac2bd61b98929a999ad19901b289d3%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="MinimumCategories" columntype="integer" guid="df42c5d3-97b8-4c55-b051-7880415b42bb" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Minimum Categories</fieldcaption>
+          <fielddescription>
+            <![CDATA[The minimum number of categories a user must select.  Leave blank to have no minimum.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaximumCategories" columntype="integer" guid="42d88871-543c-4235-a661-a3f3e7d8d9c5" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Maximum Categories</fieldcaption>
+          <fielddescription>
+            <![CDATA[The Maximum Categories a user can select.  Leave blank to have no limit.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="SeparatorCharacter" columnsize="1" columntype="text" guid="4b54d27d-1bc9-498a-a948-e0bb95da02dc" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>|</defaultvalue>
+          <fieldcaption>Separator Character</fieldcaption>
+          <fielddescription>
+<![CDATA[
+The character used in separating values.
+
+Note that if you are saving the value to the field, and may need to change the field values to use a new separator if you change it later on.
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="SaveMode" columnsize="50" columntype="text" guid="3107d6a1-a6cb-49c3-9627-938234214ef6" hasdependingfields="true" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>ToField</defaultvalue>
+          <fieldcaption>Save Mode</fieldcaption>
+          <fielddescription>
+            <![CDATA[Sets how the form saves the selection, either setting the form field's values to the categories selected, or setting the Document's actual categories, or both.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+ToCategories;Set Document Categories
+ToNodeCategories;Set Node Categories (CMS_TreeCategory)
+ToField;Set Field's Value with Category Names (Bar seperated)
+Both;Set both Document Categories and Field's Value
+BothNode;Set both Node Categories and Field's Value
+ToJoinTable;To Joining Table
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field column="BindOnPrimaryNodeOnly" columntype="boolean" dependsonanotherfield="true" guid="0dee5636-f143-4556-ad22-6dc29cddfb21" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>True</defaultvalue>
+          <fieldcaption>Bind On Primary Node Only</fieldcaption>
+          <fielddescription>
+            <![CDATA[If using either Node Categories or a Join table with NodeID, and the current Node is a Linked Document, this will edit categories on the primary node instead of the linked node.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToNodeCategories" || SaveMode.Value == "ToJoinTable" || SaveMode.Value == "BothNode"|(identity)GlobalAdministrator|(hash)aa355037c09a4fdf9824d806882121815c4f8d87bed3ed47c9a95ecc3253b1e7%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field column="AllowManualEntry" columntype="boolean" dependsonanotherfield="true" guid="0f4f98d1-e46c-4db3-8efa-836e11d16890" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>False</defaultvalue>
+          <fieldcaption>Allow Manual Entry</fieldcaption>
+          <fielddescription>Allows user to edit the value manually.</fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode == "ToField"%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field column="JoinTableThisObjectForeignKey" columnsize="200" columntype="text" dependsonanotherfield="true" guid="32118a91-a376-4fe2-9ba7-825320269374" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>This Object Foreign Key</fieldcaption>
+          <fielddescription>
+<![CDATA[
+The column name of the value that will be stored into the Join Table's Left Field Name.
+
+Must be the same data type.  Some possibilities are NodeID, DocumentID, DocumentGUID, ItemID, ItemGUID, etc.
+]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToJoinTable"|(identity)GlobalAdministrator|(hash)a81a6e2475fbf5baf3b3b81cc2f56c07202ebb9b6dbe8ce48e8ac08a060e82f9%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="JoinTableName" columnsize="200" columntype="text" dependsonanotherfield="true" guid="3bddc16f-ab2c-4e57-9642-1fac83e440b2" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <explanationtext>
+            <![CDATA[If a Custom Module Class, hover over description for instructions.]]>
+          </explanationtext>
+          <fieldcaption>Join Table Code Name</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Can be either a Custom Table, or a Module Class .
+
+For Custom Module Classes, you must generate your Custom Module's Info/InfoProvider classes in order for this tool to operate properly.
+
+To create your Module's Info/InfoProvider class, Edit your Module Class, and click on the "Code" menu on the left hand side.  Also see Kentico Documentation on "setting the type information for module classes" and "Enabling export and staging for the data of classes."
+]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToJoinTable"|(identity)GlobalAdministrator|(hash)a81a6e2475fbf5baf3b3b81cc2f56c07202ebb9b6dbe8ce48e8ac08a060e82f9%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="JoinTableLeftFieldName" columnsize="200" columntype="text" dependsonanotherfield="true" guid="c36a8dea-3414-4f6d-91a6-c731f2b83a1a" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Left Field Name</fieldcaption>
+          <fielddescription>
+            <![CDATA[The column name of the Join Table that will store This Object Foreign Key's value.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToJoinTable"|(identity)GlobalAdministrator|(hash)a81a6e2475fbf5baf3b3b81cc2f56c07202ebb9b6dbe8ce48e8ac08a060e82f9%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="JoinTableRightFieldName" columnsize="200" columntype="text" dependsonanotherfield="true" guid="003a0113-cec8-429f-80dc-b97797138c7a" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Right Field Name</fieldcaption>
+          <fielddescription>
+            <![CDATA[The field name of the column that will store the Category's Field Save Type (ID, Guid, or CodeName)]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToJoinTable"|(identity)GlobalAdministrator|(hash)a81a6e2475fbf5baf3b3b81cc2f56c07202ebb9b6dbe8ce48e8ac08a060e82f9%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="JoinTableGUIDField" columnsize="200" columntype="text" dependsonanotherfield="true" guid="12285e70-e4b5-40f7-9097-e131c5a3abb5" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table GUID FieldName</fieldcaption>
+          <fielddescription>
+            <![CDATA[Not required if the Info/Info Provider classes are generated for your class.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToJoinTable"|(identity)GlobalAdministrator|(hash)a81a6e2475fbf5baf3b3b81cc2f56c07202ebb9b6dbe8ce48e8ac08a060e82f9%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="JoinTableLastModifiedField" columnsize="200" columntype="text" dependsonanotherfield="true" guid="cf1c752b-540a-4a58-9eeb-4127ca406e9d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Last Modified FieldName</fieldcaption>
+          <fielddescription>
+            <![CDATA[Not required if the Info/Info Provider classes are generated for your class.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToJoinTable"|(identity)GlobalAdministrator|(hash)a81a6e2475fbf5baf3b3b81cc2f56c07202ebb9b6dbe8ce48e8ac08a060e82f9%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="JoinTableCodeNameField" columnsize="200" columntype="text" dependsonanotherfield="true" guid="b6738545-6d81-4db6-ac2f-661a8e084b98" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Code Name FieldName</fieldcaption>
+          <fielddescription>
+            <![CDATA[Not required if the Info/Info Provider classes are generated for your class.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToJoinTable"|(identity)GlobalAdministrator|(hash)a81a6e2475fbf5baf3b3b81cc2f56c07202ebb9b6dbe8ce48e8ac08a060e82f9%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="JoinTableSiteIDField" columnsize="200" columntype="text" dependsonanotherfield="true" guid="50c194c9-03da-415f-b794-44c22e9dde98" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Site ID FieldName</fieldcaption>
+          <fielddescription>
+            <![CDATA[Not required if the Info/Info Provider classes are generated for your class.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value == "ToJoinTable"|(identity)GlobalAdministrator|(hash)a81a6e2475fbf5baf3b3b81cc2f56c07202ebb9b6dbe8ce48e8ac08a060e82f9%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="FieldSaveType" columnsize="200" columntype="text" dependsonanotherfield="true" guid="ff7497dd-ca28-4c36-9f92-3afcda3db659" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>CategoryName</defaultvalue>
+          <fieldcaption>Field Save Type</fieldcaption>
+          <fielddescription>
+            <![CDATA[If Save to Field, or Both set for Save Mode, do you want to save the Category ID, GUID, or Category Name (Bar Separated)]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SaveMode.Value != "ToCategories" && SaveModeValue.Value != "ToNodeCategories"|(identity)GlobalAdministrator|(hash)6411969db553e4bbdfa1eec32242bd7f29aaece370715f5eed39974e7609f488%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+ID;Category IDs
+GUID;Category GUIDs
+CategoryName;Category Name
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field allowempty="true" column="WhereFilter" columnsize="500" columntype="text" guid="0c24782a-5a36-4ef6-a6ec-c3992c7cd437" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Where Filter</fieldcaption>
+          <fielddescription>
+            <![CDATA[Can specify a where condition to further limit Nodes.  Only nodes that match this where condition will be loaded.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>WhereCondition</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="OrderBy" columnsize="500" columntype="text" guid="3754fcba-e8b5-4a42-99cd-a2c9aa4a8810" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Order By</fieldcaption>
+          <fielddescription>
+            <![CDATA[Optional Order by.  If Blank, it will default to the CategoryOrder for Trees, and CategoryDisplayName for Lists.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>OrderBy</controlname>
+        </settings>
+      </field>
+    </form>
+  </UserControlParameters>
+  <UserControlShowInBizForms>True</UserControlShowInBizForms>
+  <UserControlShowInCustomTables>True</UserControlShowInCustomTables>
+  <UserControlShowInDocumentTypes>True</UserControlShowInDocumentTypes>
+  <UserControlShowInReports>True</UserControlShowInReports>
+  <UserControlShowInSystemTables>True</UserControlShowInSystemTables>
+  <UserControlShowInWebParts>True</UserControlShowInWebParts>
+  <UserControlType>0</UserControlType>
+</cms.formusercontrol>

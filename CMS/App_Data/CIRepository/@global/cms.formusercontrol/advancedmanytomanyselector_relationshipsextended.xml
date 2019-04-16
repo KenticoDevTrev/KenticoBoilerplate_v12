@@ -1,0 +1,863 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.formusercontrol>
+  <UserControlCodeName>AdvancedManyToManySelector_RelationshipsExtended</UserControlCodeName>
+  <UserControlDefaultDataType>longtext</UserControlDefaultDataType>
+  <UserControlDefaultDataTypeSize>500</UserControlDefaultDataTypeSize>
+  <UserControlDescription>
+<![CDATA[
+Allows for a Many to Many relationship between any two entities.
+
+Supports Page Types, Custom Tables, and Module Classes*
+
+* Module classes require the Class code files be generated (Info and InfoProvider).
+]]>
+  </UserControlDescription>
+  <UserControlDisplayName>Advanced Many-to-Many Selector (RE)</UserControlDisplayName>
+  <UserControlFileName>
+    <![CDATA[~/CMSModules/RelationshipsExtended/FormControls/AdvancedManyToManySelector/AdvancedManyToManySelector.ascx]]>
+  </UserControlFileName>
+  <UserControlForBinary>False</UserControlForBinary>
+  <UserControlForBoolean>False</UserControlForBoolean>
+  <UserControlForDateTime>False</UserControlForDateTime>
+  <UserControlForDecimal>False</UserControlForDecimal>
+  <UserControlForDocAttachments>False</UserControlForDocAttachments>
+  <UserControlForDocRelationships>False</UserControlForDocRelationships>
+  <UserControlForFile>False</UserControlForFile>
+  <UserControlForGuid>False</UserControlForGuid>
+  <UserControlForInteger>False</UserControlForInteger>
+  <UserControlForLongText>True</UserControlForLongText>
+  <UserControlForText>True</UserControlForText>
+  <UserControlForVisibility>False</UserControlForVisibility>
+  <UserControlGUID>d5e1a0a2-3b64-472c-a9bd-5918a54f6689</UserControlGUID>
+  <UserControlIsSystem>False</UserControlIsSystem>
+  <UserControlParameters>
+    <form version="2">
+      <category name="Configuration">
+        <properties>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field column="RelatedObjectType" columnsize="200" columntype="text" displayinsimplemode="true" guid="8d949d34-51f4-47d5-9cd1-b72723dcadd4" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Related Object Type</fieldcaption>
+          <fielddescription>
+            <![CDATA[The object type that you are binding to (Example Demo.Foo)]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AddGlobalObjectNamePrefix>False</AddGlobalObjectNamePrefix>
+          <AddGlobalObjectSuffix>False</AddGlobalObjectSuffix>
+          <AllowAll>False</AllowAll>
+          <AllowDefault>False</AllowDefault>
+          <AllowEditTextBox>False</AllowEditTextBox>
+          <AllowEmpty>False</AllowEmpty>
+          <controlname>Uni_selector</controlname>
+          <DialogWindowName>SelectionDialog</DialogWindowName>
+          <DisplayNameFormat>{% ClassDisplayName %}</DisplayNameFormat>
+          <EditDialogWindowHeight>700</EditDialogWindowHeight>
+          <EditDialogWindowWidth>1000</EditDialogWindowWidth>
+          <EditWindowName>EditWindow</EditWindowName>
+          <EncodeOutput>True</EncodeOutput>
+          <GlobalObjectSuffix ismacro="true">{$general.global$}</GlobalObjectSuffix>
+          <ItemsPerPage>25</ItemsPerPage>
+          <LocalizeItems>True</LocalizeItems>
+          <MaxDisplayedItems>25</MaxDisplayedItems>
+          <MaxDisplayedTotalItems>50</MaxDisplayedTotalItems>
+          <ObjectType>cms.class</ObjectType>
+          <OrderBy>ClassDisplayName</OrderBy>
+          <RemoveMultipleCommas>False</RemoveMultipleCommas>
+          <ReturnColumnName>ClassName</ReturnColumnName>
+          <ReturnColumnType>id</ReturnColumnType>
+          <SelectionMode>0</SelectionMode>
+          <UseDefaultNameFilter>True</UseDefaultNameFilter>
+          <ValuesSeparator>;</ValuesSeparator>
+        </settings>
+      </field>
+      <field column="RelatedObjectReferenceField" columnsize="200" columntype="text" displayinsimplemode="true" guid="23ca39c3-e7bf-4731-9bb5-24524846f0c4" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Related Object Reference Field</fieldcaption>
+          <fielddescription>
+            <![CDATA[The field that the related object is referencing.  (Example FooID)]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="ReturnType" columnsize="15" columntype="text" displayinsimplemode="true" guid="982e946e-9f83-4acd-a4d2-1c1863f48838" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>id</defaultvalue>
+          <fieldcaption>Return Type</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Return type of the Control, and the Joining Table's Foreign Key Type and the Related Object Reference Field type.
+
+They MUST match.
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+id;int (Row ID)
+guid;Guid (Row GUID)
+string;String (CodeName)
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field allowempty="true" column="MinimumRelationships" columntype="integer" guid="df42c5d3-97b8-4c55-b051-7880415b42bb" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Minimum Relationships</fieldcaption>
+          <fielddescription>
+            <![CDATA[The minimum number of relationships a user must select.  Leave blank to have no minimum.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaximumRelationships" columntype="integer" guid="42d88871-543c-4235-a661-a3f3e7d8d9c5" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Maximum Relationships</fieldcaption>
+          <fielddescription>
+            <![CDATA[The Maximum objects a user can select.  Leave blank to have no limit.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="RelatedObjectRestrainingWhere" columntype="longtext" guid="c71c45e9-9542-4ebd-b848-9d926c94fb69" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Related Object Restraining Where Condition</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Run against the Related Object's "Select All" Query to limit which items can be considered searchable.  Useful if you have different types of the related objects and there are multiple relational types.
+
+Must make sure the Form Control also limits it's values by these as well if set.
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>WhereCondition</controlname>
+        </settings>
+      </field>
+      <category name="CustomSelector">
+        <properties>
+          <caption>Selector</caption>
+          <collapsible>True</collapsible>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field column="SeparatorCharacter" columnsize="1" columntype="text" guid="4b54d27d-1bc9-498a-a948-e0bb95da02dc" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>;</defaultvalue>
+          <fieldcaption>Separator Character</fieldcaption>
+          <fielddescription>
+            <![CDATA[The character used in separating values returned from the control.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="UseCustomSelector" columntype="boolean" guid="0ac3bac9-8dc8-4c26-8db3-a6cb4197e418" hasdependingfields="true" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>False</defaultvalue>
+          <fieldcaption>Use Custom Selector</fieldcaption>
+          <fielddescription>
+<![CDATA[
+If True, you can specify the Form Control you wish to present instead of using a Uni Selector.
+
+The Form Control MUST return a character separated list of values (IDs, GUIDs, or Code Names), and be able to have a character separated list of values set it.
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field column="FormControlName" columnsize="200" columntype="text" dependsonanotherfield="true" guid="a80f6cae-2c1e-41eb-9fb4-f47a9e86d702" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Form Control</fieldcaption>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)3e528b5e137a52b42e6070de3471d0bbad216f8acb86cefc3cb66e5206c8f6c8%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AddGlobalObjectNamePrefix>False</AddGlobalObjectNamePrefix>
+          <AddGlobalObjectSuffix>False</AddGlobalObjectSuffix>
+          <AdditionalColumns>UserControlDisplayName</AdditionalColumns>
+          <AllowAll>False</AllowAll>
+          <AllowDefault>False</AllowDefault>
+          <AllowEditTextBox>False</AllowEditTextBox>
+          <AllowEmpty>False</AllowEmpty>
+          <controlname>Uni_selector</controlname>
+          <DialogWindowName>SelectionDialog</DialogWindowName>
+          <DisplayNameFormat>{% UserControlDisplayName %}</DisplayNameFormat>
+          <EditDialogWindowHeight>700</EditDialogWindowHeight>
+          <EditDialogWindowWidth>1000</EditDialogWindowWidth>
+          <EditWindowName>EditWindow</EditWindowName>
+          <EncodeOutput>True</EncodeOutput>
+          <GlobalObjectSuffix ismacro="true">{$general.global$}</GlobalObjectSuffix>
+          <ItemsPerPage>25</ItemsPerPage>
+          <LocalizeItems>True</LocalizeItems>
+          <MaxDisplayedItems>25</MaxDisplayedItems>
+          <MaxDisplayedTotalItems>50</MaxDisplayedTotalItems>
+          <ObjectType>cms.formusercontrol</ObjectType>
+          <RemoveMultipleCommas>False</RemoveMultipleCommas>
+          <ReturnColumnName>UserControlCodeName</ReturnColumnName>
+          <ReturnColumnType>id</ReturnColumnType>
+          <SelectionMode>0</SelectionMode>
+          <UseDefaultNameFilter>True</UseDefaultNameFilter>
+          <ValuesSeparator>;</ValuesSeparator>
+        </settings>
+      </field>
+      <field allowempty="true" column="FormControlProperties" columntype="longtext" dependsonanotherfield="true" guid="d63ac0d1-ee05-49d4-921e-a5157bd72487" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <explanationtext>Hover for Instructions</explanationtext>
+          <fieldcaption>Form Control Properties</fieldcaption>
+          <fielddescription>
+<![CDATA[
+A listing of configurations to pass to the form control.
+
+Each property should be on it's own line, in the format of PropertyName|Value
+
+If the value itself has new lines, use \n
+
+For example if you are using a country selector
+
+ReturnType|2
+StateIDColumnName|StateID
+AddNoneRecord|true
+
+
+
+
+]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)3e528b5e137a52b42e6070de3471d0bbad216f8acb86cefc3cb66e5206c8f6c8%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextAreaControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Wrap>True</Wrap>
+        </settings>
+      </field>
+      <category name="UniSelector">
+        <properties>
+          <caption>Uni Selector</caption>
+          <collapsible>True</collapsible>
+          <visible ismacro="true">{% !UseCustomSelector.Value @%}</visible>
+        </properties>
+      </category>
+      <field column="ReturnColumnName" columnsize="500" columntype="text" dependsonanotherfield="true" displayinsimplemode="true" guid="35aa6d9f-84d9-46d5-a392-603d04c76260" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Return column name</fieldcaption>
+          <fielddescription>
+            <![CDATA[Specifies the name of the column that will be stored by the selector. If empty, the ID column is used. To ensure correct functionality, the column must be a unique identifier for the given object type.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="DisplayNameFormat" columnsize="1000" columntype="text" dependsonanotherfield="true" displayinsimplemode="true" guid="eb82cc1d-f9c7-463e-8255-f02c935d0007" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Display name format</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Determines the format of the name used for objects in the selector.
+Macros in format {%ColumnName%} may be used to load values from the displayed objects.
+]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <category name="AdditionalUniSelectorSettings">
+        <properties>
+          <caption>Additional Uni Selector Settings</caption>
+          <collapsedbydefault>True</collapsedbydefault>
+          <collapsible>True</collapsible>
+          <visible ismacro="true">{% !UseCustomSelector.Value @%}</visible>
+        </properties>
+      </category>
+      <field allowempty="true" column="ObjectSiteName" columnsize="200" columntype="text" dependsonanotherfield="true" guid="d4f656fa-9eca-4779-a65c-948740676bf0" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Object site name</fieldcaption>
+          <fielddescription>
+            <![CDATA[If set, only objects which belong to specified site are retrieved (if the object has SiteID column). If null or empty, all objects are retrieved. Use #currentsite for CurrentSite and #global for global objects.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="SelectionMode" columntype="integer" dependsonanotherfield="true" displayinsimplemode="true" guid="ab58c564-fa53-427e-b882-0111686a8f69" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Selection mode</fieldcaption>
+          <fielddescription>
+            <![CDATA[Determines the design and behavior of the selection dialog.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+0;Single text box
+1;Single drop down list
+2;Multiple
+3;Multiple text box
+4;Single button
+5;Multiple button
+6;Single transformation
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field allowempty="true" column="AdditionalColumns" columnsize="500" columntype="text" dependsonanotherfield="true" guid="c52c62ed-c494-42d2-99e5-597265068f96" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Additional columns</fieldcaption>
+          <fielddescription>
+            <![CDATA[Specifies the names of columns that should be loaded with the objects of the specified data class (in addition to the columns required by default).]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="WhereCondition" columntype="longtext" dependsonanotherfield="true" guid="d5a13262-35c5-4305-8f5f-f09215226a5a" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Where condition</fieldcaption>
+          <fielddescription>
+            <![CDATA[Base WHERE condition applied to the objects offered for selection. Applies to the multiple selection grid, dropdownlist, single and multiple selection dialogs.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>WhereCondition</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="OrderBy" columnsize="500" columntype="text" dependsonanotherfield="true" guid="4d49e447-2f9a-41a5-ada3-d4e3b9f81ff9" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Order by</fieldcaption>
+          <fielddescription>
+            <![CDATA[Sets the order of the items offered for selection via a standard ORDER BY clause. Applies to the multiple selection grid, dropdownlist, single and multiple selection dialogs.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>OrderBy</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="EnabledColumnName" columnsize="500" columntype="text" dependsonanotherfield="true" guid="4917bea8-a6b6-4d30-bf73-2b0620dbd7c6" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Enabled column name</fieldcaption>
+          <fielddescription>
+            <![CDATA[Can be used to specify the name of the column that determines if the selected object is enabled.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="AllowEditTextBox" columntype="boolean" dependsonanotherfield="true" guid="be6a59b4-5b36-4e0e-b923-214d9fd3baea" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Allow edit text box</fieldcaption>
+          <fielddescription>
+<![CDATA[
+If enabled, users will be able to manually edit the selected value in textbox mode.
+
+NOTE This will only work if the Save Mode is To Field.
+]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="UseAutocomplete" columntype="boolean" guid="61b4a73d-37de-4ecc-bc76-97e08cf09b51" publicfield="false" resolvedefaultvalue="False">
+        <properties>
+          <defaultvalue>false</defaultvalue>
+          <fieldcaption>Use autocomplete</fieldcaption>
+          <fielddescription>
+            <![CDATA[Indicates whether auto-complete functionality should be used for drop down list mode.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="Transformation" columntype="longtext" dependsonanotherfield="true" guid="f5577f64-2328-4250-ac19-b0c22d022449" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Transformation</fieldcaption>
+          <fielddescription>
+            <![CDATA[Transformation may contain macros (e.g. {%FirstName%} {%LastName%}) and HTML code to format the output. If empty, the object display name is returned.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextAreaControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Wrap>True</Wrap>
+        </settings>
+      </field>
+      <field allowempty="true" column="NoDataTransformation" columntype="longtext" dependsonanotherfield="true" guid="0a70b737-b39c-4404-812b-0304e01b695a" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>No data transformation</fieldcaption>
+          <fielddescription>
+            <![CDATA[Transformation used in case no object was selected. Optional.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextAreaControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Wrap>True</Wrap>
+        </settings>
+      </field>
+      <field allowempty="true" column="EncodeOutput" columntype="boolean" dependsonanotherfield="true" guid="e1294bfd-2231-43ae-9b44-616f361fbcc1" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Encode output</fieldcaption>
+          <fielddescription>If true, the output is encoded.</fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="AllowEmpty" columntype="boolean" dependsonanotherfield="true" guid="70dc3860-ff4f-494c-b75a-3636747b4c8b" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Allow none</fieldcaption>
+          <fielddescription>
+            <![CDATA[Specifies, whether the selector allows empty selection. If the dialog allows empty selection, it displays the (none) field in the DDL variant and a Clear button in Textbox mode (default true). ]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaxDisplayedTotalItems" columntype="integer" dependsonanotherfield="true" guid="41e7790c-9df1-4315-a2ec-b7e1c7ba86e8" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>1000</defaultvalue>
+          <fieldcaption>Max displayed total items</fieldcaption>
+          <fielddescription>
+            <![CDATA[The number of maximum displayed total items in the dropdownlist selection (excluding the special and generic items). The default value is 50. If exceeded, only the number of items set by the MaxDisplayedItems parameter will be displayed.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaxDisplayedItems" columntype="integer" dependsonanotherfield="true" guid="b0b13732-c8e5-4c90-ae27-5db200600e6e" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>25</defaultvalue>
+          <fieldcaption>Max displayed items</fieldcaption>
+          <fielddescription>
+            <![CDATA[Sets the maximum number of displayed items in drop-down list mode (excluding the special and generic items). The default value is 25. If the number is exceeded, the remaining items can be selected through the (more..) option.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="ItemsPerPage" columntype="integer" dependsonanotherfield="true" guid="cffb2022-2113-493a-85ce-d7238e8fe27d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>25</defaultvalue>
+          <fieldcaption>Items per page</fieldcaption>
+          <fielddescription>
+            <![CDATA[Default number of items displayed per page. Applies to the multiple selection grid, drop-down list, single and multiple selection dialogs. The default value is 25.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="DisabledItems" columnsize="1000" columntype="text" dependsonanotherfield="true" guid="e3ef7cf1-68cd-4e26-983e-feb62ca631c8" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Disabled items</fieldcaption>
+          <fielddescription>
+            <![CDATA[Gets or sets the identifiers of items that should be disabled for the selection dialog in multiple choice mode. Identifiers are separated by semicolons.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="ButtonImage" columnsize="500" columntype="text" dependsonanotherfield="true" guid="cd8b18d3-0d2a-477f-b88d-86e4003e5504" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Button image</fieldcaption>
+          <fielddescription>
+            <![CDATA[Sets the path to the image that should be used in button selection mode.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="FilterControl" columnsize="250" columntype="text" dependsonanotherfield="true" guid="341bf3fe-5797-4eb2-b80e-01599d168238" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Filter control</fieldcaption>
+          <fielddescription>Sets the path to custom filter control.</fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="GridName" columnsize="500" columntype="text" dependsonanotherfield="true" guid="4fda1e97-f0fe-43f6-aa23-c196b9841ce7" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Grid name</fieldcaption>
+          <fielddescription>
+            <![CDATA[Path to the XML configuration file of the UniGrid control used to display and select objects in Multiple selection mode.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="DialogGridName" columnsize="1000" columntype="text" dependsonanotherfield="true" guid="6b66d162-6a18-4ac6-8972-538aa4ce9d05" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Dialog grid name</fieldcaption>
+          <fielddescription>
+            <![CDATA[Path to the XML configuration file of the UniGrid control used for the selection dialog in Multiple selection mode.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%!UseCustomSelector.Value|(identity)GlobalAdministrator|(hash)e2bc11af2fdd0f2aec5e239631dea72a82f70d2f83b28dcfbd49dbe019c85ed2%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <category name="Selector">
+        <properties>
+          <caption>Join Table Configurations</caption>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field column="JoinTableName" columnsize="200" columntype="text" displayinsimplemode="true" guid="3bddc16f-ab2c-4e57-9642-1fac83e440b2" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <explanationtext>
+            <![CDATA[If a Custom Module Class, hover over description for instructions.]]>
+          </explanationtext>
+          <fieldcaption>Join Table Code Name</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Can be either a Custom Table, or a Module Class .
+
+For Custom Module Classes, you must generate your Custom Module's Info/InfoProvider classes in order for this tool to operate properly.
+
+To create your Module's Info/InfoProvider class, Edit your Module Class, and click on the "Code" menu on the left hand side.  Also see Kentico Documentation on "setting the type information for module classes" and "Enabling export and staging for the data of classes."
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="JoinTableThisObjectForeignKey" columnsize="200" columntype="text" displayinsimplemode="true" guid="32118a91-a376-4fe2-9ba7-825320269374" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>This Object Foreign Key</fieldcaption>
+          <fielddescription>
+<![CDATA[
+The column name of the value that will be stored into the Join Table's Left Field Name.
+
+Must be the same data type.  Some possibilities are NodeID, DocumentID, DocumentGUID, ItemID, ItemGUID, etc.
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="BindOnPrimaryNodeOnly" columntype="boolean" guid="2c17155e-f4ec-4ac4-81b2-ac96254bef5d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>True</defaultvalue>
+          <fieldcaption>Bind On Primary Node Only</fieldcaption>
+          <fielddescription>
+            <![CDATA[If joining on Nodes and the current Node is a Linked Document, this will show bindings on the primary node instead of the linked node.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field column="JoinTableLeftFieldName" columnsize="200" columntype="text" displayinsimplemode="true" guid="c36a8dea-3414-4f6d-91a6-c731f2b83a1a" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Left Field Name</fieldcaption>
+          <fielddescription>
+            <![CDATA[The column name of the Join Table that will store This Object Foreign Key's value.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="JoinTableRightFieldName" columnsize="200" columntype="text" displayinsimplemode="true" guid="003a0113-cec8-429f-80dc-b97797138c7a" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Right Field Name</fieldcaption>
+          <fielddescription>
+            <![CDATA[The field name of the column that will store the Category's Field Save Type (ID, Guid, or CodeName)]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="JoinTableGUIDField" columnsize="200" columntype="text" displayinsimplemode="true" guid="12285e70-e4b5-40f7-9097-e131c5a3abb5" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table GUID FieldName</fieldcaption>
+          <fielddescription>
+            <![CDATA[Not required if the Info/Info Provider classes are generated for your class.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="JoinTableLastModifiedField" columnsize="200" columntype="text" displayinsimplemode="true" guid="cf1c752b-540a-4a58-9eeb-4127ca406e9d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Last Modified FieldName</fieldcaption>
+          <fielddescription>
+            <![CDATA[Not required if the Info/Info Provider classes are generated for your class.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="JoinTableCodeNameField" columnsize="200" columntype="text" displayinsimplemode="true" guid="b6738545-6d81-4db6-ac2f-661a8e084b98" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Code Name FieldName</fieldcaption>
+          <fielddescription>
+            <![CDATA[Not required if the Info/Info Provider classes are generated for your class.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="JoinTableSiteIDField" columnsize="200" columntype="text" displayinsimplemode="true" guid="50c194c9-03da-415f-b794-44c22e9dde98" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Join Table Site ID FieldName</fieldcaption>
+          <fielddescription>
+            <![CDATA[Not required if the Info/Info Provider classes are generated for your class.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+    </form>
+  </UserControlParameters>
+  <UserControlShowInBizForms>True</UserControlShowInBizForms>
+  <UserControlShowInCustomTables>True</UserControlShowInCustomTables>
+  <UserControlShowInDocumentTypes>True</UserControlShowInDocumentTypes>
+  <UserControlShowInReports>True</UserControlShowInReports>
+  <UserControlShowInSystemTables>True</UserControlShowInSystemTables>
+  <UserControlShowInWebParts>True</UserControlShowInWebParts>
+  <UserControlType>0</UserControlType>
+</cms.formusercontrol>

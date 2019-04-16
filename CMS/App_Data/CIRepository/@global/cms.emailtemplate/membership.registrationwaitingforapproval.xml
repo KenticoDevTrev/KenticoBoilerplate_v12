@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.emailtemplate>
+  <EmailTemplateDisplayName>Membership - Registration waiting for approval</EmailTemplateDisplayName>
+  <EmailTemplateGUID>132be2c1-2db6-4c7d-8165-40041f2e4938</EmailTemplateGUID>
+  <EmailTemplateName>Membership.RegistrationWaitingForApproval</EmailTemplateName>
+  <EmailTemplatePlainText>
+<![CDATA[
+Thank you for registering at our site {%currentsite.sitename|(identity)GlobalAdministrator|(hash)a693cf29eee9c2f2159b0e1e82e2ef2d6e4e5ec92b4cc8c11bb447ffbff15115%}. Your registration must be approved by administrator.
+
+]]>
+  </EmailTemplatePlainText>
+  <EmailTemplateSubject>{$membership.registrationapprovalnoticesubject$}</EmailTemplateSubject>
+  <EmailTemplateText>
+<![CDATA[
+<html>
+	<head>
+	</head>
+	<body>
+		Thank you for registering at our site&nbsp;{%currentsite.sitename|(identity)GlobalAdministrator|(hash)a693cf29eee9c2f2159b0e1e82e2ef2d6e4e5ec92b4cc8c11bb447ffbff15115%}. Your registration must be approved by administrator.<br />
+	</body>
+</html>
+]]>
+  </EmailTemplateText>
+  <EmailTemplateType>membershipregistration</EmailTemplateType>
+</cms.emailtemplate>

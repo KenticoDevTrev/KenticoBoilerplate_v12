@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.relationshipnamesite>
+  <Parent>
+    <CodeName>Banners</CodeName>
+    <GUID>3c7d0f10-f9ee-47c9-91d7-87725eeb6197</GUID>
+    <ObjectType>cms.relationshipname</ObjectType>
+  </Parent>
+  <Bindings>
+    <Binding id="KenticoBoilerplate">
+      <SiteID>
+        <CodeName>KenticoBoilerplate</CodeName>
+        <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+        <ObjectType>cms.site</ObjectType>
+      </SiteID>
+    </Binding>
+  </Bindings>
+</cms.relationshipnamesite>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.documenttype>
+  <ClassCodeGenerationSettings>
+    <Data>
+      <NameSpace>KMVCHelper</NameSpace>
+    </Data>
+  </ClassCodeGenerationSettings>
+  <ClassDisplayName>Generic Widget Page</ClassDisplayName>
+  <ClassFormDefinition>
+    <form version="2">
+      <field column="GenericWidgetPageID" columntype="integer" guid="97bff620-f049-42c2-b1de-54343305fe7e" isPK="true" publicfield="false">
+        <properties>
+          <fieldcaption>GenericWidgetPageID</fieldcaption>
+        </properties>
+        <settings>
+          <controlname>labelcontrol</controlname>
+        </settings>
+      </field>
+      <field column="Layout" columnsize="100" columntype="text" guid="65c0bcfa-31a7-42b6-b3da-a586590477af" publicfield="false" visible="true">
+        <properties>
+          <defaultvalue>Index</defaultvalue>
+          <fieldcaption>Layout</fieldcaption>
+          <fielddescription>The Layout (MVC View) that you wish to use.</fielddescription>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>Index;Default</Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+    </form>
+  </ClassFormDefinition>
+  <ClassGUID>5f041f1a-857d-4b14-8863-44760b3c738e</ClassGUID>
+  <ClassIconClass>icon-dialog-window-cogwheel</ClassIconClass>
+  <ClassInheritsFromClassID>0</ClassInheritsFromClassID>
+  <ClassIsContentOnly>True</ClassIsContentOnly>
+  <ClassIsCoupledClass>True</ClassIsCoupledClass>
+  <ClassIsCustomTable>False</ClassIsCustomTable>
+  <ClassIsDocumentType>True</ClassIsDocumentType>
+  <ClassIsForm>False</ClassIsForm>
+  <ClassIsMenuItemType>True</ClassIsMenuItemType>
+  <ClassName>KMVCHelper.GenericWidgetPage</ClassName>
+  <ClassNodeNameSource />
+  <ClassSearchContentColumn>DocumentContent</ClassSearchContentColumn>
+  <ClassSearchCreationDateColumn>DocumentCreatedWhen</ClassSearchCreationDateColumn>
+  <ClassSearchEnabled>True</ClassSearchEnabled>
+  <ClassSearchSettings>
+    <search>
+      <item azurecontent="False" azureretrievable="True" azuresearchable="False" content="False" id="3f76ba6a-36a3-4ef8-b487-53f2ee584d1f" name="GenericWidgetPageID" searchable="True" tokenized="False" />
+      <item azurecontent="True" azureretrievable="False" azuresearchable="True" content="True" id="76a8a0a7-5c37-4ad9-a752-d9b51b4c66bc" name="Layout" searchable="False" tokenized="True" />
+    </search>
+  </ClassSearchSettings>
+  <ClassSearchTitleColumn>DocumentName</ClassSearchTitleColumn>
+  <ClassShowAsSystemTable>False</ClassShowAsSystemTable>
+  <ClassTableName>KMVCHelper_GenericWidgetPage</ClassTableName>
+  <ClassURLPattern>{% NodeAliasPath %}</ClassURLPattern>
+  <ClassUsePublishFromTo>True</ClassUsePublishFromTo>
+  <ClassUsesVersioning>False</ClassUsesVersioning>
+</cms.documenttype>

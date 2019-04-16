@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.alternativeform>
+  <FormClassID>
+    <CodeName>cms.relationshipname</CodeName>
+    <GUID>bcf36881-2644-4955-a591-7bc93157bf96</GUID>
+    <ObjectType>cms.class</ObjectType>
+  </FormClassID>
+  <FormDefinition>
+    <form version="2">
+      <field column="RelationshipNameID" guid="47839bd6-f19c-4cfd-b67f-1ca754694d46" />
+      <field column="RelationshipDisplayName" guid="6515b190-003a-44b6-b541-8814760de218" />
+      <field column="RelationshipName" guid="42221f4a-30fa-47a6-bc80-3f99ee81f8a5" />
+      <field column="RelationshipAllowedObjects" guid="2a02c9d5-f0f9-4a19-be8d-9a007f4464ac" />
+      <field column="RelationshipNameIsAdHoc" guid="f1d3667d-77eb-47de-9ad0-5f22ad63e082" visible="true">
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+        <properties>
+          <fieldcaption>Relationship Is AdHoc (Sortable)</fieldcaption>
+          <fielddescription>Must be true if you wish to use sorting.</fielddescription>
+        </properties>
+      </field>
+      <field column="RelationshipGUID" guid="03ad948a-2bb7-44b2-b580-b05abf3a2a8b" />
+      <field column="RelationshipLastModified" guid="ea7edf35-ed86-4cef-91c5-7bfdde27c389" />
+      <field column="ReltionshipSite" guid="a733ba02-3675-481a-b586-b87c49e23268" />
+    </form>
+  </FormDefinition>
+  <FormDisplayName>New Form</FormDisplayName>
+  <FormGUID>7bdd7d35-5330-4e1d-a46f-70f4686c3884</FormGUID>
+  <FormHideNewParentFields>False</FormHideNewParentFields>
+  <FormIsCustom>True</FormIsCustom>
+  <FormName>NewForm</FormName>
+</cms.alternativeform>

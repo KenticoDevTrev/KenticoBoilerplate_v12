@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.emailtemplate>
+  <EmailTemplateDisplayName>E-commerce - Automatic registration</EmailTemplateDisplayName>
+  <EmailTemplateGUID>680db946-cefd-475f-b65f-84dc4d53051c</EmailTemplateGUID>
+  <EmailTemplateName>Ecommerce.AutomaticRegistration</EmailTemplateName>
+  <EmailTemplateSubject>
+    <![CDATA[Welcome to {% CurrentSite.SiteDomainName |(identity)GlobalAdministrator|(hash)3a26197a07b84f3ac5eb92408a750c63802480adebc20a3ae067069568a6e4f2%}]]>
+  </EmailTemplateSubject>
+  <EmailTemplateText>
+<![CDATA[
+<html>
+  <head></head>
+  <body>  
+    <p>
+      Dear {% UserFullName %},welcome to 
+      <a href="{% CurrentSite.DataContext.RootDocument.AbsoluteURL |(identity)GlobalAdministrator|(hash)5b9b9ac9b1f1565aef9642352c259c781dacce296e762d6a65003df0335f9b2b%}">{% CurrentSite.SiteDomainName |(identity)GlobalAdministrator|(hash)3a26197a07b84f3ac5eb92408a750c63802480adebc20a3ae067069568a6e4f2%}</a>! 
+      Meanwhile, we have prepared an account for you. 
+      With your new account you can easily review your orders and manage your personal information.
+      
+      {% if (!String.IsNullOrEmpty(AccountUrl)){  %}
+        Just login with your e-mail address and new password at <a href="{%AccountUrl%}">{%AccountUrl%}</a>.
+      {% } |(encode)false |(identity)GlobalAdministrator|(hash)d041ebce42c30b751eeea9e1608bf32bc32fce57112acd717093a2be7f2f755b%}      
+    </p>
+    <p><strong>Login details:</strong></p>
+    E-mail(username): {% UserName %}<br/>
+    Password: {% Password %}<br />
+    <br />
+    <p>We recommend changing your password directly after you log in.</p>
+  </body>
+</html>
+
+
+
+]]>
+  </EmailTemplateText>
+  <EmailTemplateType>ecommerce</EmailTemplateType>
+</cms.emailtemplate>

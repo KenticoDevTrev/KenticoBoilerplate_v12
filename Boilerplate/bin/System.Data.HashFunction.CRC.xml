@@ -1,0 +1,942 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Data.HashFunction.CRC</name>
+    </assembly>
+    <members>
+        <member name="T:System.Data.HashFunction.CRC.CRCConfig">
+            <summary>
+            Defines a configuration for a <see cref="T:System.Data.HashFunction.CRC.ICRC"/> implementation.
+            </summary>
+            <seealso cref="T:System.Data.HashFunction.CRC.ICRCConfig" />
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.HashSizeInBits">
+            <summary>
+            Length of the produced CRC value, in bits.
+            </summary>
+            <value>
+            The length of the produced CRC value, in bits
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.Polynomial">
+            <summary>
+            Divisor to use when calculating the CRC.
+            </summary>
+            <value>
+            The divisor that will be used when calculating the CRC value.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.InitialValue">
+            <summary>
+            Value to initialize the CRC register to before calculating the CRC.
+            </summary>
+            <value>
+            The value that will be used to initialize the CRC register before the calculation of the CRC value.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.ReflectIn">
+            <summary>
+            If true, the CRC calculation processes input as big endian bit order.
+            </summary>
+            <value>
+            <c>true</c> if the input should be processed in big endian bit order; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.ReflectOut">
+            <summary>
+            If true, the CRC calculation processes the output as big endian bit order.
+            </summary>
+            <value>
+            <c>true</c> if the CRC calculation processes the output as big endian bit order; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.XOrOut">
+            <summary>
+            Value to xor with the final CRC value.
+            </summary>
+            <value>
+            The value to xor with the final CRC value.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC3_ROHC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC3_ROHC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC4_ITU">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC4_ITU standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC5_EPC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC5_EPC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC5_ITU">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC5_ITU standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC5_USB">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC5_USB standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC6_CDMA2000A">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC6_CDMA2000A standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC6_CDMA2000B">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC6_CDMA2000B standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC6_DARC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC6_DARC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC6_ITU">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC6_ITU standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC7">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC7 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC7_ROHC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC7_ROHC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_CDMA2000">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_CDMA2000 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_DARC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_DARC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_DVBS2">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_DVBS2 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_EBU">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_EBU standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_ICODE">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_ICODE standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_ITU">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_ITU standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_MAXIM">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_MAXIM standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_ROHC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_ROHC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC8_WCDMA">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC8_WCDMA standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC10">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC10 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC10_CDMA2000">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC10_CDMA2000 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC11">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC11 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC12_3GPP">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC12_3GPP standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC12_CDMA2000">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC12_CDMA2000 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC12_DECT">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC12_DECT standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC13_BBC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC13_BBC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC14_DARC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC14_DARC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC15">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC15 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC15_MPT1327">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC15_MPT1327 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.ARC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the ARC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_AUGCCITT">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_AUGCCITT standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_BUYPASS">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_BUYPASS standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_CCITTFALSE">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_CCITTFALSE standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_CDMA2000">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_CDMA2000 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_DDS110">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_DDS110 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_DECTR">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_DECTR standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_DECTX">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_DECTX standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_DNP">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_DNP standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_EN13757">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_EN13757 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_GENIBUS">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_GENIBUS standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_MAXIM">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_MAXIM standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_MCRF4XX">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_MCRF4XX standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_RIELLO">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_RIELLO standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_T10DIF">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_T10DIF standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_TELEDISK">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_TELEDISK standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_TMS37157">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_TMS37157 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC16_USB">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC16_USB standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRCA">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRCA standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.KERMIT">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the KERMIT standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.MODBUS">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the MODBUS standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.X25">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the X25 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.XMODEM">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the XMODEM standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC24">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC24 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC24_FLEXRAYA">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC24_FLEXRAYA standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC24_FLEXRAYB">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC24_FLEXRAYB standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC31_PHILIPS">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC31_PHILIPS standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC32">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC32 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC32_BZIP2">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC32_BZIP2 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC32C">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC32C standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC32D">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC32D standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC32_MPEG2">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC32_MPEG2 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC32_POSIX">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC32_POSIX standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC32Q">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC32Q standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.JAMCRC">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the JAMCRC standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.XFER">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the XFER standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC40_GSM">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC40_GSM standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC64">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC64 standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC64_WE">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC64_WE standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCConfig.CRC64_XZ">
+            <summary>
+            Creates an instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/> configured to the CRC64_XZ standard.
+            
+            Parameters for this standard was provided by http://reveng.sourceforge.net/crc-catalogue/.
+            </summary>
+            <value>
+            A new, configured instance of <see cref="T:System.Data.HashFunction.CRC.ICRCConfig"/>. 
+            </value>
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.CRCConfig.Clone">
+            <summary>
+            Makes a deep clone of current instance.
+            </summary>
+            <returns>A deep clone of the current instance.</returns>
+        </member>
+        <member name="T:System.Data.HashFunction.CRC.CRCFactory">
+            <summary>
+            Provides instances of implementations of <see cref="T:System.Data.HashFunction.CRC.ICRC"/>.
+            </summary>
+            <seealso cref="T:System.Data.HashFunction.CRC.ICRCFactory" />
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRCFactory.Instance">
+            <summary>
+            Gets the singleton instance of this factory.
+            </summary>
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.CRCFactory.Create">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.CRC.ICRC" /> instance with the default configuration.
+            </summary>
+            <returns>
+            A <see cref="T:System.Data.HashFunction.CRC.ICRC" /> instance.
+            </returns>
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.CRCFactory.Create(System.Data.HashFunction.CRC.ICRCConfig)">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.CRC.ICRC" /> instance with given configuration.
+            </summary>
+            <param name="config">The configuration to use.</param>
+            <returns>
+            A <see cref="T:System.Data.HashFunction.CRC.ICRC" /> instance.
+            </returns>
+        </member>
+        <member name="T:System.Data.HashFunction.CRC.CRC_Implementation">
+            <summary>
+            Implementation of the cyclic redundancy check error-detecting code as defined at http://en.wikipedia.org/wiki/Cyclic_redundancy_check.
+            This implementation is generalized to encompass all possible CRC parameters from 1 to 64 bits.
+            </summary>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.CRC_Implementation.Config">
+            <summary>
+            Configuration used when creating this instance.
+            </summary>
+            <value>
+            A clone of configuration that was used when creating this instance.
+            </value>
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.CRC_Implementation.#ctor(System.Data.HashFunction.CRC.ICRCConfig)">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.CRC.CRC_Implementation" /> instance with given configuration.
+            </summary>
+            <param name="config">The configuration to use.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="config"/></exception>
+            <exception cref="T:System.ArgumentException"><paramref name="config"/>.<see cref="P:System.Data.HashFunction.CRC.ICRCConfig.HashSizeInBits"/> must be &gt;= <c>1</c> and &lt;= <c>64</c>;<paramref name="config"/>.<see cref="P:System.Data.HashFunction.CRC.ICRCConfig.HashSizeInBits"/></exception>
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.CRC_Implementation.ComputeHashInternal(System.Data.HashFunction.Core.Utilities.UnifiedData.IUnifiedData,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.CRC_Implementation.ComputeHashAsyncInternal(System.Data.HashFunction.Core.Utilities.UnifiedData.IUnifiedDataAsync,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.CRC_Implementation.GetDataDivisionTable(System.Int32,System.UInt64,System.Boolean)">
+            <summary>
+            Calculates the data-division table for the CRC parameters provided.
+            </summary>
+            <param name="hashSizeInBits">Length of the produced CRC value, in bits.</param>
+            <param name="polynomial">Divisor to use when calculating the CRC.</param>
+            <param name="reflectIn">If true, the CRC calculation processes input as big endian bit order.</param>
+            <returns>
+            Array of UInt64 values that allows a CRC implementation to look up the result
+            of dividing the index (data) by the polynomial.
+            </returns>
+            <remarks>
+            Resulting array contains 256 items if settings.Bits &gt;= 8, or 2 items if settings.Bits &lt; 8.
+            The table accounts for reflecting the index bits to fix the input endianness,
+            but it is not possible completely account for the output endianness if the CRC is mixed-endianness.
+            </remarks>
+        </member>
+        <member name="T:System.Data.HashFunction.CRC.ICRC">
+            <summary>
+            Implementation of the cyclic redundancy check error-detecting code as defined at http://en.wikipedia.org/wiki/Cyclic_redundancy_check.
+            </summary>
+            <seealso cref="T:System.Data.HashFunction.IHashFunctionAsync" />
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.ICRC.Config">
+            <summary>
+            Configuration used when creating this instance.
+            </summary>
+            <value>
+            A clone of configuration that was used when creating this instance.
+            </value>
+        </member>
+        <member name="T:System.Data.HashFunction.CRC.ICRCConfig">
+            <summary>
+            Defines a configuration for a <see cref="T:System.Data.HashFunction.CRC.ICRC"/> implementation.
+            </summary>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.ICRCConfig.HashSizeInBits">
+            <summary>
+            Length of the produced CRC value, in bits.
+            </summary>
+            <value>
+            The length of the produced CRC value, in bits
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.ICRCConfig.Polynomial">
+            <summary>
+            Divisor to use when calculating the CRC.
+            </summary>
+            <value>
+            The divisor that will be used when calculating the CRC value.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.ICRCConfig.InitialValue">
+            <summary>
+            Value to initialize the CRC register to before calculating the CRC.
+            </summary>
+            <value>
+            The value that will be used to initialize the CRC register before the calculation of the CRC value.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.ICRCConfig.ReflectIn">
+            <summary>
+            If true, the CRC calculation processes input as big endian bit order.
+            </summary>
+            <value>
+            <c>true</c> if the input should be processed in big endian bit order; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.ICRCConfig.ReflectOut">
+            <summary>
+            If true, the CRC calculation processes the output as big endian bit order.
+            </summary>
+            <value>
+            <c>true</c> if the CRC calculation processes the output as big endian bit order; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.CRC.ICRCConfig.XOrOut">
+            <summary>
+            Value to xor with the final CRC value.
+            </summary>
+            <value>
+            The value to xor with the final CRC value.
+            </value>
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.ICRCConfig.Clone">
+            <summary>
+            Makes a deep clone of current instance.
+            </summary>
+            <returns>A deep clone of the current instance.</returns>
+        </member>
+        <member name="T:System.Data.HashFunction.CRC.ICRCFactory">
+            <summary>
+            Provides instances of implementations of <see cref="T:System.Data.HashFunction.CRC.ICRC"/>.
+            </summary>
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.ICRCFactory.Create">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.CRC.ICRC"/> instance with the default configuration.
+            </summary>
+            <returns>A <see cref="T:System.Data.HashFunction.CRC.ICRC"/> instance.</returns>
+        </member>
+        <member name="M:System.Data.HashFunction.CRC.ICRCFactory.Create(System.Data.HashFunction.CRC.ICRCConfig)">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.CRC.ICRC"/> instance with given configuration.
+            </summary>
+            <param name="config">The configuration to use.</param>
+            <returns>A <see cref="T:System.Data.HashFunction.CRC.ICRC"/> instance.</returns>
+        </member>
+    </members>
+</doc>

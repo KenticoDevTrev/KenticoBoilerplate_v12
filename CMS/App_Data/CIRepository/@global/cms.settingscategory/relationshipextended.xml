@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.settingscategory>
+  <CategoryDisplayName>Relationship Extended</CategoryDisplayName>
+  <CategoryIconPath />
+  <CategoryIsGroup>False</CategoryIsGroup>
+  <CategoryName>RelationshipExtended</CategoryName>
+  <CategoryOrder>0</CategoryOrder>
+  <CategoryParentID>
+    <CodeName>CMS.Settings</CodeName>
+    <ObjectType>cms.settingscategory</ObjectType>
+  </CategoryParentID>
+  <CategoryResourceID>
+    <CodeName>RelationshipsExtended</CodeName>
+    <GUID>097a3e7c-b947-4528-90fa-ea41d66a03f9</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </CategoryResourceID>
+</cms.settingscategory>

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "MVCWebPartNoModel";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h2>MVCWebPartNoModel</h2>
+<p>ViewBag Context: Current Document: @ViewBag.CurrentDocument.NodeAliasPath </p>
+
+<h3>By passing a path</h3>
+@{Html.RenderAction("NavigationByPath", "Examples", new { Path = (string)ViewBag.CurrentDocument.NodeAliasPath, Culture = (string)ViewBag.CurrentCulture.CultureCode, SiteName = ViewBag.CurrentSite.SiteName });}
+
+<h3>By passing a viewbag (Context only)</h3>
+@{Html.RenderAction("NavigationByContext", "Examples", new { ViewBag = ViewBag });}

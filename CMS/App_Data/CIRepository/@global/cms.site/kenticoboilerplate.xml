@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.site>
+  <SiteDescription>Kentico Boilerplate</SiteDescription>
+  <SiteDisplayName>Kentico Boilerplate</SiteDisplayName>
+  <SiteDomainName>admin.kenticoboilerplate.hbs.net</SiteDomainName>
+  <SiteGUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</SiteGUID>
+  <SiteIsContentOnly>True</SiteIsContentOnly>
+  <SiteIsOffline>False</SiteIsOffline>
+  <SiteName>KenticoBoilerplate</SiteName>
+  <SiteOfflineMessage />
+  <SitePresentationURL>http://kenticoboilerplate.hbs.net</SitePresentationURL>
+</cms.site>

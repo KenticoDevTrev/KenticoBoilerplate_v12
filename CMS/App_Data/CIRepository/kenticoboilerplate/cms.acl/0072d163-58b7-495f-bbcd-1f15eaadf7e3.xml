@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.acl>
+  <ACLGUID>0072d163-58b7-495f-bbcd-1f15eaadf7e3</ACLGUID>
+  <ACLInheritedACLs />
+  <ACLSiteID>
+    <CodeName>KenticoBoilerplate</CodeName>
+    <GUID>a5d3e3f5-ad52-4e3a-9c27-667f3d147b54</GUID>
+    <ObjectType>cms.site</ObjectType>
+  </ACLSiteID>
+</cms.acl>

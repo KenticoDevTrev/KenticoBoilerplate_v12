@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.uielement>
+  <ElementCheckModuleReadPermission>False</ElementCheckModuleReadPermission>
+  <ElementDisplayName>{$biz.header.altforms$}</ElementDisplayName>
+  <ElementFromVersion>8.0</ElementFromVersion>
+  <ElementGUID>da79d75d-2bf7-427d-a6a4-011f6e194516</ElementGUID>
+  <ElementIconClass />
+  <ElementIsCustom>False</ElementIsCustom>
+  <ElementIsGlobalApplication>False</ElementIsGlobalApplication>
+  <ElementIsMenu>False</ElementIsMenu>
+  <ElementName>Forms.AlternativeForms</ElementName>
+  <ElementOrder>9</ElementOrder>
+  <ElementParentID>
+    <CodeName>Forms.Properties</CodeName>
+    <GUID>0e8d0795-e114-4075-a9f3-226e40bf4207</GUID>
+    <ObjectType>cms.uielement</ObjectType>
+    <Parent>
+      <CodeName>CMS.Form</CodeName>
+      <GUID>385e528a-e013-4a84-bad9-d5956408741a</GUID>
+      <ObjectType>cms.resource</ObjectType>
+    </Parent>
+  </ElementParentID>
+  <ElementProperties>
+    <data>
+      <category_name_codebehind>False</category_name_codebehind>
+      <category_name_header>False</category_name_header>
+    </data>
+  </ElementProperties>
+  <ElementRequiresGlobalAdminPriviligeLevel>False</ElementRequiresGlobalAdminPriviligeLevel>
+  <ElementResourceID>
+    <CodeName>CMS.Form</CodeName>
+    <GUID>385e528a-e013-4a84-bad9-d5956408741a</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </ElementResourceID>
+  <ElementSize>0</ElementSize>
+  <ElementTargetURL>
+    <![CDATA[~/CMSModules/BizForms/Tools/AlternativeForms/AlternativeForms_List.aspx?formId={?formId?}]]>
+  </ElementTargetURL>
+  <ElementType>Url</ElementType>
+  <ElementVisibilityCondition>
+    <![CDATA[{%EditedObject.FormDevelopmentModel == 0|(identity)GlobalAdministrator|(hash)75ad515341a8cb1474c49741aa82ca08a9a633f43a17b6ab55a1710f9fe84ba2%}]]>
+  </ElementVisibilityCondition>
+</cms.uielement>

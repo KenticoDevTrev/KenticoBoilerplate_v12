@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.permission>
+  <PermissionDescription>Modify Perimission</PermissionDescription>
+  <PermissionDisplayInMatrix>True</PermissionDisplayInMatrix>
+  <PermissionDisplayName>Modify</PermissionDisplayName>
+  <PermissionEditableByGlobalAdmin>True</PermissionEditableByGlobalAdmin>
+  <PermissionGUID>a03241d6-3be0-4849-87e1-f0a816eafcb4</PermissionGUID>
+  <PermissionName>Modify</PermissionName>
+  <PermissionOrder>2</PermissionOrder>
+  <ResourceID>
+    <CodeName>RelationshipsExtended</CodeName>
+    <GUID>097a3e7c-b947-4528-90fa-ea41d66a03f9</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </ResourceID>
+</cms.permission>

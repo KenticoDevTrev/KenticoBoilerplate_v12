@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.uielement>
+  <ElementCaption>Form builder</ElementCaption>
+  <ElementCheckModuleReadPermission>False</ElementCheckModuleReadPermission>
+  <ElementDisplayName>Form builder (MVC)</ElementDisplayName>
+  <ElementFromVersion>12.0</ElementFromVersion>
+  <ElementGUID>774b9eb9-bcda-4ebe-a000-50deffcbeb53</ElementGUID>
+  <ElementIconClass />
+  <ElementIsCustom>False</ElementIsCustom>
+  <ElementIsGlobalApplication>False</ElementIsGlobalApplication>
+  <ElementIsMenu>False</ElementIsMenu>
+  <ElementName>Forms.FormBuilderMVC</ElementName>
+  <ElementOrder>4</ElementOrder>
+  <ElementParentID>
+    <CodeName>Forms.Properties</CodeName>
+    <GUID>0e8d0795-e114-4075-a9f3-226e40bf4207</GUID>
+    <ObjectType>cms.uielement</ObjectType>
+    <Parent>
+      <CodeName>CMS.Form</CodeName>
+      <GUID>385e528a-e013-4a84-bad9-d5956408741a</GUID>
+      <ObjectType>cms.resource</ObjectType>
+    </Parent>
+  </ElementParentID>
+  <ElementProperties>
+    <Data>
+      <DisplayBreadcrumbs>False</DisplayBreadcrumbs>
+    </Data>
+  </ElementProperties>
+  <ElementRequiresGlobalAdminPriviligeLevel>False</ElementRequiresGlobalAdminPriviligeLevel>
+  <ElementResourceID>
+    <CodeName>CMS.Form</CodeName>
+    <GUID>385e528a-e013-4a84-bad9-d5956408741a</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </ElementResourceID>
+  <ElementSize>0</ElementSize>
+  <ElementTargetURL>
+    <![CDATA[~/CMSModules/BizForms/Tools/BizForm_Edit_FormBuilderMVC.aspx?formId={?formId?}]]>
+  </ElementTargetURL>
+  <ElementType>Url</ElementType>
+  <ElementVisibilityCondition>
+    <![CDATA[{%CurrentUser.IsAuthorizedPerResource("cms.form", "ReadForm") && EditedObject.FormDevelopmentModel == 1|(identity)GlobalAdministrator|(hash)3177551485f60af55b11a91d3b78966ea46de5e219adc323e93c5218f0cd0739%}]]>
+  </ElementVisibilityCondition>
+</cms.uielement>

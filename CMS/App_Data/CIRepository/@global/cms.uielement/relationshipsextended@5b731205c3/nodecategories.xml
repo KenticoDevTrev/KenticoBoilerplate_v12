@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.uielement>
+  <ElementCheckModuleReadPermission>True</ElementCheckModuleReadPermission>
+  <ElementDisplayName>Node Categories</ElementDisplayName>
+  <ElementGUID>9a37ffff-7d05-41ea-8850-9b37e85540c3</ElementGUID>
+  <ElementIconClass />
+  <ElementIsCustom>False</ElementIsCustom>
+  <ElementIsGlobalApplication>False</ElementIsGlobalApplication>
+  <ElementIsMenu>False</ElementIsMenu>
+  <ElementName>NodeCategories</ElementName>
+  <ElementOrder>5</ElementOrder>
+  <ElementParentID>
+    <CodeName>Properties</CodeName>
+    <GUID>cc744db0-dc8c-45de-ab30-bd36f67b2eb9</GUID>
+    <ObjectType>cms.uielement</ObjectType>
+    <Parent>
+      <CodeName>CMS.Content</CodeName>
+      <GUID>98c6ee00-230a-4207-a6d3-03677b83b245</GUID>
+      <ObjectType>cms.resource</ObjectType>
+    </Parent>
+  </ElementParentID>
+  <ElementProperties>
+    <Data>
+      <BindOnPrimaryNodeOnly>True</BindOnPrimaryNodeOnly>
+      <CategoryDisplayMode>Tree</CategoryDisplayMode>
+      <DisplayBreadcrumbs>False</DisplayBreadcrumbs>
+      <ExpandToLevel>1</ExpandToLevel>
+      <FieldSaveType>ID</FieldSaveType>
+      <JoinTableForeignKeySource>Page</JoinTableForeignKeySource>
+      <ObjectType>cms.node</ObjectType>
+      <OnlyLeafSelectable>False</OnlyLeafSelectable>
+      <ParentSelectsChildren>False</ParentSelectsChildren>
+      <SaveMode>ToNodeCategories</SaveMode>
+    </Data>
+  </ElementProperties>
+  <ElementRequiresGlobalAdminPriviligeLevel>False</ElementRequiresGlobalAdminPriviligeLevel>
+  <ElementResourceID>
+    <CodeName>RelationshipsExtended</CodeName>
+    <GUID>097a3e7c-b947-4528-90fa-ea41d66a03f9</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </ElementResourceID>
+  <ElementSize>0</ElementSize>
+  <ElementType>PageTemplate</ElementType>
+</cms.uielement>

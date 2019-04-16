@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.uielement>
+  <ElementCaption>Relationship name properties</ElementCaption>
+  <ElementCheckModuleReadPermission>False</ElementCheckModuleReadPermission>
+  <ElementDisplayName>Edit relationship name</ElementDisplayName>
+  <ElementGUID>4ee6e28b-165d-4221-92a8-ab956828e741</ElementGUID>
+  <ElementIconClass />
+  <ElementIsCustom>False</ElementIsCustom>
+  <ElementIsGlobalApplication>False</ElementIsGlobalApplication>
+  <ElementIsMenu>False</ElementIsMenu>
+  <ElementName>EditRelationshipNameExtended</ElementName>
+  <ElementOrder>1</ElementOrder>
+  <ElementPageTemplateID>
+    <CodeName>VerticalTabs</CodeName>
+    <GUID>8136b750-a785-438f-a412-32212cd4dde6</GUID>
+    <ObjectType>cms.pagetemplate</ObjectType>
+  </ElementPageTemplateID>
+  <ElementParentID>
+    <CodeName>Development.RelationshipNamesExtended</CodeName>
+    <GUID>14e0dd91-75cb-4eb8-9056-1b33437bb32f</GUID>
+    <ObjectType>cms.uielement</ObjectType>
+    <Parent>
+      <CodeName>RelationshipsExtended</CodeName>
+      <GUID>097a3e7c-b947-4528-90fa-ea41d66a03f9</GUID>
+      <ObjectType>cms.resource</ObjectType>
+    </Parent>
+  </ElementParentID>
+  <ElementProperties>
+    <Data>
+      <AllowSubTabs>True</AllowSubTabs>
+      <category_name_Breadcrumbs>False</category_name_Breadcrumbs>
+      <DisplayBreadcrumbs>True</DisplayBreadcrumbs>
+      <DisplayTitleInTabs>False</DisplayTitleInTabs>
+      <RememberSelectedTab>False</RememberSelectedTab>
+    </Data>
+  </ElementProperties>
+  <ElementRequiresGlobalAdminPriviligeLevel>False</ElementRequiresGlobalAdminPriviligeLevel>
+  <ElementResourceID>
+    <CodeName>RelationshipsExtended</CodeName>
+    <GUID>097a3e7c-b947-4528-90fa-ea41d66a03f9</GUID>
+    <ObjectType>cms.resource</ObjectType>
+  </ElementResourceID>
+  <ElementSize>0</ElementSize>
+  <ElementType>PageTemplate</ElementType>
+</cms.uielement>

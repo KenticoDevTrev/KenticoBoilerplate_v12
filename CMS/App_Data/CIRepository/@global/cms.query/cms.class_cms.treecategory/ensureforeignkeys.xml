@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.query>
+  <ClassID>
+    <CodeName>CMS.TreeCategory</CodeName>
+    <GUID>f944d75c-48be-443e-b130-2c30b8c7d4b3</GUID>
+    <ObjectType>cms.class</ObjectType>
+  </ClassID>
+  <QueryConnectionString>CMSConnectionString</QueryConnectionString>
+  <QueryGUID>620c7499-5612-4639-9be2-ccbca38ca426</QueryGUID>
+  <QueryIsCustom>False</QueryIsCustom>
+  <QueryIsLocked>True</QueryIsLocked>
+  <QueryName>EnsureForeignKeys</QueryName>
+  <QueryRequiresTransaction>False</QueryRequiresTransaction>
+  <QueryText>
+<![CDATA[
+IF NOT EXISTS (SELECT * FROM sys.objects o WHERE o.object_id = object_id(N'[dbo].[FK_CMS_TreeCategory_CMS_Category]') AND OBJECTPROPERTY(o.object_id, N'IsForeignKey') = 1)
+BEGIN
+ALTER TABLE [dbo].[CMS_TreeCategory]  WITH CHECK ADD  CONSTRAINT [FK_CMS_TreeCategory_CMS_Category] FOREIGN KEY([CategoryID])
+REFERENCES [dbo].[CMS_Category] ([CategoryID])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+
+ALTER TABLE [dbo].[CMS_TreeCategory] CHECK CONSTRAINT [FK_CMS_TreeCategory_CMS_Category]
+END
+
+IF NOT EXISTS (SELECT * FROM sys.objects o WHERE o.object_id = object_id(N'[dbo].[FK_CMS_TreeCategory_CMS_Tree]') AND OBJECTPROPERTY(o.object_id, N'IsForeignKey') = 1)
+BEGIN
+ALTER TABLE [dbo].[CMS_TreeCategory]  WITH CHECK ADD  CONSTRAINT [FK_CMS_TreeCategory_CMS_Tree] FOREIGN KEY([NodeID])
+REFERENCES [dbo].[CMS_Tree] ([NodeID])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+
+ALTER TABLE [dbo].[CMS_TreeCategory] CHECK CONSTRAINT [FK_CMS_TreeCategory_CMS_Tree]
+END
+]]>
+  </QueryText>
+  <QueryTypeID>0</QueryTypeID>
+</cms.query>

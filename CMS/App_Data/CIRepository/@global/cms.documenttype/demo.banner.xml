@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.documenttype>
+  <ClassCodeGenerationSettings>
+    <Data>
+      <NameSpace>Demo</NameSpace>
+    </Data>
+  </ClassCodeGenerationSettings>
+  <ClassDisplayName>Banner</ClassDisplayName>
+  <ClassFormDefinition>
+    <form version="2">
+      <field column="BannerID" columntype="integer" guid="c81d2b0b-02e1-40ab-8fb2-a89a6d56e182" isPK="true" publicfield="false">
+        <properties>
+          <fieldcaption>BannerID</fieldcaption>
+        </properties>
+        <settings>
+          <controlname>labelcontrol</controlname>
+        </settings>
+      </field>
+      <field column="BannerName" columnsize="200" columntype="text" guid="724cf99f-5ed8-4abc-8ddb-2b5b0e21d12f" publicfield="false" visible="true">
+        <properties>
+          <fieldcaption>Banner Name</fieldcaption>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="BannerImage" columnsize="200" columntype="text" guid="53e615c0-6be9-4789-882b-36d64a7765d7" publicfield="false" visible="true">
+        <properties>
+          <fieldcaption>Banner Image</fieldcaption>
+        </properties>
+        <settings>
+          <Autoresize>
+<![CDATA[
+<AutoResize>
+  <autoresize>noresize</autoresize>
+  <autoresize_width />
+  <autoresize_height />
+  <autoresize_maxsidesize />
+</AutoResize>
+]]>
+          </Autoresize>
+          <Configuration>True</Configuration>
+          <controlname>URLSelector</controlname>
+          <Dialogs_Content_Hide>False</Dialogs_Content_Hide>
+          <Dialogs_Content_Site>##all##</Dialogs_Content_Site>
+          <Dialogs_Libraries_Site>##all##</Dialogs_Libraries_Site>
+        </settings>
+      </field>
+    </form>
+  </ClassFormDefinition>
+  <ClassGUID>e421d5d7-ff30-422a-a395-63f23c283902</ClassGUID>
+  <ClassIconClass>icon-picture</ClassIconClass>
+  <ClassInheritsFromClassID>0</ClassInheritsFromClassID>
+  <ClassIsContentOnly>True</ClassIsContentOnly>
+  <ClassIsCoupledClass>True</ClassIsCoupledClass>
+  <ClassIsCustomTable>False</ClassIsCustomTable>
+  <ClassIsDocumentType>True</ClassIsDocumentType>
+  <ClassIsForm>False</ClassIsForm>
+  <ClassIsMenuItemType>False</ClassIsMenuItemType>
+  <ClassName>Demo.Banner</ClassName>
+  <ClassNodeNameSource>BannerName</ClassNodeNameSource>
+  <ClassSearchContentColumn>DocumentContent</ClassSearchContentColumn>
+  <ClassSearchCreationDateColumn>DocumentCreatedWhen</ClassSearchCreationDateColumn>
+  <ClassSearchEnabled>True</ClassSearchEnabled>
+  <ClassSearchSettings>
+    <search>
+      <item azurecontent="True" azureretrievable="False" azuresearchable="True" content="True" id="00f66e6a-6dfd-4a12-9bf2-f79e74607b35" name="BannerImage" searchable="False" tokenized="True" />
+      <item azurecontent="False" azureretrievable="True" azuresearchable="False" content="False" id="9e455877-7dbd-4252-917d-74fd55a6d696" name="BannerID" searchable="True" tokenized="False" />
+      <item azurecontent="True" azureretrievable="False" azuresearchable="True" content="True" id="c9a7fe01-14e6-4c64-a6de-0ec6798e6ea0" name="BannerName" searchable="False" tokenized="True" />
+    </search>
+  </ClassSearchSettings>
+  <ClassSearchTitleColumn>DocumentName</ClassSearchTitleColumn>
+  <ClassShowAsSystemTable>False</ClassShowAsSystemTable>
+  <ClassTableName>Demo_Banner</ClassTableName>
+  <ClassUsePublishFromTo>True</ClassUsePublishFromTo>
+  <ClassUsesVersioning>False</ClassUsesVersioning>
+</cms.documenttype>

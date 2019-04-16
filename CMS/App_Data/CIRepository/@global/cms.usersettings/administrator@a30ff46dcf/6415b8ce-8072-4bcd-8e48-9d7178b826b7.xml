@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.usersettings>
+  <UserAccountLockReason>0</UserAccountLockReason>
+  <UserActivationDate>2019-04-07 02:15:56Z</UserActivationDate>
+  <UserDialogsConfiguration>
+    <Data>
+      <media.libraryname>Images</media.libraryname>
+      <media.path>Images/Banners</media.path>
+      <media.sitename>KenticoBoilerplate</media.sitename>
+      <media.viewmode>list</media.viewmode>
+      <selectedtab>libraries</selectedtab>
+    </Data>
+  </UserDialogsConfiguration>
+  <UserFacebookID />
+  <UserInvalidLogOnAttempts>0</UserInvalidLogOnAttempts>
+  <UserLogActivities>False</UserLogActivities>
+  <UserNickName />
+  <UserPasswordLastChanged>2019-04-07 02:15:56Z</UserPasswordLastChanged>
+  <UserPreferences />
+  <UserRegistrationInfo />
+  <UserSettingsUserGUID>6415b8ce-8072-4bcd-8e48-9d7178b826b7</UserSettingsUserGUID>
+  <UserSettingsUserID>
+    <CodeName>administrator</CodeName>
+    <GUID>6415b8ce-8072-4bcd-8e48-9d7178b826b7</GUID>
+    <ObjectType>cms.user</ObjectType>
+  </UserSettingsUserID>
+  <UserSignature />
+  <UserWaitingForApproval>False</UserWaitingForApproval>
+</cms.usersettings>

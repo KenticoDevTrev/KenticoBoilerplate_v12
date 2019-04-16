@@ -1,0 +1,1220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.pagetemplate>
+  <PageTemplateAllowInheritHeader>False</PageTemplateAllowInheritHeader>
+  <PageTemplateCategoryID>
+    <CodeName>Edit</CodeName>
+    <GUID>e5cdae1e-c865-444b-9c52-e9ac1661131a</GUID>
+    <ObjectType>cms.pagetemplatecategory</ObjectType>
+  </PageTemplateCategoryID>
+  <PageTemplateCloneAsAdHoc>False</PageTemplateCloneAsAdHoc>
+  <PageTemplateCodeName>EditRelationship</PageTemplateCodeName>
+  <PageTemplateDescription>
+    <![CDATA[Allows user to relate the current node to another node based on the provided Relationship Name]]>
+  </PageTemplateDescription>
+  <PageTemplateDisplayName>Edit relationship</PageTemplateDisplayName>
+  <PageTemplateFile />
+  <PageTemplateForAllPages>True</PageTemplateForAllPages>
+  <PageTemplateGUID>ab013e32-fd92-4d17-930f-db53ff95a6f6</PageTemplateGUID>
+  <PageTemplateIconClass>icon-edit</PageTemplateIconClass>
+  <PageTemplateInheritPageLevels />
+  <PageTemplateInheritParentHeader>True</PageTemplateInheritParentHeader>
+  <PageTemplateIsAllowedForProductSection>False</PageTemplateIsAllowedForProductSection>
+  <PageTemplateIsLayout>False</PageTemplateIsLayout>
+  <PageTemplateIsReusable>True</PageTemplateIsReusable>
+  <PageTemplateLayout>
+<![CDATA[
+<div class="PageContent">
+  <div class="row">
+    <div class="col-xs-9">
+      {^WebPartZone|(id)HeaderContentZone^}
+      </div>
+      <div class="col-xs-3" style="text-align: right;">
+        {^WebPartZone|(id)NewButtonZone^}
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-{% RelationshipsExtended.RelationshipSelectorIsVisible() ? "6" : "12" @%}">
+      {^WebPartZone|(id)AddRelationshipZone^}
+    </div>
+    <div class="col-xs-{% RelationshipsExtended.RelationshipSelectorIsVisible() ? "6" : "12" @%}">
+      {^WebPartZone|(id)RelationshipZone^}
+    </div>
+  </div>
+</div>
+]]>
+  </PageTemplateLayout>
+  <PageTemplateLayoutType>html</PageTemplateLayoutType>
+  <PageTemplateProperties>
+    <form version="2">
+      <category name="Intro">
+        <properties>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field allowempty="true" column="HeaderText" columnsize="200" columntype="text" guid="cff9b77e-dab8-4470-8e5d-7ac78095b7f3" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Header Text</fieldcaption>
+          <fielddescription>What is shown above the selector</fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="IntroText" columntype="longtext" guid="d13d8ab0-d5b0-42fb-b48e-66ac28f2b15f" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Intro Text</fieldcaption>
+          <fielddescription>
+            <![CDATA[Shown above the tool, useful to define what type of relationships are being selected or what this relationship affects.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>HtmlAreaControl</controlname>
+          <Dialogs_Content_Hide>False</Dialogs_Content_Hide>
+          <HeightUnitType>PX</HeightUnitType>
+          <MediaDialogConfiguration>True</MediaDialogConfiguration>
+          <ShowAddStampButton>False</ShowAddStampButton>
+          <WidthUnitType>PX</WidthUnitType>
+        </settings>
+      </field>
+      <category name="Parameters">
+        <properties>
+          <caption>Relationship</caption>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field column="RelationshipName" columnsize="200" columntype="text" guid="7b73213c-da3d-40b4-ac2b-1b387b04bc6c" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Relationship Name</fieldcaption>
+        </properties>
+        <settings>
+          <AddGlobalObjectNamePrefix>False</AddGlobalObjectNamePrefix>
+          <AddGlobalObjectSuffix>False</AddGlobalObjectSuffix>
+          <AdditionalColumns>RelationshipNameIsAdHoc</AdditionalColumns>
+          <AllowAll>False</AllowAll>
+          <AllowDefault>False</AllowDefault>
+          <AllowEditTextBox>False</AllowEditTextBox>
+          <AllowEmpty>False</AllowEmpty>
+          <controlname>Uni_selector</controlname>
+          <DialogWindowName>SelectionDialog</DialogWindowName>
+          <DisplayNameFormat>
+            <![CDATA[{% RelationshipDisplayName %} (Adhoc: {% RelationshipNameIsAdHoc %})]]>
+          </DisplayNameFormat>
+          <EditDialogWindowHeight>700</EditDialogWindowHeight>
+          <EditDialogWindowWidth>1000</EditDialogWindowWidth>
+          <EditWindowName>EditWindow</EditWindowName>
+          <EncodeOutput>True</EncodeOutput>
+          <GlobalObjectSuffix ismacro="true">{$general.global$}</GlobalObjectSuffix>
+          <ItemsPerPage>25</ItemsPerPage>
+          <LocalizeItems>True</LocalizeItems>
+          <MaxDisplayedItems>25</MaxDisplayedItems>
+          <MaxDisplayedTotalItems>50</MaxDisplayedTotalItems>
+          <ObjectSiteName>#currentsite</ObjectSiteName>
+          <ObjectType>cms.relationshipname</ObjectType>
+          <OrderBy>RelationshipDisplayName</OrderBy>
+          <RemoveMultipleCommas>False</RemoveMultipleCommas>
+          <ReturnColumnName>RelationshipName</ReturnColumnName>
+          <ReturnColumnType>id</ReturnColumnType>
+          <SelectionMode>1</SelectionMode>
+          <UseDefaultNameFilter>True</UseDefaultNameFilter>
+          <ValuesSeparator>;</ValuesSeparator>
+        </settings>
+      </field>
+      <field column="BindOnPrimaryNodeOnly" columntype="boolean" guid="4783ada6-6b3f-4981-bb3d-bdd855a78dfc" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>True</defaultvalue>
+          <fieldcaption>Bind On Primary Node Only</fieldcaption>
+          <fielddescription>
+            <![CDATA[If the Node is a Linked Document, will show relationships on the primary node instead of the linked node.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field column="AllowSwitchSides" columntype="boolean" guid="ccbe1d08-6fa4-4a28-8a42-2f8915d77bab" hasdependingfields="true" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>False</defaultvalue>
+          <fieldcaption>Allow Switch Sides</fieldcaption>
+          <fielddescription>
+            <![CDATA[Check if you wish to allow an assignment of documents that is flipped from the normal Direction.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaxRelationships" columntype="integer" guid="ea2569d4-9dbe-4bb8-ac33-670e2a83b4f0" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Max Relationships</fieldcaption>
+          <fielddescription>Anything below 0 means unlimited.</fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="IsLeftSideMacro" columntype="longtext" guid="96937e89-632a-497d-9938-98c462614e9d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <explanationtext>
+            <![CDATA[Use CurrentDocument for the current document.  ex: CurrentDocument.ClassName != "The.ClassName"]]>
+          </explanationtext>
+          <fieldcaption>Left Side Macro Condition</fieldcaption>
+          <fielddescription>
+<![CDATA[
+This macro will be evaluated to determine of a page can be on the "Left Side."
+
+For Ad-hoc relationships, this determines if a page can have relationships added to it.
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoSize>False</AutoSize>
+          <controlname>MacroEditor</controlname>
+          <EnablePositionMember>False</EnablePositionMember>
+          <EnableSections>False</EnableSections>
+          <EnableViewState>False</EnableViewState>
+          <Height>100</Height>
+          <Language>0</Language>
+          <ShowBookmarks>False</ShowBookmarks>
+          <ShowLineNumbers>False</ShowLineNumbers>
+          <SingleLineMode>False</SingleLineMode>
+          <SingleMacroMode>False</SingleMacroMode>
+          <SupportPasteImages>False</SupportPasteImages>
+          <Width>100%</Width>
+        </settings>
+      </field>
+      <field column="IsRightSideMacro" columntype="longtext" guid="5bba92a3-adc0-4168-8b09-52ea64478164" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <explanationtext>
+            <![CDATA[Use CurrentDocument for the current document.  ex: CurrentDocument.ClassName == "The.ClassName"]]>
+          </explanationtext>
+          <fieldcaption>Right Side Macro Condition</fieldcaption>
+          <fielddescription>
+<![CDATA[
+This macro will be evaluated to determine of a page can be on the "Right Side."
+
+For Ad-hoc relationships, this determines if a page gets a "read only" view of the pages it's related to.
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoSize>False</AutoSize>
+          <controlname>MacroEditor</controlname>
+          <EnablePositionMember>False</EnablePositionMember>
+          <EnableSections>False</EnableSections>
+          <EnableViewState>False</EnableViewState>
+          <Height>100</Height>
+          <Language>0</Language>
+          <ShowBookmarks>False</ShowBookmarks>
+          <ShowLineNumbers>False</ShowLineNumbers>
+          <SingleLineMode>False</SingleLineMode>
+          <SingleMacroMode>False</SingleMacroMode>
+          <SupportPasteImages>False</SupportPasteImages>
+          <Width>100%</Width>
+        </settings>
+      </field>
+      <field allowempty="true" column="AutoHide" columntype="boolean" guid="223e0382-ee2c-42ed-8d35-1c7b472b738e" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Auto Hide Tab</fieldcaption>
+          <fielddescription>
+<![CDATA[
+If checked, this tab will hide if the current page is neither Right Side or Left Side (based on the above macro conditions).
+
+This only works if you apply the Tab Extender RelationshipsExtended.RelationshipVerticalTabExtender to the parent Vertical Tab UI Element.
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <category name="NewButton">
+        <properties>
+          <caption>New Button</caption>
+          <visible ismacro="true">{% !Fields.AllowSwitchSides @%}</visible>
+        </properties>
+      </category>
+      <field allowempty="true" column="ShowNewPageButton" columntype="boolean" guid="9e36c0af-cd4e-41de-8661-8f39c74538a5" hasdependingfields="true" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>false</defaultvalue>
+          <explanationtext>
+            <![CDATA[Will only be shown on Left-Side pages where Allow Switch Sides is disabled.]]>
+          </explanationtext>
+          <fieldcaption>Show New Button</fieldcaption>
+          <fielddescription>
+            <![CDATA[If checked, a New page button will be available to the user to quickly add new pages if one isn't found.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="NewPageType" columnsize="100" columntype="text" dependsonanotherfield="true" guid="71356bb7-fd07-4af9-8d6c-660cc44f5350" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>New Page Type</fieldcaption>
+          <fielddescription>
+            <![CDATA[Must select a single page type that will be created at the specified location.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%ShowNewPageButton.Value|(identity)GlobalAdministrator|(hash)5b730f4e968bba36e5fa257ad8ff46fe11f705e920dee5f824dfcc8d3d8373ed%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AllowAll>False</AllowAll>
+          <AllowEmpty>True</AllowEmpty>
+          <controlname>selectclassnames</controlname>
+          <HideInheritedClasses>False</HideInheritedClasses>
+          <ReturnColumnName>ClassName</ReturnColumnName>
+          <SelectionMode>1</SelectionMode>
+          <ShowOnlyCoupled>False</ShowOnlyCoupled>
+        </settings>
+      </field>
+      <field allowempty="true" column="ParentNodeAliasPath" columnsize="200" columntype="text" dependsonanotherfield="true" guid="ebc3d7e3-d1c1-4f9f-935d-0318d1cffebe" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Parent Node Alias Path</fieldcaption>
+          <fielddescription>
+            <![CDATA[The Node Alias Path of the parent where the new page should be placed.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%ShowNewPageButton.Value|(identity)GlobalAdministrator|(hash)5b730f4e968bba36e5fa257ad8ff46fe11f705e920dee5f824dfcc8d3d8373ed%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <category name="SelectorSettings">
+        <properties>
+          <caption>Selector Settings</caption>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field column="SelectorType" columnsize="50" columntype="text" guid="8cf482d7-d2ff-4e12-a3c0-5b121568f1e2" hasdependingfields="true" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>UniSelector</defaultvalue>
+          <fieldcaption>Selector Type</fieldcaption>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+UniSelector;Uni-Selector
+TreeSelector;Tree Selector
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field allowempty="true" column="AllowedPageTypes" columntype="longtext" guid="d9a47bfb-5df0-41ad-84c8-2be309af4abc" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Allowed Page Types (Selector)</fieldcaption>
+          <fielddescription>If blank, all page types will be allowed</fielddescription>
+        </properties>
+        <settings>
+          <AddGlobalObjectNamePrefix>False</AddGlobalObjectNamePrefix>
+          <AddGlobalObjectSuffix>False</AddGlobalObjectSuffix>
+          <AllowAll>False</AllowAll>
+          <AllowDefault>False</AllowDefault>
+          <AllowEditTextBox>False</AllowEditTextBox>
+          <AllowEmpty>False</AllowEmpty>
+          <controlname>Uni_selector</controlname>
+          <DialogWindowName>SelectionDialog</DialogWindowName>
+          <DisplayNameFormat>{% ClassDisplayName %}</DisplayNameFormat>
+          <EditDialogWindowHeight>700</EditDialogWindowHeight>
+          <EditDialogWindowWidth>1000</EditDialogWindowWidth>
+          <EditWindowName>EditWindow</EditWindowName>
+          <EncodeOutput>True</EncodeOutput>
+          <GlobalObjectSuffix ismacro="true">{$general.global$}</GlobalObjectSuffix>
+          <ItemsPerPage>25</ItemsPerPage>
+          <LocalizeItems>True</LocalizeItems>
+          <MaxDisplayedItems>25</MaxDisplayedItems>
+          <MaxDisplayedTotalItems>50</MaxDisplayedTotalItems>
+          <ObjectSiteName>#currentsite</ObjectSiteName>
+          <ObjectType>CMS.Class</ObjectType>
+          <OrderBy>ClassDisplayName</OrderBy>
+          <RemoveMultipleCommas>False</RemoveMultipleCommas>
+          <ReturnColumnName>ClassName</ReturnColumnName>
+          <ReturnColumnType>id</ReturnColumnType>
+          <SelectionMode>2</SelectionMode>
+          <UseDefaultNameFilter>True</UseDefaultNameFilter>
+          <ValuesSeparator>;</ValuesSeparator>
+          <WhereCondition>ClassIsDocumentType = 1</WhereCondition>
+        </settings>
+      </field>
+      <field allowempty="true" column="DisplayNameFormat" columntype="longtext" guid="ba940210-62e5-4661-b0f1-7f3b83df5c43" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Display name format</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Can add a custom Display Name Format for the page elements.  The Macro can use any field found in the CMS_Node, CMS_Document, and the Page Type Specific fields. 
+
+ex: {% NodeName %} - {% MyField %}
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoSize>False</AutoSize>
+          <controlname>MacroEditor</controlname>
+          <EnablePositionMember>False</EnablePositionMember>
+          <EnableSections>False</EnableSections>
+          <EnableViewState>False</EnableViewState>
+          <Height>100</Height>
+          <Language>0</Language>
+          <ShowBookmarks>False</ShowBookmarks>
+          <ShowLineNumbers>False</ShowLineNumbers>
+          <SingleLineMode>False</SingleLineMode>
+          <SingleMacroMode>False</SingleMacroMode>
+          <SupportPasteImages>False</SupportPasteImages>
+          <Width>100%</Width>
+        </settings>
+      </field>
+      <field allowempty="true" column="ToolTipFormat" columntype="longtext" guid="ac39f34a-0cf3-42ff-b8ca-29d5c86bed7e" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Hover Over/Tooltip Format</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Can add a hover to the selectable page elements.  The Macro can use any field found in the CMS_Node, CMS_Document, and the Page Type Specific fields.
+
+ex: {% MyField %}
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoSize>False</AutoSize>
+          <controlname>MacroEditor</controlname>
+          <EnablePositionMember>False</EnablePositionMember>
+          <EnableSections>False</EnableSections>
+          <EnableViewState>False</EnableViewState>
+          <Height>100</Height>
+          <Language>0</Language>
+          <ShowBookmarks>False</ShowBookmarks>
+          <ShowLineNumbers>False</ShowLineNumbers>
+          <SingleLineMode>False</SingleLineMode>
+          <SingleMacroMode>False</SingleMacroMode>
+          <SupportPasteImages>False</SupportPasteImages>
+          <Width>100%</Width>
+        </settings>
+      </field>
+      <field allowempty="true" column="WhereConditionSelector" columntype="longtext" guid="48b0a4f9-969e-48a4-99c5-2c96c6615280" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <explanationtext>Only CMS_Tree fields available for where condition</explanationtext>
+          <fieldcaption>Where Condition (Selector)</fieldcaption>
+          <fielddescription>
+            <![CDATA[Can apply an additional where condition to limit which items are selectable]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>WhereCondition</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="StartingPaths" columntype="longtext" dependsonanotherfield="true" guid="081e0e77-fde2-4f92-bdff-f78f1a99fedd" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Starting Paths</fieldcaption>
+          <fielddescription>
+            <![CDATA[Starting Node Alias Paths to display, each path on a new line.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "TreeSelector"|(identity)GlobalAdministrator|(hash)9ca1a2daa3a45f8df6ab35c9141bd1c7de6fcb855a2363ea6c21731ebe6b1eec%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextAreaControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Wrap>True</Wrap>
+        </settings>
+      </field>
+      <field allowempty="true" column="RemoveUnselectableChildTrees" columntype="boolean" dependsonanotherfield="true" guid="39326807-9922-46d0-a3d0-240541c1abed" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Remove Sub Trees with No Selections</fieldcaption>
+          <fielddescription>
+            <![CDATA[If true, it will remove any sub trees that don't have any possible selections.  Uncheck if you need to see the tree structure regardless if it has a selectable element.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "TreeSelector"|(identity)GlobalAdministrator|(hash)9ca1a2daa3a45f8df6ab35c9141bd1c7de6fcb855a2363ea6c21731ebe6b1eec%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="TreeSelectionMode" columnsize="200" columntype="text" dependsonanotherfield="true" guid="1515f815-14d3-4474-8c62-356c7f2be08b" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Tree Selection Mode</fieldcaption>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "TreeSelector"|(identity)GlobalAdministrator|(hash)9ca1a2daa3a45f8df6ab35c9141bd1c7de6fcb855a2363ea6c21731ebe6b1eec%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+Checkbox;Select Multiple then Add (Checkbox + Button)
+Individual;Add Individually
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <category name="UniSelectorSetting">
+        <properties>
+          <caption>Page Selector (Uni Selector) Additional Setting</caption>
+          <collapsible>True</collapsible>
+          <visible ismacro="true">
+            <![CDATA[{% Fields["SelectorType"].Value == "UniSelector" @%}]]>
+          </visible>
+        </properties>
+      </category>
+      <field allowempty="true" column="ObjectSiteName" columnsize="200" columntype="text" dependsonanotherfield="true" guid="bd32e6d6-b907-4323-a4a9-1472ee427593" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>#current</defaultvalue>
+          <fieldcaption>Object site name</fieldcaption>
+          <fielddescription>
+            <![CDATA[If set, only objects which belong to specified site are retrieved (if the object has SiteID column). If null or empty, all objects are retrieved. Use #currentsite for CurrentSite and #global for global objects.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="SelectionMode" columntype="integer" dependsonanotherfield="true" guid="02031c77-e4af-4245-b9a1-8f0ce83dc3b4" publicfield="false" resolvedefaultvalue="False">
+        <properties>
+          <defaultvalue>5</defaultvalue>
+          <fieldcaption>Selection mode</fieldcaption>
+          <fielddescription>
+            <![CDATA[Determines the design and behavior of the selection dialog.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+0;Single text box
+1;Single drop down list
+2;Multiple
+3;Multiple text box
+4;Single button
+5;Multiple button
+6;Single transformation
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field allowempty="true" column="AdditionalColumns" columnsize="500" columntype="text" dependsonanotherfield="true" guid="eab64394-93df-4df2-9f1c-bfd04404396f" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Additional columns</fieldcaption>
+          <fielddescription>
+            <![CDATA[Specifies the names of columns that should be loaded with the objects of the specified data class (in addition to the columns required by default).]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="AdditionalSearchColumns" columntype="longtext" dependsonanotherfield="true" guid="fc7278ab-3291-4ee3-89e1-780e0cd4ce8f" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <explanationtext>
+            <![CDATA[Can be any CMS_Tree, CMS_Document, or your Allowed PageType fields.]]>
+          </explanationtext>
+          <fieldcaption>Search Columns</fieldcaption>
+          <fielddescription>
+            <![CDATA[Columns also searched by, must be part of the Additional Columns, comma seperated]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="OrderBy" columnsize="500" columntype="text" dependsonanotherfield="true" guid="c290f2c6-1757-4314-b5b9-418f4ddbce95" publicfield="false" resolvedefaultvalue="False">
+        <properties>
+          <fieldcaption>Order by</fieldcaption>
+          <fielddescription>
+            <![CDATA[Sets the order of the items offered for selection via a standard ORDER BY clause. Applies to the multiple selection grid, dropdownlist, single and multiple selection dialogs.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="EnabledColumnName" columnsize="500" columntype="text" dependsonanotherfield="true" guid="04e1ec41-5a8d-48fa-9a2a-00f897b52dad" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Enabled column name</fieldcaption>
+          <fielddescription>
+            <![CDATA[Can be used to specify the name of the column that determines if the selected object is enabled.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaxDisplayedTotalItems" columntype="integer" dependsonanotherfield="true" guid="e31d74e1-99a9-48ec-9ba3-2c69d2ae3215" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>50</defaultvalue>
+          <fieldcaption>Max displayed total items</fieldcaption>
+          <fielddescription>
+            <![CDATA[The number of maximum displayed total items in the dropdownlist selection (excluding the special and generic items). The default value is 50. If exceeded, only the number of items set by the MaxDisplayedItems parameter will be displayed.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="MaxDisplayedItems" columntype="integer" dependsonanotherfield="true" guid="d78510d5-7dfd-467a-a587-122fb2c96f6a" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>25</defaultvalue>
+          <fieldcaption>Max displayed items</fieldcaption>
+          <fielddescription>
+            <![CDATA[Sets the maximum number of displayed items in drop-down list mode (excluding the special and generic items). The default value is 25. If the number is exceeded, the remaining items can be selected through the (more..) option.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="ItemsPerPage" columntype="integer" dependsonanotherfield="true" guid="e6fdcd23-3ed5-42b2-a586-1e8f719fcb57" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>25</defaultvalue>
+          <fieldcaption>Items per page</fieldcaption>
+          <fielddescription>
+            <![CDATA[Default number of items displayed per page. Applies to the multiple selection grid, drop-down list, single and multiple selection dialogs. The default value is 25.]]>
+          </fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="FilterControl" columnsize="250" columntype="text" dependsonanotherfield="true" guid="9ce3289c-4ba2-4788-ae47-70ac14cdd653" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Filter control</fieldcaption>
+          <fielddescription>Sets the path to custom filter control.</fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="UseDefaultNameFilter" columntype="boolean" dependsonanotherfield="true" guid="0c58f0a5-a254-45f8-96d3-3a8f1d72147f" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Default name filter usage</fieldcaption>
+          <fielddescription>If true, name filter is shown in dialog</fielddescription>
+          <visiblemacro ismacro="true">
+            <![CDATA[{%SelectorType.Value == "UniSelector"|(identity)GlobalAdministrator|(hash)5eebda2f90721514b9d6ff5940fb9dc08272ca92f748bd55074c6558b3eba561%}]]>
+          </visiblemacro>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="SelectorExtender" columnsize="100" columntype="text" guid="6a900959-7781-4d58-a44b-a130bfdb2789" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Selector Extension Class</fieldcaption>
+          <fielddescription>Applies to the Page Uni Selector</fielddescription>
+        </properties>
+        <settings>
+          <CheckAutoCreation>False</CheckAutoCreation>
+          <ClassNameColumnName>SelectorExtenderClassName</ClassNameColumnName>
+          <controlname>AssemblyClassSelector</controlname>
+          <ShowClasses>True</ShowClasses>
+          <ShowEnumerations>False</ShowEnumerations>
+          <ShowInterfaces>False</ShowInterfaces>
+          <ValidateAssembly>True</ValidateAssembly>
+        </settings>
+      </field>
+      <field allowempty="true" column="SelectorExtenderClassName" columnsize="100" columntype="text" guid="66ecb503-bdeb-479e-b209-60139dd36ce8" publicfield="false" resolvedefaultvalue="False" />
+      <category name="UniGridExtension">
+        <properties>
+          <caption>UniGrid Extension</caption>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field allowempty="true" column="AdHocExt" columnsize="200" columntype="text" guid="960a4afe-ad3b-4c2e-8274-045249484335" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Ad-Hoc UniGrid Extendor</fieldcaption>
+          <fielddescription>
+            <![CDATA[Extension class for the Listing for Ad-Hoc relationships where the current node is the left node.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <CheckAutoCreation>False</CheckAutoCreation>
+          <ClassNameColumnName>AdHocExtClass</ClassNameColumnName>
+          <controlname>AssemblyClassSelector</controlname>
+          <ShowClasses>True</ShowClasses>
+          <ShowEnumerations>False</ShowEnumerations>
+          <ShowInterfaces>False</ShowInterfaces>
+          <ValidateAssembly>True</ValidateAssembly>
+        </settings>
+      </field>
+      <field allowempty="true" column="AdHocExtClass" columnsize="200" columntype="text" guid="c4d64c8d-9c77-48d8-9a81-17ad11722953" publicfield="false" resolvedefaultvalue="False" />
+      <field allowempty="true" column="RAdHocExt" columnsize="200" columntype="text" guid="3237036b-76db-4ba1-b13a-2c596a58e19e" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Read Only Ad-Hoc UniGrid Extendor</fieldcaption>
+          <fielddescription>
+            <![CDATA[This applies only to Ad-Hoc relationships where the current node is on the right.  Displays delete-only capabilities.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <CheckAutoCreation>False</CheckAutoCreation>
+          <ClassNameColumnName>RAdHocExtClass</ClassNameColumnName>
+          <controlname>AssemblyClassSelector</controlname>
+          <ShowClasses>True</ShowClasses>
+          <ShowEnumerations>False</ShowEnumerations>
+          <ShowInterfaces>False</ShowInterfaces>
+          <ValidateAssembly>True</ValidateAssembly>
+        </settings>
+      </field>
+      <field allowempty="true" column="RAdHocExtClass" columnsize="200" columntype="text" guid="d71024ae-9cf2-4957-9f8e-836d2824b4d8" publicfield="false" resolvedefaultvalue="False">
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="NormExt" columnsize="200" columntype="text" guid="5ead7947-61f2-4c39-9553-a4fe802e7845" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Normal Relationship Extender</fieldcaption>
+          <fielddescription>
+            <![CDATA[Extension class for the Listing for normal relationships.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <CheckAutoCreation>False</CheckAutoCreation>
+          <ClassNameColumnName>NormExtClass</ClassNameColumnName>
+          <controlname>AssemblyClassSelector</controlname>
+          <ShowClasses>True</ShowClasses>
+          <ShowEnumerations>False</ShowEnumerations>
+          <ShowInterfaces>False</ShowInterfaces>
+          <ValidateAssembly>True</ValidateAssembly>
+        </settings>
+      </field>
+      <field allowempty="true" column="NormExtClass" columnsize="200" columntype="text" guid="20359ae1-446c-4a53-b64b-9e21ebd5a6be" publicfield="false" resolvedefaultvalue="False" />
+    </form>
+  </PageTemplateProperties>
+  <PageTemplateShowAsMasterTemplate>False</PageTemplateShowAsMasterTemplate>
+  <PageTemplateType>ui</PageTemplateType>
+  <PageTemplateWebParts>
+    <page>
+      <webpartzone id="AddRelationshipZone" v="1">
+        <properties>
+          <property name="disableviewstate">False</property>
+          <property name="timezonetype">inherit</property>
+          <property name="useupdatepanel">False</property>
+          <property name="visible">True</property>
+        </properties>
+        <webpart controlid="RelationshipExtended_RelatedPageSelector" guid="139790d5-b2f8-4dbb-bfd7-0c73c59b5be8" type="RelationshipExtended_RelatedPageSelector" v="1">
+          <property name="additionalcolumns" ismacro="true">{% UIContext.AdditionalColumns @%}</property>
+          <property name="additionalsearchcolumns" ismacro="true">{% UIContext.AdditionalSearchColumns @%}</property>
+          <property name="allowedpagetypes" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("AllowedPageTypes") @%}]]>
+          </property>
+          <property name="allowswitchsides" ismacro="true">
+            <![CDATA[{% Convert.ToBool(UIContext.Data.GetValue("AllowSwitchSides"), false) @%}]]>
+          </property>
+          <property name="bindonprimarynodeonly" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("BindOnPrimaryNodeOnly", true) @%}]]>
+          </property>
+          <property name="cat_open_ajax"></property>
+          <property name="cat_open_codebehind">False</property>
+          <property name="cat_open_output_filter"></property>
+          <property name="cat_open_performance"></property>
+          <property name="cat_open_time zones"></property>
+          <property name="cat_open_uniselectorsettings">False</property>
+          <property name="cat_open_visibility">False</property>
+          <property name="container"></property>
+          <property name="containercssclass"></property>
+          <property name="containercustomcontent"></property>
+          <property name="containerhideonsubpages">False</property>
+          <property name="containertitle"></property>
+          <property name="contentafter"></property>
+          <property name="contentbefore">
+            <![CDATA[<h3>Add relationships </h3>]]>
+          </property>
+          <property name="controlid">RelationshipExtended_RelatedPageSelector</property>
+          <property name="currentnodeid" ismacro="true">{% Convert.ToInt(QueryString.NodeID, 0) @%}</property>
+          <property name="customtimezone"></property>
+          <property name="direction" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("DirectionMode") @%}]]>
+          </property>
+          <property name="directionmode" ismacro="true">
+            <![CDATA[{% RelationshipsExtended.CurrentNodeIsLeft() ? "LeftNode" : "RightNode" @%}]]>
+          </property>
+          <property name="disablemacros">False</property>
+          <property name="disableviewstate">False</property>
+          <property name="displaynameformat" ismacro="true">{% UIContext.DisplayNameFormat @%}</property>
+          <property name="displaytoroles"></property>
+          <property name="enabledcolumnname" ismacro="true">{% UIContext.EnabledColumnName @%}</property>
+          <property name="enableoutputfilter">False</property>
+          <property name="extenderassemblyname">{% UIContext.SelectorExtender @%}</property>
+          <property name="extenderclassname">{% UIContext.SelectorExtenderClassName @%}</property>
+          <property name="filtercontrol" ismacro="true">{% UIContext.FilterControl @%}</property>
+          <property name="hideonsubpages">False</property>
+          <property name="instanceguid">139790d5-b2f8-4dbb-bfd7-0c73c59b5be8</property>
+          <property name="itemsperpage" ismacro="true">{% UIContext.ItemsPerPage @%}</property>
+          <property name="maxdisplayeditems" ismacro="true">{% UIContext.MaxDisplayedItems @%}</property>
+          <property name="maxdisplayedtotalitems" ismacro="true">{% UIContext.MaxDisplayedTotalItems @%}</property>
+          <property name="maxrelationships" ismacro="true">
+            <![CDATA[{% Convert.ToInt(UIContext.Data.GetValue("MaxRelationships"), -1) @%}]]>
+          </property>
+          <property name="objectsitename" ismacro="true">{% UIContext.ObjectSiteName @%}</property>
+          <property name="orderby" ismacro="true">
+            <![CDATA[{% UIContext.OrderBy |(handlesqlinjection)false @%}]]>
+          </property>
+          <property name="outputconverttablestodivs">none</property>
+          <property name="outputfixattributes">True</property>
+          <property name="outputfixhtml5">True</property>
+          <property name="outputfixjavascript">True</property>
+          <property name="outputfixlowercase">True</property>
+          <property name="outputfixselfclose">True</property>
+          <property name="outputresolveurls">True</property>
+          <property name="partialcachedependencies">##DEFAULT##</property>
+          <property name="partialcacheminutes"></property>
+          <property name="preservepartialcacheonpostback">False</property>
+          <property name="relationshipname" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("RelationshipName") @%}]]>
+          </property>
+          <property name="selectionmode" ismacro="true">{% UIContext.SelectionMode @%}</property>
+          <property name="showfordocumenttypes"></property>
+          <property name="timezonetype">inherit</property>
+          <property name="tooltipformat" ismacro="true">{% UIContext.ToolTipFormat @%}</property>
+          <property name="usedefaultnamefilter" ismacro="true">{% UIContext.UseDefaultNameFilter @%}</property>
+          <property name="useupdatepanel">False</property>
+          <property name="visible" ismacro="true">
+            <![CDATA[{% UIContext.Current.Data.GetValue("SelectorType", "UniSelector") == "UniSelector" && RelationshipsExtended.RelationshipSelectorIsVisible() @%}]]>
+          </property>
+          <property name="webparttitle">Related Page Selector</property>
+          <property name="webparttype">RelationshipExtended_RelatedPageSelector</property>
+          <property name="wherecondition" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("WhereConditionSelector", "") |(handlesqlinjection)false @%}]]>
+          </property>
+        </webpart>
+        <webpart controlid="RelatedPageTreeSelector" guid="bc1d557f-6c0d-49cf-959f-629653eed153" type="RelationshipExtended_RelatedPageSelector_Tree" v="1">
+          <property name="allowedpagetypes" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("AllowedPageTypes") @%}]]>
+          </property>
+          <property name="allowswitchsides" ismacro="true">
+            <![CDATA[{% Convert.ToBool(UIContext.Data.GetValue("AllowSwitchSides"), false) @%}]]>
+          </property>
+          <property name="bindonprimarynodeonly" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("BindOnPrimaryNodeOnly", true) @%}]]>
+          </property>
+          <property name="cat_open_ajax"></property>
+          <property name="cat_open_output_filter"></property>
+          <property name="cat_open_performance"></property>
+          <property name="cat_open_time zones"></property>
+          <property name="cat_open_visibility">False</property>
+          <property name="container"></property>
+          <property name="containercssclass"></property>
+          <property name="containercustomcontent"></property>
+          <property name="containerhideonsubpages">False</property>
+          <property name="containertitle"></property>
+          <property name="contentafter"></property>
+          <property name="contentbefore"></property>
+          <property name="controlid">RelatedPageTreeSelector</property>
+          <property name="currentnodeid" ismacro="true">{% Convert.ToInt(QueryString.NodeID, 0) @%}</property>
+          <property name="customtimezone"></property>
+          <property name="directionmode" ismacro="true">
+            <![CDATA[{% RelationshipsExtended.CurrentNodeIsLeft() ? "LeftNode" : "RightNode" @%}]]>
+          </property>
+          <property name="disablemacros">False</property>
+          <property name="disableviewstate">False</property>
+          <property name="displaynameformat" ismacro="true">{% UIContext.DisplayNameFormat @%}</property>
+          <property name="displaytoroles"></property>
+          <property name="enableoutputfilter">False</property>
+          <property name="hideonsubpages">False</property>
+          <property name="instanceguid">bc1d557f-6c0d-49cf-959f-629653eed153</property>
+          <property name="maxrelationships" ismacro="true">
+            <![CDATA[{% Convert.ToInt(UIContext.Data.GetValue("MaxRelationships"), -1) @%}]]>
+          </property>
+          <property name="outputconverttablestodivs">none</property>
+          <property name="outputfixattributes">True</property>
+          <property name="outputfixhtml5">True</property>
+          <property name="outputfixjavascript">True</property>
+          <property name="outputfixlowercase">True</property>
+          <property name="outputfixselfclose">True</property>
+          <property name="outputresolveurls">True</property>
+          <property name="partialcachedependencies">
+<![CDATA[
+##DEFAULT##
+
+]]>
+          </property>
+          <property name="partialcacheminutes"></property>
+          <property name="positionleft"></property>
+          <property name="positiontop"></property>
+          <property name="preservepartialcacheonpostback">False</property>
+          <property name="relationshipname" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("RelationshipName") @%}]]>
+          </property>
+          <property name="removeunselectablechildtrees" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("RemoveUnselectableChildTrees") @%}]]>
+          </property>
+          <property name="selectionmode" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("TreeSelectionMode") @%}]]>
+          </property>
+          <property name="showfordocumenttypes"></property>
+          <property name="startingpaths" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("StartingPaths") @%}]]>
+          </property>
+          <property name="timezonetype">inherit</property>
+          <property name="tooltipformat" ismacro="true">{% UIContext.ToolTipFormat @%}</property>
+          <property name="useupdatepanel">False</property>
+          <property name="visible" ismacro="true">
+            <![CDATA[{% UIContext.Current.Data.GetValue("SelectorType", "UniSelector") == "TreeSelector" && RelationshipsExtended.RelationshipSelectorIsVisible() @%}]]>
+          </property>
+          <property name="webparttitle"></property>
+          <property name="webparttype">RelationshipExtended_RelatedPageSelector_Tree</property>
+          <property name="wherecondition" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("WhereConditionSelector", "") |(handlesqlinjection)false @%}]]>
+          </property>
+        </webpart>
+      </webpartzone>
+      <webpartzone id="RelationshipZone" v="1">
+        <webpart controlid="RelatedPagesToThis" guid="6edb4165-d9cb-481a-8960-5c024638e9d5" type="RelationshipExtended_RelatedPages" v="1">
+          <property name="allowedpagetypes" ismacro="true">{% UIContext.AllowedPageTypes @%}</property>
+          <property name="allowswitchsides" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("AllowSwitchSides") @%}]]>
+          </property>
+          <property name="bindonprimarynodeonly" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("BindOnPrimaryNodeOnly", true) @%}]]>
+          </property>
+          <property name="cat_open_ajax"></property>
+          <property name="cat_open_codebehind">False</property>
+          <property name="cat_open_output_filter"></property>
+          <property name="cat_open_performance"></property>
+          <property name="cat_open_time zones"></property>
+          <property name="cat_open_visibility">False</property>
+          <property name="container"></property>
+          <property name="containercssclass"></property>
+          <property name="containercustomcontent"></property>
+          <property name="containerhideonsubpages">False</property>
+          <property name="containertitle"></property>
+          <property name="contentafter"></property>
+          <property name="contentbefore">
+            <![CDATA[<h3>Pages Related To This Page</h3>]]>
+          </property>
+          <property name="controlid">RelatedPagesToThis</property>
+          <property name="currentculture"></property>
+          <property name="currentnodeid" ismacro="true">{% Convert.ToInt(QueryString.NodeID, 0) @%}</property>
+          <property name="customtimezone"></property>
+          <property name="directionmode">LeftNode</property>
+          <property name="disablemacros">False</property>
+          <property name="disablesort">False</property>
+          <property name="disableviewstate">False</property>
+          <property name="displaynameformat" ismacro="true">{% UIContext.DisplayNameFormat @%}</property>
+          <property name="displaytoroles"></property>
+          <property name="enableoutputfilter">False</property>
+          <property name="extenderassemblyname">
+            <![CDATA[{% RelationshipsExtended.IsAdHocRelationship() ? UIContext.AdHocExt : UIContext.NormExt@%}]]>
+          </property>
+          <property name="extenderclassname">
+            <![CDATA[{% RelationshipsExtended.IsAdHocRelationship() ? UIContext.AdHocExtClass : UIContext.NormExtClass@%}]]>
+          </property>
+          <property name="hideonsubpages">False</property>
+          <property name="instanceguid">6edb4165-d9cb-481a-8960-5c024638e9d5</property>
+          <property name="outputconverttablestodivs">none</property>
+          <property name="outputfixattributes">True</property>
+          <property name="outputfixhtml5">True</property>
+          <property name="outputfixjavascript">True</property>
+          <property name="outputfixlowercase">True</property>
+          <property name="outputfixselfclose">True</property>
+          <property name="outputresolveurls">True</property>
+          <property name="partialcachedependencies">##DEFAULT##</property>
+          <property name="partialcacheminutes"></property>
+          <property name="positionleft"></property>
+          <property name="positiontop"></property>
+          <property name="preservepartialcacheonpostback">False</property>
+          <property name="relationshipname" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("RelationshipName") @%}]]>
+          </property>
+          <property name="showfordocumenttypes"></property>
+          <property name="timezonetype">inherit</property>
+          <property name="tooltipformat" ismacro="true">{% UIContext.ToolTipFormat @%}</property>
+          <property name="useupdatepanel">False</property>
+          <property name="visible" ismacro="true">
+            <![CDATA[{% RelationshipsExtended.RelationshipListingEditableIsVisible() && RelationshipsExtended.CurrentNodeIsLeft() @%}]]>
+          </property>
+          <property name="webparttitle"></property>
+          <property name="webparttype">RelationshipExtended_RelatedPages</property>
+        </webpart>
+        <webpart controlid="PagesRelatedToThis" guid="aad7c5c3-9955-4e20-a080-5a75887887b3" type="RelationshipExtended_RelatedPages" v="1">
+          <property name="allowedpagetypes" ismacro="true">{% UIContext.AllowedPageTypes @%}</property>
+          <property name="allowswitchsides" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("AllowSwitchSides") @%}]]>
+          </property>
+          <property name="bindonprimarynodeonly" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("BindOnPrimaryNodeOnly", true) @%}]]>
+          </property>
+          <property name="cat_open_ajax"></property>
+          <property name="cat_open_codebehind">False</property>
+          <property name="cat_open_output_filter"></property>
+          <property name="cat_open_performance"></property>
+          <property name="cat_open_time zones"></property>
+          <property name="cat_open_visibility">False</property>
+          <property name="container"></property>
+          <property name="containercssclass"></property>
+          <property name="containercustomcontent"></property>
+          <property name="containerhideonsubpages">False</property>
+          <property name="containertitle"></property>
+          <property name="contentafter"></property>
+          <property name="contentbefore">
+            <![CDATA[<h3>This Page Is Related To</h3>]]>
+          </property>
+          <property name="controlid">PagesRelatedToThis</property>
+          <property name="currentculture"></property>
+          <property name="currentnodeid" ismacro="true">{% Convert.ToInt(QueryString.NodeID, 0) @%}</property>
+          <property name="customtimezone"></property>
+          <property name="directionmode">RightNode</property>
+          <property name="disablemacros">False</property>
+          <property name="disablesort">False</property>
+          <property name="disableviewstate">False</property>
+          <property name="displaynameformat" ismacro="true">{% UIContext.DisplayNameFormat @%}</property>
+          <property name="displaytoroles"></property>
+          <property name="enableoutputfilter">False</property>
+          <property name="extenderassemblyname">
+            <![CDATA[{% RelationshipsExtended.IsAdHocRelationship() ? UIContext.AdHocExt : UIContext.NormExt@%}]]>
+          </property>
+          <property name="extenderclassname">
+            <![CDATA[{% RelationshipsExtended.IsAdHocRelationship() ? UIContext.AdHocExtClass : UIContext.NormExtClass@%}]]>
+          </property>
+          <property name="hideonsubpages">False</property>
+          <property name="instanceguid">aad7c5c3-9955-4e20-a080-5a75887887b3</property>
+          <property name="outputconverttablestodivs">none</property>
+          <property name="outputfixattributes">True</property>
+          <property name="outputfixhtml5">True</property>
+          <property name="outputfixjavascript">True</property>
+          <property name="outputfixlowercase">True</property>
+          <property name="outputfixselfclose">True</property>
+          <property name="outputresolveurls">True</property>
+          <property name="partialcachedependencies">##DEFAULT##</property>
+          <property name="partialcacheminutes"></property>
+          <property name="positionleft"></property>
+          <property name="positiontop"></property>
+          <property name="preservepartialcacheonpostback">False</property>
+          <property name="relationshipname" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("RelationshipName") @%}]]>
+          </property>
+          <property name="showfordocumenttypes"></property>
+          <property name="timezonetype">inherit</property>
+          <property name="tooltipformat" ismacro="true">{% UIContext.ToolTipFormat @%}</property>
+          <property name="useupdatepanel">False</property>
+          <property name="visible" ismacro="true">
+            <![CDATA[{% RelationshipsExtended.RelationshipListingEditableIsVisible() && RelationshipsExtended.CurrentNodeIsRight() @%}]]>
+          </property>
+          <property name="webparttitle"></property>
+          <property name="webparttype">RelationshipExtended_RelatedPages</property>
+        </webpart>
+        <webpart controlid="PagesRelatedToThisReadOnly" guid="94628557-ba8b-41d2-aa6b-e2cf68ddef3c" type="RelationshipExtended_RelatedPages" v="1">
+          <property name="allowedpagetypes" ismacro="true">{% UIContext.AllowedPageTypes @%}</property>
+          <property name="allowswitchsides">False</property>
+          <property name="bindonprimarynodeonly" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("BindOnPrimaryNodeOnly", true) @%}]]>
+          </property>
+          <property name="cat_open_ajax"></property>
+          <property name="cat_open_codebehind">False</property>
+          <property name="cat_open_output_filter"></property>
+          <property name="cat_open_performance"></property>
+          <property name="cat_open_time zones"></property>
+          <property name="cat_open_visibility">False</property>
+          <property name="container"></property>
+          <property name="containercssclass"></property>
+          <property name="containercustomcontent"></property>
+          <property name="containerhideonsubpages">False</property>
+          <property name="containertitle"></property>
+          <property name="contentafter"></property>
+          <property name="contentbefore">
+            <![CDATA[<h3>This page is related to test</h3>]]>
+          </property>
+          <property name="controlid">PagesRelatedToThisReadOnly</property>
+          <property name="currentculture"></property>
+          <property name="currentnodeid" ismacro="true">{% Convert.ToInt(QueryString.NodeID, 0) @%}</property>
+          <property name="customtimezone"></property>
+          <property name="directionmode">RightNode</property>
+          <property name="disablemacros">False</property>
+          <property name="disablesort">True</property>
+          <property name="disableviewstate">False</property>
+          <property name="displaynameformat" ismacro="true">{% UIContext.DisplayNameFormat @%}</property>
+          <property name="displaytoroles"></property>
+          <property name="enableoutputfilter">False</property>
+          <property name="extenderassemblyname">{% UIContext.RAdHocExt @%}</property>
+          <property name="extenderclassname">{% UIContext.RAdHocExtClass @%}</property>
+          <property name="hideonsubpages">False</property>
+          <property name="instanceguid">94628557-ba8b-41d2-aa6b-e2cf68ddef3c</property>
+          <property name="outputconverttablestodivs">none</property>
+          <property name="outputfixattributes">True</property>
+          <property name="outputfixhtml5">True</property>
+          <property name="outputfixjavascript">True</property>
+          <property name="outputfixlowercase">True</property>
+          <property name="outputfixselfclose">True</property>
+          <property name="outputresolveurls">True</property>
+          <property name="partialcachedependencies">##DEFAULT##</property>
+          <property name="partialcacheminutes"></property>
+          <property name="positionleft"></property>
+          <property name="positiontop"></property>
+          <property name="preservepartialcacheonpostback">False</property>
+          <property name="relationshipname" ismacro="true">
+            <![CDATA[{% UIContext.Data.GetValue("RelationshipName") @%}]]>
+          </property>
+          <property name="showfordocumenttypes"></property>
+          <property name="timezonetype">inherit</property>
+          <property name="tooltipformat" ismacro="true">{% UIContext.ToolTipFormat @%}</property>
+          <property name="useupdatepanel">False</property>
+          <property name="visible" ismacro="true">
+            <![CDATA[{% RelationshipsExtended.RelationshipListingReadOnlyIsVisible() && RelationshipsExtended.CurrentNodeIsRight() @%}]]>
+          </property>
+          <property name="webparttitle">Read Only Listing (Ad Hoc Right only)</property>
+          <property name="webparttype">RelationshipExtended_RelatedPages</property>
+        </webpart>
+      </webpartzone>
+      <webpartzone id="HeaderContentZone" v="1">
+        <webpart controlid="Text" guid="b4b44b87-f080-4b60-968c-8c62037633de" type="Text" v="1">
+          <property name="cat_open_codebehind"></property>
+          <property name="cat_open_visibility">False</property>
+          <property name="contentafter"></property>
+          <property name="contentbefore"></property>
+          <property name="controlid">Text</property>
+          <property name="extenderassemblyname"></property>
+          <property name="extenderclassname"></property>
+          <property name="instanceguid">b4b44b87-f080-4b60-968c-8c62037633de</property>
+          <property name="positionleft"></property>
+          <property name="positiontop"></property>
+          <property name="text" ismacro="true">
+            <![CDATA[<div class="HeaderArea">{% !string.IsNullOrWhiteSpace(UIContext.Data.GetValue("HeaderText", "")) { %}<h1>{% UIContext.Data.GetValue("HeaderText", "") @%}</h1>{% } @%}{% !string.IsNullOrWhiteSpace(UIContext.Data.GetValue("IntroText", "")) { %}<div>{% UIContext.Data.GetValue("IntroText", "") @%}</div>{% } @%}</div><style>  .HeaderArea {  margin-bottom: 15px;}.HeaderArea h1 {  margin: 0;  line-height: inherit;  margin-bottom: 15px;}  </style>]]>
+          </property>
+          <property name="visible" ismacro="true">
+            <![CDATA[{% !string.IsNullOrWhiteSpace(UIContext.Data.GetValue("HeaderText", "")) || !string.IsNullOrWhiteSpace(UIContext.Data.GetValue("IntroText", "")) @%}]]>
+          </property>
+          <property name="webparttitle"></property>
+          <property name="webparttype">Text</property>
+        </webpart>
+      </webpartzone>
+      <webpartzone id="NewButtonZone" v="1">
+        <properties>
+          <property name="disableviewstate">False</property>
+          <property name="timezonetype">inherit</property>
+          <property name="useupdatepanel">False</property>
+          <property name="visible" ismacro="true">
+            <![CDATA[{% !UIContext.AllowSwitchSides && UIContext.ShowNewPageButton && RelationshipsExtended.CurrentNodeIsLeft() @%}]]>
+          </property>
+        </properties>
+        <webpart controlid="NewButton" guid="3513cbbc-1d95-4130-b191-b3923a68492d" type="Text" v="1">
+          <property name="cat_open_codebehind"></property>
+          <property name="cat_open_visibility"></property>
+          <property name="contentafter"></property>
+          <property name="contentbefore"></property>
+          <property name="controlid">NewButton</property>
+          <property name="extenderassemblyname"></property>
+          <property name="extenderclassname"></property>
+          <property name="instanceguid">3513cbbc-1d95-4130-b191-b3923a68492d</property>
+          <property name="text">
+            <![CDATA[<a class="btn btn-primary" href="{% RelationshipsExtended.GetNewPageLink(UIContext.NewPageType, UIContext.ParentNodeAliasPath, QueryString.Culture) @%}" target="_blank">New Item</a> <a class="btn btn-primary" href="" onclick="javascript: window.reload();">Refresh</a>]]>
+          </property>
+          <property name="visible">True</property>
+          <property name="webparttitle"></property>
+          <property name="webparttype">Text</property>
+        </webpart>
+      </webpartzone>
+    </page>
+  </PageTemplateWebParts>
+</cms.pagetemplate>

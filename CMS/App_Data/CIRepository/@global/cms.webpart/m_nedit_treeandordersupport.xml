@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.webpart>
+  <WebPartCategoryID>
+    <CodeName>Edit</CodeName>
+    <GUID>9d66986a-c04d-463a-ba7d-21afa013f7bf</GUID>
+    <ObjectType>cms.webpartcategory</ObjectType>
+  </WebPartCategoryID>
+  <WebPartDefaultConfiguration>
+    <page />
+  </WebPartDefaultConfiguration>
+  <WebPartDefaultValues>
+    <form />
+  </WebPartDefaultValues>
+  <WebPartDescription>
+<![CDATA[
+Allows users to manage many-to-many relationships between objects (through a UniSelector) with support for binding to a Node, and also support for Bindings with Order.
+
+To enable Ordering, Binding ObjectInfo class must implement the IBindingBaseInfo and IOrderableBaseInfo interfaces (in the RelationshipsExtended.Interfaces Namespace)
+
+See Documentation for Control Extender base.
+]]>
+  </WebPartDescription>
+  <WebPartDisplayName>Edit bindings (Tree+Order Support)</WebPartDisplayName>
+  <WebPartDocumentation>
+<![CDATA[
+<h1>Orderable Control Extender Class</h1>
+You can create your own extender using the below code to further modify your UniSelector as needed without losing the core functionality.<br />
+<br />
+using CMS;<br />
+using CMS.Base.Web.UI;<br />
+using CMS.DataEngine;<br />
+using CMS.EventLog;<br />
+using CMS.Helpers;<br />
+using CMS.UIControls;<br />
+using CMS.UIControls.UniGridConfig;<br />
+using RelationshipsExtended;<br />
+using RelationshipsExtended.Interfaces;<br />
+using System;<br />
+using System.Collections.Generic;<br />
+using System.Data;<br />
+using System.Linq;<br />
+using System.Web.UI;<br />
+using System.Web.UI.WebControls;<br />
+using Action = CMS.UIControls.UniGridConfig.Action;<br />
+<br />
+[assembly: RegisterCustomClass(&quot;OrderableBindingEditorUniSelectorExtender&quot;, typeof(OrderableBindingEditorUniSelectorExtender))]<br />
+<br />
+namespace RelationshipsExtended<br />
+{<br />
+&nbsp; &nbsp; public class OrderableBindingEditorUniSelectorExtender : ControlExtender&lt;UniSelector&gt;<br />
+&nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; public string BindingObjectType<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; get<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return ValidationHelper.GetString(Control.Attributes[&quot;BindingObjectType&quot;], &quot;&quot;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; public string ObjectType<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; get<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return ValidationHelper.GetString(Control.Attributes[&quot;ObjectType&quot;], &quot;&quot;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; public int CorrectObjectID<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; get<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return ValidationHelper.GetInteger(Control.Attributes[&quot;CorrectObjectID&quot;], -1);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Initializes the control, this looks to see if the Binding Object type is of type IOrderableBaseInfo and IBindingBaseInfo&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;/summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; public override void OnInit()<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (!string.IsNullOrWhiteSpace(BindingObjectType))<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Get the Binding and base Object so we can detect if they are orderable or not.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var BindingObjectFactory = new InfoObjectFactory(BindingObjectType);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var BindingObjectSingleton = (BindingObjectFactory != null &amp;&amp; BindingObjectFactory.Singleton != null ? BindingObjectFactory.Singleton : null);<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ObjectFactory = new InfoObjectFactory(ObjectType);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ObjectSingleton = (ObjectFactory != null &amp;&amp; ObjectFactory.Singleton != null ? ObjectFactory.Singleton : null);<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (BindingObjectSingleton != null &amp;&amp; ObjectSingleton != null &amp;&amp; BindingObjectSingleton is IOrderableBaseInfo &amp;&amp; BindingObjectSingleton is IBindingBaseInfo)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Set the new Grid with actions<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.GridName = &quot;~/CMSModules/RelationshipsExtended/Grids/ControlItemList.xml&quot;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.GridName = &quot;~/CMSModules/RelationshipsExtended/Grids/ControlItemList.xml&quot;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.LoadXmlConfiguration();<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Add the ordering to the DataSet&#39;s Table, then use a TableView to order by that. &nbsp;Hacky but works.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.OnAfterRetrieveData += UniGrid_OnAfterRetrieveData;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Ensures that it retrieves all the rows found so it can order them manually<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.ApplyPageSize = false;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Ensure no sorting.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (Control.UniGrid.GridOptions == null)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.GridOptions = new UniGridOptions();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.GridOptions.AllowSorting = false;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Catch the Move events<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.OnAction += UniGrid_OnAction;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Get ColumnID of Object it&#39;s referencing for the Grid Actions at various points in the rendering, since this seems to get lost frequently.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SetActions();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.PreRender += UniGrid_PreRender;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.Load += UniGrid_Load;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.OnAfterDataReload += UniGrid_OnAfterDataReload;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Setup Field and Script for Move command.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AddCustomMoveHiddenField();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; RegisterCmdScripts();<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Handle current page and size if in URL parameter<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (!Control.Page.IsPostBack &amp;&amp; !string.IsNullOrWhiteSpace(URLHelper.GetUrlParameter(RequestContext.RawURL, &quot;OrderableUniPage&quot;)))<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int CurrentPage = ValidationHelper.GetInteger(URLHelper.GetUrlParameter(RequestContext.RawURL, &quot;OrderableUniPage&quot;), 1);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int CurrentPageSize = ValidationHelper.GetInteger(URLHelper.GetUrlParameter(RequestContext.RawURL, &quot;OrderableUniPageSize&quot;), -1);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (Control.UniGrid.Pager != null)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.Pager.CurrentPage = CurrentPage;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (CurrentPageSize &gt; 0)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.Pager.CurrentPageSize = CurrentPageSize;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; #region &quot;Ordering Methods&quot;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Handles the Grid Actions, sadly can&#39;t use the default #move #moveup and #movedown because this is technically displaying the Object, not the binding object.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;/summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;param name=&quot;actionName&quot;&gt;&lt;/param&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;param name=&quot;actionArgument&quot;&gt;&lt;/param&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; private void UniGrid_OnAction(string actionName, object actionArgument)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var BindingObjectFactory = new InfoObjectFactory(BindingObjectType);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var BindingObjectSingleton = BindingObjectFactory.Singleton;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var BindingObj = new ObjectQuery(BindingObjectType)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.WhereEquals(((IBindingBaseInfo)BindingObjectSingleton).ParentObjectReferenceColumnName(), CorrectObjectID)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.WhereEquals(((IBindingBaseInfo)BindingObjectSingleton).BoundObjectReferenceColumnName(), actionArgument).FirstOrDefault();<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ObjectFactory = new InfoObjectFactory(ObjectType);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ObjectSingleton = (ObjectFactory != null &amp;&amp; ObjectFactory.Singleton != null ? ObjectFactory.Singleton : null);<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; bool RefreshData = false;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; switch (actionName)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &quot;custom_move&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Get Custom Move Hidden Field value<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (HiddenField hidField in GetControlsOfType&lt;HiddenField&gt;(Control.UniGrid))<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (hidField.ID == &quot;hdnCustomMoveArgs&quot;)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string[] Values = hidField.Value.Split(&#39;:&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (Values.Length == 3)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int ObjectID = ValidationHelper.GetInteger(Values[0], 0);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int OrigPosition = ValidationHelper.GetInteger(Values[1], 0);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int NewPosition = ValidationHelper.GetInteger(Values[2], 0);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BindingObj = new ObjectQuery(BindingObjectType)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .WhereEquals(((IBindingBaseInfo)BindingObjectSingleton).ParentObjectReferenceColumnName(), CorrectObjectID)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .WhereEquals(((IBindingBaseInfo)BindingObjectSingleton).BoundObjectReferenceColumnName(), ObjectID).FirstOrDefault();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ((IOrderableBaseInfo)BindingObj).SetObjectOrderRelative(NewPosition - OrigPosition);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &quot;custom_moveup&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ((IOrderableBaseInfo)BindingObj).MoveObjectUp();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; try<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // If the current item is the &quot;first&quot; item on the current page, refresh as it may now be on another page<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var UpRows = ((DataSet)Control.UniGrid.DataSource).Tables[0].Rows;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (ValidationHelper.GetInteger(UpRows[0][((BaseInfo)ObjectSingleton).TypeInfo.IDColumn], -1) == ValidationHelper.GetInteger(actionArgument, -1)) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; RefreshData = true;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; catch (Exception ex)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; EventLogProvider.LogException(&quot;OrderableBindingEditorUniSelectorExtender&quot;, &quot;ActionRefreshError&quot;, ex, additionalMessage: &quot;Something went wrong trying to detect if binding UI should be refreshed, please ensure both Binding Object and Bound Object types are properly set.&quot;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &quot;custom_movedown&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ((IOrderableBaseInfo)BindingObj).MoveObjectDown();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; try<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // If the current item is the &quot;last&quot; item on the current page, refresh as it may now be on another page<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var DownRows = ((DataSet)Control.UniGrid.DataSource).Tables[0].Rows;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (ValidationHelper.GetInteger(DownRows[DownRows.Count - 1][((BaseInfo)ObjectSingleton).TypeInfo.IDColumn], -1) == ValidationHelper.GetInteger(actionArgument, -1)) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; RefreshData = true;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; catch (Exception ex)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; EventLogProvider.LogException(&quot;OrderableBindingEditorUniSelectorExtender&quot;, &quot;ActionRefreshError&quot;, ex, additionalMessage: &quot;Something went wrong trying to detect if binding UI should be refreshed, please ensure both Binding Object and Bound Object types are properly set.&quot;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // If an element is moved off the current page, the grid needs to be refreshed, and the only way to seem to get the UI to update is to totally refresh the page<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (RefreshData)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string Url = RequestContext.RawURL;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(Control.UniGrid.Pager != null) {&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int CurrentPage = Control.UniGrid.Pager.CurrentPage;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int CurrentPageSize = Control.UniGrid.Pager.CurrentPageSize;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Url = URLHelper.AddParameterToUrl(Url, &quot;OrderableUniPage&quot;, CurrentPage.ToString());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Url = URLHelper.AddParameterToUrl(Url, &quot;OrderableUniPageSize&quot;, CurrentPageSize.ToString());<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; URLHelper.ResponseRedirect(Url, true);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Dynamically adds the hidden field that is used for the custom move, reduces need to duplicate the UniGrid control.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;/summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; private void AddCustomMoveHiddenField()<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Find the other hidden fields in the UniSelector and add this one next to it<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; HiddenField hdnCustomMoveArgs = new HiddenField()<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ID = &quot;hdnCustomMoveArgs&quot;,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Value = &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; };<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (HiddenField hidField in GetControlsOfType&lt;HiddenField&gt;(Control.UniGrid))<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (hidField.ID == &quot;hidCmdArg&quot;)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hidField.Parent.Controls.Add(hdnCustomMoveArgs);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Custom logic to get the onmousedown InitMove to work on the custom moving.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;/summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;param name=&quot;sender&quot;&gt;&lt;/param&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;param name=&quot;e&quot;&gt;&lt;/param&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; private void UniGrid_PreRender(object sender, EventArgs e)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (var cmsActionButtonControl in GetControlsOfType&lt;CMSGridActionButton&gt;(Control.UniGrid))<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (cmsActionButtonControl.CommandName == &quot;custom_move&quot;)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; IButtonControl buttonControl = (IButtonControl)cmsActionButtonControl;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (buttonControl != null)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; UniGrid uniGridControl = Control.UniGrid;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AttributeCollection attributes = ((WebControl)buttonControl).Attributes;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; attributes[&quot;onmousedown&quot;] = string.Concat(uniGridControl.GetJSModule(), &quot;.initMove(&quot;, ScriptHelper.GetString(buttonControl.CommandArgument), &quot;); return false;&quot;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; attributes[&quot;onclick&quot;] = &quot;return false;&quot;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cmsActionButtonControl.OnClientClick = &quot;return false;&quot;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cmsActionButtonControl.CssClass += &quot; no-click&quot;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// If actions exist, make sure the Command Argument is set to the Object&#39;s ID Column Name so it properly renders the ID value<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;/summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; private void SetActions()<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (Control.UniGrid.GridActions != null)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ObjectFactory = new InfoObjectFactory(ObjectType);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ObjectSingleton = (ObjectFactory != null &amp;&amp; ObjectFactory.Singleton != null ? ObjectFactory.Singleton : null);<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.GridActions.Parameters = ((BaseInfo)ObjectSingleton).TypeInfo.IDColumn;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (Action action in Control.UniGrid.GridActions.Actions)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; action.CommandArgument = ((BaseInfo)ObjectSingleton).TypeInfo.IDColumn;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Register the Move Command Script, this leverages a customized UniGrid.js module to work with the new custom_move property<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;/summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; protected void RegisterCmdScripts()<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; List&lt;HiddenField&gt; HiddenFields = GetControlsOfType&lt;HiddenField&gt;(Control.UniGrid).ToList();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; bool MoveActionFound = (Control.UniGrid.GridActions == null ? false : Control.UniGrid.GridActions.Actions.OfType&lt;Action&gt;().Any&lt;Action&gt;((Action action) =&gt; action.Name.Equals(&quot;custom_move&quot;, StringComparison.OrdinalIgnoreCase)));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; object variable = new<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; id = Control.UniGrid.ClientID,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uniqueId = Control.UniGrid.UniqueID,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hdnCmdNameId = HiddenFields.Where(x =&gt; x.ID == &quot;hidCmdName&quot;).First().ClientID,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hdnCmdArgId = HiddenFields.Where(x =&gt; x.ID == &quot;hidCmdArg&quot;).First().ClientID,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hdnSelHashId = HiddenFields.Where(x =&gt; x.ID == &quot;hidSelectionHash&quot;).First().ClientID,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hdnSelId = HiddenFields.Where(x =&gt; x.ID == &quot;hidSelection&quot;).First().ClientID,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // This one is a custom field for our custom move logic<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hdnCustomMoveArgs = HiddenFields.Where(x =&gt; x.ID == &quot;hdnCustomMoveArgs&quot;).First().ClientID,<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; gridId = Control.UniGrid.GridView.ClientID,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; resetSelection = false,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; allowSorting = true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; };<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ScriptHelper.EnsurePostbackMethods(Control.UniGrid);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ScriptHelper.RegisterModule(Control.UniGrid, &quot;RelationshipsExtended/UniGrid&quot;, variable);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (MoveActionFound)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ScriptHelper.RegisterJQueryUI(Control.Page, true);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ScriptHelper.RegisterStartupScript(Control.Page, Control.UniGrid.GetType(), &quot;KillMoveClick&quot;, &quot;$cmsj(document).ready(function() { $cmsj(&#39;.no-click&#39;).unbind(&#39;click&#39;); });&quot;, true);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Since the normal Binding UniGrid only shows a summary of the Object that is bound, it does nto have the built in<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Order that would be on the Binding Object. &nbsp;So I&#39;m programatically adding on an Order Column, then returning the&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Items in that order using a Table View.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;/summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;param name=&quot;ds&quot;&gt;The Dataset&lt;/param&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;returns&gt;The ordered data set&lt;/returns&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; private DataSet UniGrid_OnAfterRetrieveData(DataSet ds)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Get the object and binding object&#39;s information (typeinfo) and their referencing column names.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var BindingObjectFactory = new InfoObjectFactory(BindingObjectType);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var BindingObjectSingleton = (BindingObjectFactory != null &amp;&amp; BindingObjectFactory.Singleton != null ? BindingObjectFactory.Singleton : null);<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ObjectFactory = new InfoObjectFactory(ObjectType);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ObjectSingleton = (ObjectFactory != null &amp;&amp; ObjectFactory.Singleton != null ? ObjectFactory.Singleton : null);<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string ParentObjectReference = ((IBindingBaseInfo)BindingObjectSingleton).ParentObjectReferenceColumnName();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string BoundObjectReference = ((IBindingBaseInfo)BindingObjectSingleton).BoundObjectReferenceColumnName();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string ObjectIDColumn = ((BaseInfo)ObjectSingleton).TypeInfo.IDColumn;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string OrderColumn = ((BaseInfo)BindingObjectSingleton).TypeInfo.OrderColumn;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string DisplayNameColumn = ((BaseInfo)BindingObjectSingleton).TypeInfo.DisplayNameColumn;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Just sort the data by the order<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (!ds.Tables[0].Columns.Contains(&quot;OrderableObjectUniSelector_Order&quot;))<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ds.Tables[0].Columns.Add(&quot;OrderableObjectUniSelector_Order&quot;, typeof(int));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Go through each entry and find the proper Order and assign it.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (DataRow dr in ds.Tables[0].Rows)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var OrderItem = new ObjectQuery(BindingObjectType)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .WhereEquals(ParentObjectReference, CorrectObjectID)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .WhereEquals(BoundObjectReference, dr[ObjectIDColumn])<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .FirstOrDefault();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (OrderItem != null)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dr[&quot;OrderableObjectUniSelector_Order&quot;] = ValidationHelper.GetInteger(OrderItem.GetValue(OrderColumn), 0);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; else<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dr[&quot;OrderableObjectUniSelector_Order&quot;] = 999999999;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Sort by the Order and return the new table, now sorted properly.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DataView DV = new DataView(ds.Tables[0]);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DV.Sort = &quot;[OrderableObjectUniSelector_Order] asc&quot;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DataTable dt = DV.ToTable();<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Now that the items are ordered, we need to limit the results to the Page and Page Size<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Get the current Page and page size, adjusting if that page no longer exists due to record deletion<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int PageSize = 10;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int CurrentPage = 1;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (Control.UniGrid.Pager != null)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PageSize = Control.UniGrid.Pager.CurrentPageSize;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CurrentPage = Control.UniGrid.Pager.CurrentPage;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DataTable newDT = dt.Clone();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (dt.Rows.Count &gt; 0)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; while (CurrentPage &gt; 1 &amp;&amp; dt.Rows.Count &lt;= (CurrentPage - 1) * PageSize)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CurrentPage--;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // This event triggers twice, once on the full data, and once on the page-only data. &nbsp;If page-only data, do NOT reset the page (unless the count is 0)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (Control.UniGrid.Pager != null &amp;&amp; (ds.Tables[0].Rows.Count == Control.UniGrid.PagerForceNumberOfResults || ds.Tables[0].Rows.Count == 0))<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Control.UniGrid.Pager.CurrentPage = CurrentPage;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Now remove any records that are not in the current page<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int LowerBound = (CurrentPage - 1) * PageSize;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int UpperBound = LowerBound + PageSize;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int r = 0; r &lt; dt.Rows.Count; r++)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (r &gt;= LowerBound &amp;&amp; r &lt; UpperBound)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newDT.ImportRow(dt.Rows[r]);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Lastly add this new sorted and &#39;trimmed&#39; table to the results.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ds.Tables.Remove(ds.Tables[0]);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ds.Tables.Add(newDT);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return ds;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; private void UniGrid_OnAfterDataReload()<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SetActions();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; private void UniGrid_Load(object sender, EventArgs e)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SetActions();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; #endregion<br />
+<br />
+<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// Helper Method to get recursively find controls of a given type, using this to get various Control IDs and other items on the UniGrid<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;/summary&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;param name=&quot;root&quot;&gt;&lt;/param&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; /// &lt;returns&gt;&lt;/returns&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; public static IEnumerable&lt;T&gt; GetControlsOfType&lt;T&gt;(Control root)<br />
+&nbsp; &nbsp; &nbsp;where T : Control<br />
+&nbsp; &nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var t = root as T;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (t != null)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yield return t;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var container = root as Control;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (container != null)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (Control c in container.Controls)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (var i in GetControlsOfType&lt;T&gt;(c))<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yield return i;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<br />
+&nbsp; &nbsp; }<br />
+}<br />
+&nbsp;
+<h2><br />
+Relationship Extended Sortable Binding Customization Guide</h2>
+
+<p>cms\cmsscripts\cmsmodules\relationshipsextended\unigrid.js &nbsp;(Added custom JS to render and handle the custom_move capabilities)<br />
+&nbsp;&nbsp; &nbsp;-From Original (cms\cmsscripts\cmsmodule\cms\unigrid.js),&nbsp;<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-added 1 new parameter &#39;$customMoveArgs&#39; to the initialization<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-updated the initSorting function<br />
+<br />
+<br />
+CMS\CMSModules\RelationshipsExtended\UI\OrderableUniSelector\UniSelector.ascx<br />
+&nbsp;&nbsp; &nbsp;-From Original (CMS\CMSAdminControls\UI\UniSelector\UniSelector.ascx)<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-No change to ascx<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-Updated the SetGridHeader() on the ascx.cs file<br />
+&nbsp; &nbsp; &nbsp; &nbsp; -on LoadUniGrid(), update msResultDS = GetResultSet to ignore the Page Size and current offset (set to 0)<br />
+<br />
+<br />
+CMS\CMSModules\RelationshipsExtended\Controls\UIControls\OrderableBindingEditItemWithNodeSupport.ascx<br />
+&nbsp;&nbsp; &nbsp;-From Original (CMS\CMSModules\AdminControls\Controls\UIControls\BindingEditItem.ascx)<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-Added Style for Move Column (ascx)<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-Used OrderableUniSelector instead of normal UniSelector in control<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-Added NodeID and CorrectObjectID helper properties<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-Added Attributes to UniSelector (to pass to Control Extender) and Updated the UIContext.EditedObject in OnInit to handle Nodes<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;-Replaced &quot;ObjectID&quot; with &quot;CorrectObjectID&quot; in GetBindings and CreateBindings methods<br />
+<br />
+<br />
+RelationshipExtended\Classes\Extender\OrderableBindingEditorUniSelectorExtender.cs<br />
+&nbsp;&nbsp; &nbsp;-Handles the Ordering (move, move up, move down) on Binding Objects that use the&nbsp;IBindingBaseInfo and&nbsp;IOrderableBaseInfo<br />
+&nbsp; &nbsp; -Relies on the custom OrderableBindingEditItemWithNodeSupport.ascx control, so should only use to extend this control.</p>
+
+]]>
+  </WebPartDocumentation>
+  <WebPartFileName>
+    <![CDATA[~/CMSModules/RelationshipsExtended/Controls/UIControls/OrderableBindingEditItemWithNodeSupport.ascx]]>
+  </WebPartFileName>
+  <WebPartGUID>a07deaa9-6996-4ebf-933b-a6f8a7e1e311</WebPartGUID>
+  <WebPartIconClass>icon-w-edit-bindings</WebPartIconClass>
+  <WebPartName>M_NEdit_TreeAndOrderSupport</WebPartName>
+  <WebPartProperties>
+    <form version="2">
+      <field allowempty="true" column="ObjectType" columnsize="100" columntype="text" guid="1f3b7a49-549e-4cb7-a7fa-5b582c0ddab8" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Object type</fieldcaption>
+          <fielddescription>
+            <![CDATA[Object type for editing. If '(default)' is set, object type is got from context.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AddGlobalObjectNamePrefix>False</AddGlobalObjectNamePrefix>
+          <AddGlobalObjectSuffix>False</AddGlobalObjectSuffix>
+          <AllowAll>False</AllowAll>
+          <AllowDefault>False</AllowDefault>
+          <AllowEditTextBox>False</AllowEditTextBox>
+          <AllowEmpty>False</AllowEmpty>
+          <controlname>objectselector</controlname>
+          <DialogWindowHeight>590</DialogWindowHeight>
+          <DialogWindowName>SelectionDialog</DialogWindowName>
+          <DialogWindowWidth>668</DialogWindowWidth>
+          <GlobalObjectSuffix>(global)</GlobalObjectSuffix>
+          <ItemsPerPage>25</ItemsPerPage>
+          <LocalizeItems>True</LocalizeItems>
+          <MaxDisplayedItems>25</MaxDisplayedItems>
+          <MaxDisplayedTotalItems>50</MaxDisplayedTotalItems>
+          <ObjectType>cms.class</ObjectType>
+          <RemoveMultipleCommas>False</RemoveMultipleCommas>
+          <ResourcePrefix>objectselect</ResourcePrefix>
+          <ReturnColumnName>ClassName</ReturnColumnName>
+          <ReturnColumnType>id</ReturnColumnType>
+          <SelectionMode>1</SelectionMode>
+          <SpecialFields>;(default)</SpecialFields>
+          <UseDefaultNameFilter>True</UseDefaultNameFilter>
+          <ValuesSeparator>;</ValuesSeparator>
+        </settings>
+      </field>
+      <field allowempty="true" column="BindingObjectType" columnsize="200" columntype="text" guid="48ea319b-db66-430c-9020-f1709e8ce4ab" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>
+            <![CDATA[{$webpart.documentation.bindingobjectprovidertype$}]]>
+          </fieldcaption>
+          <fielddescription>{$webpart.bindingobjectprovidertype.description$}</fielddescription>
+        </properties>
+        <settings>
+          <controlname>objecttypeselector</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <DisplayAll>False</DisplayAll>
+          <ObjectTypeList>ObjectTypes.BindingObjectTypes</ObjectTypeList>
+          <SortItems>True</SortItems>
+          <SpecialFields>;(none)</SpecialFields>
+        </settings>
+      </field>
+      <field allowempty="true" column="TargetObjectType" columnsize="200" columntype="text" guid="fd5ed944-e23b-4ade-bb2a-d9f935ce3564" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Target object type</fieldcaption>
+          <fielddescription>{$webpart.description.bindingobjecttype$}</fielddescription>
+        </properties>
+        <settings>
+          <controlname>objecttypeselector</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <DisplayAll>False</DisplayAll>
+          <ObjectTypeList>ObjectTypes.MainObjectTypes</ObjectTypeList>
+          <SortItems>True</SortItems>
+          <SpecialFields>;(automatic)</SpecialFields>
+        </settings>
+      </field>
+      <field column="BindOnPrimaryNodeOnly" columntype="boolean" guid="c17bf088-278f-4d74-8a93-45a7ac0e280f" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>True</defaultvalue>
+          <fieldcaption>Bind On Primary Node Only</fieldcaption>
+          <fielddescription>
+            <![CDATA[If the current Node is a Linked Document, this will edit bindings on the primary node instead of the linked node.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="ResourcePrefix" columnsize="200" columntype="text" guid="54a22cbe-70dd-4e64-913c-a561adc9ffa7" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>{$webpart.documentation.resourceprefix$}</fieldcaption>
+          <fielddescription>{$webpart.resourceprefix.description$}</fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field allowempty="true" column="WhereCondition" columnsize="400" columntype="text" guid="8d39cb49-215a-43ca-af58-fc1c60da5004" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Where condition</fieldcaption>
+          <fielddescription>{$webpart.wherecondition.description$}</fielddescription>
+        </properties>
+        <settings>
+          <controlname>WhereCondition</controlname>
+          <QueryPart>1</QueryPart>
+        </settings>
+      </field>
+      <field allowempty="true" column="DialogWhereCondition" columnsize="400" columntype="text" guid="ed90f0db-636c-4280-9a38-b04ce53d045d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Dialog where condition</fieldcaption>
+          <fielddescription>{$webpart.dialogwherecondition.description$}</fielddescription>
+        </properties>
+        <settings>
+          <controlname>WhereCondition</controlname>
+          <QueryPart>1</QueryPart>
+        </settings>
+      </field>
+    </form>
+  </WebPartProperties>
+  <WebPartSkipInsertProperties>False</WebPartSkipInsertProperties>
+  <WebPartType>9</WebPartType>
+</cms.webpart>

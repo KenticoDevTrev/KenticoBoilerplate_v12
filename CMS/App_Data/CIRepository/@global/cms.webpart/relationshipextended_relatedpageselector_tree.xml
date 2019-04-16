@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.webpart>
+  <WebPartCategoryID>
+    <CodeName>Selector</CodeName>
+    <GUID>f1bbda0a-8a2d-4333-82da-6ea14daf48a1</GUID>
+    <ObjectType>cms.webpartcategory</ObjectType>
+  </WebPartCategoryID>
+  <WebPartDefaultConfiguration>
+    <page />
+  </WebPartDefaultConfiguration>
+  <WebPartDefaultValues>
+    <form />
+  </WebPartDefaultValues>
+  <WebPartDisplayName>Related Page Tree Selector</WebPartDisplayName>
+  <WebPartFileName>
+    <![CDATA[~/CMSModules/RelationshipsExtended/Controls/RelatedPage_Tree.ascx]]>
+  </WebPartFileName>
+  <WebPartGUID>e77bd068-2faf-4767-a114-2cfbb30f97be</WebPartGUID>
+  <WebPartIconClass>icon-w-webpart-default</WebPartIconClass>
+  <WebPartName>RelationshipExtended_RelatedPageSelector_Tree</WebPartName>
+  <WebPartProperties>
+    <form version="2">
+      <field column="RelationshipName" columnsize="200" columntype="text" guid="74034cbd-0a54-40c5-9c42-b98293cbbf6d" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Relationship Name</fieldcaption>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="DirectionMode" columnsize="50" columntype="text" guid="d3463fa8-47e3-4e93-a2e9-4d9e22101f09" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>LeftNode</defaultvalue>
+          <fieldcaption>Current Node Direction</fieldcaption>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+LeftNode;Left Side
+RightNode;Right Side
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field column="AllowSwitchSides" columntype="boolean" guid="3f917adb-92f0-4789-8b8b-6903d5c849ba" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>False</defaultvalue>
+          <fieldcaption>Allow Switch Sides</fieldcaption>
+          <fielddescription>
+            <![CDATA[Check if you wish to allow an assignment of documents that is flipped from the normal Direction.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field allowempty="true" column="AllowedPageTypes" columntype="longtext" guid="cda35b98-132f-45eb-8868-90cdac87e6bf" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Allowed Page Types</fieldcaption>
+          <fielddescription>
+            <![CDATA[Page types that you can assign to this relationship.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AddGlobalObjectNamePrefix>False</AddGlobalObjectNamePrefix>
+          <AddGlobalObjectSuffix>False</AddGlobalObjectSuffix>
+          <AllowAll>False</AllowAll>
+          <AllowDefault>False</AllowDefault>
+          <AllowEditTextBox>False</AllowEditTextBox>
+          <AllowEmpty>False</AllowEmpty>
+          <controlname>Uni_selector</controlname>
+          <DialogWindowName>SelectionDialog</DialogWindowName>
+          <DisplayNameFormat>{% ClassDisplayName %}</DisplayNameFormat>
+          <EditDialogWindowHeight>700</EditDialogWindowHeight>
+          <EditDialogWindowWidth>1000</EditDialogWindowWidth>
+          <EditWindowName>EditWindow</EditWindowName>
+          <EncodeOutput>True</EncodeOutput>
+          <GlobalObjectSuffix ismacro="true">{$general.global$}</GlobalObjectSuffix>
+          <ItemsPerPage>25</ItemsPerPage>
+          <LocalizeItems>True</LocalizeItems>
+          <MaxDisplayedItems>25</MaxDisplayedItems>
+          <MaxDisplayedTotalItems>50</MaxDisplayedTotalItems>
+          <ObjectSiteName>#currentsite</ObjectSiteName>
+          <ObjectType>CMS.Class</ObjectType>
+          <OrderBy>ClassDisplayName</OrderBy>
+          <RemoveMultipleCommas>False</RemoveMultipleCommas>
+          <ReturnColumnName>ClassName</ReturnColumnName>
+          <ReturnColumnType>id</ReturnColumnType>
+          <SelectionMode>2</SelectionMode>
+          <UseDefaultNameFilter>True</UseDefaultNameFilter>
+          <ValuesSeparator>;</ValuesSeparator>
+          <WhereCondition>ClassIsDocumentType = 1</WhereCondition>
+        </settings>
+      </field>
+      <field allowempty="true" column="WhereCondition" columntype="longtext" guid="6414912d-be22-497c-a80c-fe0084c042a3" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Where Condition</fieldcaption>
+          <fielddescription>
+            <![CDATA[Additional Where Condition on which pages should be displayed.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>WhereCondition</controlname>
+        </settings>
+      </field>
+      <field column="CurrentNodeID" columntype="integer" guid="d2fb525c-02d5-42d7-bfa9-a63b682a2bd3" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Current NodeID</fieldcaption>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <field column="BindOnPrimaryNodeOnly" columntype="boolean" guid="32903b8c-c3e1-4d58-9625-374ac9f10653" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>True</defaultvalue>
+          <fieldcaption>Bind On Primary Node Only</fieldcaption>
+          <fielddescription>
+            <![CDATA[If the current Node is a Linked Document, this will edit bindings on the primary node instead of the linked node.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field column="MaxRelationships" columntype="integer" guid="63e96b77-d382-4594-ba4a-b55e984cc7a4" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>0</defaultvalue>
+          <fieldcaption>Max Relationships</fieldcaption>
+          <fielddescription>Any number below 1 means unlimited</fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextBoxControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Trim>False</Trim>
+        </settings>
+      </field>
+      <category name="TreeSpecific">
+        <properties>
+          <caption>Tree Specific</caption>
+          <visible>True</visible>
+        </properties>
+      </category>
+      <field allowempty="true" column="StartingPaths" columntype="longtext" guid="8078fd47-bc3f-424c-92dc-18fc1f34f13f" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Starting Paths</fieldcaption>
+          <fielddescription>
+            <![CDATA[Starting Node Alias Paths to display, each path on a new line.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoCompleteEnableCaching>False</AutoCompleteEnableCaching>
+          <AutoCompleteFirstRowSelected>False</AutoCompleteFirstRowSelected>
+          <AutoCompleteShowOnlyCurrentWordInCompletionListItem>False</AutoCompleteShowOnlyCurrentWordInCompletionListItem>
+          <controlname>TextAreaControl</controlname>
+          <FilterMode>False</FilterMode>
+          <Wrap>True</Wrap>
+        </settings>
+      </field>
+      <field allowempty="true" column="RemoveUnselectableChildTrees" columntype="boolean" guid="09f8c509-d821-45a5-a42e-555d862584ea" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>true</defaultvalue>
+          <fieldcaption>Remove Sub Trees with No Selections</fieldcaption>
+          <fielddescription>
+            <![CDATA[If true, it will remove any sub trees that don't have any possible selections.  Uncheck if you need to see the tree structure regardless if it has a selectable element.]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <controlname>CheckBoxControl</controlname>
+        </settings>
+      </field>
+      <field column="SelectionMode" columnsize="25" columntype="text" guid="245b5f40-6578-42cb-b0c9-5a4b7cff31d8" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <defaultvalue>Checkbox</defaultvalue>
+          <fieldcaption>Selection Mode</fieldcaption>
+        </properties>
+        <settings>
+          <controlname>DropDownListControl</controlname>
+          <DisplayActualValueAsItem>False</DisplayActualValueAsItem>
+          <EditText>False</EditText>
+          <Options>
+<![CDATA[
+Checkbox;Select Multiple then Add (Checkbox + Button)
+Individual;Add Individually
+]]>
+          </Options>
+          <SortItems>False</SortItems>
+        </settings>
+      </field>
+      <field allowempty="true" column="DisplayNameFormat" columntype="longtext" guid="5b23fa0c-94f8-4728-8859-63a9b2de073c" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>Display Name Format</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Can add a custom Display Name Format for the page elements.  The Macro can use any field found in the CMS_Node, CMS_Document, and the Page Type Specific fields. 
+
+ex: {% NodeName %} - {% MyField %}
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoSize>False</AutoSize>
+          <controlname>MacroEditor</controlname>
+          <EnablePositionMember>False</EnablePositionMember>
+          <EnableSections>False</EnableSections>
+          <EnableViewState>False</EnableViewState>
+          <Height>100</Height>
+          <Language>0</Language>
+          <ShowBookmarks>False</ShowBookmarks>
+          <ShowLineNumbers>False</ShowLineNumbers>
+          <SingleLineMode>False</SingleLineMode>
+          <SingleMacroMode>False</SingleMacroMode>
+          <SupportPasteImages>False</SupportPasteImages>
+          <Width>100%</Width>
+        </settings>
+      </field>
+      <field allowempty="true" column="ToolTipFormat" columntype="longtext" guid="b8e62cd9-639c-41be-a921-9cbe231f692b" publicfield="false" resolvedefaultvalue="False" visible="true">
+        <properties>
+          <fieldcaption>ToolTip Format</fieldcaption>
+          <fielddescription>
+<![CDATA[
+Can add a hover to the selectable page elements.  The Macro can use any field found in the CMS_Node, CMS_Document, and the Page Type Specific fields.
+
+ex: {% MyField %}
+]]>
+          </fielddescription>
+        </properties>
+        <settings>
+          <AutoSize>False</AutoSize>
+          <controlname>MacroEditor</controlname>
+          <EnablePositionMember>False</EnablePositionMember>
+          <EnableSections>False</EnableSections>
+          <EnableViewState>False</EnableViewState>
+          <Height>100</Height>
+          <Language>0</Language>
+          <ShowBookmarks>False</ShowBookmarks>
+          <ShowLineNumbers>False</ShowLineNumbers>
+          <SingleLineMode>False</SingleLineMode>
+          <SingleMacroMode>False</SingleMacroMode>
+          <SupportPasteImages>False</SupportPasteImages>
+          <Width>100%</Width>
+        </settings>
+      </field>
+    </form>
+  </WebPartProperties>
+  <WebPartSkipInsertProperties>False</WebPartSkipInsertProperties>
+  <WebPartType>0</WebPartType>
+</cms.webpart>

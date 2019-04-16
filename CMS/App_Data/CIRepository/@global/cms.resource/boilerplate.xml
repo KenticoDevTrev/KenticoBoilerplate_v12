@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.resource>
+  <ResourceAuthor>Trevor Fayas - tfayas@hbs.net</ResourceAuthor>
+  <ResourceDescription>Boilerplate items</ResourceDescription>
+  <ResourceDisplayName>Boilerplate</ResourceDisplayName>
+  <ResourceGUID>dcaf253c-196b-4595-a458-3edc1b5f0705</ResourceGUID>
+  <ResourceHasFiles>False</ResourceHasFiles>
+  <ResourceIsInDevelopment>True</ResourceIsInDevelopment>
+  <ResourceName>Boilerplate</ResourceName>
+  <ResourceVersion>1.0.0</ResourceVersion>
+  <ShowInDevelopment>False</ShowInDevelopment>
+</cms.resource>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cms.emailtemplate>
+  <EmailTemplateBcc />
+  <EmailTemplateCc />
+  <EmailTemplateDisplayName>Groups - Member rejected</EmailTemplateDisplayName>
+  <EmailTemplateFrom />
+  <EmailTemplateGUID>0d52d7da-4ab4-4342-b52c-a94f14f23ee9</EmailTemplateGUID>
+  <EmailTemplateName>Groups.MemberRejected</EmailTemplateName>
+  <EmailTemplatePlainText>
+<![CDATA[
+Dear {%MemberUser.FirstName|(identity)GlobalAdministrator|(hash)397387522da81e1a6d4c11405ab73641e20722c14b76db340c7b22b8d30e7396%},
+
+you have been rejected from group '{%Group.GroupDisplayName|(identity)GlobalAdministrator|(hash)469693ddc998e860cdfe6b87cb0ab2fc1b784a4a0ab532590e29192c863d699b%}'.
+
+
+Best Regards,
+
+The Community Team
+
+]]>
+  </EmailTemplatePlainText>
+  <EmailTemplateSubject />
+  <EmailTemplateText>
+<![CDATA[
+<html>
+	<head>
+	</head>
+	<body>
+		<p>Dear {%MemberUser.FirstName|(identity)GlobalAdministrator|(hash)397387522da81e1a6d4c11405ab73641e20722c14b76db340c7b22b8d30e7396%},<br />
+		<br />
+		you have been rejected from group '{%Group.GroupDisplayName|(identity)GlobalAdministrator|(hash)469693ddc998e860cdfe6b87cb0ab2fc1b784a4a0ab532590e29192c863d699b%}'.</p>
+		<br />
+		<br />
+		Best Regards,<br />
+		<br />
+		The Community Team
+	</body>
+</html>
+]]>
+  </EmailTemplateText>
+  <EmailTemplateType>groupmember</EmailTemplateType>
+</cms.emailtemplate>

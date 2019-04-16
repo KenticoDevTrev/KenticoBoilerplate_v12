@@ -1,0 +1,70 @@
+﻿.CustomModal {
+    background-color: white;
+}
+
+
+.CustomModal .icon-modal-close {
+        background-color: transparent;
+        border: medium none;
+}
+
+.modalPopup {
+    width: 85%;
+}
+/* Edit height if needed */
+.CustomModal .DialogMainBlock {
+    height: 500px !important;
+    position: relative;
+    overflow: auto;
+}
+
+.CustomModal .PageFooterLine {
+    position: relative;
+}
+
+.CustomModal .InputDataPrepend {
+    display: inline;
+}
+
+.cms-bootstrap input.AllChildrenChecked {
+    opacity: 1;
+}
+
+.cms-bootstrap input.SomeChildrenChecked {
+    opacity: .5;
+}
+
+.CustomModal h3 {
+  font-size: 16px;
+  margin-bottom: 0 !important;
+}
+
+
+.ms-choice, .ms-parent {
+    height: 25px;
+    margin: 5px 0;
+    width: 100% !important;
+}
+
+.textFilterAndButton input{
+    margin: 10px 0;
+}
+#content h3 {
+  margin-top:0;
+}
+.amFormTool {
+  padding: 30px;
+}
+
+.amHeader select, .amHeader input {
+  width: 100%;
+}
+
+/* Special Display classes for settings groups */
+.cms-bootstrap .settings-group-inline .CustomModal div {
+    display: block;
+}
+
+.cms-bootstrap .settings-group-inline .CustomModal div.InputDataPrepend {
+    display: inline-block !important;
+}

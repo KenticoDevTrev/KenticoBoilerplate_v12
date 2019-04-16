@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<documentfields.demo.banner>
+  <BannerImage>
+    <![CDATA[~/KenticoBoilerplate/media/Images/Banners/Banner-2.png]]>
+  </BannerImage>
+  <BannerName>Banner 2</BannerName>
+</documentfields.demo.banner>
