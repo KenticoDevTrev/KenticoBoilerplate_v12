@@ -6,7 +6,7 @@ Kentico Boilerplate MVC Site which is geared to provide a clean starting point w
 1. Download the Repo (obviously)
 2. Unzip OriginalDatabase-RestoreMeThenRunCI-Restore.zip somewhere, and restore that .bak into a SQL Server (SQL 2014+)
 3. Create 2 local IIS sites, one for Kentico (Point to the CMS Folder), one for the MVC Site (Point to Boilerplate folder)
-4. Set the bindings for the Kentico site to both dev.kenticoboilerplate.hbs.net and admin.kenticoboilerplate.hbs.net
+4. Set the bindings for the Kentico site to dev.kenticoboilerplate.hbs.net
 5. Set the bindings for the MVC site to kenticoboilerplate.hbs.net
 6. Adjust your Host file to point those 3 domains to your localhost (127.0.0.1)
 7. Unzip CI-Restore-UnzipAndModifyMe.zip's CI-Restore.bat file in the root of the solution (next to CI-Restore.ps1) 
