@@ -649,11 +649,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Administrative\BaseController.cs" />
+    <Compile Include="Library\Dynamic Route Handling\KMVCRouteOverPathPriorityConstraint.cs" />
+    <Compile Include="Library\Dynamic Route Handling\KMVCPageFoundConstraint.cs" />
+    <Compile Include="Library\Dynamic Route Handling\KMVCRouteOverPathPriority.cs" />
+    <Compile Include="Library\Dynamic Route Handling\KMVCDynamicRouteHandler.cs" />
+    <Compile Include="Library\Helpers\CacheableDocumentQuery.cs" />
+    <Compile Include="Library\Helpers\CacheableObjectQuery.cs" />
     <Compile Include="Library\Helpers\DataQueryHelper.cs" />
     <Compile Include="Library\Helpers\DocumentQueryHelper.cs" />
     <Compile Include="Library\Helpers\EnvironmentHelper.cs" />
-    <Compile Include="Library\Helpers\KMVCDynamicRouteHandler.cs" />
-    <Compile Include="Library\Helpers\NonSortedBundle.cs" />
+    <Compile Include="Library\Dynamic Route Handling\KMVCDynamicHttpHandler.cs" />
+    <Compile Include="Library\MVC Helpers\NonSortedBundle.cs" />
     <Compile Include="Models\Administrative\LoginViewModel.cs" />
     <Compile Include="Models\CMSClasses\GenericWidgetPage.cs" />
     <Compile Include="Models\Examples\ExampleBannersViewModel.cs" />

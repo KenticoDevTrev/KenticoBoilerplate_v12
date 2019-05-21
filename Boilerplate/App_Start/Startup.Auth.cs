@@ -9,6 +9,7 @@ using CMS.Helpers;
 using Kentico.Membership;
 using KMVCHelper;
 using CMS.Core;
+using CMS.SiteProvider;
 
 // Assembly attribute that sets the OWIN startup class
 // This example sets the Startup class from the 'LearningKit.App_Start' namespace, not 'LearningKit.App_Start.Basic' used below
@@ -22,7 +23,7 @@ public partial class Startup
     public void Configuration(IAppBuilder app)
     {
         // Registers the Kentico.Membership identity implementation
-        app.CreatePerOwinContext(() => UserManager.Initialize(app, new UserManager(new UserStore(EnvironmentHelper.CurrentSiteName))));
+        app.CreatePerOwinContext(() => UserManager.Initialize(app, new UserManager(new UserStore(SiteContext.CurrentSiteName))));
         app.CreatePerOwinContext<SignInManager>(SignInManager.Create);
 
         // Configures the authentication cookie

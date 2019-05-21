@@ -29,14 +29,12 @@ namespace KMVCHelper
             }
         }
 
-        /// <summary>
-        /// May need to be adjusted, but usable mainly for in Preview Mode.
-        /// </summary>
-        public static string CurrentCulture
+        public static string PreviewCulture
         {
             get
             {
-                try { 
+                try
+                {
                     return HttpContext.Current.Kentico().Preview().CultureName;
                 }
                 catch (InvalidOperationException)
@@ -47,21 +45,14 @@ namespace KMVCHelper
             }
         }
 
-        public static string CurrentSiteName
-        {
-            get
-            {
-                return SiteContext.CurrentSiteName;
-            }
-        }
-
         public static UserInfo AuthenticatedUser(IPrincipal User)
         {
             string Username = (User != null && User.Identity != null ? User.Identity.Name : "public");
             return CacheHelper.Cache<UserInfo>(cs =>
             {
                 return UserInfoProvider.GetUserInfo(Username);
-            }, new CacheSettings(CacheHelper.CacheMinutes(EnvironmentHelper.CurrentSiteName), "AuthenticatedUser", Username));
+            }, new CacheSettings(CacheHelper.CacheMinutes(SiteContext.CurrentSiteName), "AuthenticatedUser", Username));
         }
+
     }
 }

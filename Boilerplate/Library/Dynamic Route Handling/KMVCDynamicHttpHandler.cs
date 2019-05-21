@@ -8,69 +8,6 @@ using System.Web.Routing;
 using RequestContext = System.Web.Routing.RequestContext;
 namespace KMVCHelper
 {
-    public class KMVCRouteOverPathPriorityConstraint : IRouteConstraint
-    {
-        public KMVCRouteOverPathPriorityConstraint()
-        {
-        }
-
-        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
-        {
-            // Check if the controller is found and has the KMVCRouteOverPathPriority attribute.
-            string ControllerName = (values.ContainsKey("controller") ? values["controller"].ToString() : "");
-            return CacheHelper.Cache<bool>(cs =>
-            {
-                // Check if the Route that it found has the override
-                IControllerFactory factory = ControllerBuilder.Current.GetControllerFactory();
-                try
-                {
-                    var Controller = factory.CreateController(new RequestContext(httpContext, new RouteData(route, null)), ControllerName);
-                    return Attribute.GetCustomAttribute(Controller.GetType(), typeof(KMVCRouteOverPathPriority)) != null;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }, new CacheSettings(1440, "KMVCRouteOverPathPriority", ControllerName));
-        }
-
-    }
-
-    public class KMVCPageFoundConstraint : IRouteConstraint
-    {
-        public bool IgnoreRootPage;
-
-        public KMVCPageFoundConstraint(bool IgnoreRootPage = true)
-        {
-            this.IgnoreRootPage = IgnoreRootPage;
-        }
-
-        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
-        {
-            // If no document found anyway, then it will always be a match
-            TreeNode FoundDoc = DocumentQueryHelper.GetNodeByAliasPath(httpContext.Request.Url.AbsolutePath);
-            return (FoundDoc != null && (FoundDoc.NodeAliasPath != "/" || !IgnoreRootPage));
-        }
-
-    }
-
-    public class KMVCRouteOverPathPriority : Attribute
-    {
-        public KMVCRouteOverPathPriority()
-        {
-
-        }
-    }
-
-    public class KMVCDynamicRouteHandler : IRouteHandler
-    {
-        public IHttpHandler GetHttpHandler(RequestContext requestContext)
-        {
-            return new KMVCDynamicHttpHandler(requestContext);
-        }
-
-    }
-
     public class KMVCDynamicHttpHandler : IHttpHandler
     {
         public RequestContext RequestContext { get; set; }
