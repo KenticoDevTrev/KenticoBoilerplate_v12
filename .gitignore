@@ -19,7 +19,7 @@
 [Xx]86/
 [Bb]uild/
 bld/
-## [Bb]in/
+[Bb]in/
 [Oo]bj/
 
 # Visual Studio 2015 cache/options directory
@@ -285,6 +285,7 @@ CMS/App_Data/CMSModules/SmartSearch/**
 !CMS/App_Data/CMSModules/SmartSearch/_Synonyms/**
 
 ## Kentico Starter Sites
+Boilerplate/App_Data/CMSModules/WebFarm/webfarm.sync
 
 ## Project specific ignores
 # Sensitive settings
@@ -318,3 +319,6 @@ export*.zip
 CMS/*/media/**
 CMS/*/BizFormFiles/
 CMS/*.webinfo
+
+# You can enable bin if for your pushing cycles you do not build and you wish to track BIN changes
+## ![Bb]in
