@@ -14,6 +14,11 @@ namespace KMVCHelper
     public class KMVCAuthorization : AuthorizeAttribute
     {
         /// <summary>
+        /// True by default, if no other attributes specified and this is true, then will authorize any logged in user.  Set to false to  
+        /// </summary>
+        public bool UserAuthenticationRequired { get; set; } = true;
+
+        /// <summary>
         /// Comma, semi-color or pipe delimited list of ResourceName+PermissionName, such as CMS.Blog.Modify|My_Module.MyCustomPermission
         /// </summary>
         public string ResourceAndPermissionNames { get; set; }
@@ -58,7 +63,7 @@ namespace KMVCHelper
                     if (FoundNodeByAlias != null && FoundNodeByAlias.AliasNodeID > 0)
                     {
                         CacheDependencies.Add("cms.documentalias|all");
-                        CacheDependencies.Add(string.Format("node|{0}|{1}", SiteContext.CurrentSiteName, Path));
+                        CacheDependencies.Add(string.Format("node|{0}|{1}", EnvironmentHelper.CurrentSiteName, Path));
                         FoundNode = DocumentQueryHelper.RepeaterQuery(NodeID: FoundNodeByAlias.AliasNodeID, ClassNames: ClassName, CultureCode: (!string.IsNullOrWhiteSpace(FoundNodeByAlias.AliasCulture) ? FoundNodeByAlias.AliasCulture : CultureCode)).GetTypedResult().Items.FirstOrDefault();
                     }
                 }
@@ -113,9 +118,14 @@ namespace KMVCHelper
             {
                 List<string> CacheDependencies = new List<string>();
                 bool Authorized = false;
+
+                // Will remain true only if no other higher priority authorization items were specified
+                bool OnlyAuthenticatedCheck = true;
+
                 // Roles
                 if (!Authorized && !string.IsNullOrWhiteSpace(Roles))
                 {
+                    OnlyAuthenticatedCheck = false;
                     CacheDependencies.Add("cms.role|all");
                     CacheDependencies.Add("cms.userrole|all");
                     CacheDependencies.Add("cms.membershiprole|all");
@@ -134,6 +144,7 @@ namespace KMVCHelper
                 // Users
                 if (!Authorized && !string.IsNullOrWhiteSpace(Users))
                 {
+                    OnlyAuthenticatedCheck = false;
                     foreach (string User in Users.Split(";,|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
                     {
                         if (User.ToLower().Trim() == CurrentUser.UserName.ToLower().Trim())
@@ -147,6 +158,7 @@ namespace KMVCHelper
                 // Explicit Permissions
                 if (!Authorized && !string.IsNullOrWhiteSpace(ResourceAndPermissionNames))
                 {
+                    OnlyAuthenticatedCheck = false;
                     CacheDependencies.Add("cms.role|all");
                     CacheDependencies.Add("cms.userrole|all");
                     CacheDependencies.Add("cms.membershiprole|all");
@@ -170,6 +182,7 @@ namespace KMVCHelper
                 // Check page level security
                 if (!Authorized && CheckPageACL && FoundPage != null)
                 {
+                    OnlyAuthenticatedCheck = false;
                     CacheDependencies.Add("cms.role|all");
                     CacheDependencies.Add("cms.userrole|all");
                     CacheDependencies.Add("cms.membershiprole|all");
@@ -183,6 +196,12 @@ namespace KMVCHelper
                     {
                         Authorized = true;
                     }
+                }
+
+                // If there were no other authentication properties, check if this is purely an "just requires authentication" area
+                if (OnlyAuthenticatedCheck && (!UserAuthenticationRequired || !CurrentUser.IsPublic()))
+                {
+                    Authorized = true;
                 }
 
                 if (cs.Cached)
