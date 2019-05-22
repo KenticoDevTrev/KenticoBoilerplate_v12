@@ -286,7 +286,7 @@ CMS/App_Data/CMSModules/SmartSearch/**
 
 ## Kentico Starter Sites
 Boilerplate/App_Data/CMSModules/WebFarm/webfarm.sync
-Boilerplate/[Bb]in/
+Boilerplate/[Bb]in
 
 # You can enable bin if for your pushing cycles you do not build and you wish to track BIN changes
 ## !/Boilerplate/[Bb]in/
