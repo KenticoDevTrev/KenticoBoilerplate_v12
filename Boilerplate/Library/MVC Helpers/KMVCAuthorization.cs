@@ -63,7 +63,7 @@ namespace KMVCHelper
                     if (FoundNodeByAlias != null && FoundNodeByAlias.AliasNodeID > 0)
                     {
                         CacheDependencies.Add("cms.documentalias|all");
-                        CacheDependencies.Add(string.Format("node|{0}|{1}", EnvironmentHelper.CurrentSiteName, Path));
+                        CacheDependencies.Add(string.Format("node|{0}|{1}", SiteContext.CurrentSiteName, Path));
                         FoundNode = DocumentQueryHelper.RepeaterQuery(NodeID: FoundNodeByAlias.AliasNodeID, ClassNames: ClassName, CultureCode: (!string.IsNullOrWhiteSpace(FoundNodeByAlias.AliasCulture) ? FoundNodeByAlias.AliasCulture : CultureCode)).GetTypedResult().Items.FirstOrDefault();
                     }
                 }
