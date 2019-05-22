@@ -210,7 +210,7 @@ namespace KMVCHelper
                 }
 
                 return Authorized;
-            }, new CacheSettings(CacheAuthenticationResults ? CacheHelper.CacheMinutes(SiteContext.CurrentSiteName) : 0, "AuthorizeCore", CurrentUser.UserID, (FoundPage != null ? FoundPage.DocumentID : -1), SiteContext.CurrentSiteName, Users, Roles, ResourceAndPermissionNames, CheckPageACL, NodePermissionToCheck, CustomUnauthorizedRedirect));
+            }, new CacheSettings(CacheAuthenticationResults ? CacheHelper.CacheMinutes(SiteContext.CurrentSiteName) : 0, "AuthorizeCore", CurrentUser.UserID, (FoundPage != null ? FoundPage.DocumentID : -1), SiteContext.CurrentSiteName, Users, Roles, ResourceAndPermissionNames, CheckPageACL, NodePermissionToCheck, CustomUnauthorizedRedirect, UserAuthenticationRequired));
         }
 
         /// <summary>
