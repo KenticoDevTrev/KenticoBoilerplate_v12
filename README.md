@@ -13,7 +13,9 @@ Kentico Boilerplate MVC Site which is geared to provide a clean starting point w
 8. Edit the CI-Restore.bat and modify the Path and AppPoolName to match that of your local instance (the App Pool Name should be the one for your Kentico Instance)
 9. Go to the CMS folder, and unzip ConfigFiles_UnzipMe.zip, place the 3 files in the CMS folder
 10. Edit the config files as desired, minimum the ConnectionStrings.config needs to be configured to point to your database you restored in step 2
-11. Run the CI-Restore.ps1 in the root of this solution, this will update your database with the Continuous Integration changes
+11. * Run the CI-Restore.ps1 in the root of this solution, this will update your database with the Continuous Integration changes.  
+
+*NOTE: Sometimes, depending on your system configuration, powershell scripts can be blocked if they originated from the internet, in which case you can simply copy the content of the powershell, delete the file, then create a new CI-Restore.ps1 and paste in the content, this way it originated from yourself.
 
 ## Contribution Rules
 If you wish to contribute to the boilerplate, please follow the following rules
