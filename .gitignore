@@ -321,6 +321,8 @@ CI-Restore.bat
 export*.zip
 /git-update.log.txt
 CMS/*/media/**
+!CMS/CMSWebParts/Media/**
+!CMS/CMSFormControls/Media/**
 CMS/*/BizFormFiles/
 CMS/*.webinfo
 
