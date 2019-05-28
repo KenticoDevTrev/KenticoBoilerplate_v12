@@ -14,6 +14,9 @@ namespace KMVCHelper
 {
     public class EnvironmentHelper
     {
+        /// <summary>
+        /// Returns if the Preview is Enabled or not
+        /// </summary>
         public static bool PreviewEnabled
         {
             get
@@ -29,6 +32,9 @@ namespace KMVCHelper
             }
         }
 
+        /// <summary>
+        /// Gets the Preview Culture
+        /// </summary>
         public static string PreviewCulture
         {
             get
@@ -45,6 +51,20 @@ namespace KMVCHelper
             }
         }
 
+        /// <summary>
+        /// Uses MembershipContext.AuthenticatedUser
+        /// </summary>
+        /// <returns></returns>
+        public static UserInfo AuthenticatedUser()
+        {
+            return MembershipContext.AuthenticatedUser;
+        }
+
+        /// <summary>
+        /// Uses the given IPrincipleUser to get the current user.
+        /// </summary>
+        /// <param name="User"></param>
+        /// <returns></returns>
         public static UserInfo AuthenticatedUser(IPrincipal User)
         {
             string Username = (User != null && User.Identity != null ? User.Identity.Name : "public");
