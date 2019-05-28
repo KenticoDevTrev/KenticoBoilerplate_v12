@@ -1,0 +1,12 @@
+﻿@model Models.InlineEditors.SpinnerEditorViewModel
+
+@using (Html.Kentico().BeginInlineEditor("spinner-editor", Model.PropertyName, new { @class = "spinner-editor" }))
+{
+    <div class="inline-editor-btn-group">
+        <ul class="inline-editor-btn-group-actions">
+            <li><button id="minus-btn" type="button" title="@Html.GetUIString("InlineEditors.SpinnerEditor.Minus")"><b>-</b></button></li>
+            <li><button id="value-btn" type="button" disabled><b id="value-placeholder">@Model.Count</b></button></li>
+            <li><button id="plus-btn" type="button" title="@Html.GetUIString("InlineEditors.SpinnerEditor.Plus")"><b>+</b></button></li>
+        </ul>
+    </div>
+}
