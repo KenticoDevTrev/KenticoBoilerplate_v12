@@ -26,6 +26,19 @@ If you wish to contribute to the boilerplate, please follow the following rules
 4. Comment well!
 5. Please feel free to include useful generic widgets and inline editors, just make sure they are indeed generic and useable in multiple situations.
 
+## Removal of Examples/Generic Widget Page
+The Boilerplate, while trying to be as minimalistic as possible, does contain some examples to help demonstrate the various methods or ways of doing things for those just starting out in MVC.  If you want to remove these things, just do the following:
+
+1. Delete Boilerplate/KenticoBoilerplate
+2. Delete Boilerplate/Controllers/Examples
+3. Delete Boilerplate/Controllers/PageTypes/KMVCHelper_GenericWidgetPageController.cs
+4. Delete Boilerplate/Models/Examples
+5. Delete Boilerplate/Models/CMSClasses
+6. Delete Boilerplate/Views/Examples
+7. Delete Boilerplate/Views/KMVCHelper_GenericWidgetPage
+
+If you wish you can also uninstall the NuGet packages RelationshipsExtendedMVCHelper if you are not using that module, and update the Kentico packages to whatever hotfix you are currently using (Boilerplate is on version 18).
+
 ## More information
 
 For more information, please see me at www.devtrev.com
