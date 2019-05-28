@@ -743,6 +743,7 @@
     <Compile Include="Library\Helpers\DocumentQueryHelper.cs" />
     <Compile Include="Library\Helpers\EnvironmentHelper.cs" />
     <Compile Include="Library\Dynamic Route Handling\KMVCDynamicHttpHandler.cs" />
+    <Compile Include="Library\Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Library\MVC Helpers\KMVCAuthorization.cs" />
     <Compile Include="Library\MVC Helpers\NonSortedBundle.cs" />
     <Compile Include="Models\Administrative\LoginViewModel.cs" />
