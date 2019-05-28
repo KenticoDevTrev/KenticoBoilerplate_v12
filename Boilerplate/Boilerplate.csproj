@@ -705,6 +705,9 @@
     <Content Include="Views\Shared\InlineEditors\_ColorPickerEditor.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_ImageUploaderEditor.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_SpinnerEditor.cshtml" />
+    <Content Include="Views\Shared\Sections\_SingleColumnSection.cshtml" />
+    <Content Include="Views\Shared\Sections\_ThreeColumnSection.cshtml" />
+    <Content Include="Views\Shared\Sections\_TwoColumnSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
