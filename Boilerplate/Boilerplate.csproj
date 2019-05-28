@@ -708,6 +708,7 @@
     <Content Include="Views\Shared\Sections\_SingleColumnSection.cshtml" />
     <Content Include="Views\Shared\Sections\_ThreeColumnSection.cshtml" />
     <Content Include="Views\Shared\Sections\_TwoColumnSection.cshtml" />
+    <Content Include="Views\Shared\Widgets\_TextWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
