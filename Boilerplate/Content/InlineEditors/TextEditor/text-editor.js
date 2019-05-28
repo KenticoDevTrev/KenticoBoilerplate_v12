@@ -3,16 +3,34 @@
         init: function (options) {
 
             var editor = options.editor;
-
+            if (document.getElementById("TinyMCEEditorContainer") === null) {
+                var div = document.createElement("div");
+                div.id = "TinyMCEEditorContainer";
+                div.style = "position: fixed; top:0; left: 0; right: 0; z-index: 10000;";
+                document.getElementsByTagName("body")[0].prepend(div);
+            }
+            window.addEventListener("resize", function (event) {
+                // Resize if visible
+                if (tinymce.get(editor.id).editorContainer.offsetHeight > 0) {
+                    tinymce.get(editor.id).fire('Focus');
+                }
+            });
             var config = {
                 target: editor,
                 inline: true,
                 plugins: [editor.dataset.plugins],
                 toolbar: editor.dataset.tools,
                 skin_url: '/Content/CSS/skins/ui/oxide',
-                content_css: '/Content/CSS/skins/content/default/content.min.css'
+                content_css: '/Content/CSS/skins/content/default/content.min.css',
+                fixed_toolbar_container: '#TinyMCEEditorContainer'
             };
 
+            var BodyTag = document.getElementsByTagName("body")[0];
+            var BodyStyle = BodyTag.currentStyle || window.getComputedStyle(BodyTag);
+            var CurrentTopMargin = BodyStyle.marginTop;
+            if (CurrentTopMargin.indexOf("px") >= 0 || CurrentTopMargin.indexOf("%") >= 0) {
+                CurrentTopMargin = parseInt(CurrentTopMargin.replace("px", "").replace("%", ""));
+            }
             config.init_instance_callback = function (tinyMceEditor) {
                 tinyMceEditor.on('Change', function (e) {
                     var event = new CustomEvent("updateProperty", {
@@ -24,6 +42,16 @@
                     });
 
                     editor.dispatchEvent(event);
+                });
+                tinyMceEditor.on('Focus', function (e) {
+                    document.getElementsByTagName('body')[0].style = "margin-top: " + (CurrentTopMargin+document.getElementById("TinyMCEEditorContainer").offsetHeight + 32) + "px;";
+                });
+                tinyMceEditor.on('Blur', function (e) {
+                    if (CurrentTopMargin === 0) {
+                        document.getElementsByTagName('body')[0].style.marginTop = null;
+                    } else {
+                        document.getElementsByTagName('body')[0].style = "margin-top: " + (CurrentTopMargin > 0 ? CurrentTopMargin + "px" : "0") + ";";
+                    }
                 });
             };
             
@@ -38,11 +66,11 @@
                     tooltip: 'POWERED BY TINY',
                     icon: 'tinymce-toolbar-attribution',
                     onAction: function (_) {
-                        var win = window.open("https://www.tiny.cloud/", "_blank")
+                        var win = window.open("https://www.tiny.cloud/", "_blank");
                         win.focus();
                     }
                 });
-            }
+            };
 
             if (editor.dataset.enableFormatting === "False") {
                 config.toolbar = false;
@@ -53,7 +81,7 @@
         },
 
         destroy: function (options) {
-            var mceEditor = tinymce.get(options.editor.id)
+            var mceEditor = tinymce.get(options.editor.id);
             if (mceEditor) {
                 mceEditor.remove();
             }
