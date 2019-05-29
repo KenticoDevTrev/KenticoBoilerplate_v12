@@ -1,0 +1,14 @@
+﻿@model Models.InlineEditors.TinyMCEEditorViewModel
+
+@using (Html.Kentico().BeginInlineEditor("TinyMCEEditor", Model.PropertyName,
+    new
+    {
+        @class = "TinyMCEEditor",
+        data_enable_formatting = Model.EnableFormatting.ToString(),
+        data_tools = Model.Tools,
+        data_plugins = Model.Plugins
+
+    }))
+{
+    @Html.Raw(Model.Html)
+}

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-[assembly: RegisterWidget("Widgets.SimpleWidget", typeof(SimpleWidgetController), "Display the Text", Description = "A very simple widget.", IconClass = "icon-one")]
+[assembly: RegisterWidget("KMVC.SimpleWidget", typeof(SimpleWidgetController), "Simple Text", Description = "A very simple widget.", IconClass = "icon-a-lowercase")]
 namespace Controllers.Widgets
 {
     public class SimpleWidgetController : WidgetController<SimpleWidgetProperties>
@@ -36,7 +36,7 @@ namespace Controllers.Widgets
         {
             var currentPage = GetPage();
             var properties = GetProperties();
-            return PartialView("Widgets/SimpleWidget", new SimpleWidgetViewModel { Text = properties.Text });
+            return PartialView("Widgets/_SimpleWidget", new SimpleWidgetViewModel { Html = properties.Html });
         }
     }
 }

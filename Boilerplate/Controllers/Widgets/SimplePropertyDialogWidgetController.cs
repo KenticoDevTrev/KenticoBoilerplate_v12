@@ -9,7 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-[assembly: RegisterWidget("Widgets.SimplePropertyDialogWidget", typeof(SimplePropertyDialogWidgetController), "Display the Number", Description = "A very simple widget with Dialog.", IconClass = "icon-one")]
+[assembly: RegisterWidget("KMVC.SimplePropertyDialogWidget", typeof(SimplePropertyDialogWidgetController), "Display Number", Description = "A very simple widget with Dialog that shows a number.", IconClass = "icon-one")]
 namespace Controllers.Widgets
 {
     public class SimplePropertyDialogWidgetController : WidgetController<SimplePropertyDialogWidgetProperties>
@@ -36,7 +36,7 @@ namespace Controllers.Widgets
         {
             var currentPage = GetPage();
             var properties = GetProperties();
-            return PartialView("Widgets/SimplePropertyDialogWidget", new SimplePropertyDialogWidgetViewModel { Number = properties.Number });
+            return PartialView("Widgets/_SimplePropertyDialogWidget", new SimplePropertyDialogWidgetViewModel { Number = properties.Number });
         }
     }
 }
