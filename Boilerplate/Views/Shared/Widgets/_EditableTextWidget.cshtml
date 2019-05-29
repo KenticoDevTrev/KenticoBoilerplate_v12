@@ -1,0 +1,16 @@
+﻿@using Models.InlineEditors
+@using Models.Widgets
+@model Models.Widgets.EditableTextWidgetViewModel
+
+@if (Context.Kentico().PageBuilder().EditMode)
+{
+    Html.RenderPartial("InlineEditors/_TinyMCEEditor", new TinyMCEEditorViewModel
+    {
+        PropertyName = nameof(Model.Html),
+        Html = Model.Html
+    });
+}
+else
+{
+    @Html.Raw(Model.Html);
+}

@@ -17,7 +17,7 @@
     <GUID>6415b8ce-8072-4bcd-8e48-9d7178b826b7</GUID>
     <ObjectType>cms.user</ObjectType>
   </DocumentModifiedByUserID>
-  <DocumentModifiedWhen>2019-04-15 01:15:46Z</DocumentModifiedWhen>
+  <DocumentModifiedWhen>2019-05-29 20:54:31Z</DocumentModifiedWhen>
   <DocumentName>Widget-Page</DocumentName>
   <DocumentNodeID>
     <CodeName>/Widget-Page</CodeName>
@@ -30,7 +30,7 @@
     </Site>
   </DocumentNodeID>
   <DocumentPageBuilderWidgets>
-    <![CDATA[{"editableAreas":[{"identifier":"main","sections":[{"identifier":"900433e3-59a1-4069-b61e-d78a31d1efab","type":"Sections.DefaultSection","zones":[{"identifier":"ed87d6d6-dab9-4812-83ec-1d2906efc76a","widgets":[{"identifier":"6cf4fffc-eaa8-4f4f-bcc9-d16f59559776","type":"Widgets.SimpleWidget","variants":[{"identifier":"377f8d10-3722-410b-a11c-63ca77713c59","properties":{"text":"<p>Hello World!</p>"}}]},{"identifier":"ea4480f4-d933-461a-a835-56d3de5c9dbd","type":"Widgets.SimplePropertyDialogWidget","variants":[{"identifier":"ac88919c-cde1-47c6-ba5c-7a0bd24ddbf1","properties":{"number":43}}]}]}]}]}]}]]>
+    <![CDATA[{"editableAreas":[{"identifier":"main","sections":[{"identifier":"83331da6-7a33-45b3-af1d-dd2b32394002","type":"Sections.ThreeColumnSection","zones":[{"identifier":"3046be63-a110-4c81-978a-24a6f9b15a34","widgets":[{"identifier":"1d672ca6-0f6e-49ab-bd12-d49b26f31245","type":"KMVC.StaticHtml","variants":[{"identifier":"464e970d-9a41-4c90-95f3-1a7afd9b69dc","properties":{"html":"<ul>\r\n<li>This is some text</li>\r\n<li>lalala</li>\r\n</ul>"}}]}]},{"identifier":"d2b7a788-d158-46ac-860c-7c628ccd1e0c","widgets":[{"identifier":"004b5345-4b71-49b3-93bd-abfdb19a63b1","type":"KMVC.EditableText","variants":[{"identifier":"6400b205-5a9a-490a-997b-6bb378202d13","properties":{"html":"<p>This is some text</p>\n<p>Lalala</p>"}}]}]},{"identifier":"568cd82a-cf97-4754-8da9-74a902b0cbd0","widgets":[{"identifier":"de1df32d-f03f-4110-85c0-b255a9ecfbc5","type":"KMVC.SimplePropertyDialogWidget","variants":[{"identifier":"128b7c4c-9c61-47d4-a396-16aa49d16e1a","properties":{"number":43}}]},{"identifier":"32f3c982-f7ec-49b6-a3b8-49540e1f42f5","type":"KMVC.SimpleWidget","variants":[{"identifier":"8f6924b7-93cc-4cba-9403-403cdef16726","properties":{"html":"<p>Test</p>"}}]}]}]},{"identifier":"900433e3-59a1-4069-b61e-d78a31d1efab","type":"Sections.DefaultSection","zones":[{"identifier":"ed87d6d6-dab9-4812-83ec-1d2906efc76a","widgets":[]}]}]}]}]]>
   </DocumentPageBuilderWidgets>
   <DocumentPriority>0</DocumentPriority>
   <DocumentShowInSiteMap>True</DocumentShowInSiteMap>

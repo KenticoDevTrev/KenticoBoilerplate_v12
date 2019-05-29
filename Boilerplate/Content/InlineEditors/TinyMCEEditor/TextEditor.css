@@ -1,0 +1,10 @@
+﻿.tox-tinymce {
+    z-index: 10020;
+}
+.tox-tinymce-aux {
+    z-index: 10030!important;
+}
+
+.mce-content-body {
+    min-width: 1em;
+}
