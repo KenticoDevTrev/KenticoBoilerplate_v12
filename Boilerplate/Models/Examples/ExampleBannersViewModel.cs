@@ -7,7 +7,7 @@ namespace Models.Examples
 {
     public class ExampleBannersViewModel
     {
-        public List<ExampleBannersBanner> BannerNameUrlsList { get; set; }
+        public IEnumerable<ExampleBannersBanner> BannerNameUrlsList { get; set; }
     }
 
     public class ExampleBannersBanner

@@ -6,10 +6,10 @@
 }
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        @for(int i=0; i< Model.BannerNameUrlsList.Count; i++)
+        @foreach (var bannerNameUrl in Model.BannerNameUrlsList)
         {
-            <div class="carousel-item @(i==0 ? "active" : "")">
-                <img class="d-block w-100" src="@Url.Content(Model.BannerNameUrlsList[i].BannerUrl)" alt="@Model.BannerNameUrlsList[i].BannerName">
+            <div class="carousel-item @((Model.BannerNameUrlsList.First() == bannerNameUrl) ? "active" : "")">
+                <img class="d-block w-100" src="@Url.Content(bannerNameUrl.BannerUrl)" alt="@bannerNameUrl.BannerName">
             </div>
         }
     </div>

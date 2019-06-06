@@ -7,7 +7,7 @@ namespace Models.Examples
 {
     public class ExampleMVCWebPartsViewModel
     {
-        public List<SubNav> SubNavigation { get; set; }
+        public IEnumerable<SubNav> SubNavigation { get; set; }
         public ExampleMVCWebPartsViewModel()
         {
             SubNavigation = new List<SubNav>();
@@ -16,7 +16,7 @@ namespace Models.Examples
 
     public class ExampleMVCWebPartsSubNavs
     {
-        public List<SubNav> SubNavigation { get; set; }
+        public IEnumerable<SubNav> SubNavigation { get; set; }
         public ExampleMVCWebPartsSubNavs()
         {
             SubNavigation = new List<SubNav>();

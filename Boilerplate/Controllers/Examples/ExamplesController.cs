@@ -1,14 +1,10 @@
-﻿using CMS.DocumentEngine;
+﻿using Boilerplate.Services.Interfaces;
+using CMS.Base;
 using CMS.Localization;
-using CMS.SiteProvider;
 using Controllers;
 using KMVCHelper;
 using Models.Examples;
-using RelationshipsExtended;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Boilerplate.Controllers.Examples
@@ -17,6 +13,13 @@ namespace Boilerplate.Controllers.Examples
     [KMVCRouteOverPathPriority]
     public class ExamplesController : BaseController
     {
+        public IExampleService _exampleService;
+        public ExamplesController(IExampleService exampleService)
+        {
+            // Use constructor injection to get a handle on our ExampleService
+            _exampleService = exampleService;
+        }
+
         // GET: Examples
         public ActionResult Index()
         {
@@ -27,20 +30,13 @@ namespace Boilerplate.Controllers.Examples
 
         public ActionResult Banners()
         {
-            TreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(HttpContext.Request.Url.AbsolutePath);
+            ITreeNode FoundNode = _exampleService.GetCurrentNode();
             if (FoundNode != null)
             {
                 SetContext(FoundNode.DocumentID);
                 // Get Banners
                 ExampleBannersViewModel Model = new ExampleBannersViewModel();
-                Model.BannerNameUrlsList = new List<ExampleBannersBanner>();
-                foreach(TreeNode Banner in DocumentQueryHelper.RepeaterQuery(ClassNames: "Demo.Banner", RelationshipName: "Banners", RelationshipWithNodeGuid: FoundNode.NodeGUID))
-                {
-                    Model.BannerNameUrlsList.Add(new ExampleBannersBanner() {
-                        BannerName = Banner.GetValue<string>("BannerName", ""),
-                        BannerUrl = Banner.GetValue<string>("BannerImage", "")
-                    });
-                }
+                Model.BannerNameUrlsList = _exampleService.GetBannersFromNode(FoundNode);
                 return View(Model);
             }
             else
@@ -60,7 +56,7 @@ namespace Boilerplate.Controllers.Examples
         /// <returns></returns>
         public ActionResult MVCWebPartsNoModel()
         {
-            TreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(HttpContext.Request.Url.AbsolutePath);
+            ITreeNode FoundNode = _exampleService.GetCurrentNode();
             if (FoundNode != null)
             {
                 // This will give us the Node Alias Path context
@@ -80,25 +76,12 @@ namespace Boilerplate.Controllers.Examples
         /// <returns></returns>
         public ActionResult MVCWebPartsViewModel()
         {
-            TreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(HttpContext.Request.Url.AbsolutePath);
+            ITreeNode FoundNode = _exampleService.GetCurrentNode();
             if (FoundNode != null)
             {
                 ExampleMVCWebPartsViewModel Model = new ExampleMVCWebPartsViewModel();
-                // Get the Sub Nav Items
-                foreach (TreeNode Node in DocumentQueryHelper.RepeaterQuery(
-                    Path: FoundNode.NodeAliasPath + "/%",
-                    ClassNames: "CMS.MenuItem",
-                    OrderBy: "NodeLevel, NodeOrder",
-                    Columns: "MenuItemName,NodeAliasPath"
-                    ))
-                {
-                    Model.SubNavigation.Add(new SubNav()
-                    {
-                        LinkText = Node.GetValue("MenuItemName", ""),
-                        // You have to decide what your URL will be, for us our URLs = NodeAliasPath
-                        LinkUrl = Node.NodeAliasPath
-                    });
-                }
+                // Get subnav items from the ExampleService
+                Model.SubNavigation = _exampleService.GetSubNavFromNode(FoundNode);
                 return View(Model);
             }
             else
@@ -118,24 +101,26 @@ namespace Boilerplate.Controllers.Examples
         {
             // Build the actual Partial View's model from the data provided by the parent View
             ExampleMVCWebPartsSubNavs Model = new ExampleMVCWebPartsSubNavs();
-            List<SubNav> SubNavs = new List<SubNav>();
+            var subNavs = new List<SubNav>();
             // Get the Sub Nav Items
-            foreach (TreeNode Node in DocumentQueryHelper.RepeaterQuery(
+            foreach (ITreeNode Node in DocumentQueryHelper.RepeaterQuery(
                 Path: ViewBag.CurrentDocument.NodeAliasPath + "/%",
                 CultureCode: ((CultureInfo)ViewBag.CurrentCulture).CultureCode,
-                SiteName: ((SiteInfo)ViewBag.CurrentSite).SiteName,
+                SiteName: ((ISiteInfo)ViewBag.CurrentSite).SiteName,
                 ClassNames: "CMS.MenuItem",
                 OrderBy: "NodeLevel, NodeOrder",
                 Columns: "MenuItemName,NodeAliasPath"
                 ))
             {
-                Model.SubNavigation.Add(new SubNav()
+                subNavs.Add(new SubNav()
                 {
-                    LinkText = Node.GetValue("MenuItemName", ""),
+                    LinkText = Node.GetValue("MenuItemName").ToString(),
                     // You have to decide what your URL will be, for us our URLs = NodeAliasPath
                     LinkUrl = Node.NodeAliasPath
                 });
             }
+
+            Model.SubNavigation = subNavs;
             return View("Navigation", Model);
         }
 
@@ -149,24 +134,8 @@ namespace Boilerplate.Controllers.Examples
         {
             // Build the actual Partial View's model from the data provided by the parent View
             ExampleMVCWebPartsSubNavs Model = new ExampleMVCWebPartsSubNavs();
-            List<SubNav> SubNavs = new List<SubNav>();
-            // Get the Sub Nav Items
-            foreach (TreeNode Node in DocumentQueryHelper.RepeaterQuery(
-                Path: Path + "/%",
-                CultureCode: Culture,
-                SiteName: SiteName,
-                ClassNames: "CMS.MenuItem",
-                OrderBy: "NodeLevel, NodeOrder",
-                Columns: "MenuItemName,NodeAliasPath"
-                ))
-            {
-                Model.SubNavigation.Add(new SubNav()
-                {
-                    LinkText = Node.GetValue("MenuItemName", ""),
-                    // You have to decide what your URL will be, for us our URLs = NodeAliasPath
-                    LinkUrl = Node.NodeAliasPath
-                });
-            }
+            // Get the Sub Nav Items from the ExampleService
+            Model.SubNavigation = _exampleService.GetSubNavFromAliasPath(Path, CultureInfoProvider.GetCultureInfo(Culture));
             return View("Navigation", Model);
         }
 
@@ -176,7 +145,7 @@ namespace Boilerplate.Controllers.Examples
         /// </summary>
         /// <param name="SubNavs">The Sub Nav List (Passed from the View's Model)</param>
         /// <returns></returns>
-        public ActionResult NavigationByModel(List<SubNav> SubNavs)
+        public ActionResult NavigationByModel(IEnumerable<SubNav> SubNavs)
         {
             // Build the actual Partial View's model from the data provided by the parent View
             ExampleMVCWebPartsSubNavs Model = new ExampleMVCWebPartsSubNavs()
