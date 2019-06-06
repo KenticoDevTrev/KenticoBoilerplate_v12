@@ -9,7 +9,7 @@ namespace Boilerplate.Services.Interfaces
     {
         IEnumerable<ExampleBannersBanner> GetBannersFromNode(ITreeNode node);
         ITreeNode GetCurrentNode();
-        IEnumerable<SubNav> GetSubNavFromAliasPath(string nodeAliasPath, CultureInfo cultureInfo, ISiteInfo siteInfo);
+        IEnumerable<SubNav> GetSubNavFromAliasPath(string nodeAliasPath, CultureInfo cultureInfo, ISiteInfo siteInfo = null);
         IEnumerable<SubNav> GetSubNavFromNode(ITreeNode node);
     }
 }

@@ -1,6 +1,6 @@
 ﻿@model Models.Examples.ExampleMVCWebPartsSubNavs
 
-@if(Model.SubNavigation.Count > 0)
+@if(Model.SubNavigation.Any())
 {
     <ul>
         @foreach(Models.Examples.SubNav nav in Model.SubNavigation)

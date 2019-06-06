@@ -9,6 +9,8 @@ using Autofac.Core;
 using Autofac.Builder;
 using System.Web.Mvc;
 using System.Reflection;
+using Controllers;
+using Boilerplate.Services.Interfaces;
 
 namespace Boilerplate.App_Start
 {
@@ -21,17 +23,29 @@ namespace Boilerplate.App_Start
 
             // Adds a custom registration source (IRegistrationSource) that provides all services from the Kentico API
             builder.RegisterSource(new CMSRegistrationSource());
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            var allServiceInterfaces = Assembly.GetExecutingAssembly().GetTypes().Where(x => !x.IsInterface && x.Name.EndsWith("Service"));
-            var serviceClasses = allServiceInterfaces.Select(i => new ServiceRegistration { Service = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsAssignableFrom(i) && !x.IsInterface).FirstOrDefault(), Interface = i });
-
-            foreach(var serviceClass in serviceClasses)
+            // Find all `Service` classes by their interface and resolve the attribute/class types
+            var serviceIntefaces = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsInterface && x.Name.EndsWith("Service"));
+            var serviceClasses = Assembly.GetExecutingAssembly().GetTypes().Where(x => !x.IsInterface && x.Name.EndsWith("Service")).Select(x => new ServiceRegistration { Service = x, Interface = x.GetInterfaces().FirstOrDefault(i => serviceIntefaces.Contains(i)) });
+            
+            foreach(var serviceClass in serviceClasses.Where(x => x.Interface != null))
             {
                 builder.RegisterType(serviceClass.Service).As(serviceClass.Interface);
             }
 
+            // Autowire Property Injection for controllers (can't have constructor injection)
+            var allControllers = Assembly.GetExecutingAssembly().GetTypes().Where(type => typeof(BaseController).IsAssignableFrom(type));
+            foreach (var controller in allControllers)
+            {
+                builder.RegisterType(controller).PropertiesAutowired();
+            }
+
             // Resolves the dependencies
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            var allRegs = container.ComponentRegistry.Registrations;
         }
     }
 

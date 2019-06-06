@@ -1,19 +1,26 @@
 ﻿using Boilerplate.Services.Interfaces;
 using CMS.Base;
-using CMS.DocumentEngine;
+using CMS.Core;
 using CMS.Localization;
 using KMVCHelper;
 using Models.Examples;
+using System;
 using System.Collections.Generic;
-using System.Web;
 
 namespace Boilerplate.Services.Implementation
 {
     public class ExampleService : IExampleService
     {
-        public ExampleService()
-        {
+        // Below are Kentico classes that are coded to an intercace and can be injected via Constructor Injection
+        public ISiteService _siteService;
+        public IEventLogService _eventLogService;
+        public IHttpContextAccessor _httpContextAccessor;
 
+        public ExampleService(ISiteService siteService, IEventLogService eventLogService, IHttpContextAccessor httpContextAccessor)
+        {
+            _siteService = siteService;
+            _eventLogService = eventLogService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         /// <summary>
@@ -24,8 +31,8 @@ namespace Boilerplate.Services.Implementation
         /// <returns></returns>
         public ITreeNode GetCurrentNode()
         {
-            var absolutePath = HttpContext.Current.Request.Url.AbsolutePath;
-            TreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(absolutePath);
+            var absolutePath = _httpContextAccessor.HttpContext.Request.Url.AbsolutePath;
+            ITreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(absolutePath);
             return FoundNode;
         }
 
@@ -38,13 +45,21 @@ namespace Boilerplate.Services.Implementation
         public IEnumerable<ExampleBannersBanner> GetBannersFromNode(ITreeNode node)
         {
             var bannerList = new List<ExampleBannersBanner>();
-            foreach (TreeNode Banner in DocumentQueryHelper.RepeaterQuery(ClassNames: "Demo.Banner", RelationshipName: "Banners", RelationshipWithNodeGuid: node.NodeGUID))
+            try
             {
-                bannerList.Add(new ExampleBannersBanner()
+                foreach (ITreeNode Banner in DocumentQueryHelper.RepeaterQuery(ClassNames: "Demo.Banner", RelationshipName: "Banners", RelationshipWithNodeGuid: node.NodeGUID))
                 {
-                    BannerName = Banner.GetValue<string>("BannerName", ""),
-                    BannerUrl = Banner.GetValue<string>("BannerImage", "")
-                });
+                    bannerList.Add(new ExampleBannersBanner()
+                    {
+                        BannerName = Banner.GetValue("BannerName").ToString(),
+                        BannerUrl = Banner.GetValue("BannerImage").ToString()
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                _eventLogService.LogException("ExampleService", "GET", ex);
+
             }
             return bannerList;
         }
@@ -58,19 +73,26 @@ namespace Boilerplate.Services.Implementation
         public IEnumerable<SubNav> GetSubNavFromNode(ITreeNode node)
         {
             var subnavList = new List<SubNav>();
-            foreach (TreeNode Node in DocumentQueryHelper.RepeaterQuery(
-                   Path: node.NodeAliasPath + "/%",
-                   ClassNames: "CMS.MenuItem",
-                   OrderBy: "NodeLevel, NodeOrder",
-                   Columns: "MenuItemName,NodeAliasPath"
-                   ))
+            try
             {
-                subnavList.Add(new SubNav()
+                foreach (ITreeNode Node in DocumentQueryHelper.RepeaterQuery(
+                       Path: node.NodeAliasPath + "/%",
+                       ClassNames: "CMS.MenuItem",
+                       OrderBy: "NodeLevel, NodeOrder",
+                       Columns: "MenuItemName,NodeAliasPath"
+                       ))
                 {
-                    LinkText = Node.GetValue("MenuItemName", ""),
-                    // You have to decide what your URL will be, for us our URLs = NodeAliasPath
-                    LinkUrl = Node.NodeAliasPath
-                });
+                    subnavList.Add(new SubNav()
+                    {
+                        LinkText = Node.GetValue("MenuItemName").ToString(),
+                        // You have to decide what your URL will be, for us our URLs = NodeAliasPath
+                        LinkUrl = Node.NodeAliasPath
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                _eventLogService.LogException("ExampleService", "GET", ex);
             }
             return subnavList;
         }
@@ -81,10 +103,33 @@ namespace Boilerplate.Services.Implementation
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public IEnumerable<SubNav> GetSubNavFromAliasPath(string nodeAliasPath, CultureInfo cultureInfo, ISiteInfo siteInfo)
+        public IEnumerable<SubNav> GetSubNavFromAliasPath(string nodeAliasPath, CultureInfo cultureInfo = null, ISiteInfo siteInfo = null)
         {
+            if (siteInfo == null)
+            {
+                // If site is not provided, get the current site
+                siteInfo = _siteService.CurrentSite;
+                _eventLogService.LogEvent("GetSubNavFromAliasPath", "ExampleService", "GET", "Using current site");
+            }
+            else
+            {
+                _eventLogService.LogEvent("GetSubNavFromAliasPath", "ExampleService", "GET", "Using passed in site");
+            }
+
+            if(cultureInfo == null)
+            {
+                cultureInfo = LocalizationContext.GetCurrentCulture();
+                _eventLogService.LogEvent("GetSubNavFromAliasPath", "ExampleService", "GET", "Using current culture");
+            }
+            else
+            {
+                _eventLogService.LogEvent("GetSubNavFromAliasPath", "ExampleService", "GET", "Using passed in culture");
+            }
+
             var subnavList = new List<SubNav>();
-            foreach (TreeNode Node in DocumentQueryHelper.RepeaterQuery(
+            try
+            {
+                foreach (ITreeNode Node in DocumentQueryHelper.RepeaterQuery(
                 Path: nodeAliasPath + "/%",
                 CultureCode: cultureInfo.CultureCode,
                 SiteName: siteInfo.SiteName,
@@ -92,13 +137,18 @@ namespace Boilerplate.Services.Implementation
                 OrderBy: "NodeLevel, NodeOrder",
                 Columns: "MenuItemName,NodeAliasPath"
                 ))
-            {
-                subnavList.Add(new SubNav()
                 {
-                    LinkText = Node.GetValue("MenuItemName", ""),
-                    // You have to decide what your URL will be, for us our URLs = NodeAliasPath
-                    LinkUrl = Node.NodeAliasPath
-                });
+                    subnavList.Add(new SubNav()
+                    {
+                        LinkText = Node.GetValue("MenuItemName").ToString(),
+                        // You have to decide what your URL will be, for us our URLs = NodeAliasPath
+                        LinkUrl = Node.NodeAliasPath
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                _eventLogService.LogException("ExampleService", "GET", ex);
             }
             return subnavList;
         }
