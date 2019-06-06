@@ -9,6 +9,10 @@ using System.Collections.Generic;
 
 namespace Boilerplate.Services.Implementation
 {
+    /// <summary>
+    /// This class is an example of how to use Dependency Injection to get common classes and services without having to do the hard work of intantiating them on your own.
+    /// Some high level reasons that may prove useful: reusability (forces modular development) and testability (you can mock interfaces in order to properly test your written code)
+    /// </summary>
     public class ExampleService : IExampleService
     {
         // Below are Kentico classes that are coded to an intercace and can be injected via Constructor Injection
@@ -16,6 +20,12 @@ namespace Boilerplate.Services.Implementation
         public IEventLogService _eventLogService;
         public IHttpContextAccessor _httpContextAccessor;
 
+        /// <summary>
+        /// Any parameters in the signature should be injected via constructor injection, if invoking this service direclty you will need to instantiate your own
+        /// </summary>
+        /// <param name="siteService"></param>
+        /// <param name="eventLogService"></param>
+        /// <param name="httpContextAccessor"></param>
         public ExampleService(ISiteService siteService, IEventLogService eventLogService, IHttpContextAccessor httpContextAccessor)
         {
             _siteService = siteService;
@@ -25,7 +35,6 @@ namespace Boilerplate.Services.Implementation
 
         /// <summary>
         /// Simply gets the current node using the absolute path of the HttpContext.
-        /// Why abstract? Testability, now you can create a mock IExampleService and return an expected TreeNode instead of needing an actual HttpContext
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -38,7 +47,6 @@ namespace Boilerplate.Services.Implementation
 
         /// <summary>
         /// Gets a list of `Demo.Banner` items under the `Node` passed in.
-        /// Why abstract? Testability and reusability.
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
@@ -66,7 +74,6 @@ namespace Boilerplate.Services.Implementation
 
         /// <summary>
         /// Gets a list of `SubNav` items under the `Node` passed in.
-        /// Why abstract? Testability and reusability.
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
@@ -99,7 +106,6 @@ namespace Boilerplate.Services.Implementation
 
         /// <summary>
         /// Gets a list of `SubNav` items under the `Node` passed in.
-        /// Why abstract? Testability and reusability.
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
