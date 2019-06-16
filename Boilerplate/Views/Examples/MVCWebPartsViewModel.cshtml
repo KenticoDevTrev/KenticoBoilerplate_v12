@@ -1,0 +1,11 @@
+﻿@model Models.Examples.ExampleMVCWebPartsViewModel
+
+@{
+    ViewBag.Title = "MVCWebPartModel";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h2>MVCWebPartModel</h2>
+
+<h3>Passing a list of SubNav Items to Action</h3>
+@{Html.RenderAction("NavigationByModel", "Examples", new { SubNavs = Model.SubNavigation });}
