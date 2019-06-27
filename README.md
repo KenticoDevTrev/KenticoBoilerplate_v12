@@ -1,4 +1,4 @@
-# KenticoBoilerplate_v12
+# KenticoBoilerplate_v12 (Hotfixed to Kentico 12.0.29 Service Pack)
 Kentico Boilerplate MVC Site which is geared to provide a clean starting point with various Kentico features enabled and examples provided without added fluff.
 
 ## Setup Instructions
