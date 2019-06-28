@@ -26,13 +26,14 @@ namespace KMVCHelper
                 TreeNode FoundNode = DocumentQueryHelper.RepeaterQuery(Path: Path, ClassNames: ClassName, CultureCode: CultureCode).GetTypedResult().Items.FirstOrDefault();
                 if (FoundNode == null)
                 {
+                    // TO DO: Check by new Alternative Urls
                     // Check Url Aliases
                     var FoundNodeByAlias = DocumentAliasInfoProvider.GetDocumentAliasesWithNodesDataQuery().WhereEquals("AliasUrlPath", Path).Or().Where(string.Format("'{0}' like AliasWildCardRule", SqlHelper.EscapeQuotes(Path))).FirstOrDefault();
                     if (FoundNodeByAlias != null && FoundNodeByAlias.AliasNodeID > 0)
                     {
                         CacheDependencies.Add("cms.documentalias|all");
                         CacheDependencies.Add(string.Format("node|{0}|{1}", SiteContext.CurrentSiteName, Path));
-                        FoundNode = DocumentQueryHelper.RepeaterQuery(NodeID: FoundNodeByAlias.AliasNodeID, ClassNames: ClassName, CultureCode: (!string.IsNullOrWhiteSpace(FoundNodeByAlias.AliasCulture) ? FoundNodeByAlias.AliasCulture : CultureCode)).GetTypedResult().Items.FirstOrDefault();
+                        FoundNode = DocumentQueryHelper.RepeaterQuery(NodeID: FoundNodeByAlias.AliasNodeID, ClassNames: ClassName, CultureCode: (!string.IsNullOrWhiteSpace(FoundNodeByAlias.AliasCulture) ? FoundNodeByAlias.AliasCulture : CultureCode), CacheMinutes: (EnvironmentHelper.PreviewEnabled ? 0 : CacheHelper.CacheMinutes(SiteContext.CurrentSiteName))).GetTypedResult().Items.FirstOrDefault();
                     }
                 }
                 if (FoundNode != null)
@@ -44,7 +45,7 @@ namespace KMVCHelper
                     cs.CacheDependency = CacheHelper.GetCacheDependency(CacheDependencies.ToArray());
                 }
                 return FoundNode;
-            }, new CacheSettings(CacheHelper.CacheMinutes(SiteContext.CurrentSiteName), Path, ClassName, CultureCode));
+            }, new CacheSettings((EnvironmentHelper.PreviewEnabled ? 0 : CacheHelper.CacheMinutes(SiteContext.CurrentSiteName)), Path, ClassName, CultureCode, SiteContext.CurrentSiteName));
         }
 
         /// <summary>
@@ -194,6 +195,7 @@ namespace KMVCHelper
             }
 
             RepeaterQuery.CombineWithDefaultCulture(CombineWithDefaultCulture);
+
             if (!string.IsNullOrWhiteSpace(CultureCode))
             {
                 RepeaterQuery.Culture(CultureCode);
@@ -203,10 +205,13 @@ namespace KMVCHelper
             {
                 RepeaterQuery.LatestVersion(true);
                 RepeaterQuery.Published(false);
+                RepeaterQuery.CacheItemNameParts.Add("LatestVersion");
+                RepeaterQuery.CacheItemNameParts.Add(false);
             }
             else
             {
-                RepeaterQuery.PublishedVersion(true);
+                RepeaterQuery.PublishedVersion(SelectOnlyPublished);
+                RepeaterQuery.CacheItemNameParts.Add(SelectOnlyPublished);
             }
             if (MaxRelativeLevel > -1)
             {
@@ -218,8 +223,6 @@ namespace KMVCHelper
                 RepeaterQuery.OrderBy(OrderBy);
                 RepeaterQuery.CacheItemNameParts.Add(OrderBy);
             }
-            RepeaterQuery.Published(SelectOnlyPublished);
-            RepeaterQuery.CacheItemNameParts.Add(SelectOnlyPublished);
 
             if (SelectTopN > -1)
             {

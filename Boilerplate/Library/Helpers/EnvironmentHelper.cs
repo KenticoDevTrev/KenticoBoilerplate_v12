@@ -1,4 +1,5 @@
-﻿using CMS.Helpers;
+﻿using CMS.Base;
+using CMS.Helpers;
 using CMS.Membership;
 using CMS.SiteProvider;
 using Kentico.Content.Web.Mvc;
@@ -72,6 +73,26 @@ namespace KMVCHelper
             {
                 return UserInfoProvider.GetUserInfo(Username);
             }, new CacheSettings(CacheHelper.CacheMinutes(SiteContext.CurrentSiteName), "AuthenticatedUser", Username));
+        }
+
+        /// <summary>
+        /// Gets the Url requested, handling any Virtual Directories
+        /// </summary>
+        /// <param name="Request"></param>
+        /// <returns></returns>
+        public static string GetUrl(HttpRequestBase Request)
+        {
+            return Request.Url.AbsolutePath.Replace(Request.ApplicationPath, "");
+        }
+
+        public static string GetUrl(HttpRequest Request)
+        {
+            return Request.Url.AbsolutePath.Replace(Request.ApplicationPath, "");
+        }
+
+        public static string GetUrl(IRequest Request)
+        {
+            return Request.Url.AbsolutePath;
         }
 
     }

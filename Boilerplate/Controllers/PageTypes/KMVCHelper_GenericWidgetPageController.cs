@@ -9,7 +9,7 @@ namespace Controllers
         // GET: GenericWidgetPage
         public ActionResult Index()
         {
-            GenericWidgetPage FoundNode = (GenericWidgetPage)DocumentQueryHelper.GetNodeByAliasPath(HttpContext.Request.Url.AbsolutePath, GenericWidgetPage.OBJECT_TYPE);
+            GenericWidgetPage FoundNode = (GenericWidgetPage)DocumentQueryHelper.GetNodeByAliasPath(EnvironmentHelper.GetUrl(HttpContext.Request), GenericWidgetPage.OBJECT_TYPE);
             if (FoundNode != null)
             {
                 SetContext(FoundNode.DocumentID);

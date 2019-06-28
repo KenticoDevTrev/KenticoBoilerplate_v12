@@ -2,7 +2,9 @@ using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Boilerplate.App_Start;
+using Boilerplate.Controllers.PageTemplates;
 using CMS.Helpers;
+using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Web.Mvc;
 
 namespace Boilerplate
@@ -25,6 +27,14 @@ namespace Boilerplate
 
             // Clear cache on application start.
             CacheHelper.ClearCache();
+
+            RegisterPageTemplateFilters();
+        }
+
+        private void RegisterPageTemplateFilters()
+        {
+            // Must be last!
+            PageBuilderFilters.PageTemplates.Add(new EmptyPageTemplateFilter());
         }
     }
 }

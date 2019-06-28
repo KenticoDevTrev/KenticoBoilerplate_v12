@@ -40,7 +40,7 @@ namespace Boilerplate.Services.Implementation
         /// <returns></returns>
         public ITreeNode GetCurrentNode()
         {
-            var absolutePath = _httpContextAccessor.HttpContext.Request.Url.AbsolutePath;
+            var absolutePath = EnvironmentHelper.GetUrl(_httpContextAccessor.HttpContext.Request);
             ITreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(absolutePath);
             return FoundNode;
         }

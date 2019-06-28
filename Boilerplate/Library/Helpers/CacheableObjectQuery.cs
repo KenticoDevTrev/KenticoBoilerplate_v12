@@ -45,7 +45,7 @@ namespace KMVCHelper
             {
                 CacheItemName = string.Join("|", CacheItemNameParts);
             }
-            if (CacheMinutes > 0 && !string.IsNullOrWhiteSpace(CacheItemName))
+            if (!EnvironmentHelper.PreviewEnabled && CacheMinutes > 0 && !string.IsNullOrWhiteSpace(CacheItemName))
             {
                 return CacheHelper.Cache<DataSet>(cs =>
                 {
@@ -77,7 +77,7 @@ namespace KMVCHelper
             {
                 CacheItemName = string.Join("|", CacheItemNameParts);
             }
-            if (CacheMinutes > 0 && !string.IsNullOrWhiteSpace(CacheItemName))
+            if (!EnvironmentHelper.PreviewEnabled && CacheMinutes > 0 && !string.IsNullOrWhiteSpace(CacheItemName))
             {
                 return CacheHelper.Cache<InfoDataSet<BaseInfo>>(cs =>
                 {

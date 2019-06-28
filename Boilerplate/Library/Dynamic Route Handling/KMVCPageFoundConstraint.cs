@@ -20,7 +20,7 @@ namespace KMVCHelper
         public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
         {
             // If no document found anyway, then it will always be a match
-            TreeNode FoundDoc = DocumentQueryHelper.GetNodeByAliasPath(httpContext.Request.Url.AbsolutePath);
+            TreeNode FoundDoc = DocumentQueryHelper.GetNodeByAliasPath(EnvironmentHelper.GetUrl(httpContext.Request));
             return (FoundDoc != null && (FoundDoc.NodeAliasPath != "/" || !IgnoreRootPage));
         }
 

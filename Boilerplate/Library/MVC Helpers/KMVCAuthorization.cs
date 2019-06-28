@@ -46,7 +46,7 @@ namespace KMVCHelper
         /// <returns>The Tree Node for this request, null acceptable.</returns>
         public virtual TreeNode GetTreeNode(HttpContextBase httpContext)
         {
-            string Path = HttpContext.Current.Request.Url.AbsolutePath;
+            string Path = EnvironmentHelper.GetUrl(HttpContext.Current.Request);
             // return GetNodeByAliasPath(Path);
 
             // This is the same logic in my DocumentQueryHelper.GetNodeByAliasPath(), added here so it does not depend on my classes.

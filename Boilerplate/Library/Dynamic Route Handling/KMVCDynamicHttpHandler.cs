@@ -1,7 +1,11 @@
-﻿using CMS.DocumentEngine;
+﻿using CMS.DataEngine;
+using CMS.DocumentEngine;
 using CMS.EventLog;
 using CMS.Helpers;
+using Kentico.PageBuilder.Web.Mvc;
+using Kentico.PageBuilder.Web.Mvc.PageTemplates;
 using System;
+using System.Data;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -33,21 +37,45 @@ namespace KMVCHelper
             string NewController = "";
             string NewAction = "Index";
             // Get the classname based on the URL
-            TreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(context.Request.Url.AbsolutePath);
+            TreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(EnvironmentHelper.GetUrl(context.Request));
             string ClassName = FoundNode.ClassName;
+
+            string TemplateConfiguration = FoundNode.GetValue("DocumentPageTemplateConfiguration", "");
+
+            // Check Temp Page builder widgets to detect a switch in template
+            Guid InstanceGuid = ValidationHelper.GetGuid(URLHelper.GetQueryValue(context.Request.Url.AbsoluteUri, "instance"), Guid.Empty);
+            if(InstanceGuid != Guid.Empty)
+            {
+                DataTable Table = ConnectionHelper.ExecuteQuery(string.Format("select PageBuilderTemplateConfiguration from Temp_PageBuilderWidgets where PageBuilderWidgetsGuid = '{0}'", InstanceGuid.ToString()), null, QueryTypeEnum.SQLQuery).Tables[0];
+                if(Table.Rows.Count > 0)
+                {
+                    TemplateConfiguration = ValidationHelper.GetString(Table.Rows[0]["PageBuilderTemplateConfiguration"], "");
+                }
+            }
+
             switch (ClassName.ToLower())
             {
-                case "":
+                
+                default:
+                    // 
+                    if(!string.IsNullOrWhiteSpace(TemplateConfiguration) && !TemplateConfiguration.ToLower().Contains("\"empty.template\""))
+                    {
+                        // Uses Page Templates, send to basic Page Template handler
+                        NewController = "DynamicPageTemplate";
+                        NewAction = "Index";
+                    } else {
+                        // Try finding a class that matches the class name
+                        NewController = ClassName.Replace(".", "_");
+                    }
                     break;
                 // can add your own cases to do more advanced logic if you wish
-                default:
-                    // Default will look towards the classname (period replaced with _) for the Controller
-                    NewController = ClassName.Replace(".", "_");
+                case "":
                     break;
+                    
             }
 
             // Controller not found, use defaults
-            if(string.IsNullOrWhiteSpace(NewController))
+            if (string.IsNullOrWhiteSpace(NewController))
             {
                 NewController = DefaultController;
                 NewAction = DefaultAction;
@@ -77,11 +105,26 @@ namespace KMVCHelper
             catch (HttpException ex)
             {
                 // Even that failed, log and use normal HttpErrors controller
-                EventLogProvider.LogException("KMVCDynamicHttpHandler", "ClassControllerNotConfigured", ex, additionalMessage: "Page found, but could not find a Controller for " + NewController + ", create one with an index view to auto handle or modify the KMVCDynamicHttpHandler");
-                RequestContext.RouteData.Values["Controller"] = DefaultController;
-                RequestContext.RouteData.Values["Action"] = DefaultAction;
-                controller = factory.CreateController(RequestContext, DefaultController);
+                EventLogProvider.LogException("KMVCDynamicHttpHandler", "ClassControllerNotConfigured", ex, additionalMessage: "Page found, but could not find Page Templates, nor a Controller for " + NewController + ", either create Page Templates for this class or create a controller with an index view to auto handle or modify the KMVCDynamicHttpHandler");
+                RequestContext.RouteData.Values["Controller"] = "DynamicPageTemplate";
+                RequestContext.RouteData.Values["Action"] = "NotFound";
+                controller = factory.CreateController(RequestContext, "DynamicPageTemplate");
                 controller.Execute(RequestContext);
+            }
+            catch (InvalidOperationException ex)
+            {
+                if(ex.Message.ToLower().Contains("page template with identifier")) { 
+                    // This often occurs when there is a page template assigned that is not defined
+                    EventLogProvider.LogException("KMVCDynamicHttpHandler", "ClassControllerNotConfigured", ex, additionalMessage: "Page found, but contains a template that is not registered with this application.");
+                    RequestContext.RouteData.Values["Controller"] = "DynamicPageTemplate";
+                    RequestContext.RouteData.Values["Action"] = "UnregisteredTemplate";
+                    controller = factory.CreateController(RequestContext, "DynamicPageTemplate");
+                    controller.Execute(RequestContext);
+                } else
+                {
+                    throw new InvalidOperationException(ex.Message, ex);
+                }
+
             }
             factory.ReleaseController(controller);
         }
