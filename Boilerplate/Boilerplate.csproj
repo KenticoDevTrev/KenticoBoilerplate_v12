@@ -624,7 +624,9 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Shared\PageTemplates\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\skins\content\default\content.min.css" />
@@ -941,6 +943,13 @@
     <Content Include="Views\Shared\Widgets\_EditableTextWidget.cshtml" />
     <Content Include="Views\Shared\FormComponents\_TinyMCEInputComponent.cshtml" />
     <Content Include="Views\Shared\Widgets\_StaticHtmlWidget.cshtml" />
+    <Content Include="Views\HomePageTemplate3\Index.cshtml" />
+    <Content Include="Views\Shared\_HomeTemplate1.cshtml" />
+    <Content Include="Views\Shared\_HomeTemplate2.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_EmptyTemplate.cshtml" />
+    <Content Include="Views\Shared\_BlankWidgetTemplate.cshtml" />
+    <Content Include="Views\DynamicPageTemplate\UnregisteredTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
@@ -954,6 +963,12 @@
     <Compile Include="Controllers\Examples\ExamplesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InlineEditors\ImageUploaderController.cs" />
+    <Compile Include="Controllers\PageTemplates\DynamicPageTemplateController.cs" />
+    <Compile Include="Controllers\PageTemplates\EmptyPageTemplateFilter.cs" />
+    <Compile Include="Controllers\PageTemplates\EmptyPagTemplate.cs" />
+    <Compile Include="Controllers\PageTemplates\HomePageTemplate3Controller.cs" />
+    <Compile Include="Controllers\PageTemplates\HomePageTemplateFilter.cs" />
+    <Compile Include="Controllers\PageTemplates\HomePageTemplates.cs" />
     <Compile Include="Controllers\PageTypes\KMVCHelper_GenericWidgetPageController.cs" />
     <Compile Include="Controllers\Sections\DefaultSectionController.cs" />
     <Compile Include="Controllers\Sections\SingleColumnSectionController.cs" />
