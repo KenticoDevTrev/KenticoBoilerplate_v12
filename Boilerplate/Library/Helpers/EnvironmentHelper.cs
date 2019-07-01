@@ -25,7 +25,8 @@ namespace KMVCHelper
                 try
                 {
                     return HttpContext.Current.Kentico().Preview().Enabled;
-                } catch(InvalidOperationException)
+                }
+                catch (InvalidOperationException)
                 {
                     // This occurs only on the Owin Authentication calls due to the Dynamic route handler
                     return false;
@@ -78,21 +79,48 @@ namespace KMVCHelper
         /// <summary>
         /// Gets the Url requested, handling any Virtual Directories
         /// </summary>
-        /// <param name="Request"></param>
-        /// <returns></returns>
+        /// <param name="Request">The Request</param>
+        /// <returns>The Url for lookup</returns>
         public static string GetUrl(HttpRequestBase Request)
         {
-            return Request.Url.AbsolutePath.Replace(Request.ApplicationPath, "");
+            return GetUrl(Request.Url.AbsolutePath, Request.ApplicationPath);
         }
 
+        /// <summary>
+        /// Gets the Url requested, handling any Virtual Directories
+        /// </summary>
+        /// <param name="Request">The Request</param>
+        /// <returns>The Url for lookup</returns>
         public static string GetUrl(HttpRequest Request)
         {
-            return Request.Url.AbsolutePath.Replace(Request.ApplicationPath, "");
+            return GetUrl(Request.Url.AbsolutePath, Request.ApplicationPath);
         }
 
+        /// <summary>
+        /// Gets the Url requested, handling any Virtual Directories
+        /// </summary>
+        /// <param name="Request">The Request</param>
+        /// <returns>The Url for lookup</returns>
         public static string GetUrl(IRequest Request)
         {
-            return Request.Url.AbsolutePath;
+            return GetUrl(Request.Url.AbsolutePath, HttpContext.Current.Request.ApplicationPath);
+        }
+
+        /// <summary>
+        /// Removes Application Path from Url if present and ensures starts with /
+        /// </summary>
+        /// <param name="Url">The Url (Relative)</param>
+        /// <param name="ApplicationPath"></param>
+        /// <returns></returns>
+        public static string GetUrl(string RelativeUrl, string ApplicationPath)
+        {
+            // Remove Application Path from Relative Url if it exists at the beginning
+            if (ApplicationPath != "/" && string.IsNullOrWhiteSpace(ApplicationPath) && RelativeUrl.ToLower().IndexOf(ApplicationPath.ToLower()) == 0)
+            {
+                RelativeUrl = RelativeUrl.Substring(ApplicationPath.Length);
+            }
+
+            return "/" + RelativeUrl.Trim("/~".ToCharArray()).Split("?#:".ToCharArray())[0];
         }
 
     }

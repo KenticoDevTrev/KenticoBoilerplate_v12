@@ -24,18 +24,6 @@ namespace KMVCHelper
             {
                 List<string> CacheDependencies = new List<string>();
                 TreeNode FoundNode = DocumentQueryHelper.RepeaterQuery(Path: Path, ClassNames: ClassName, CultureCode: CultureCode).GetTypedResult().Items.FirstOrDefault();
-                if (FoundNode == null)
-                {
-                    // TO DO: Check by new Alternative Urls
-                    // Check Url Aliases
-                    var FoundNodeByAlias = DocumentAliasInfoProvider.GetDocumentAliasesWithNodesDataQuery().WhereEquals("AliasUrlPath", Path).Or().Where(string.Format("'{0}' like AliasWildCardRule", SqlHelper.EscapeQuotes(Path))).FirstOrDefault();
-                    if (FoundNodeByAlias != null && FoundNodeByAlias.AliasNodeID > 0)
-                    {
-                        CacheDependencies.Add("cms.documentalias|all");
-                        CacheDependencies.Add(string.Format("node|{0}|{1}", SiteContext.CurrentSiteName, Path));
-                        FoundNode = DocumentQueryHelper.RepeaterQuery(NodeID: FoundNodeByAlias.AliasNodeID, ClassNames: ClassName, CultureCode: (!string.IsNullOrWhiteSpace(FoundNodeByAlias.AliasCulture) ? FoundNodeByAlias.AliasCulture : CultureCode), CacheMinutes: (EnvironmentHelper.PreviewEnabled ? 0 : CacheHelper.CacheMinutes(SiteContext.CurrentSiteName))).GetTypedResult().Items.FirstOrDefault();
-                    }
-                }
                 if (FoundNode != null)
                 {
                     CacheDependencies.Add("documentid|" + FoundNode.DocumentID);
