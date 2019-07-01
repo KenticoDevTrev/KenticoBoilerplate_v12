@@ -1,6 +1,7 @@
 using Kentico.Activities.Web.Mvc;
 using Kentico.CampaignLogging.Web.Mvc;
 using Kentico.Content.Web.Mvc;
+using Kentico.Content.Web.Mvc.Routing;
 using Kentico.Newsletters.Web.Mvc;
 using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Web.Mvc;
@@ -19,10 +20,16 @@ public class ApplicationConfig
             // Disables the system's built-in 'Default' section
             RegisterDefaultSection = false
         });
-		
-		// Enable Model-based Data Annotations for localization: 
-		//https://docs.kentico.com/k12/multilingual-websites/setting-up-multilingual-websites/localizing-content-on-mvc-sites#LocalizingcontentonMVCsites-Localizingvalidationresultsandmodelproperties
-		builder.UseDataAnnotationsLocalization();
+
+        // Enables the alternative URLs feature
+        builder.UsePageRouting(new PageRoutingOptions
+        {
+            EnableAlternativeUrls = true
+        });
+
+        // Enable Model-based Data Annotations for localization: 
+        //https://docs.kentico.com/k12/multilingual-websites/setting-up-multilingual-websites/localizing-content-on-mvc-sites#LocalizingcontentonMVCsites-Localizingvalidationresultsandmodelproperties
+        builder.UseDataAnnotationsLocalization();
 
 		// Enables Cross-origin resource sharing with the admin interface. This is required to allow the Email Marketing application to be aware of newsletter activities such as unsubscription, approvals, opens, and clicks
 		//https://docs.kentico.com/k12/on-line-marketing-features/configuring-and-customizing-your-on-line-marketing-features/configuring-email-marketing/handling-newsletter-subscriptions-on-mvc-sites#HandlingnewslettersubscriptionsonMVCsites-Enablingresourcesharing
@@ -43,5 +50,6 @@ public class ApplicationConfig
 			EmailLinkHandlerRouteUrl = CMS.Newsletters.EmailTrackingLinkHelper.DEFAULT_LINKS_TRACKING_ROUTE_HANDLER_URL,
 			OpenedEmailHandlerRouteUrl = CMS.Newsletters.EmailTrackingLinkHelper.DEFAULT_OPENED_EMAIL_TRACKING_ROUTE_HANDLER_URL
 		});
-	}
+
+    }
 }
