@@ -13,6 +13,7 @@ using KMVCHelper;
 
 namespace Boilerplate.Controllers
 {
+    [KMVCRouteOverPathPriority]
     public class HomeController : PageTemplateController
     {
         // GET: Home
