@@ -104,12 +104,18 @@ namespace KMVCHelper
             }
             catch (HttpException ex)
             {
-                // Even that failed, log and use normal HttpErrors controller
-                EventLogProvider.LogException("KMVCDynamicHttpHandler", "ClassControllerNotConfigured", ex, additionalMessage: "Page found, but could not find Page Templates, nor a Controller for " + NewController + ", either create Page Templates for this class or create a controller with an index view to auto handle or modify the KMVCDynamicHttpHandler");
-                RequestContext.RouteData.Values["Controller"] = "DynamicPageTemplate";
-                RequestContext.RouteData.Values["Action"] = "NotFound";
-                controller = factory.CreateController(RequestContext, "DynamicPageTemplate");
-                controller.Execute(RequestContext);
+                // Catch Controller Not implemented errors and log and go to Not Foud
+                if (ex.Message.ToLower().Contains("does not implement icontroller.")) { 
+                    EventLogProvider.LogException("KMVCDynamicHttpHandler", "ClassControllerNotConfigured", ex, additionalMessage: "Page found, but could not find Page Templates, nor a Controller for " + NewController + ", either create Page Templates for this class or create a controller with an index view to auto handle or modify the KMVCDynamicHttpHandler");
+                    RequestContext.RouteData.Values["Controller"] = "DynamicPageTemplate";
+                    RequestContext.RouteData.Values["Action"] = "NotFound";
+                    controller = factory.CreateController(RequestContext, "DynamicPageTemplate");
+                    controller.Execute(RequestContext);
+                } else
+                {
+                    // This will show for any http generated exception, like view errors
+                    throw new HttpException(ex.Message,ex);
+                }
             }
             catch (InvalidOperationException ex)
             {
