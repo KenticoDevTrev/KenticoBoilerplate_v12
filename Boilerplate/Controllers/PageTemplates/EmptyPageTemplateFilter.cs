@@ -15,7 +15,7 @@ namespace Boilerplate.Controllers.PageTemplates
         {
             // only add empty option if there is 1 non empty template remaining, so user has to choose.
             var NonEmptyTemplates = pageTemplates.Where(t => !GetTemplates().Contains(t.Identifier));
-            if(NonEmptyTemplates.Count() == 1)
+            if(NonEmptyTemplates.Count() > 0)
             {
                 return pageTemplates;
             } else
