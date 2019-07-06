@@ -27,6 +27,30 @@ namespace KMVCHelper
                 return false;
             }
         }
+
+        /// <summary>
+        /// Checks if the current page is using a template or not.
+        /// </summary>
+        /// <param name="Page">The Tree Node</param>
+        /// <returns>If it has a template or not</returns>
+        public static bool PageHasTemplate(TreeNode Page)
+        {
+            string TemplateConfiguration = Page.GetValue("DocumentPageTemplateConfiguration", "");
+
+            // Check Temp Page builder widgets to detect a switch in template
+            Guid InstanceGuid = ValidationHelper.GetGuid(URLHelper.GetQueryValue(HttpContext.Current.Request.Url.AbsoluteUri, "instance"), Guid.Empty);
+            if (InstanceGuid != Guid.Empty)
+            {
+                DataTable Table = ConnectionHelper.ExecuteQuery(string.Format("select PageBuilderTemplateConfiguration from Temp_PageBuilderWidgets where PageBuilderWidgetsGuid = '{0}'", InstanceGuid.ToString()), null, QueryTypeEnum.SQLQuery).Tables[0];
+                if (Table.Rows.Count > 0)
+                {
+                    TemplateConfiguration = ValidationHelper.GetString(Table.Rows[0]["PageBuilderTemplateConfiguration"], "");
+                }
+            }
+
+            return !string.IsNullOrWhiteSpace(TemplateConfiguration) && !TemplateConfiguration.ToLower().Contains("\"empty.template\"");
+        }
+
         public void ProcessRequest(HttpContext context)
         {
             IController controller = null;
@@ -40,25 +64,13 @@ namespace KMVCHelper
             TreeNode FoundNode = DocumentQueryHelper.GetNodeByAliasPath(EnvironmentHelper.GetUrl(context.Request));
             string ClassName = FoundNode.ClassName;
 
-            string TemplateConfiguration = FoundNode.GetValue("DocumentPageTemplateConfiguration", "");
-
-            // Check Temp Page builder widgets to detect a switch in template
-            Guid InstanceGuid = ValidationHelper.GetGuid(URLHelper.GetQueryValue(context.Request.Url.AbsoluteUri, "instance"), Guid.Empty);
-            if(InstanceGuid != Guid.Empty)
-            {
-                DataTable Table = ConnectionHelper.ExecuteQuery(string.Format("select PageBuilderTemplateConfiguration from Temp_PageBuilderWidgets where PageBuilderWidgetsGuid = '{0}'", InstanceGuid.ToString()), null, QueryTypeEnum.SQLQuery).Tables[0];
-                if(Table.Rows.Count > 0)
-                {
-                    TemplateConfiguration = ValidationHelper.GetString(Table.Rows[0]["PageBuilderTemplateConfiguration"], "");
-                }
-            }
 
             switch (ClassName.ToLower())
             {
                 
                 default:
                     // 
-                    if(!string.IsNullOrWhiteSpace(TemplateConfiguration) && !TemplateConfiguration.ToLower().Contains("\"empty.template\""))
+                    if(PageHasTemplate(FoundNode))
                     {
                         // Uses Page Templates, send to basic Page Template handler
                         NewController = "DynamicPageTemplate";
