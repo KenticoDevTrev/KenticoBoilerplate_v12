@@ -34,7 +34,15 @@ namespace Boilerplate.Controllers
 
             HttpContext.Kentico().PageBuilder().Initialize(page.DocumentID);
 
-            return new TemplateResult(page.DocumentID);
+            // Use template if it has one.
+            if (KMVCDynamicHttpHandler.PageHasTemplate(page))
+            {
+                return new TemplateResult(page.DocumentID);
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
