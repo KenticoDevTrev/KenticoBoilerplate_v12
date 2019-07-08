@@ -1,8 +1,6 @@
-﻿using Kentico.Web.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Core;
@@ -10,9 +8,8 @@ using Autofac.Builder;
 using System.Web.Mvc;
 using System.Reflection;
 using Controllers;
-using Boilerplate.Services.Interfaces;
 
-namespace Boilerplate.App_Start
+namespace App_Start
 {
     public static class DependencyInjectionConfig
     {
