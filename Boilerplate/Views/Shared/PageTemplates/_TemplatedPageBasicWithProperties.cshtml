@@ -1,0 +1,20 @@
+﻿@model ComponentViewModel<Models.TemplatedPage.TemplatedPageCustomProperties>
+
+@{
+    ViewBag.Title = "_TemplatedPageBasicWithProperties";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h2>Template with Properties</h2>
+<p>Page: @Model.Page.DocumentName</p>
+@if (Model.Properties.ShowHelloWorld)
+{
+    if (!string.IsNullOrWhiteSpace(Model.Properties.HelloWorldText))
+    {
+        <p>@Model.Properties.HelloWorldText</p>
+    }
+    else
+    {
+        <p>Hello World</p>
+    }
+}

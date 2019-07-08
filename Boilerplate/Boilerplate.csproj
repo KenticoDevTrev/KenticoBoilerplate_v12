@@ -624,9 +624,7 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Shared\PageTemplates\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\skins\content\default\content.min.css" />
@@ -943,13 +941,15 @@
     <Content Include="Views\Shared\Widgets\_EditableTextWidget.cshtml" />
     <Content Include="Views\Shared\FormComponents\_TinyMCEInputComponent.cshtml" />
     <Content Include="Views\Shared\Widgets\_StaticHtmlWidget.cshtml" />
-    <Content Include="Views\HomePageTemplate3\Index.cshtml" />
-    <Content Include="Views\Shared\_HomeTemplate1.cshtml" />
-    <Content Include="Views\Shared\_HomeTemplate2.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_EmptyTemplate.cshtml" />
-    <Content Include="Views\Shared\_BlankWidgetTemplate.cshtml" />
+    <Content Include="Views\Shared\PageTemplates\_EmptyTemplate.cshtml" />
+    <Content Include="Views\Shared\PageTemplates\_BlankWidgetTemplate.cshtml" />
     <Content Include="Views\DynamicPageTemplate\UnregisteredTemplate.cshtml" />
+    <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomController.cshtml" />
+    <Content Include="Views\Shared\PageTemplates\_TemplatedPageBasicWithProperties.cshtml" />
+    <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomView.cshtml" />
+    <Content Include="Views\Shared\PageTemplates\_TemplatedPageBasicTemplate.cshtml" />
+    <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomControllerWithProperties.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
@@ -960,17 +960,20 @@
     <Compile Include="Controllers\Administrative\AdminRedirectController.cs" />
     <Compile Include="Controllers\Administrative\HttpErrorsController.cs" />
     <Compile Include="Controllers\Administrative\SignInManagerController.cs" />
+    <Compile Include="Controllers\Administrative\TemplatedBaseController.cs" />
     <Compile Include="Controllers\Examples\ExamplesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InlineEditors\ImageUploaderController.cs" />
     <Compile Include="Controllers\PageTemplates\DynamicPageTemplateController.cs" />
     <Compile Include="Controllers\PageTemplates\EmptyPageTemplateFilter.cs" />
     <Compile Include="Controllers\PageTemplates\EmptyPagTemplate.cs" />
-    <Compile Include="Controllers\PageTemplates\HomePageTemplate3Controller.cs" />
-    <Compile Include="Controllers\PageTemplates\HomePageTemplateFilter.cs" />
-    <Compile Include="Controllers\PageTemplates\HomePageTemplates.cs" />
+    <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerWithPropertiesController.cs" />
+    <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerController.cs" />
+    <Compile Include="Models\TemplatedPage\TemplatedPageCustomProperties.cs" />
+    <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPagesTemplateFilter.cs" />
+    <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageTemplates.cs" />
+    <Compile Include="Controllers\PageTypes\KMVCHelper_GenericWidgetPageTemplateFilter.cs" />
     <Compile Include="Controllers\PageTypes\KMVCHelper_GenericWidgetPageController.cs" />
-    <Compile Include="Controllers\Sections\DefaultSectionController.cs" />
     <Compile Include="Controllers\Sections\SingleColumnSectionController.cs" />
     <Compile Include="Controllers\Sections\ThreeColumnSectionController.cs" />
     <Compile Include="Controllers\Sections\TwoColumnSectionController.cs" />
@@ -1008,6 +1011,8 @@
     <Compile Include="Models\InlineEditors\SpinnerEditor\SpinnerEditorViewModel.cs" />
     <Compile Include="Models\InlineEditors\TinyMCEEditor\TinyMCEEditorViewModel.cs" />
     <Compile Include="Models\ModalForm\ModalForm.cs" />
+    <Compile Include="Models\TemplatedPage\TemplatedPageCustomControllerViewModel.cs" />
+    <Compile Include="Models\TemplatedPage\TemplatedPageCustomControllerWithPropertiesViewModel.cs" />
     <Compile Include="Models\Widgets\SimplePropertyDialogWidget\SimplePropertyDialogWidgetProperties.cs" />
     <Compile Include="Models\Widgets\SimplePropertyDialogWidget\SimplePropertyDialogWidgetViewModel.cs" />
     <Compile Include="Models\Widgets\SimpleWidget\SimpleWidgetProperties.cs" />
@@ -1031,7 +1036,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\_layout.cshtml" />
-    <Content Include="Views\Shared\Sections\_DefaultSection.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_TinyMCEEditor.cshtml" />
     <Content Include="Views\HttpErrors\Index.cshtml" />
     <Content Include="Views\KMVCHelper_GenericWidgetPage\Index.cshtml" />
