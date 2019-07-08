@@ -6,19 +6,16 @@ using System.Web;
 
 namespace Controllers.PageTemplates
 {
-    /// <summary>
-    /// This is to prevent a template from automatically being assigned.  If there is 1 non empty template that is available, this will add the "Empty" template as an option so the user can select.
-    /// </summary>
-    public class EmptyPageTemplateFilter : IPageTemplateFilter
+    public class KMVCHelper_GenericWidgetPageTemplateFilter : IPageTemplateFilter
     {
         public IEnumerable<PageTemplateDefinition> Filter(IEnumerable<PageTemplateDefinition> pageTemplates, PageTemplateFilterContext context)
         {
             // only add empty option if there is 1 non empty template remaining, so user has to choose.
-            var NonEmptyTemplates = pageTemplates.Where(t => !GetTemplates().Contains(t.Identifier));
-            if(NonEmptyTemplates.Count() > 0)
+            if (context.PageType.Equals("KMVCHelper.GenericWidgetPage", StringComparison.InvariantCultureIgnoreCase))
             {
                 return pageTemplates;
-            } else
+            }
+            else
             {
                 // Remove the empty template as an option
                 return pageTemplates.Where(t => !GetTemplates().Contains(t.Identifier));
@@ -26,6 +23,6 @@ namespace Controllers.PageTemplates
         }
 
         // Gets all page templates that are allowed for landing pages
-        public IEnumerable<string> GetTemplates() => new string[] { "Empty.Template" };
+        public IEnumerable<string> GetTemplates() => new string[] { "Blank.Widget" };
     }
 }

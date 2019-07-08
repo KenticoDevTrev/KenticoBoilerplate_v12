@@ -3,13 +3,9 @@ using Kentico.PageBuilder.Web.Mvc;
 using Kentico.PageBuilder.Web.Mvc.PageTemplates;
 using Kentico.Web.Mvc;
 using KMVCHelper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace Boilerplate.Controllers.PageTemplates
+namespace Controllers.PageTemplates
 {
     /// <summary>
     /// This class handles Page Templates for pages that are using the Dynamic Routing

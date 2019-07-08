@@ -11,7 +11,7 @@ using Kentico.PageBuilder.Web.Mvc.PageTemplates;
 using Kentico.Web.Mvc;
 using KMVCHelper;
 
-namespace Boilerplate.Controllers
+namespace Controllers
 {
     [KMVCRouteOverPathPriority]
     public class HomeController : PageTemplateController

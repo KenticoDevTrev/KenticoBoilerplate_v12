@@ -1,10 +1,11 @@
-﻿using KMVCHelper;
+﻿using Kentico.PageBuilder.Web.Mvc.PageTemplates;
+using KMVCHelper;
 using KMVCHelper.Models;
 using System.Web.Mvc;
 
 namespace Controllers
 {
-    public class KMVCHelper_GenericWidgetPageController : BaseController
+    public class KMVCHelper_GenericWidgetPageController : TemplatedBaseController
     {
         // GET: GenericWidgetPage
         public ActionResult Index()
