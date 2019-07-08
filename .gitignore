@@ -278,6 +278,7 @@ CMS/App_Data/Persistent
 CMS/CMSSiteUtils/Export
 CMS/CMSSiteUtils/Import
 
+
 # Ignore all smart search indexes, but not the other system folder contents
 #CMS/App_Data/CMSModules/SmartSearch/**
 #!CMS/App_Data/CMSModules/SmartSearch/*/
@@ -287,6 +288,7 @@ CMS/CMSSiteUtils/Import
 ## Kentico Starter Sites
 Boilerplate/App_Data/CMSModules/WebFarm/webfarm.sync
 Boilerplate/[Bb]in
+Boilerplate/CMSSiteUtils/Import
 
 # You can enable bin if for your pushing cycles you do not build and you wish to track BIN changes
 ## !/Boilerplate/[Bb]in/
