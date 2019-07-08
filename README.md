@@ -1,6 +1,9 @@
 # KenticoBoilerplate_v12 (Hotfixed to Kentico 12.0.29 Service Pack)
 Kentico Boilerplate MVC Site which is geared to provide a clean starting point with various Kentico features enabled and examples provided without added fluff.
 
+## Important Bug Fixes
+1. Replaced Kentico javascript files with up to date ones, previous ones were causing PageBuilder breaking errors.
+
 ## Setup Instructions
 
 1. Install Kentico using normal instructions
