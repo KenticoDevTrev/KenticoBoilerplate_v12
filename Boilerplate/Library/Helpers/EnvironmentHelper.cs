@@ -115,7 +115,7 @@ namespace KMVCHelper
         public static string GetUrl(string RelativeUrl, string ApplicationPath)
         {
             // Remove Application Path from Relative Url if it exists at the beginning
-            if (ApplicationPath != "/" && string.IsNullOrWhiteSpace(ApplicationPath) && RelativeUrl.ToLower().IndexOf(ApplicationPath.ToLower()) == 0)
+            if (!string.IsNullOrWhiteSpace(ApplicationPath) && ApplicationPath != "/" && RelativeUrl.ToLower().IndexOf(ApplicationPath.ToLower()) == 0)
             {
                 RelativeUrl = RelativeUrl.Substring(ApplicationPath.Length);
             }
