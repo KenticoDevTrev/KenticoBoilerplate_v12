@@ -35,13 +35,16 @@ namespace KMVCHelper
             }
         }
 
+        /// <summary>
+        /// Returns true if Page Builder is enabled and the page context is set.
+        /// </summary>
         public static bool PageBuilderEnabled
         {
             get
             {
                 try
                 {
-                    return HttpContext.Current.Kentico().PageBuilder().EditMode;
+                    return HttpContext.Current.Kentico().PageBuilder().EditMode && HttpContext.Current.Kentico().PageBuilder().PageIdentifier > 0;
                 }
                 catch (InvalidOperationException)
                 {
