@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using HBS.TinyMCE_Wysiwyg;
 
-namespace Kentico.FormComponents
+namespace HBS.TinyMCE_Wysiwyg
 {
     public class TinyMCEInputComponentProperties : FormComponentProperties<string>
     {

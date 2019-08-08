@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Boilerplate.Controllers;
 using CMS.DocumentEngine;
-
+using CMS.Relationships;
 using Kentico.PageBuilder.Web.Mvc;
 using Kentico.PageBuilder.Web.Mvc.PageTemplates;
 using Kentico.Web.Mvc;
@@ -26,11 +26,19 @@ namespace Controllers
             //   Use Page tab = True
             // In the administration UI, create a Page utilizing the new Page type
 
+            // Testing
+
             TreeNode page = DocumentHelper.GetDocuments().Path("/Home").OnCurrentSite().TopN(1).FirstOrDefault();
             if (page == null)
             {
                 return HttpNotFound();
             }
+            var Query = new MultiDocumentQuery().Path("/%").InRelationWith(page.NodeGUID, "MVC.Home_1616edf9-3837-498a-a94b-e8297355a37f", RelationshipSideEnum.Left);
+            string QueryText = Query.ToString();
+            RelationshipInfoProvider.ApplyRelationshipOrderData(Query, page.NodeID, RelationshipNameInfoProvider.GetRelationshipNameInfo("MVC.Home_1616edf9-3837-498a-a94b-e8297355a37f").RelationshipNameId);
+            QueryText = Query.ToString();
+            var Results = Query.TypedResult;
+
 
             HttpContext.Kentico().PageBuilder().Initialize(page.DocumentID);
 

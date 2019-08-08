@@ -3,6 +3,7 @@ using CMS.Helpers;
 using CMS.Membership;
 using CMS.SiteProvider;
 using Kentico.Content.Web.Mvc;
+using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Web.Mvc;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,22 @@ namespace KMVCHelper
                 try
                 {
                     return HttpContext.Current.Kentico().Preview().Enabled;
+                }
+                catch (InvalidOperationException)
+                {
+                    // This occurs only on the Owin Authentication calls due to the Dynamic route handler
+                    return false;
+                }
+            }
+        }
+
+        public static bool PageBuilderEnabled
+        {
+            get
+            {
+                try
+                {
+                    return HttpContext.Current.Kentico().PageBuilder().EditMode;
                 }
                 catch (InvalidOperationException)
                 {

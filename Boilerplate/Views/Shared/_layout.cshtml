@@ -19,7 +19,7 @@
 
     @RenderSection("head", required: false)
 
-    @if (KMVCHelper.EnvironmentHelper.PreviewEnabled)
+    @if (KMVCHelper.EnvironmentHelper.PageBuilderEnabled)
     {
         @Html.Kentico().PageBuilderStyles()
     }
@@ -41,7 +41,7 @@
     <!-- Includes the AJAX Unobtrusive for MVC -->
     @Scripts.Render("~/bundles/jquery-unobtrusive-ajax")
 
-    @if (KMVCHelper.EnvironmentHelper.PreviewEnabled)
+    @if (KMVCHelper.EnvironmentHelper.PageBuilderEnabled)
     {
         @Html.Kentico().PageBuilderScripts();
     }
