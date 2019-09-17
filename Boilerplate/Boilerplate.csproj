@@ -57,6 +57,9 @@
     <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Extras.DynamicProxy2, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Extras.DynamicProxy2.3.0.0\lib\net40\Autofac.Extras.DynamicProxy2.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
@@ -954,7 +957,7 @@
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
     <Compile Include="App_Start\Bundles.cs" />
-    <Compile Include="App_Start\DependencyInjectionConfig.cs" />
+    <Compile Include="App_Start\DependencyResolverConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Administrative\AdminRedirectController.cs" />
@@ -969,6 +972,21 @@
     <Compile Include="Controllers\PageTemplates\EmptyPagTemplate.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerWithPropertiesController.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerController.cs" />
+    <Compile Include="Infrastructure\CacheDependencyAttribute.cs" />
+    <Compile Include="Infrastructure\CachingRepositoryDecorator.cs" />
+    <Compile Include="Infrastructure\CMSRegistrationSource.cs" />
+    <Compile Include="Infrastructure\ContentItemMetadataProvider.cs" />
+    <Compile Include="Infrastructure\ICacheKey.cs" />
+    <Compile Include="Infrastructure\IContentItemMetadataProvider.cs" />
+    <Compile Include="Infrastructure\IOutputCacheDependencies.cs" />
+    <Compile Include="Infrastructure\OutputCacheDependencies.cs" />
+    <Compile Include="Infrastructure\PagesCacheDependencyAttribute.cs" />
+    <Compile Include="Library\Example\ExampleModuleClassInfo.cs" />
+    <Compile Include="Library\Example\ExampleModuleClassInfoProvider.cs" />
+    <Compile Include="Library\Example\ExamplePageType.cs" />
+    <Compile Include="Library\Example\ExamplePageTypeProvider.cs" />
+    <Compile Include="Models\Examples\ExampleModuleClass.cs" />
+    <Compile Include="Models\Examples\ExamplePageType.cs" />
     <Compile Include="Models\TemplatedPage\TemplatedPageCustomProperties.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPagesTemplateFilter.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageTemplates.cs" />
@@ -1022,8 +1040,15 @@
     <Compile Include="Models\Widgets\StaticHtmlWidget\StaticHtmlWidgetProperties.cs" />
     <Compile Include="Models\Widgets\StaticHtmlWidget\StaticHtmlWidgetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Implementation\ExampleService.cs" />
-    <Compile Include="Services\Interfaces\IExampleService.cs" />
+    <Compile Include="Repositories\Filters\IRepositoryFilter.cs" />
+    <Compile Include="Repositories\Implementations\KenticoExampleModuleClassRepository.cs" />
+    <Compile Include="Repositories\Implementations\KenticoExamplePageTypeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ExampleModuleClassRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IExamplePageTypeRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Services\Implementations\ExamplePageTypeService.cs" />
+    <Compile Include="Services\Interfaces\IExamplePageTypeService.cs" />
+    <Compile Include="Services\IService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
