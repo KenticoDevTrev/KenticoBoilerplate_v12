@@ -137,6 +137,8 @@ namespace Kentico.Caching
             {
                 return;
             }
+            // Ensure to lower variant
+            dependencyCacheKey = dependencyCacheKey.ToLowerInvariant();
 
             if (!mDependencyCacheKeys.Contains(dependencyCacheKey))
             {

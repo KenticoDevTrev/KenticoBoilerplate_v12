@@ -10,6 +10,9 @@ using System.Linq;
 using Kentico.Caching;
 using CMS.SiteProvider;
 using CMS.Helpers;
+using System;
+using System.Web.Caching;
+using System.Web;
 
 namespace Boilerplate.Controllers.Examples
 {
@@ -37,6 +40,11 @@ namespace Boilerplate.Controllers.Examples
             return View(ExamplePage);
         }
 
+        /// <summary>
+        /// This action, since it is not OutputCache'd, will always execute, however the mExampleRepo.GetExamplePage(ID) will return a cached result based on the ID, until that node is updated
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public ActionResult IndexByID(int ID)
         {
             // This call will be cached automaticall since it is a ".Get_____"
@@ -64,11 +72,12 @@ namespace Boilerplate.Controllers.Examples
 
         /// <summary>
         /// See Global.asax.cs's GetVaryByCustomString.
-        /// Cached View that will have a CacheName of KenticoUser=Public|Example=HelloWorld|1|Blah for /ExampleCache/CachedView?ID=1&SomeString=Blah
+        /// Cached View that will have a theoretical CacheName of KenticoUser=Public|Example=HelloWorld|1|Blah for /ExampleCache/CachedViewByID?ID=1&SomeString=Blah
         /// It will also clear the cache on the dependency of "nodeid|1" and "CustomKey" to the HttpResponse's Dependency for /ExampleCache/CachedViewByID?ID=1&SomeString=Blah
         /// </summary>
         /// <returns></returns>
         [OutputCache(Duration = 600, VaryByParam = "ID;SomeString", VaryByCustom = "Example")]
+        //[ActionResultCache(Duration = 600, VaryByParam = "ID;SomeString", VaryByCustom = "Example")]
         public ActionResult CachedViewByID(int ID, string SomeString)
         {
             // This call will be cached automaticall since it is a ".Get_____"
@@ -77,12 +86,30 @@ namespace Boilerplate.Controllers.Examples
             // Add proper Cache Dependencies
             mOutputCacheDependencies.AddCacheItemDependencies(mExampleRepo.GetExamplePageCacheDependency(ID));
             mOutputCacheDependencies.AddCacheItemDependency("CustomKey");
-
             return View("CachedView", ExamplePage);
         }
 
         /// <summary>
-        /// Will "touch" the Custom Key, Kentico handles touching Kentico cache dependencies
+        /// See Global.asax.cs's GetVaryByCustomString.
+        /// Caches the ActionResult, but not the View Rendering.  This is useful if you want to Cache the Logic, but leave the View uncached so you can implement more Donut-hole typed caching (cache individual components instead of the whole)
+        /// Cached View that will have a theoretical CacheName of KenticoUser=Public|Example=HelloWorld|1|Blah for /ExampleCache/CachedActionByID?ID=1&SomeString=Blah
+        /// It will also clear the cache on the dependency of "nodeid|1" and "CustomKey" to the HttpResponse's Dependency for /ExampleCache/CachedActionByID?ID=1&SomeString=Blah
+        /// </summary>
+        /// <returns></returns>
+        [ActionResultCache(Duration = 600, VaryByParam = "ID;SomeString", VaryByCustom = "Example")]
+        public ActionResult CachedActionByID(int ID, string SomeString)
+        {
+            // This call will be cached automaticall since it is a ".Get_____"
+            ExamplePageTypeModel ExamplePage = mExampleRepo.GetExamplePage(ID);
+
+            // Add proper Cache Dependencies
+            mOutputCacheDependencies.AddCacheItemDependencies(mExampleRepo.GetExamplePageCacheDependency(ID));
+            mOutputCacheDependencies.AddCacheItemDependency("CustomKey");
+            return View("CachedView", ExamplePage);
+        }
+
+        /// <summary>
+        /// Will "touch" the CustomKey, Kentico handles touching Kentico cache dependencies
         /// </summary>
         /// <returns></returns>
         [HttpGet]

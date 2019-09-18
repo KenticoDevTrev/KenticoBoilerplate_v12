@@ -23,7 +23,7 @@ namespace Kentico.Caching.Example
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        [CacheDependency("node|byid|{0}")]
+        [CacheDependency("nodeid|{0}")]
         public ExamplePageTypeModel GetExamplePage(int ID)
         {
             // Get the Page
