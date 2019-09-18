@@ -12,5 +12,9 @@ namespace Kentico.Caching.Example
         IEnumerable<ExampleModuleClassModel> GetExampleModuleClasses();
 
         ExampleModuleClassModel GetExampleModuleClass(int ID);
+
+        IEnumerable<string> GetExampleModuleClassesCacheDependency();
+
+        IEnumerable<string> GetExampleModuleClassCacheDependency(int ID);
     }
 }

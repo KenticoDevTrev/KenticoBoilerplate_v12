@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" class="js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title class="has_page_title">Kentico Boilerplate - HBS</title>
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css" type="text/css">
+
+    <!-- JQUERY, added in header so available anywhere -->
+    @Scripts.Render("~/bundles/jquery")
+
+    @RenderSection("head", required: false)
+
+    @if (KMVCHelper.EnvironmentHelper.PageBuilderEnabled)
+    {
+        @Html.Kentico().PageBuilderStyles()
+    }
+</head>
+<body>
+
+    @RenderBody()
+
+    <hr/>
+
+    <p>
+        Rendered in Footer on Layout:
+        @{Html.RenderAction("CachedPartialExample", "ExampleCache", new { Index = 1 }); }
+        @{Html.RenderAction("CachedPartialExample", "ExampleCache", new { Index = 2 }); }
+        @{Html.RenderAction("CachedPartialExample", "ExampleCache", new { Index = 3 }); }
+    </p>
+
+    <!-- Bootstrap 4 javascript -->
+    <script type="text/javascript" src="~/Content/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Includes the jQuery Validator for MVC-->
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $.validator.setDefaults({ ignore: null });
+    </script>
+
+    <!-- Includes the AJAX Unobtrusive for MVC -->
+    @Scripts.Render("~/bundles/jquery-unobtrusive-ajax")
+
+    @if (KMVCHelper.EnvironmentHelper.PageBuilderEnabled)
+    {
+        @Html.Kentico().PageBuilderScripts();
+    }
+
+    @RenderSection("foot", required: false)
+</body>
+</html>

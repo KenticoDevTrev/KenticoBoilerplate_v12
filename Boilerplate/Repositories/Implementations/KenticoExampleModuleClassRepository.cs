@@ -18,6 +18,11 @@ namespace Kentico.Caching.Example
             };
         }
 
+        public IEnumerable<string> GetExampleModuleClassCacheDependency(int ID)
+        {
+            return new string[] { $"example.examplemoduleclass|byid|{ID}"};
+        }
+
         public IEnumerable<ExampleModuleClassModel> GetExampleModuleClasses()
         {
             var ModelClasses = ExampleModuleClassInfoProvider.GetExampleModuleClasses()
@@ -30,6 +35,11 @@ namespace Kentico.Caching.Example
                     Name = x.ExampleModuleClassName
                 };
             });
+        }
+
+        public IEnumerable<string> GetExampleModuleClassesCacheDependency()
+        {
+            return new string[] { $"example.examplemoduleclass|all" };
         }
     }
 }

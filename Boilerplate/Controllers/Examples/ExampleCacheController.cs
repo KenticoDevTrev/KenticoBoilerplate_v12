@@ -20,13 +20,15 @@ namespace Boilerplate.Controllers.Examples
     [KMVCRouteOverPathPriority]
     public class ExampleCacheController : Controller
     {
-        public IExamplePageTypeRepository mExampleRepo;
+        public IExamplePageTypeRepository mExamplePageTypeRepo;
+        public IExampleModuleClassRepository mExampleModuleClassRepo;
         public readonly IOutputCacheDependencies mOutputCacheDependencies;
 
-        public ExampleCacheController(IExamplePageTypeRepository ExampleRepo, IOutputCacheDependencies OutputCacheDependencies)
+        public ExampleCacheController(IExamplePageTypeRepository ExampleRepo, IExampleModuleClassRepository ExampleModuleClassRepo, IOutputCacheDependencies OutputCacheDependencies)
         {
             // Use constructor injection to get a handle on our ExampleService
-            mExampleRepo = ExampleRepo;
+            mExamplePageTypeRepo = ExampleRepo;
+            mExampleModuleClassRepo = ExampleModuleClassRepo;
 
             // Ability to add Kentico Cache Dependencies to OutputCache
             mOutputCacheDependencies = OutputCacheDependencies;
@@ -36,7 +38,7 @@ namespace Boilerplate.Controllers.Examples
         public ActionResult Index()
         {
             // This call will be cached automaticall since it is a ".Get_____"
-            ExamplePageTypeModel ExamplePage = mExampleRepo.GetExamplePages().FirstOrDefault();
+            ExamplePageTypeModel ExamplePage = mExamplePageTypeRepo.GetExamplePages().FirstOrDefault();
             return View(ExamplePage);
         }
 
@@ -48,7 +50,7 @@ namespace Boilerplate.Controllers.Examples
         public ActionResult IndexByID(int ID)
         {
             // This call will be cached automaticall since it is a ".Get_____"
-            ExamplePageTypeModel ExamplePage = mExampleRepo.GetExamplePage(ID);
+            ExamplePageTypeModel ExamplePage = mExamplePageTypeRepo.GetExamplePage(ID);
             return View("Index",ExamplePage);
         }
 
@@ -62,10 +64,10 @@ namespace Boilerplate.Controllers.Examples
         public ActionResult CachedView()
         {
             // This call will be cached automaticall since it is a ".Get_____"
-            ExamplePageTypeModel ExamplePage = mExampleRepo.GetExamplePages().FirstOrDefault();
+            ExamplePageTypeModel ExamplePage = mExamplePageTypeRepo.GetExamplePages().FirstOrDefault();
 
             // Add proper Cache Dependencies
-            mOutputCacheDependencies.AddCacheItemDependencies(mExampleRepo.GetExamplePagesCacheDependency());
+            mOutputCacheDependencies.AddCacheItemDependencies(mExamplePageTypeRepo.GetExamplePagesCacheDependency());
             mOutputCacheDependencies.AddCacheItemDependency("CustomKey");
             return View(ExamplePage);
         }
@@ -81,10 +83,10 @@ namespace Boilerplate.Controllers.Examples
         public ActionResult CachedViewByID(int ID, string SomeString)
         {
             // This call will be cached automaticall since it is a ".Get_____"
-            ExamplePageTypeModel ExamplePage = mExampleRepo.GetExamplePage(ID);
+            ExamplePageTypeModel ExamplePage = mExamplePageTypeRepo.GetExamplePage(ID);
 
             // Add proper Cache Dependencies
-            mOutputCacheDependencies.AddCacheItemDependencies(mExampleRepo.GetExamplePageCacheDependency(ID));
+            mOutputCacheDependencies.AddCacheItemDependencies(mExamplePageTypeRepo.GetExamplePageCacheDependency(ID));
             mOutputCacheDependencies.AddCacheItemDependency("CustomKey");
             return View("CachedView", ExamplePage);
         }
@@ -100,10 +102,10 @@ namespace Boilerplate.Controllers.Examples
         public ActionResult CachedActionByID(int ID, string SomeString)
         {
             // This call will be cached automaticall since it is a ".Get_____"
-            ExamplePageTypeModel ExamplePage = mExampleRepo.GetExamplePage(ID);
+            ExamplePageTypeModel ExamplePage = mExamplePageTypeRepo.GetExamplePage(ID);
 
             // Add proper Cache Dependencies
-            mOutputCacheDependencies.AddCacheItemDependencies(mExampleRepo.GetExamplePageCacheDependency(ID));
+            mOutputCacheDependencies.AddCacheItemDependencies(mExamplePageTypeRepo.GetExamplePageCacheDependency(ID));
             mOutputCacheDependencies.AddCacheItemDependency("CustomKey");
             return View("CachedView", ExamplePage);
         }
@@ -118,5 +120,28 @@ namespace Boilerplate.Controllers.Examples
             CacheHelper.TouchKey("CustomKey");
             return Json(new { Result = true }, JsonRequestBehavior.AllowGet);
         }
+
+        /// <summary>
+        /// Caches this by the ItemNum
+        /// </summary>
+        /// <param name="Index">The index of the ExampleModule you wish to get.</param>
+        /// <returns></returns>
+        [OutputCache(Duration =600, VaryByParam ="*")]
+        public ActionResult CachedPartialExample(int Index)
+        {
+            var ExampleClassItems = mExampleModuleClassRepo.GetExampleModuleClasses();
+
+            // Add cache dependency
+            mOutputCacheDependencies.AddCacheItemDependencies(mExampleModuleClassRepo.GetExampleModuleClassesCacheDependency());
+
+            if(ExampleClassItems.Count() >= Index)
+            {
+                return View("CachedPartialExample", ExampleClassItems.ToList()[Index-1]);
+            } else
+            {
+                return Content("");
+            }
+        }
+
     }
 }

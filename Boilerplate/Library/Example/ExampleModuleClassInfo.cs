@@ -27,7 +27,7 @@ namespace Kentico.Caching.Example
         /// Type information.
         /// </summary>
 #warning "You will need to configure the type info."
-        public static readonly ObjectTypeInfo TYPEINFO = new ObjectTypeInfo(typeof(ExampleModuleClassInfoProvider), OBJECT_TYPE, "Example.ExampleModuleClass", "ExampleModuleClassID", "ExampleModuleClassLastModified", "ExampleModuleClassGuid", "ExampleModuleClassName", null, null, null, null, null)
+        public static readonly ObjectTypeInfo TYPEINFO = new ObjectTypeInfo(typeof(ExampleModuleClassInfoProvider), OBJECT_TYPE, "Example.ExampleModuleClass", "ExampleModuleClassID", "ExampleModuleClassLastModified", "ExampleModuleClassGuid", null, "ExampleModuleClassName", null, null, null, null)
         {
             ModuleName = "Boilerplate",
             TouchCacheDependencies = true,

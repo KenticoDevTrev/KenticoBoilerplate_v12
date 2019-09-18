@@ -186,7 +186,6 @@ namespace Kentico.Caching
                 }
             }
 
-
             return sb.ToString();
         }
     }

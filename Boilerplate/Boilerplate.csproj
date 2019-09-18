@@ -953,6 +953,8 @@
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomControllerWithProperties.cshtml" />
     <Content Include="Views\ExampleCache\Index.cshtml" />
     <Content Include="Views\ExampleCache\CachedView.cshtml" />
+    <Content Include="Views\ExampleCache\CachedPartialExample.cshtml" />
+    <Content Include="Views\ExampleCache\ExampleSharedLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
