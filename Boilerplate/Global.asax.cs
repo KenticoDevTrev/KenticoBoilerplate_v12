@@ -40,9 +40,6 @@ public class MvcApplication : HttpApplication
         // Register Dependencies for Cache
         DependencyResolverConfig.Register(builder);
 
-        // Register services and repository implementations
-        AutoImplementConfig.RegisterImplementations(builder);
-
         // Set Autofac Dependency resolver to the builder
         DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
 

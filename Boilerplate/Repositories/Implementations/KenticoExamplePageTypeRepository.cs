@@ -30,12 +30,14 @@ namespace Kentico.Caching.Example
             var Page = ExamplePageTypeProvider.GetExamplePageType(ID, mCultureName, SiteContext.CurrentSiteName)
                 .LatestVersion(mLatestVersionEnabled)
                 .Published(!mLatestVersionEnabled)
-                .CombineWithDefaultCulture();
+                .CombineWithDefaultCulture()
+                .FirstOrDefault();
 
             // Convert to Model
             return new ExamplePageTypeModel()
             {
-                Name = Page.Name
+                Name = Page.Name,
+                ID = Page.NodeID
             };
         }
 
@@ -60,7 +62,8 @@ namespace Kentico.Caching.Example
                 {
                     return new ExamplePageTypeModel()
                     {
-                        Name = x.Name
+                        Name = x.Name,
+                        ID=x.NodeID
                     };
                 })
                 .ToList();

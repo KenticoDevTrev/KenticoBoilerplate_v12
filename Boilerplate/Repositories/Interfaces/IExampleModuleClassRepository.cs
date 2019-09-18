@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Kentico.Caching.Example
 {
-    public interface ExampleModuleClassRepository : IRepository
+    public interface IExampleModuleClassRepository : IRepository
     {
         IEnumerable<ExampleModuleClassModel> GetExampleModuleClasses();
 

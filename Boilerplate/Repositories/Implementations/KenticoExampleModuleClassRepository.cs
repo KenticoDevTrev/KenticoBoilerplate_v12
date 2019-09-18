@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Kentico.Caching.Example
 {
-    public class KenticoExampleModuleClassRepository : ExampleModuleClassRepository
+    public class KenticoExampleModuleClassRepository : IExampleModuleClassRepository
     {
         [CacheDependency("example.examplemoduleclass|byid|{0}")]
         public ExampleModuleClassModel GetExampleModuleClass(int ID)

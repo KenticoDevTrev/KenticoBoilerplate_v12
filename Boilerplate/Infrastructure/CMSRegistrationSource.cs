@@ -51,3 +51,4 @@ namespace Kentico.Caching
             return new[] { RegistrationBuilder.ForDelegate(swt.ServiceType, (c, p) => instance).CreateRegistration() };
         }
     }
+}

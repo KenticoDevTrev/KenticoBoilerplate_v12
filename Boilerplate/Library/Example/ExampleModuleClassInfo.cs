@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using CMS;
 using CMS.DataEngine;
 using CMS.Helpers;
-using Example;
+using Kentico.Caching.Example;
 
 [assembly: RegisterObjectType(typeof(ExampleModuleClassInfo), ExampleModuleClassInfo.OBJECT_TYPE)]
 

@@ -102,7 +102,7 @@ namespace Kentico.Caching
         private string GetCacheItemKey(IInvocation invocation)
         {
             var builder = new StringBuilder(127)
-                          .Append("MvcDemo|Data")
+                          .Append("CachingRepositoryDecorator|Data")
                           .Append("|").Append(SiteContext.CurrentSiteName)
                           .Append("|").Append(invocation.TargetType.FullName)
                           .Append("|").Append(invocation.Method.Name)

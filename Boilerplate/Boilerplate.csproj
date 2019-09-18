@@ -953,6 +953,7 @@
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomView.cshtml" />
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageBasicTemplate.cshtml" />
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomControllerWithProperties.cshtml" />
+    <Content Include="Views\Examples\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
@@ -1043,7 +1044,7 @@
     <Compile Include="Repositories\Filters\IRepositoryFilter.cs" />
     <Compile Include="Repositories\Implementations\KenticoExampleModuleClassRepository.cs" />
     <Compile Include="Repositories\Implementations\KenticoExamplePageTypeRepository.cs" />
-    <Compile Include="Repositories\Interfaces\ExampleModuleClassRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IExampleModuleClassRepository.cs" />
     <Compile Include="Repositories\Interfaces\IExamplePageTypeRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Services\Implementations\ExamplePageTypeService.cs" />
