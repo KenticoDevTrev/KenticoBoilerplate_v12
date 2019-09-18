@@ -931,9 +931,6 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Examples\MVCWebPartsViewModel.cshtml" />
-    <Content Include="Views\Examples\Navigation.cshtml" />
-    <Content Include="Views\Examples\MVCWebPartsNoModel.cshtml" />
     <Content Include="Views\Shared\Widgets\_SimplePropertyDialogWidget.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_ColorPickerEditor.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_ImageUploaderEditor.cshtml" />
@@ -953,7 +950,7 @@
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomView.cshtml" />
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageBasicTemplate.cshtml" />
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomControllerWithProperties.cshtml" />
-    <Content Include="Views\Examples\Index.cshtml" />
+    <Content Include="Views\ExampleCache\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
@@ -965,7 +962,7 @@
     <Compile Include="Controllers\Administrative\HttpErrorsController.cs" />
     <Compile Include="Controllers\Administrative\SignInManagerController.cs" />
     <Compile Include="Controllers\Administrative\TemplatedBaseController.cs" />
-    <Compile Include="Controllers\Examples\ExamplesController.cs" />
+    <Compile Include="Controllers\Examples\ExampleCacheController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InlineEditors\ImageUploaderController.cs" />
     <Compile Include="Controllers\PageTemplates\DynamicPageTemplateController.cs" />
@@ -1068,7 +1065,6 @@
     <Content Include="Views\Shared\Widgets\_SimpleWidget.cshtml" />
     <Content Include="Views\SignInManager\SignInManager.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Examples\Banners.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CMSResources\CMS.resx" />
