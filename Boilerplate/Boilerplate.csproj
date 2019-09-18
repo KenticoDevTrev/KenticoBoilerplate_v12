@@ -951,6 +951,7 @@
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageBasicTemplate.cshtml" />
     <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomControllerWithProperties.cshtml" />
     <Content Include="Views\ExampleCache\Index.cshtml" />
+    <Content Include="Views\ExampleCache\CachedView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
@@ -974,10 +975,12 @@
     <Compile Include="Infrastructure\CachingRepositoryDecorator.cs" />
     <Compile Include="Infrastructure\CMSRegistrationSource.cs" />
     <Compile Include="Infrastructure\ContentItemMetadataProvider.cs" />
+    <Compile Include="Infrastructure\ExampleCacheKey.cs" />
     <Compile Include="Infrastructure\ICacheKey.cs" />
     <Compile Include="Infrastructure\IContentItemMetadataProvider.cs" />
     <Compile Include="Infrastructure\IOutputCacheDependencies.cs" />
     <Compile Include="Infrastructure\OutputCacheDependencies.cs" />
+    <Compile Include="Infrastructure\OutputCacheKeyOptionsExtension.cs" />
     <Compile Include="Infrastructure\PagesCacheDependencyAttribute.cs" />
     <Compile Include="Library\Example\ExampleModuleClassInfo.cs" />
     <Compile Include="Library\Example\ExampleModuleClassInfoProvider.cs" />

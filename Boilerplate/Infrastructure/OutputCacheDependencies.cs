@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-
+using CMS.AspNet.Platform.Cache.Extension;
 using CMS.DataEngine;
 using CMS.DocumentEngine;
 using CMS.Helpers;
@@ -127,14 +127,39 @@ namespace Kentico.Caching
             AddCacheItemDependency(dependencyCacheKey);
         }
 
-
-        private void AddCacheItemDependency(string dependencyCacheKey)
+        /// <summary>
+        /// Adds the custom Cache Dependency for a view.
+        /// </summary>
+        /// <param name="dependencyCacheKey">The Kentico Cache Dependency Key</param>
+        public void AddCacheItemDependency(string dependencyCacheKey)
         {
+            if (!mCacheEnabled)
+            {
+                return;
+            }
+
             if (!mDependencyCacheKeys.Contains(dependencyCacheKey))
             {
                 mDependencyCacheKeys.Add(dependencyCacheKey);
                 CacheHelper.EnsureDummyKey(dependencyCacheKey);
-                mResponse.AddCacheItemDependency(dependencyCacheKey);
+                mResponse.AddCacheDependency(new CMSCacheDependency(null, new string[] { dependencyCacheKey }, DateTime.Now).CreateCacheDependency());
+            }
+        }
+
+        /// <summary>
+        /// Adds the custom Cache Dependencies for a view.
+        /// </summary>
+        /// <param name="dependencyCacheKey">The Kentico Cache Dependency Keys</param>
+        public void AddCacheItemDependencies(IEnumerable<string> dependencyCacheKeys)
+        {
+            if (!mCacheEnabled)
+            {
+                return;
+            }
+
+            foreach (string dependencyCacheKey in dependencyCacheKeys)
+            {
+                AddCacheItemDependency(dependencyCacheKey);
             }
         }
     }

@@ -11,5 +11,9 @@ namespace Kentico.Caching.Example
         IEnumerable<ExamplePageTypeModel> GetExamplePages();
 
         ExamplePageTypeModel GetExamplePage(int ID);
+
+        IEnumerable<string> GetExamplePagesCacheDependency();
+
+        IEnumerable<string> GetExamplePageCacheDependency(int ID);
     }
 }

@@ -41,10 +41,15 @@ namespace Kentico.Caching.Example
             };
         }
 
+        public IEnumerable<string> GetExamplePageCacheDependency(int ID)
+        {
+            return new string[] { $"nodeid|{ID}" };
+        }
+
         /// <summary>
         /// Gets All the example pages, in this case the default Cache Dependency will be all the Example Pages
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns>        
         public IEnumerable<ExamplePageTypeModel> GetExamplePages()
         {
             // Get the Pages
@@ -67,6 +72,11 @@ namespace Kentico.Caching.Example
                     };
                 })
                 .ToList();
+        }
+
+        public IEnumerable<string> GetExamplePagesCacheDependency()
+        {
+            return new string[] { $"nodes|{SiteContext.CurrentSiteName}|{ExamplePageType.TYPEINFO}|all" };
         }
     }
 }

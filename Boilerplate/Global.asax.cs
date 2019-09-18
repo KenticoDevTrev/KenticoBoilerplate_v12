@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -10,6 +11,8 @@ using CMS.Helpers;
 using Controllers;
 using Controllers.PageTemplates;
 using Kentico.Caching;
+using Kentico.Caching.Example;
+using Kentico.OnlineMarketing.Web.Mvc;
 using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Web.Mvc;
 
@@ -46,6 +49,57 @@ public class MvcApplication : HttpApplication
         #endregion
     }
 
+    /// <summary>
+    /// When a OutputCache VaryByCustom string is passed, can define various options to this to alter the Cache Name.
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="custom"></param>
+    /// <returns></returns>
+    public override string GetVaryByCustomString(HttpContext context, string custom)
+    {
+        // Creates the options object used to store individual cache key parts
+        IOutputCacheKeyOptions options = OutputCacheKeyHelper.CreateOptions();
+
+        // Selects a caching configuration according to the current custom string
+        switch (custom)
+        {
+            case "Default":
+                // Sets the variables that compose the cache key for the 'Default' VaryByCustom string
+                options
+                    .VaryByHost()
+                    .VaryByBrowser()
+                    .VaryByUser();
+                break;
+
+            case "OnlineMarketing":
+                // Sets the variables that compose the cache key for the 'OnlineMarketing' VaryByCustom string
+                options
+                    .VaryByCookieLevel()
+                    .VaryByPersona()
+                    .VaryByABTestVariant();
+                break;
+            case "Example":
+                options
+                    .VaryByUser()
+                    .VaryByExample();
+                    // Can also just manually add your own CacheKey without making an extension method
+                    //.AddCacheKey(new ExampleCacheKey());
+                break;
+        }
+
+        // Combines individual 'VaryBy' key parts into a cache key under which the output is cached
+        string cacheKey = OutputCacheKeyHelper.GetVaryByCustomString(context, custom, options);
+
+        // Returns the constructed cache key
+        if (!String.IsNullOrEmpty(cacheKey))
+        {
+            return cacheKey;
+        }
+
+        // Calls the base implementation if the provided custom string does not match any predefined configurations
+        return base.GetVaryByCustomString(context, custom);
+    }
+
     private void RegisterPageTemplateFilters()
     {
         PageBuilderFilters.PageTemplates.Add(new TemplatedPageTemplateFilter());
@@ -53,4 +107,6 @@ public class MvcApplication : HttpApplication
         // Must be last!
         PageBuilderFilters.PageTemplates.Add(new EmptyPageTemplateFilter());
     }
+
+
 }
