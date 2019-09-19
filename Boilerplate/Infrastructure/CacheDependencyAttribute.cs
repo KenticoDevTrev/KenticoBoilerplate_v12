@@ -14,7 +14,6 @@ namespace Kentico.Caching
     {
         private readonly string mDependencyKeyFormat;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CacheDependencyAttribute"/> class.
         /// </summary>

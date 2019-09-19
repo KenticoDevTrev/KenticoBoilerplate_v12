@@ -13,6 +13,8 @@ namespace Kentico.Caching.Example
         private readonly bool mLatestVersionEnabled;
         private ICacheHelper mCacheHelper;
 
+        #region "These are abstracted out to Generic Models"
+
         public KenticoExamplePageTypeRepository(string cultureName, bool latestVersionEnabled, ICacheHelper CacheHelper)
         {
             mCultureName = cultureName;
@@ -81,13 +83,49 @@ namespace Kentico.Caching.Example
                     };
                 }).ToList();
             }, "KenticoExamplePageTypeRepository.GetExamplePages", GetExamplePagesCacheDependency(), mCacheHelper.CacheDuration());
-
-            
         }
 
         public IEnumerable<string> GetExamplePagesCacheDependency()
         {
             return new string[] { $"nodes|{SiteContext.CurrentSiteName}|{ExamplePageType.TYPEINFO}|all" };
         }
+
+        #endregion
+
+        #region "These are returning BaseInfo/TreeNode Models"
+
+        /// <summary>
+        /// No Cache needed as the Interceptor will detect the return type is IEnumerable of TreeNode and add the "nodes|sitename|classname|all" dependency
+        /// </summary>
+        /// <returns>Get All Example Pages</returns>
+        public IEnumerable<ExamplePageType> GetExamplePages_TreeNodes()
+        {
+            return ExamplePageTypeProvider.GetExamplePageTypes()
+                .LatestVersion(mLatestVersionEnabled)
+                .Published(!mLatestVersionEnabled)
+                .OnSite(SiteContext.CurrentSiteName)
+                .Culture(mCultureName)
+                .CombineWithDefaultCulture()
+                .OrderBy("NodeOrder")
+                .ToList();
+        }
+
+        /// <summary>
+        /// No Cache 'needed' however basic detection of it will simply put the "nodes|sitename|classname|all", so i'm adding one
+        /// </summary>
+        /// <param name="ID">The NodeID</param>
+        /// <returns>The Page</returns>
+        [CacheDependency("nodeid|{0}")]
+        public ExamplePageType GetExamplePage_TreeNode(int ID)
+        {
+            return ExamplePageTypeProvider.GetExamplePageType(ID, mCultureName, SiteContext.CurrentSiteName)
+                .LatestVersion(mLatestVersionEnabled)
+                .Published(!mLatestVersionEnabled)
+                .CombineWithDefaultCulture()
+                .FirstOrDefault();
+        }
+
+        #endregion 
+
     }
 }

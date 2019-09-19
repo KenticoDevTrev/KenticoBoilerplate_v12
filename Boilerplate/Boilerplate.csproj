@@ -993,6 +993,7 @@
     <Compile Include="Library\Example\ExamplePageType.cs" />
     <Compile Include="Library\Example\ExamplePageTypeProvider.cs" />
     <Compile Include="Models\Examples\ExampleModuleClass.cs" />
+    <Compile Include="Models\Examples\ExampleModuleClassViewModel.cs" />
     <Compile Include="Models\Examples\ExamplePageType.cs" />
     <Compile Include="Models\TemplatedPage\TemplatedPageCustomProperties.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPagesTemplateFilter.cs" />

@@ -1,29 +1,23 @@
-﻿using CMS.Base;
-using CMS.Localization;
-using Controllers;
-using Kentico.Caching.Example;
+﻿using Kentico.Caching.Example;
 using KMVCHelper;
-using Models.Examples;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
 using Kentico.Caching;
-using CMS.SiteProvider;
-using CMS.Helpers;
-using System;
 using System.Web.Caching;
-using System.Web;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Boilerplate.Controllers.Examples
 {
-
     [KMVCRouteOverPathPriority]
     public class ExampleCacheController : Controller
     {
-        public IExamplePageTypeRepository mExamplePageTypeRepo;
-        public IExampleModuleClassRepository mExampleModuleClassRepo;
-        public readonly IOutputCacheDependencies mOutputCacheDependencies;
-        public readonly ICacheHelper mCacheHelper;
+        private string ExampleType = "GenericModel";
+
+        private IExamplePageTypeRepository mExamplePageTypeRepo;
+        private IExampleModuleClassRepository mExampleModuleClassRepo;
+        private readonly IOutputCacheDependencies mOutputCacheDependencies;
+        private readonly ICacheHelper mCacheHelper;
 
         public ExampleCacheController(IExamplePageTypeRepository ExampleRepo, IExampleModuleClassRepository ExampleModuleClassRepo, IOutputCacheDependencies OutputCacheDependencies, ICacheHelper CacheHelper)
         {
@@ -53,7 +47,7 @@ namespace Boilerplate.Controllers.Examples
         {
             // This call will be cached automaticall since it is a ".Get_____"
             ExamplePageTypeModel ExamplePage = mExamplePageTypeRepo.GetExamplePage(ID);
-            return View("Index",ExamplePage);
+            return View("Index", ExamplePage);
         }
 
         /// <summary>
@@ -123,27 +117,112 @@ namespace Boilerplate.Controllers.Examples
             return Json(new { Result = true }, JsonRequestBehavior.AllowGet);
         }
 
+
         /// <summary>
         /// Caches this by the ItemNum
         /// </summary>
         /// <param name="Index">The index of the ExampleModule you wish to get.</param>
         /// <returns></returns>
-        [OutputCache(Duration =600, VaryByParam ="*")]
+        [OutputCache(Duration = 600, VaryByParam = "*")]
         public ActionResult CachedPartialExample(int Index)
         {
-            var ExampleClassItems = mExampleModuleClassRepo.GetExampleModuleClasses();
+            // Get the Items
+            var Items = mExampleModuleClassRepo.GetExampleModuleClasses();
 
             // Add cache dependency
             mOutputCacheDependencies.AddCacheItemDependencies(mExampleModuleClassRepo.GetExampleModuleClassesCacheDependency());
 
-            if(ExampleClassItems.Count() >= Index)
+            // Convert to View Model
+            if (Items.Count() >= Index)
             {
-                return View("CachedPartialExample", ExampleClassItems.ToList()[Index-1]);
-            } else
+                var Model = new ExampleModuleClassViewModel()
+                {
+                    Name = Items.ToList()[Index - 1].Name
+                };
+                return View("CachedPartialExample", Model);
+            }
+            else
             {
                 return Content("");
             }
         }
 
+        /// <summary>
+        /// Caches this by the ItemNum, this uses the BaseInfo returning method to show the difference
+        /// </summary>
+        /// <param name="Index">The index of the ExampleModule you wish to get.</param>
+        /// <returns></returns>
+        [OutputCache(Duration = 600, VaryByParam = "*")]
+        public ActionResult CachedPartialExample_BaseInfo(int Index)
+        {
+            // Get the BaseInfo models
+            var Items = mExampleModuleClassRepo.GetExampleModuleClasses_BaseInfo();
+
+            // Add cache dependency
+            mOutputCacheDependencies.AddDependencyOnInfoObjects<ExampleModuleClassInfo>();
+
+            if (Items.Count() >= Index)
+            {
+                // Convert to View Model
+                var Model = new ExampleModuleClassViewModel()
+                {
+                    Name = Items.First().ExampleModuleClassName
+                };
+
+                return View("CachedPartialExample", Model);
+            }
+            else
+            {
+                return Content("");
+            }
+        }
+
+        /// <summary>
+        /// Caches this by the ID
+        /// </summary>
+        /// <param name="Index">The index of the ExampleModule you wish to get.</param>
+        /// <returns></returns>
+        [OutputCache(Duration = 600, VaryByParam = "*")]
+        public ActionResult CachedPartialExampleByID(int ID)
+        {
+            // Get the Item
+            var Item = mExampleModuleClassRepo.GetExampleModuleClass(ID);
+
+            // Add cache dependency
+            mOutputCacheDependencies.AddCacheItemDependencies(mExampleModuleClassRepo.GetExampleModuleClassCacheDependency(ID));
+
+            // Convert to View Model
+            var Model = new ExampleModuleClassViewModel()
+            {
+                Name = Item.Name
+            };
+
+            // Return the item
+            return View("CachedPartialExample", Model);
+        }
+
+        /// <summary>
+        /// Caches this by the ID, this uses the BaseInfo returning method to show the difference
+        /// </summary>
+        /// <param name="Index">The index of the ExampleModule you wish to get.</param>
+        /// <returns></returns>
+        [OutputCache(Duration = 600, VaryByParam = "*")]
+        public ActionResult CachedPartialExampleByID_BaseInfo(int ID)
+        {
+            // Get the BaseInfo models
+            var Item = mExampleModuleClassRepo.GetExampleModuleClass_BaseInfo(ID);
+
+            // Add cache dependency
+            mOutputCacheDependencies.AddDependencyOnInfoObject<ExampleModuleClassInfo>(Item.ExampleModuleClassGuid);
+
+            // Convert to View Model
+            var Model = new ExampleModuleClassModel()
+            {
+                Name = Item.ExampleModuleClassName
+            };
+
+            return View("CachedPartialExample", Model);
+
+        }
     }
 }

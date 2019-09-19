@@ -125,7 +125,6 @@ namespace Kentico.Caching
             };
         }
 
-
         private string GetDependencyCacheKeyForPage(Type type)
         {
             return String.Format(PagesCacheDependencyAttribute.KEY_FORMAT, SiteContext.CurrentSiteName.ToLowerInvariant(), mContentItemMetadataProvider.GetClassNameFromPageRuntimeType(type));
