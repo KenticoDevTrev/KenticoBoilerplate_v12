@@ -1,8 +1,8 @@
-﻿using Kentico.Caching.Example;
+﻿using MVCCaching.Kentico.Example;
 using KMVCHelper;
 using System.Web.Mvc;
 using System.Linq;
-using Kentico.Caching;
+using MVCCaching.Kentico;
 using System.Web.Caching;
 using System.Collections;
 using System.Collections.Generic;

@@ -6,14 +6,12 @@ using CMS.SiteProvider;
 using Kentico.Content.Web.Mvc;
 using Kentico.Web.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
-namespace Kentico.Caching
+namespace MVCCaching.Kentico
 {
     /// <summary>
     /// Registers required implementations to the Autofac container and set the container as ASP.NET MVC dependency resolver

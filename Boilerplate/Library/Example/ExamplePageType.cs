@@ -17,11 +17,11 @@ using CMS.Base;
 using CMS.Helpers;
 using CMS.DataEngine;
 using CMS.DocumentEngine;
-using Kentico.Caching.Example;
+using MVCCaching.Kentico.Example;
 
 [assembly: RegisterDocumentType(ExamplePageType.CLASS_NAME, typeof(ExamplePageType))]
 
-namespace Kentico.Caching.Example
+namespace MVCCaching.Kentico.Example
 {
     /// <summary>
     /// Represents a content item of type ExamplePageType.

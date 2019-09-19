@@ -5,7 +5,7 @@ using CMS.Base;
 using CMS.DataEngine;
 using CMS.Helpers;
 
-namespace Kentico.Caching.Example
+namespace MVCCaching.Kentico.Example
 {
     /// <summary>
     /// Class providing <see cref="ExampleModuleClassInfo"/> management.

@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using CMS.DataEngine;
 using CMS.DocumentEngine;
 
-namespace Kentico.Caching
+namespace MVCCaching.Kentico
 {
     /// <summary>
     /// Represents a contract for objects that create a minimum set of ASP.NET output cache dependencies for views that contain data from pages or info objects.
     /// </summary>
-    public interface IOutputCacheDependencies
+    public interface IOutputCacheDependencies : IOutputCacheDependenciesBase
     {
         /// <summary>
         /// Adds a minimum set of ASP.NET output cache dependencies for a view that contains data from pages of the specified runtime type.
@@ -50,17 +49,5 @@ namespace Kentico.Caching
         /// <param name="infoGuid">Info object guid used for dependency cache key.</param>
         /// <typeparam name="T">Runtime type that represents info objects, i.e. it is derived from the <see cref="AbstractInfo{TInfo}"/> class.</typeparam>
         void AddDependencyOnInfoObject<T>(Guid infoGuid) where T : AbstractInfo<T>, new();
-
-        /// <summary>
-        /// Adds the custom Cache Dependency for a view.
-        /// </summary>
-        /// <param name="dependencyCacheKey">The Kentico Cache Dependency Key</param>
-        void AddCacheItemDependency(string dependencyCacheKey);
-
-        /// <summary>
-        /// Adds the custom Cache Dependencies for a view.
-        /// </summary>
-        /// <param name="dependencyCacheKey">The Kentico Cache Dependency Keys</param>
-        void AddCacheItemDependencies(IEnumerable<string> dependencyCacheKeys);
     }
 }

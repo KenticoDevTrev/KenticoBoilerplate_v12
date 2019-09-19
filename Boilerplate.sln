@@ -4,6 +4,8 @@ VisualStudioVersion = 15.0.27703.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boilerplate", "Boilerplate\Boilerplate.csproj", "{6D8D371B-8C5A-43AE-A778-D2B89E306C70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCaching", "..\KenticoRepositories\MVCCaching\MVCCaching\MVCCaching.csproj", "{60D45549-BB62-4999-8F29-987B58B33127}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,10 @@ Global
 		{6D8D371B-8C5A-43AE-A778-D2B89E306C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D8D371B-8C5A-43AE-A778-D2B89E306C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D8D371B-8C5A-43AE-A778-D2B89E306C70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D45549-BB62-4999-8F29-987B58B33127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D45549-BB62-4999-8F29-987B58B33127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D45549-BB62-4999-8F29-987B58B33127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60D45549-BB62-4999-8F29-987B58B33127}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

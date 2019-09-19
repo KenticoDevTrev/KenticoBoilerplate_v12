@@ -1,4 +1,4 @@
-﻿namespace Kentico.Caching
+﻿namespace MVCCaching.Kentico
 {
     /// <summary>
     /// Interface indicating that type is a repository suitable to be managed by DI container.

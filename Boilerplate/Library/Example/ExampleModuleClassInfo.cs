@@ -5,11 +5,11 @@ using System.Runtime.Serialization;
 using CMS;
 using CMS.DataEngine;
 using CMS.Helpers;
-using Kentico.Caching.Example;
+using MVCCaching.Kentico.Example;
 
 [assembly: RegisterObjectType(typeof(ExampleModuleClassInfo), ExampleModuleClassInfo.OBJECT_TYPE)]
 
-namespace Kentico.Caching.Example
+namespace MVCCaching.Kentico.Example
 {
     /// <summary>
     /// Data container class for <see cref="ExampleModuleClassInfo"/>.

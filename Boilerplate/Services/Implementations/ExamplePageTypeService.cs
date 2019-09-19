@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Models.Examples;
 
-namespace Kentico.Caching.Example
+namespace MVCCaching.Kentico.Example
 {
     public class ExamplePageTypeService : IExamplePageTypeService
     {

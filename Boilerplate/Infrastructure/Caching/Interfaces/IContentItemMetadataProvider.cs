@@ -2,7 +2,7 @@
 using CMS.DocumentEngine;
 using System;
 
-namespace Kentico.Caching
+namespace MVCCaching.Kentico
 {
     /// <summary>
     /// Represents a contract for objects that provide information about pages and info objects using their runtime type.

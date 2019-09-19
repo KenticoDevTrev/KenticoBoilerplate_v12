@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
-
 using CMS.DataEngine;
 using CMS.DocumentEngine;
 
-namespace Kentico.Caching
+namespace MVCCaching.Kentico
 {
     /// <summary>
     /// Provides information about pages and info objects using their runtime type.

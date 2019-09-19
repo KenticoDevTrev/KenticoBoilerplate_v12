@@ -628,7 +628,12 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\KenticoRepositories\MVCCaching\MVCCaching\MVCCaching.csproj">
+      <Project>{60d45549-bb62-4999-8f29-987b58b33127}</Project>
+      <Name>MVCCaching</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\skins\content\default\content.min.css" />
@@ -959,7 +964,7 @@
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
     <Compile Include="App_Start\Bundles.cs" />
-    <Compile Include="App_Start\DependencyResolverConfig.cs" />
+    <Compile Include="Infrastructure\Caching\Startup\DependencyResolverConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Administrative\AdminRedirectController.cs" />
@@ -974,20 +979,16 @@
     <Compile Include="Controllers\PageTemplates\EmptyPagTemplate.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerWithPropertiesController.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerController.cs" />
-    <Compile Include="Infrastructure\ActionResultCacheAttribute.cs" />
-    <Compile Include="Infrastructure\CacheDependencyAttribute.cs" />
-    <Compile Include="Infrastructure\CachingRepositoryDecorator.cs" />
-    <Compile Include="Infrastructure\CMSRegistrationSource.cs" />
-    <Compile Include="Infrastructure\ContentItemMetadataProvider.cs" />
+    <Compile Include="Infrastructure\Caching\Interceptor\CachingRepositoryDecorator.cs" />
+    <Compile Include="Infrastructure\Caching\Implementations\CMSRegistrationSource.cs" />
+    <Compile Include="Infrastructure\Caching\Implementations\ContentItemMetadataProvider.cs" />
     <Compile Include="Extensions\ExampleCacheKey.cs" />
-    <Compile Include="Infrastructure\ICacheHelper.cs" />
-    <Compile Include="Infrastructure\ICacheKey.cs" />
-    <Compile Include="Infrastructure\IContentItemMetadataProvider.cs" />
-    <Compile Include="Infrastructure\IOutputCacheDependencies.cs" />
-    <Compile Include="Infrastructure\KenticoCacheHelper.cs" />
-    <Compile Include="Infrastructure\OutputCacheDependencies.cs" />
+    <Compile Include="Infrastructure\Caching\Interfaces\IContentItemMetadataProvider.cs" />
+    <Compile Include="Infrastructure\Caching\Interfaces\IOutputCacheDependencies.cs" />
+    <Compile Include="Infrastructure\Caching\Implementations\KenticoCacheHelper.cs" />
+    <Compile Include="Infrastructure\Caching\Implementations\OutputCacheDependencies.cs" />
     <Compile Include="Extensions\OutputCacheKeyOptionsExtension.cs" />
-    <Compile Include="Infrastructure\PagesCacheDependencyAttribute.cs" />
+    <Compile Include="Infrastructure\Caching\Attributes\PagesCacheDependencyAttribute.cs" />
     <Compile Include="Library\Example\ExampleModuleClassInfo.cs" />
     <Compile Include="Library\Example\ExampleModuleClassInfoProvider.cs" />
     <Compile Include="Library\Example\ExamplePageType.cs" />

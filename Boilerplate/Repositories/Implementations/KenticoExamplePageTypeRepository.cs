@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Kentico.Caching.Example
+namespace MVCCaching.Kentico.Example
 {
 
     public class KenticoExamplePageTypeRepository : IExamplePageTypeRepository
@@ -56,10 +56,61 @@ namespace Kentico.Caching.Example
         }
 
         /// <summary>
-        /// Gets All the example pages, In this case the CacheDependency is dynamic with the Site Name, so we can't declare it on a Cache Dependency attribute, and must cache separately
+        /// Gets the specific Example Page.  Adding a specific cache dependency
         /// </summary>
-        /// <returns>All the Example Pages</returns>        
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        [CacheDependency("nodeguid|##SITENAME##|{0}")]
+        public ExamplePageTypeModel GetExamplePage(Guid guid)
+        {
+            // Get the Page
+            var Page = ExamplePageTypeProvider.GetExamplePageType(guid, mCultureName, SiteContext.CurrentSiteName)
+                .LatestVersion(mLatestVersionEnabled)
+                .Published(!mLatestVersionEnabled)
+                .CombineWithDefaultCulture()
+                .FirstOrDefault();
+
+            // Convert to Model
+            return new ExamplePageTypeModel()
+            {
+                Name = Page.Name,
+                ID = Page.NodeID
+            };
+        }
+
+
+
+        /// <summary>
+        /// Adds the cache "nodes|sitename|classname|all"
+        /// </summary>
+        /// <returns></returns>
+        [PagesCacheDependency(ExamplePageType.OBJECT_TYPE)]
         public IEnumerable<ExamplePageTypeModel> GetExamplePages()
+        {
+            var Pages = ExamplePageTypeProvider.GetExamplePageTypes()
+                 .LatestVersion(mLatestVersionEnabled)
+                 .Published(!mLatestVersionEnabled)
+                 .OnSite(SiteContext.CurrentSiteName)
+                 .Culture(mCultureName)
+                 .CombineWithDefaultCulture()
+                 .ToList();
+
+            // Convert to Model
+            return Pages.Select(x =>
+            {
+                return new ExamplePageTypeModel()
+                {
+                    Name = x.Name,
+                    ID = x.NodeID
+                };
+            }).ToList();
+        }
+
+        /// <summary>
+        /// If you need to have a custom Cache Dependency, you will need to use custom Caching
+        /// </summary>
+        /// <returns>All the Example Pages</returns>   
+        public IEnumerable<ExamplePageTypeModel> GetExamplePages_CustomCacheDependency()
         {
             // Get the Pages
             return mCacheHelper.Cache<IEnumerable<ExamplePageTypeModel>>(() =>

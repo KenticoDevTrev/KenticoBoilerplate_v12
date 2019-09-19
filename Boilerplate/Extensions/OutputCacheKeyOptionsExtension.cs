@@ -1,8 +1,8 @@
-﻿using Kentico.Caching.Example;
+﻿using MVCCaching.Kentico.Example;
 using Kentico.Web.Mvc;
 
 
-namespace Kentico.Caching.Example
+namespace MVCCaching.Kentico.Example
 {
     public static class OutputCacheKeyOptionsExtensions
     {

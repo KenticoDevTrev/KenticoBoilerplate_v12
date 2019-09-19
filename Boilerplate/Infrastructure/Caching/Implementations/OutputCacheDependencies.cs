@@ -7,7 +7,7 @@ using CMS.DocumentEngine;
 using CMS.Helpers;
 using CMS.SiteProvider;
 
-namespace Kentico.Caching
+namespace MVCCaching.Kentico
 {
     /// <summary>
     /// Creates a minimum set of ASP.NET output cache dependencies for views that contain data from pages or info objects.

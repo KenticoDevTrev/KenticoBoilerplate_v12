@@ -17,7 +17,7 @@ using CMS.DataEngine;
 using CMS.DocumentEngine;
 using CMS.Helpers;
 
-namespace Kentico.Caching.Example
+namespace MVCCaching.Kentico.Example
 {
     /// <summary>
     /// Provides methods for retrieving pages of type ExamplePageType.

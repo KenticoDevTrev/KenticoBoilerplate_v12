@@ -4,15 +4,13 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-
 using CMS.DataEngine;
 using CMS.DocumentEngine;
 using CMS.Helpers;
 using CMS.SiteProvider;
-
 using Castle.DynamicProxy;
 
-namespace Kentico.Caching
+namespace MVCCaching.Kentico
 {
     /// <summary>
     /// Provides caching for repository methods that return a single content item or a collection of content items. 
@@ -136,7 +134,12 @@ namespace Kentico.Caching
             return String.Format("{0}|all", mContentItemMetadataProvider.GetObjectTypeFromInfoObjectRuntimeType(type));
         }
 
-
+        /// <summary>
+        /// Resolves the Cache Keys, passing the SiteName to replace ##SITENAME## in the macros
+        /// </summary>
+        /// <param name="attributes"></param>
+        /// <param name="methodArguments"></param>
+        /// <returns></returns>
         private string GetDependencyCacheKeyFromAttributes(List<CacheDependencyAttribute> attributes, object[] methodArguments)
         {
             return attributes.Select(attribute => attribute.ResolveKey(SiteContext.CurrentSiteName.ToLowerInvariant(), methodArguments)).Join(TextHelper.NewLine);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Kentico.Caching
+namespace MVCCaching.Kentico
 {
     /// <summary>
     /// Provides cache dependency settings for methods retrieving pages.
@@ -15,9 +15,8 @@ namespace Kentico.Caching
         /// Cache key format.
         /// </summary>
         internal const string KEY_FORMAT = "nodes|{0}|{1}|all";
-
+        private readonly string mDependencyKeyFormat;
         private readonly string mPageTypeClassName;
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PagesCacheDependencyAttribute"/> class.
@@ -28,6 +27,7 @@ namespace Kentico.Caching
             : base(KEY_FORMAT)
         {
             mPageTypeClassName = pageTypeClassName;
+            mDependencyKeyFormat = KEY_FORMAT;
         }
 
 
@@ -36,9 +36,9 @@ namespace Kentico.Caching
         /// </summary>
         /// <param name="siteName">Site name representing context of a site.</param>
         /// <param name="methodArguments">Array of values for the method arguments.</param>
-        internal override string ResolveKey(string siteName, object[] methodArguments)
+        public override string ResolveKey(string siteName, object[] methodArguments)
         {
-            return string.Format(KEY_FORMAT, siteName, mPageTypeClassName);
+            return string.Format(mDependencyKeyFormat, siteName, mPageTypeClassName);
         }
     }
 }
