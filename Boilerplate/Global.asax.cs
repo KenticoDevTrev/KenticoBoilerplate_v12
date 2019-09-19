@@ -60,31 +60,34 @@ public class MvcApplication : HttpApplication
         // Creates the options object used to store individual cache key parts
         IOutputCacheKeyOptions options = OutputCacheKeyHelper.CreateOptions();
 
-        // Selects a caching configuration according to the current custom string
-        switch (custom)
+        // Selects a caching configuration according to the current custom string, allows semi-colon separate list
+        foreach (string customItem in custom.Split(";".ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
         {
-            case "Default":
-                // Sets the variables that compose the cache key for the 'Default' VaryByCustom string
-                options
-                    .VaryByHost()
-                    .VaryByBrowser()
-                    .VaryByUser();
-                break;
+            switch (customItem.ToLowerInvariant())
+            {
+                case "default":
+                    // Sets the variables that compose the cache key for the 'Default' VaryByCustom string
+                    options
+                        .VaryByHost()
+                        .VaryByBrowser()
+                        .VaryByUser();
+                    break;
 
-            case "OnlineMarketing":
-                // Sets the variables that compose the cache key for the 'OnlineMarketing' VaryByCustom string
-                options
-                    .VaryByCookieLevel()
-                    .VaryByPersona()
-                    .VaryByABTestVariant();
-                break;
-            case "Example":
-                options
-                    .VaryByUser()
-                    .VaryByExample();
+                case "onlinemarketing":
+                    // Sets the variables that compose the cache key for the 'OnlineMarketing' VaryByCustom string
+                    options
+                        .VaryByCookieLevel()
+                        .VaryByPersona()
+                        .VaryByABTestVariant();
+                    break;
+                case "example":
+                    options
+                        .VaryByUser()
+                        .VaryByExample();
                     // Can also just manually add your own CacheKey without making an extension method
                     //.AddCacheKey(new ExampleCacheKey());
-                break;
+                    break;
+            }
         }
 
         // Combines individual 'VaryBy' key parts into a cache key under which the output is cached

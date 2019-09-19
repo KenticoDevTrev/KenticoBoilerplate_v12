@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy2;
 using Autofac.Integration.Mvc;
+using CMS.DataEngine;
+using CMS.SiteProvider;
 using Kentico.Content.Web.Mvc;
 using Kentico.Web.Mvc;
 using System;
@@ -65,6 +67,12 @@ namespace Kentico.Caching
             builder.Register(context => new OutputCacheDependencies(context.Resolve<HttpResponseBase>(), context.Resolve<IContentItemMetadataProvider>(), IsCacheEnabled()))
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
+
+            // Register cache implementation for ICacheHelper
+            builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly)
+                .Where(x => x.IsClass && !x.IsAbstract && typeof(ICacheHelper).IsAssignableFrom(x))
+                .AsImplementedInterfaces()
+                .InstancePerRequest();
         }
 
         /// <summary>
@@ -93,7 +101,6 @@ namespace Kentico.Caching
             return HttpContext.Current.Kentico().Preview().Enabled;
         }
 
-
         private static TimeSpan GetCacheItemDuration()
         {
             var value = ConfigurationManager.AppSettings["RepositoryCacheItemDuration"];
@@ -103,8 +110,17 @@ namespace Kentico.Caching
             {
                 return TimeSpan.FromSeconds(seconds);
             }
-
-            return TimeSpan.Zero;
+            else
+            {
+                try
+                {
+                    return TimeSpan.FromMinutes(SettingsKeyInfoProvider.GetIntValue("CMSCacheMinutes", new SiteInfoIdentifier(SiteContext.CurrentSiteName)));
+                }
+                catch (Exception)
+                {
+                    return TimeSpan.Zero;
+                }
+            }
         }
     }
 }

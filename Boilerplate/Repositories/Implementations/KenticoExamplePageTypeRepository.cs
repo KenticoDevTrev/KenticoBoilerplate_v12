@@ -11,11 +11,13 @@ namespace Kentico.Caching.Example
     {
         private readonly string mCultureName;
         private readonly bool mLatestVersionEnabled;
+        private ICacheHelper mCacheHelper;
 
-        public KenticoExamplePageTypeRepository(string cultureName, bool latestVersionEnabled)
+        public KenticoExamplePageTypeRepository(string cultureName, bool latestVersionEnabled, ICacheHelper CacheHelper)
         {
             mCultureName = cultureName;
             mLatestVersionEnabled = latestVersionEnabled;
+            mCacheHelper = CacheHelper;
         }
 
         /// <summary>
@@ -41,19 +43,26 @@ namespace Kentico.Caching.Example
             };
         }
 
+        /// <summary>
+        /// Gets the Cache Dependency for the given Example Page with the NodeID
+        /// </summary>
+        /// <param name="ID">The ID of the node</param>
+        /// <returns>The Cache Dependency Key</returns>
         public IEnumerable<string> GetExamplePageCacheDependency(int ID)
         {
             return new string[] { $"nodeid|{ID}" };
         }
 
         /// <summary>
-        /// Gets All the example pages, in this case the default Cache Dependency will be all the Example Pages
+        /// Gets All the example pages, In this case the CacheDependency is dynamic with the Site Name, so we can't declare it on a Cache Dependency attribute, and must cache separately
         /// </summary>
-        /// <returns></returns>        
+        /// <returns>All the Example Pages</returns>        
         public IEnumerable<ExamplePageTypeModel> GetExamplePages()
         {
             // Get the Pages
-            var Pages = ExamplePageTypeProvider.GetExamplePageTypes()
+            return mCacheHelper.Cache<IEnumerable<ExamplePageTypeModel>>(() =>
+            {
+                var Pages = ExamplePageTypeProvider.GetExamplePageTypes()
                 .LatestVersion(mLatestVersionEnabled)
                 .Published(!mLatestVersionEnabled)
                 .OnSite(SiteContext.CurrentSiteName)
@@ -62,16 +71,18 @@ namespace Kentico.Caching.Example
                 .OrderBy("NodeOrder")
                 .ToList();
 
-            // Convert to Model
-            return Pages.Select(x =>
+                // Convert to Model
+                return Pages.Select(x =>
                 {
                     return new ExamplePageTypeModel()
                     {
                         Name = x.Name,
-                        ID=x.NodeID
+                        ID = x.NodeID
                     };
-                })
-                .ToList();
+                }).ToList();
+            }, "KenticoExamplePageTypeRepository.GetExamplePages", GetExamplePagesCacheDependency(), mCacheHelper.CacheDuration());
+
+            
         }
 
         public IEnumerable<string> GetExamplePagesCacheDependency()

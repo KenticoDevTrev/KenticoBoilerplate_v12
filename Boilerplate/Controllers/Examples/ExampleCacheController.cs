@@ -23,8 +23,9 @@ namespace Boilerplate.Controllers.Examples
         public IExamplePageTypeRepository mExamplePageTypeRepo;
         public IExampleModuleClassRepository mExampleModuleClassRepo;
         public readonly IOutputCacheDependencies mOutputCacheDependencies;
+        public readonly ICacheHelper mCacheHelper;
 
-        public ExampleCacheController(IExamplePageTypeRepository ExampleRepo, IExampleModuleClassRepository ExampleModuleClassRepo, IOutputCacheDependencies OutputCacheDependencies)
+        public ExampleCacheController(IExamplePageTypeRepository ExampleRepo, IExampleModuleClassRepository ExampleModuleClassRepo, IOutputCacheDependencies OutputCacheDependencies, ICacheHelper CacheHelper)
         {
             // Use constructor injection to get a handle on our ExampleService
             mExamplePageTypeRepo = ExampleRepo;
@@ -32,6 +33,7 @@ namespace Boilerplate.Controllers.Examples
 
             // Ability to add Kentico Cache Dependencies to OutputCache
             mOutputCacheDependencies = OutputCacheDependencies;
+            mCacheHelper = CacheHelper;
         }
 
         // GET: Examples
@@ -117,7 +119,7 @@ namespace Boilerplate.Controllers.Examples
         [HttpGet]
         public JsonResult ClearCustomCache()
         {
-            CacheHelper.TouchKey("CustomKey");
+            mCacheHelper.TouchKey("CustomKey");
             return Json(new { Result = true }, JsonRequestBehavior.AllowGet);
         }
 

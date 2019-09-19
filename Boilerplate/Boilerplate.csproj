@@ -979,12 +979,14 @@
     <Compile Include="Infrastructure\CachingRepositoryDecorator.cs" />
     <Compile Include="Infrastructure\CMSRegistrationSource.cs" />
     <Compile Include="Infrastructure\ContentItemMetadataProvider.cs" />
-    <Compile Include="Infrastructure\ExampleCacheKey.cs" />
+    <Compile Include="Extensions\ExampleCacheKey.cs" />
+    <Compile Include="Infrastructure\ICacheHelper.cs" />
     <Compile Include="Infrastructure\ICacheKey.cs" />
     <Compile Include="Infrastructure\IContentItemMetadataProvider.cs" />
     <Compile Include="Infrastructure\IOutputCacheDependencies.cs" />
+    <Compile Include="Infrastructure\KenticoCacheHelper.cs" />
     <Compile Include="Infrastructure\OutputCacheDependencies.cs" />
-    <Compile Include="Infrastructure\OutputCacheKeyOptionsExtension.cs" />
+    <Compile Include="Extensions\OutputCacheKeyOptionsExtension.cs" />
     <Compile Include="Infrastructure\PagesCacheDependencyAttribute.cs" />
     <Compile Include="Library\Example\ExampleModuleClassInfo.cs" />
     <Compile Include="Library\Example\ExampleModuleClassInfoProvider.cs" />
