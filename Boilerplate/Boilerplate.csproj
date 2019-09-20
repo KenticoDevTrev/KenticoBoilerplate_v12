@@ -521,8 +521,8 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PartialWidgetPage.Kentico.MVC, Version=12.29.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PartialWidgetPage.Kentico.MVC.12.29.2\lib\net461\PartialWidgetPage.Kentico.MVC.dll</HintPath>
+    <Reference Include="PartialWidgetPage.Kentico.MVC, Version=12.29.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PartialWidgetPage.Kentico.MVC.12.29.3\lib\net461\PartialWidgetPage.Kentico.MVC.dll</HintPath>
     </Reference>
     <Reference Include="PayPal, Version=1.8.0.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb">
       <HintPath>..\packages\PayPal.1.8.0\lib\net451\PayPal.dll</HintPath>
