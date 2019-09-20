@@ -1,3 +1,0 @@
-﻿This is an example of a file that will be copied into the Solution using the Kentico.ResourceFiles.targets file, which is included through the ShareableComponentsBoiletplate.csproj file on the line
-
-  <Import Project="..\Targets\Kentico.ResourceFiles.targets" />

@@ -648,6 +648,10 @@
   <ItemGroup>
     <Folder Include="Controllers\Widgets\" />
     <Folder Include="Models\FormComponents\" />
+    <Folder Include="Models\PageTemplates\" />
+    <Folder Include="Models\Widgets\" />
+    <Folder Include="Repositories\Implementations\" />
+    <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Services\Implementation\" />
     <Folder Include="Services\Interfaces\" />
   </ItemGroup>
@@ -951,7 +955,6 @@
     <Content Include="Kentico\Scripts\builders\page-template-selector.css" />
     <Content Include="Kentico\Scripts\builders\web-components.css" />
     <Content Include="Kentico\Scripts\modal-dialog.js" />
-    <Content Include="SampleResource\SampleIncludedFile.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -959,8 +962,6 @@
     <Content Include="Views\Shared\InlineEditors\_ImageUploaderEditor.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_SpinnerEditor.cshtml" />
     <Content Include="Views\Shared\Sections\_SingleColumnSection.cshtml" />
-    <Content Include="Views\Shared\Sections\_ThreeColumnSection.cshtml" />
-    <Content Include="Views\Shared\Sections\_TwoColumnSection.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\PageTemplates\_EmptyTemplate.cshtml" />
     <Content Include="Views\DynamicPageTemplate\UnregisteredTemplate.cshtml" />
@@ -990,8 +991,6 @@
     <Compile Include="Infrastructure\Caching\Interfaces\IOutputCacheDependencies.cs" />
     <Compile Include="Infrastructure\Caching\Startup\DependencyResolverConfig.cs" />
     <Compile Include="Controllers\Sections\SingleColumnSectionController.cs" />
-    <Compile Include="Controllers\Sections\ThreeColumnSectionController.cs" />
-    <Compile Include="Controllers\Sections\TwoColumnSectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
