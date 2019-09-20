@@ -71,6 +71,12 @@
       <HintPath>..\packages\AWSSDK.S3.3.1.9.0\lib\net45\AWSSDK.S3.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="BootstrapLayoutTool.Kentico.MVC, Version=12.29.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BootstrapLayoutTool.Kentico.MVC.12.29.2\lib\net461\BootstrapLayoutTool.Kentico.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="BootstrapLayoutTool.Kentico.MVC.Views, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BootstrapLayoutTool.Kentico.MVC.12.29.2\lib\net461\BootstrapLayoutTool.Kentico.MVC.Views.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
       <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
@@ -295,6 +301,12 @@
       <HintPath>..\packages\GlobalLink.Connect.4.18.3.1\lib\net46\GlobalLink.Connect.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HBS.TinyMCE_Wysiwyg.Kentico.MVC, Version=12.29.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HBS.TinyMCE_Wysiwyg.Kentico.MVC.12.29.0\lib\net461\HBS.TinyMCE_Wysiwyg.Kentico.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="HBS.TinyMCE_Wysiwyg.Kentico.MVC.Views, Version=12.29.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HBS.TinyMCE_Wysiwyg.Kentico.MVC.12.29.0\lib\net461\HBS.TinyMCE_Wysiwyg.Kentico.MVC.Views.dll</HintPath>
+    </Reference>
     <Reference Include="Kentico.Content.Web.Mvc, Version=12.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
       <HintPath>..\packages\Kentico.AspNet.Mvc.Libraries.12.0.29\lib\net461\Kentico.Content.Web.Mvc.dll</HintPath>
     </Reference>
@@ -509,6 +521,9 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PartialWidgetPage.Kentico.MVC, Version=12.29.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PartialWidgetPage.Kentico.MVC.12.29.2\lib\net461\PartialWidgetPage.Kentico.MVC.dll</HintPath>
+    </Reference>
     <Reference Include="PayPal, Version=1.8.0.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb">
       <HintPath>..\packages\PayPal.1.8.0\lib\net451\PayPal.dll</HintPath>
       <Private>True</Private>
@@ -630,7 +645,12 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controllers\Widgets\" />
+    <Folder Include="Models\FormComponents\" />
+    <Folder Include="Services\Implementation\" />
+    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\skins\content\default\content.min.css" />
@@ -931,31 +951,20 @@
     <Content Include="Kentico\Scripts\builders\page-template-selector.css" />
     <Content Include="Kentico\Scripts\builders\web-components.css" />
     <Content Include="Kentico\Scripts\modal-dialog.js" />
+    <Content Include="SampleResource\SampleIncludedFile.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Examples\MVCWebPartsViewModel.cshtml" />
-    <Content Include="Views\Examples\Navigation.cshtml" />
-    <Content Include="Views\Examples\MVCWebPartsNoModel.cshtml" />
-    <Content Include="Views\Shared\Widgets\_SimplePropertyDialogWidget.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_ColorPickerEditor.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_ImageUploaderEditor.cshtml" />
     <Content Include="Views\Shared\InlineEditors\_SpinnerEditor.cshtml" />
     <Content Include="Views\Shared\Sections\_SingleColumnSection.cshtml" />
     <Content Include="Views\Shared\Sections\_ThreeColumnSection.cshtml" />
     <Content Include="Views\Shared\Sections\_TwoColumnSection.cshtml" />
-    <Content Include="Views\Shared\Widgets\_EditableTextWidget.cshtml" />
-    <Content Include="Views\Shared\FormComponents\_TinyMCEInputComponent.cshtml" />
-    <Content Include="Views\Shared\Widgets\_StaticHtmlWidget.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\PageTemplates\_EmptyTemplate.cshtml" />
-    <Content Include="Views\Shared\PageTemplates\_BlankWidgetTemplate.cshtml" />
     <Content Include="Views\DynamicPageTemplate\UnregisteredTemplate.cshtml" />
-    <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomController.cshtml" />
-    <Content Include="Views\Shared\PageTemplates\_TemplatedPageBasicWithProperties.cshtml" />
-    <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomView.cshtml" />
-    <Content Include="Views\Shared\PageTemplates\_TemplatedPageBasicTemplate.cshtml" />
-    <Content Include="Views\Shared\PageTemplates\_TemplatedPageCustomControllerWithProperties.cshtml" />
+    <Content Include="Views\Shared\Widgets\PartialWidgetPage\_PartialWidgetPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
@@ -966,14 +975,11 @@
     <Compile Include="Controllers\Administrative\HttpErrorsController.cs" />
     <Compile Include="Controllers\Administrative\SignInManagerController.cs" />
     <Compile Include="Controllers\Administrative\TemplatedBaseController.cs" />
-    <Compile Include="Controllers\Examples\ExamplesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InlineEditors\ImageUploaderController.cs" />
     <Compile Include="Controllers\PageTemplates\DynamicPageTemplateController.cs" />
     <Compile Include="Controllers\PageTemplates\EmptyPageTemplateFilter.cs" />
     <Compile Include="Controllers\PageTemplates\EmptyPagTemplate.cs" />
-    <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerWithPropertiesController.cs" />
-    <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerController.cs" />
     <Compile Include="Infrastructure\Caching\Attributes\PagesCacheDependencyAttribute.cs" />
     <Compile Include="Infrastructure\Caching\Implementations\CMSRegistrationSource.cs" />
     <Compile Include="Infrastructure\Caching\Implementations\ContentItemMetadataProvider.cs" />
@@ -983,18 +989,9 @@
     <Compile Include="Infrastructure\Caching\Interfaces\IContentItemMetadataProvider.cs" />
     <Compile Include="Infrastructure\Caching\Interfaces\IOutputCacheDependencies.cs" />
     <Compile Include="Infrastructure\Caching\Startup\DependencyResolverConfig.cs" />
-    <Compile Include="Models\TemplatedPage\TemplatedPageCustomProperties.cs" />
-    <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPagesTemplateFilter.cs" />
-    <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageTemplates.cs" />
-    <Compile Include="Controllers\PageTypes\KMVCHelper_GenericWidgetPageTemplateFilter.cs" />
-    <Compile Include="Controllers\PageTypes\KMVCHelper_GenericWidgetPageController.cs" />
     <Compile Include="Controllers\Sections\SingleColumnSectionController.cs" />
     <Compile Include="Controllers\Sections\ThreeColumnSectionController.cs" />
     <Compile Include="Controllers\Sections\TwoColumnSectionController.cs" />
-    <Compile Include="Controllers\Widgets\StaticHtmlWidgetController.cs" />
-    <Compile Include="Controllers\Widgets\SimplePropertyDialogWidgetController.cs" />
-    <Compile Include="Controllers\Widgets\SimpleWidgetController.cs" />
-    <Compile Include="Controllers\Widgets\EditableTextWidgetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1013,31 +1010,12 @@
     <Compile Include="Library\MVC Helpers\KMVCAuthorization.cs" />
     <Compile Include="Library\MVC Helpers\NonSortedBundle.cs" />
     <Compile Include="Models\Administrative\LoginViewModel.cs" />
-    <Compile Include="Models\CMSClasses\GenericWidgetPage.cs" />
-    <Compile Include="Models\Examples\ExampleBannersViewModel.cs" />
-    <Compile Include="Models\Examples\ExampleMVCWebPartsModel.cs" />
-    <Compile Include="Models\FormComponents\TinyMCE\TinyMCEInputComponentProperties.cs" />
-    <Compile Include="Models\FormComponents\TinyMCE\TinyMCEInputComponent.cs" />
     <Compile Include="Models\InlineEditors\ColorPickerEditor\ColorPickerEditorViewModel.cs" />
     <Compile Include="Models\InlineEditors\ImageUploaderEditor\ImageUploaderEditorViewModel.cs" />
     <Compile Include="Models\InlineEditors\ImageUploaderEditor\PanelPositionEnum.cs" />
     <Compile Include="Models\InlineEditors\InlineEditorViewModel.cs" />
     <Compile Include="Models\InlineEditors\SpinnerEditor\SpinnerEditorViewModel.cs" />
-    <Compile Include="Models\InlineEditors\TinyMCEEditor\TinyMCEEditorViewModel.cs" />
-    <Compile Include="Models\ModalForm\ModalForm.cs" />
-    <Compile Include="Models\TemplatedPage\TemplatedPageCustomControllerViewModel.cs" />
-    <Compile Include="Models\TemplatedPage\TemplatedPageCustomControllerWithPropertiesViewModel.cs" />
-    <Compile Include="Models\Widgets\SimplePropertyDialogWidget\SimplePropertyDialogWidgetProperties.cs" />
-    <Compile Include="Models\Widgets\SimplePropertyDialogWidget\SimplePropertyDialogWidgetViewModel.cs" />
-    <Compile Include="Models\Widgets\SimpleWidget\SimpleWidgetProperties.cs" />
-    <Compile Include="Models\Widgets\SimpleWidget\SimpleWidgetViewModel.cs" />
-    <Compile Include="Models\Widgets\EditableTextWidget\EditableTextWidgetProperties.cs" />
-    <Compile Include="Models\Widgets\EditableTextWidget\EditableTextWidgetViewModel.cs" />
-    <Compile Include="Models\Widgets\StaticHtmlWidget\StaticHtmlWidgetProperties.cs" />
-    <Compile Include="Models\Widgets\StaticHtmlWidget\StaticHtmlWidgetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Implementation\ExampleService.cs" />
-    <Compile Include="Services\Interfaces\IExampleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1050,13 +1028,9 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\_layout.cshtml" />
-    <Content Include="Views\Shared\InlineEditors\_TinyMCEEditor.cshtml" />
     <Content Include="Views\HttpErrors\Index.cshtml" />
-    <Content Include="Views\KMVCHelper_GenericWidgetPage\Index.cshtml" />
-    <Content Include="Views\Shared\Widgets\_SimpleWidget.cshtml" />
     <Content Include="Views\SignInManager\SignInManager.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Examples\Banners.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CMSResources\CMS.resx" />

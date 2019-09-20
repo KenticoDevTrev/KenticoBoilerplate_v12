@@ -105,8 +105,6 @@ public class MvcApplication : HttpApplication
 
     private void RegisterPageTemplateFilters()
     {
-        PageBuilderFilters.PageTemplates.Add(new TemplatedPageTemplateFilter());
-        PageBuilderFilters.PageTemplates.Add(new KMVCHelper_GenericWidgetPageTemplateFilter());
         // Must be last!
         PageBuilderFilters.PageTemplates.Add(new EmptyPageTemplateFilter());
     }

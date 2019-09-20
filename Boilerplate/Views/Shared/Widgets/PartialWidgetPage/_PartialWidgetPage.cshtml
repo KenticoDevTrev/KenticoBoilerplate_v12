@@ -1,0 +1,16 @@
+﻿@model ComponentViewModel<PartialWidgetPage.PartialWidgetPageModel>
+@if (!string.IsNullOrWhiteSpace(Model.Properties.ActualUrl))
+{
+    if (Model.Properties.UseAjax)
+    {
+        @Html.PartialWidgetPageAjax(Model.Properties.ActualUrl, Model.Properties.RenderAsPartialUrlParameter)
+    }
+    else
+    {
+        @Html.PartialWidgetPage(Model.Properties.ActualUrl, Model.Properties.RenderAsPartialUrlParameter)
+    }
+}
+else
+{
+    <p>Configure widget to render partial page.</p>
+}
