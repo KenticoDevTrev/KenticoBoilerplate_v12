@@ -57,6 +57,9 @@
     <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Extras.DynamicProxy2, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Extras.DynamicProxy2.3.0.0\lib\net40\Autofac.Extras.DynamicProxy2.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
@@ -486,6 +489,9 @@
     <Reference Include="Mono.Cecil.Rocks, Version=0.10.0.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e">
       <HintPath>..\packages\Mono.Cecil.0.10.0\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="MVCCaching.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MVCCaching.Base.1.0.0\lib\net461\MVCCaching.Base.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -954,7 +960,6 @@
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
     <Compile Include="App_Start\Bundles.cs" />
-    <Compile Include="App_Start\DependencyInjectionConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Administrative\AdminRedirectController.cs" />
@@ -969,6 +974,15 @@
     <Compile Include="Controllers\PageTemplates\EmptyPagTemplate.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerWithPropertiesController.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageCustomControllerController.cs" />
+    <Compile Include="Infrastructure\Caching\Attributes\PagesCacheDependencyAttribute.cs" />
+    <Compile Include="Infrastructure\Caching\Implementations\CMSRegistrationSource.cs" />
+    <Compile Include="Infrastructure\Caching\Implementations\ContentItemMetadataProvider.cs" />
+    <Compile Include="Infrastructure\Caching\Implementations\KenticoCacheHelper.cs" />
+    <Compile Include="Infrastructure\Caching\Implementations\OutputCacheDependencies.cs" />
+    <Compile Include="Infrastructure\Caching\Interceptor\CachingRepositoryDecorator.cs" />
+    <Compile Include="Infrastructure\Caching\Interfaces\IContentItemMetadataProvider.cs" />
+    <Compile Include="Infrastructure\Caching\Interfaces\IOutputCacheDependencies.cs" />
+    <Compile Include="Infrastructure\Caching\Startup\DependencyResolverConfig.cs" />
     <Compile Include="Models\TemplatedPage\TemplatedPageCustomProperties.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPagesTemplateFilter.cs" />
     <Compile Include="Controllers\PageTemplates\TemplatedPage\TemplatedPageTemplates.cs" />
