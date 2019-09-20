@@ -534,9 +534,6 @@
     <Reference Include="PreMailer.Net, Version=1.5.5.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
       <HintPath>..\packages\Kentico.Libraries.12.0.29\lib\net461\PreMailer.Net.dll</HintPath>
     </Reference>
-    <Reference Include="RelationshipsExtendedMVCHelper, Version=12.0.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RelationshipsExtendedMVCHelper.12.0.15\lib\net461\RelationshipsExtendedMVCHelper.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.HashFunction.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322">
       <HintPath>..\packages\System.Data.HashFunction.Core.2.0.0\lib\net45\System.Data.HashFunction.Core.dll</HintPath>
