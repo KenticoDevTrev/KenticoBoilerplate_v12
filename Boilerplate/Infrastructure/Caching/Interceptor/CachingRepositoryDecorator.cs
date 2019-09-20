@@ -56,6 +56,7 @@ namespace MVCCaching.Kentico
 
             var cacheDependencyAttributes = invocation.MethodInvocationTarget.GetCustomAttributes<CacheDependencyAttribute>().ToList();
 
+            // Either Cache or Retrieve, can modify and include custom logic for DependencyCacheKey generation
             if (cacheDependencyAttributes.Count > 0)
             {
                 invocation.ReturnValue = GetCachedResult(invocation, GetDependencyCacheKeyFromAttributes(cacheDependencyAttributes, invocation.Arguments));
@@ -82,7 +83,12 @@ namespace MVCCaching.Kentico
             }
         }
 
-
+        /// <summary>
+        /// Gets the Cached result of the function based on the Invocation Name (Cache Key)
+        /// </summary>
+        /// <param name="invocation"></param>
+        /// <param name="dependencyCacheKey"></param>
+        /// <returns></returns>
         private object GetCachedResult(IInvocation invocation, string dependencyCacheKey)
         {
             var cacheKey = GetCacheItemKey(invocation);
@@ -96,7 +102,11 @@ namespace MVCCaching.Kentico
             return CacheHelper.Cache(provideData, cacheSettings);
         }
 
-
+        /// <summary>
+        /// Retrieves the Cache Key based on the Invocation, can modify if desired
+        /// </summary>
+        /// <param name="invocation"></param>
+        /// <returns></returns>
         private string GetCacheItemKey(IInvocation invocation)
         {
             var builder = new StringBuilder(127)

@@ -14,7 +14,15 @@ namespace MVCCaching.Kentico
     /// </summary>
     public class KenticoCacheHelper : ICacheHelper
     {
-
+        /// <summary>
+        /// Caches the given Function using Kentico's CacheHelper
+        /// </summary>
+        /// <typeparam name="T">The return type</typeparam>
+        /// <param name="Func">The Function to Cache</param>
+        /// <param name="KeyName">The Cache Key Name</param>
+        /// <param name="Dependencies">Cache Dependencies</param>
+        /// <param name="CacheDuration">How long to cache, can use the CacheDuration method if you do not wish to specify</param>
+        /// <returns></returns>
         public T Cache<T>(Func<T> Func, string KeyName, IEnumerable<string> Dependencies, TimeSpan CacheDuration)
         {
             return CacheHelper.Cache<T>(cs =>
@@ -27,6 +35,11 @@ namespace MVCCaching.Kentico
             }, new CacheSettings(CacheDuration.Minutes, KeyName));
         }
 
+        /// <summary>
+        /// Gets the default Cache Duration.  Looks to the AppSetting RepositoryCacheItemDuration (seconds), or uses the Data Cache Minutes setting in Kentico
+        /// </summary>
+        /// <param name="ObjectIdentifier"></param>
+        /// <returns></returns>
         public TimeSpan CacheDuration(string ObjectIdentifier = "")
         {
             var value = ConfigurationManager.AppSettings["RepositoryCacheItemDuration"];
@@ -49,11 +62,19 @@ namespace MVCCaching.Kentico
             }
         }
 
+        /// <summary>
+        /// Clears any cache by the given Key
+        /// </summary>
+        /// <param name="KeyName">The Cache Key</param>
         public void TouchKey(string KeyName)
         {
             CacheHelper.TouchKey(KeyName);
         }
 
+        /// <summary>
+        /// Clears any Caches by the given Keys
+        /// </summary>
+        /// <param name="KeyNames">The Cache Keys</param>
         public void TouchKeys(IEnumerable<string> KeyNames)
         {
             CacheHelper.TouchKeys(KeyNames);

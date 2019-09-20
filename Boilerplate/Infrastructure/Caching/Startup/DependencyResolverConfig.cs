@@ -74,7 +74,7 @@ namespace MVCCaching.Kentico
         }
 
         /// <summary>
-        /// Configures Autofac container to use CMS dependency resolver in case it cannot resolve a dependency.
+        /// Configures Autofac container to use CMS dependency resolver in case it cannot resolve a dependency.  I believe this also hooks up Kentico's Services which include Cache clearing dependency detection
         /// </summary>
         private static void AttachCMSDependencyResolver(ContainerBuilder builder)
         {
@@ -99,12 +99,15 @@ namespace MVCCaching.Kentico
             return HttpContext.Current.Kentico().Preview().Enabled;
         }
 
+        /// <summary>
+        /// Gets the Cache Minute either from the AppSetting, or from the Cache Minutes Setting for data calls
+        /// </summary>
+        /// <returns></returns>
         private static TimeSpan GetCacheItemDuration()
         {
             var value = ConfigurationManager.AppSettings["RepositoryCacheItemDuration"];
-            var seconds = 0;
 
-            if (Int32.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out seconds) && seconds > 0)
+            if (int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int seconds) && seconds > 0)
             {
                 return TimeSpan.FromSeconds(seconds);
             }
