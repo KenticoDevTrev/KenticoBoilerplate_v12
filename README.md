@@ -13,6 +13,9 @@ This Boilerplate has been stripped of examples.  If you wish to see various exam
 1. Edit the config files as desired, MINIMUM the `ConnectionStrings.config` needs to be configured to point to your database you restored
 1. Edit the `CMSHashStringSalt` in the `AppSettings.config` needs a unique GUID added, do this in both the CMS and Boilerplate folder's AppSettings.config
 
+## Notes on Features
+The boilerplate site had some of the origin of many features, however these features are now available via NuGet packages (such as Dynamic Routing, MVC Caching, the Authorization attribute, etc).  While i plan on updating the boilerplate once our own Baseline install is set, please be aware that you may want to remove some code files and replace with the nuget packages.
+
 ## If creating your own repository from the Boilerplate
 1. Replace the .gitignore with the unzipped `EntierCMS-GitIgnore.zip` as this will track all your CMS folders and files if you wish to track your entire repo
 	1. _*NOTE: You should not upload the CMS/Lib folder into any public repository, but you can use it for private repos such as Azure DevOps
