@@ -1,3 +1,8 @@
+# DEPRECIATED
+This Boilerplate is not considered depreciated.  You can still use it if you want an empty Kentico MVC 12 site, but there is very little in terms of proper structure, systems, etc.
+
+Instead i would recommend our [Kentico 12 Baseline](https://github.com/HBSTech/Kentico12Baseline) Project that [Heartland Business Systems](https://www.hbs.net) has graciously made open source.  If you need a Kentico Partner, please contact Heartland!
+
 # KenticoBoilerplate_v12 (Hotfixed to Kentico 12.0.29 Service Pack)
 Kentico Boilerplate MVC Site which is geared to provide a clean starting point with various Kentico features and core structures put in place.
 
